@@ -1,0 +1,155 @@
+input[type=text], select {
+    padding: 10px 18px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #f4511e;
+    color: #ffffff;
+    padding: 10px 18px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+input[type=submit]:hover {
+    background-color: #ffb200;
+}
+
+.btn-save{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff6f00;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-save:hover{
+    background-color: #006064;
+  }
+
+  .btn-save span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btn-save span:after{
+    content: '\2714';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+  }
+
+  .btn-save:hover span{
+    padding-right: 22px;
+  }
+
+  .btn-save:hover span:after{
+    opacity: 1;
+    right: 0;
+  }
+
+  .btn-cancel{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #333;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-cancel:hover{
+    background-color: #b71c1c;
+  }
+
+  .btn-cancel span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btn-cancel span:after{
+    content: '\2718';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+  }
+
+  .btn-cancel:hover span{
+    padding-right: 22px;
+  }
+
+  .btn-cancel:hover span:after{
+    opacity: 1;
+    right: 0;
+  }
+
+   .btn-search{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff5722;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    padding: 7px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-search:hover{
+    background-color: #00b8d4;
+  }
+
+  .btn-search span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btn-search span:after{
+  	content: '\2315';
+  	font-size: 20px;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+  }
+
+  .btn-search:hover span{
+    padding-right: 22px;
+  }
+
+  .btn-search:hover span:after{
+    opacity: 1;
+    right: 0;
+  }
