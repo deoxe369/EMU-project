@@ -45,8 +45,10 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ</a></li>
             <li class="active"><a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-            <li><a href='../trainset_management'>ระบบการจัดการชุดรถไฟ</a></li>
-            <li><a href='../depot_management'>ระบบการจัดการศูนย์ซ่อม</a></li>
+            <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
+            <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
+            <li><a href='../depot_management'>จัดการตู้รถไฟ</a></li>
+            <li><a href='../part_management'>จัดการอะไหล่</a></li>
           </ul>
         </div>
       </div>

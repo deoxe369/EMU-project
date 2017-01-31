@@ -45,11 +45,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ</a></li>
-            <li class="active"><a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+            <li><a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
-            <li><a href='../depot_management'>จัดการตู้รถไฟ</a></li>
-            <li><a href='../part_management'>จัดการอะไหล่</a></li>
+            <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
+            <li class="active"><a href='../part_management'>จัดการอะไหล่</a></li>
           </ul>
         </div>
       </div>
@@ -60,44 +60,28 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลใบเข้าซ่อม</center></h1>
+        <h1 class="margin"><center>แก้ไขข้อมูลศูนย์ซ่อม</center></h1>
         <form class="form-horizontal">
-          <!--No.Maintenance-->
+          <!--No.Depot-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="maintainno">เลขเข้าซ่อม</label>
+            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
             <div class="col-sm-offset-2 col-sm-3">
               <p class="form-control-static" style="color: #13a381;">GENARATE</p>
             </div>
           </div>
 
-          <!--No.Train Set-->
+          <!--Model-->
           <div class="form-group">
-            <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
-              <option value="21">21</option>
-              <option value="335">335</option>
-              <option value="423">423</option>
-              <option value="425">425</option>
-              <option value="431">431</option>
+            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
+            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
+              <option value="4cc">4cc</option>
             </select>
           </div>
 
-          <!--No.Depot-->
+          <!--Capacity-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
-            </select>
-          </div>
-
-          <!--Level-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="level">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
+            <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
+            <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -106,19 +90,16 @@
             </select>
           </div>
 
-          <!--Enter DateTime-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>
-            <select class="col-sm-offset-2 col-sm-3" id="endate" name="endate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
-          </div>
-
-          <!--Leave DateTime-->
+          <!--Position-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
-            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
+            <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
+            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
             </select>
           </div>
 

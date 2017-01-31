@@ -33,7 +33,7 @@
       border: 0;
       border-radius: 0;
       margin-bottom: 0;
-      font-size: 16px;
+      font-size: 13px;
       letter-spacing: 2px;
       padding: 10px;
   }
@@ -51,7 +51,7 @@
       color: #f4511e; 
       background-color: #ffffff !important;
   }
-
+  
   /*.dropbtn{
     background-color: #f4511e;
     color: #ffffff;
