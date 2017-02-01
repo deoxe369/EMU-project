@@ -27,9 +27,7 @@ Route::get('/car_management', function () {
 Route::get('/part_management', function () {
     return view('part_management');
 });
-Route::get('/depot_management', function () {
-    return view('depot_management');
-});
+Route::get('depot_management','DepotController@depot_info');
 
 
 /**/
@@ -45,6 +43,15 @@ Route::get('/edit_car_management', function () {
 Route::get('/edit_part_management', function () {
     return view('edit_part_management');
 });
-Route::get('/edit_depot_management', function () {
-    return view('edit_depot_management');
+
+
+
+// Depot---------------------------------------->
+
+Route::get('add_depot','DepotController@add');
+
+Route::get('/add_depot_management', function () {
+    return view('add_depot_management');
 });
+Route::get('/edit_depot_management/{id}','DepotController@edit');
+

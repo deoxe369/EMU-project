@@ -24,6 +24,7 @@ class CreatePartTable extends Migration
             $table->integer('maintainance_id');
             $table->integer('cars_id');
             $table->integer('price');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
