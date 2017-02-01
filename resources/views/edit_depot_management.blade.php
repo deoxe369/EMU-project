@@ -37,8 +37,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>                     
           </button>
           <a class="navbar-brand" href='../'>EMU Utilization System</a>
         </div>
@@ -68,14 +67,6 @@
             <div class="col-sm-offset-2 col-sm-3">
               <p class="form-control-static" style="color: #13a381;">GENARATE</p>
             </div>
-          </div>
-
-          <!--Model-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
-            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
-              <option value="4cc">4cc</option>
-            </select>
           </div>
 
           <!--Capacity-->
