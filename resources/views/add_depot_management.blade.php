@@ -4,14 +4,26 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
-  <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
+  <link href="css/bootstrap.css" rel="stylesheet" >
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/form.css">
+
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript"></script>
+
+  <!--Javascript Function-->
+  <script type="text/javascript">
+    //Active Event Navbar
+    /*$(document).ready(function(){
+      $('ul.nav > li').click(function(e){
+        e.preventDefault();
+        $('ul.nav > li').removeClass('active');
+        $(this).addClass('active');
+      });
+    });*/
+  </script>
 
 </head>
 
@@ -25,7 +37,8 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                     
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
           </button>
           <a class="navbar-brand" href='../'>EMU Utilization System</a>
         </div>
@@ -47,44 +60,45 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลศูนย์ซ่อม </center></h1>
-        <form class="form-horizontal">
+        <h1 class="margin"><center>เพิ่มข้อมูลศูนย์ซ่อม</center></h1>
+        <form class="form-horizontal" action="add_depot">
           <!--No.Depot-->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
             <div class="col-sm-offset-2 col-sm-3">
-            <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>  
+              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
             </div>
-          </div>
+          </div> -->
 
-<<<<<<< HEAD
-=======
           <!--Model-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
+         <!--  <div class="form-group">
+            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
             <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
-              <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
+              <option value="4cc">4cc</option>
             </select>
-          </div>
+          </div> -->
 
->>>>>>> e382403731520cabfd46a396e24567ecb9e121fe
           <!--Capacity-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
             <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
-              <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
+              <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
+          </div><br> 
+          <!--location name-->
+          <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" name="location_name">
           </div>
-
           <!--Position-->
           <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
             <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value={{$origin_info[0]->location_name}} selected="selected">{{$origin_info[0]->location_name}}</option>
+              <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -92,6 +106,7 @@
               <option value="6">6</option>
             </select>
           </div>
+
 
           <!--Button Save & Cancel-->
           <div class="form-group">
@@ -109,5 +124,3 @@
 
 </body>
 </html>
-  
-

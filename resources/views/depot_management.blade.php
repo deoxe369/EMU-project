@@ -38,7 +38,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                      
           </button>
-          <a class="navbar-brand" href='../'>EMU Utilization System</a>
+          <a class="navbar-brand" href='../'>EMU Utilization System </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -57,7 +57,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <button class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
+        <button class="btn-add" style="vertical-align: middle"><a href='../add_depot_management'><span>เพิ่มศูนย์ซ่อม</span></a></button>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->
@@ -66,7 +66,6 @@
             <thead>
               <tr>
                 <th>รหัสศูนย์</th>
-                <th>โมเดล</th>
                 <th>จำนวนที่รับได้</th>
                 <th>ตำแหน่ง</th>
                 <th>สถานะ</th>
@@ -74,14 +73,15 @@
               </tr>
             </thead>
             <tbody>
+            @foreach ($depot_info as $info)
               <tr>
-                <td>02</td>
-                <td>4cc</td>
-                <td>4</td>                
-                <td>6</td>            
-                <td>1</td>
-                <td><a href='../edit_depot_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td>{{$info->id}}</td>
+                <td>{{$info->capacity}}</td>                
+                <td>{{$info->location_name}}</td>            
+                <td>{{$info->status}}</td>
+                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>      
