@@ -17,9 +17,9 @@ class CreateCarsTable extends Migration
             $table->increments('id');
             $table->string('model');
             $table->string('cars_type');
-            $table->string('status');
-            $table->string('price');
-            $table->timestamps();
+            $table->string('status')->default('ว่าง');
+            $table->decimal('price');
+            $table->timestamps('added_on');
         });
     }
 

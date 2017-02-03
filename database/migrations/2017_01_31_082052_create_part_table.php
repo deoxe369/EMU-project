@@ -19,13 +19,13 @@ class CreatePartTable extends Migration
             $table->date('manufactured_date');
             $table->date('expired_date');
             $table->string('brand');
-            $table->float('total_distance');
-            $table->time('total_time');
-            $table->integer('maintainance_id');
-            $table->integer('cars_id');
-            $table->integer('price');
-            $table->boolean('status');
-            $table->timestamps();
+            $table->float('total_distance')->default(0);
+            $table->float('total_time')->default(0);
+            $table->integer('maintainance_id')->default(0);
+            $table->integer('cars_id')->default(0);
+            $table->decimal('price');
+            $table->string('status')->default('ใช้ได้');
+            $table->timestamps('added_on');
         });
     }
 

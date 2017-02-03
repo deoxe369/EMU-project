@@ -17,7 +17,7 @@ class CreatePartModelTable extends Migration
             $table->increments('model');
             $table->integer('part_type_id');
             $table->string('brand');
-            $table->timestamps();
+            $table->timestamps('added_on');
         });
     }
 

@@ -24,10 +24,8 @@ Route::get('/trainset_management', function () {
 Route::get('/car_management', function () {
     return view('car_management');
 });
-Route::get('/part_management', function () {
-    return view('part_management');
-});
-Route::get('depot_management','DepotController@depot_info');
+Route::get('/part_management', 'PartController@part_info');
+Route::get('/depot_management','DepotController@depot_info');
 
 
 /**/
@@ -46,12 +44,37 @@ Route::get('/edit_part_management', function () {
 
 
 
+
+
 // Depot---------------------------------------->
 
 Route::get('add_depot','DepotController@add');
+
+// Route::get('update_depot','DepotController@update');
+Route::get('/edit_depot_management/{id}/save','DepotController@update');
 
 Route::get('/add_depot_management', function () {
     return view('add_depot_management');
 });
 Route::get('/edit_depot_management/{id}','DepotController@edit');
 
+
+
+// Part---------------------------------------->
+
+Route::get('add_part','PartController@add');
+
+// Route::get('/add_part_management', function () {
+//     return view('add_part_management');
+// });
+Route::get('/add_part_management','PartController@part_type_info');
+
+
+
+
+// ---------------------------------->เพิ่มข้อมูล part_type
+
+Route::get('/add_part_type', function () {
+    return view('addparttype');
+});
+Route::get('/add_part_type1', 'PartController@add_part_type');

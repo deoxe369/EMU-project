@@ -16,9 +16,9 @@ class CreatePartTypeTable extends Migration
         Schema::create('part_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('part_type');
-            $table->time('lifetime_time');
-            $table->time('lifetime_distance');
-            $table->timestamps();
+            $table->integer('lifetime_time'); //year
+            $table->integer('lifetime_distance');//km
+            $table->timestamps('added_on');
         });
     }
 

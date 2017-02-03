@@ -49,7 +49,7 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>แก้ไขข้อมูลศูนย์ซ่อม </center></h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="/edit_depot_management/{{$origin_info[0]->id}}/save">
           <!--No.Depot-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
@@ -61,8 +61,13 @@
           <!--Model-->
           <div class="form-group">
             <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
-            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
+            <select class="col-sm-offset-2 col-sm-3" id="location" name="location">
               <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
 
@@ -71,6 +76,7 @@
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
             <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
               <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
+              <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -80,6 +86,10 @@
 
           <!--Position-->
           <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
+          </div>
+          <!-- <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
             <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
               <option value={{$origin_info[0]->location_name}} selected="selected">{{$origin_info[0]->location_name}}</option>
@@ -89,7 +99,7 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-          </div>
+          </div> -->
 
           <!--Button Save & Cancel-->
           <div class="form-group">

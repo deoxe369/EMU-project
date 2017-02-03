@@ -22,7 +22,6 @@ class DepotController extends Controller
     	$depot_info = DB::table('depot')->get();
     	 
     	return View::make('depot_management', array('depot_info' => $depot_info));
-    	
     }
 
     public function edit($id)
@@ -32,6 +31,13 @@ class DepotController extends Controller
     	return View::make('edit_depot_management', array('origin_info' => $origin_info));
     	
     }
-    
+
+    public function update(Request $info ,$id)
+    {
+    	
+    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity]);
+
+    	 return Redirect::action('DepotController@depot_info');	
+    	     
+	}
 }
- 

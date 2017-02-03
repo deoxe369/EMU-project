@@ -20,7 +20,7 @@ class CreateTrainSetTable extends Migration
             $table->float('total_distance');
             $table->time('total_time');
             $table->string('status');
-            $table->timestamps();
+            $table->timestamps('added_on');
         });
     }
 

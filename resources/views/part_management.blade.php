@@ -58,7 +58,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <button class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
+        <button class="btn-add" style="vertical-align: middle"><a href='../add_part_management'><span>เพิ่มศูนย์ซ่อม</span></a></button>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->

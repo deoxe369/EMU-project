@@ -17,7 +17,7 @@ class CreateLevelTable extends Migration
             $table->increments('level');
             $table->float('total_distance');
             $table->time('total_time');
-            $table->timestamps();
+            $table->timestamps('added_on');
         });
     }
 
