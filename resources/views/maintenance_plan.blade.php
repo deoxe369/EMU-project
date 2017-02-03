@@ -4,26 +4,14 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.css" rel="stylesheet" >
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-
-  <!--Javascript Function-->
-  <script type="text/javascript">
-    //Active Event Navbar
-    /*$(document).ready(function(){
-      $('ul.nav > li').click(function(e){
-        e.preventDefault();
-        $('ul.nav > li').removeClass('active');
-        $(this).addClass('active');
-      });
-    });*/
-  </script>
-
+  <script type="text/javascript"></script>
 </head>
 
 <body data-spy="scroll">
@@ -57,7 +45,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+        <a href="#"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->

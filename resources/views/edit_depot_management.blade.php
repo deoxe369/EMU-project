@@ -12,7 +12,6 @@
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript"></script>
-
 </head>
 
 <body data-spy="scroll">
@@ -57,8 +56,6 @@
             </div>
           </div>
 
-<<<<<<< HEAD
-=======
           <!--Model-->
           <div class="form-group">
             <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
@@ -72,7 +69,6 @@
             </select>
           </div>
 
->>>>>>> e382403731520cabfd46a396e24567ecb9e121fe
           <!--Capacity-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>

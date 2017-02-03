@@ -4,26 +4,14 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.css" rel="stylesheet" >
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-
-  <!--Javascript Function-->
-  <script type="text/javascript">
-    //Active Event Navbar
-    /*$(document).ready(function(){
-      $('ul.nav > li').click(function(e){
-        e.preventDefault();
-        $('ul.nav > li').removeClass('active');
-        $(this).addClass('active');
-      });
-    });*/
-  </script>
-
+  <script type="text/javascript"></script>
 </head>
 
 <body data-spy="scroll">
@@ -57,7 +45,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <button class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
+        <a href="#"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->
@@ -65,21 +53,19 @@
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสศูนย์</th>
+                <th>รหัสตู้รถไฟ</th>
                 <th>โมเดล</th>
-                <th>จำนวนที่รับได้</th>
-                <th>ตำแหน่ง</th>
+                <th>ชนิด</th>
                 <th>สถานะ</th>
                 <th style="color: #f4511e;">แก้ไข</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>02</td>
-                <td>4cc</td>
-                <td>4</td>                
-                <td>6</td>            
                 <td>1</td>
+                <td>4cc</td>
+                <td>โดยสาร</td>                
+                <td>6</td> 
                 <td><a href='../edit_car_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
             </tbody>

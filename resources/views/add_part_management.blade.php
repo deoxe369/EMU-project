@@ -4,27 +4,14 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.css" rel="stylesheet" >
-  <link href="css/bootstrap-responsive.css" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
+  <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <link rel="stylesheet" type="text/css" href="css/form.css">
-
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-
-  <!--Javascript Function-->
-  <script type="text/javascript">
-    //Active Event Navbar
-    /*$(document).ready(function(){
-      $('ul.nav > li').click(function(e){
-        e.preventDefault();
-        $('ul.nav > li').removeClass('active');
-        $(this).addClass('active');
-      });
-    });*/
-  </script>
-
+  <script type="text/javascript"></script>
 </head>
 
 <body data-spy="scroll">
@@ -37,8 +24,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>                       
           </button>
           <a class="navbar-brand" href='../'>EMU Utilization System</a>
         </div>
@@ -60,7 +46,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลศูนย์ซ่อม</center></h1>
+        <h1 class="margin"><center>เพิ่มข้อมูลอะไหล่</center></h1>
         <form class="form-horizontal" action="add_part">
          
 
