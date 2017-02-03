@@ -25,8 +25,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>                     
           </button>
           <a class="navbar-brand" href='../'>EMU Utilization System</a>
         </div>
@@ -58,6 +57,8 @@
             </div>
           </div>
 
+<<<<<<< HEAD
+=======
           <!--Model-->
           <div class="form-group">
             <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
@@ -71,6 +72,7 @@
             </select>
           </div>
 
+>>>>>>> e382403731520cabfd46a396e24567ecb9e121fe
           <!--Capacity-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
