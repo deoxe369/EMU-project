@@ -12,7 +12,6 @@
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript"></script>
-
 </head>
 
 <body data-spy="scroll">
@@ -57,8 +56,6 @@
             </div>
           </div>
 
-<<<<<<< HEAD
-=======
           <!--Model-->
           <div class="form-group">
             <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
@@ -71,8 +68,6 @@
               <option value="5">5</option>
             </select>
           </div>
-
->>>>>>> e382403731520cabfd46a396e24567ecb9e121fe
           <!--Capacity-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
@@ -85,7 +80,6 @@
               <option value="5">5</option>
             </select>
           </div>
-
           <!--Position-->
           <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -102,7 +96,6 @@
               <option value="6">6</option>
             </select>
           </div> -->
-
           <!--Button Save & Cancel-->
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
@@ -113,11 +106,7 @@
         </form>
       </div>
     </div>
-
     
   <!--Footer-->
-
 </body>
 </html>
-  
-
