@@ -68,6 +68,7 @@
               <option value="5">5</option>
             </select>
           </div>
+
           <!--Capacity-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
