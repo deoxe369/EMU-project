@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartModelTable extends Migration
+class CreateCompositionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePartModelTable extends Migration
      */
     public function up()
     {
-        Schema::create('part_model', function (Blueprint $table) {
-            $table->increments('model');
-            $table->integer('part_type_id');
-            $table->string('brand');
-            $table->timestamp('created_at');
+        Schema::create('composition', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('cars_id');
+            $table->string('train_set_number');
+            $table->timestamps('created_at');
         });
     }
 
@@ -28,6 +28,6 @@ class CreatePartModelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('part_model');
+        Schema::dropIfExists('composition');
     }
 }

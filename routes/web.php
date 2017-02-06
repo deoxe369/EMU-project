@@ -25,6 +25,7 @@ Route::get('/car_management', function () {
     return view('car_management');
 });
 Route::get('/part_management', 'PartController@part_info');
+
 Route::get('/depot_management','DepotController@depot_info');
 
 
@@ -68,8 +69,6 @@ Route::get('add_part','PartController@add');
 //     return view('add_part_management');
 // });
 Route::get('/add_part_management','PartController@part_type_info');
-
-
 
 
 // ---------------------------------->เพิ่มข้อมูล part_type
