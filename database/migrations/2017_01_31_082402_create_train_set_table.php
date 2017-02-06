@@ -16,11 +16,11 @@ class CreateTrainSetTable extends Migration
         Schema::create('train_set', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->string('composition');
             $table->float('total_distance');
             $table->time('total_time');
             $table->string('status');
-            $table->timestamps('added_on');
+            $table->string('train_set_number');
+            $table->timestamp('created_at');
         });
     }
 
@@ -34,3 +34,4 @@ class CreateTrainSetTable extends Migration
         Schema::dropIfExists('train_set');
     }
 }
+

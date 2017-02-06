@@ -18,7 +18,7 @@ class CreatePartTypeTable extends Migration
             $table->string('part_type');
             $table->integer('lifetime_time'); //year
             $table->integer('lifetime_distance');//km
-            $table->timestamps('added_on');
+            $table->timestamp('created_at');
         });
     }
 

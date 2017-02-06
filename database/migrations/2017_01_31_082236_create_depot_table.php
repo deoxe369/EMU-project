@@ -19,7 +19,7 @@ class CreateDepotTable extends Migration
             $table->integer('location');
             $table->integer('capacity');
             $table->string('status')->default('ว่าง');
-            $table->timestamps('added_on');
+            $table->timestamp('created_at');
         });
     }
 

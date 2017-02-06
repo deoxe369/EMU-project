@@ -17,7 +17,7 @@ class CreateChecklistTable extends Migration
             $table->increments('id');
             $table->string('checklist');
             $table->integer('level');
-            $table->timestamps('added_on');
+            $table->timestamp('created_at');
         });
     }
 

@@ -25,7 +25,7 @@ class CreatePartTable extends Migration
             $table->integer('cars_id')->default(0);
             $table->decimal('price');
             $table->string('status')->default('ใช้ได้');
-            $table->timestamps('added_on');
+            $table->timestamp('created_at');
         });
     }
 
