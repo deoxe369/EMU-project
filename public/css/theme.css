@@ -96,7 +96,7 @@ body {
   .btn-add{
     display: inline-block;
     border-radius: 4px;
-    background-color: #bf360c;
+    background-color: #ffab00;
     border: none;
     color: #ffffff;
     text-align: center;
@@ -108,7 +108,7 @@ body {
   }
 
   .btn-add:hover{
-    background-color: #ff6f00;
+    background-color: #bf360c;
   }
 
   .btn-add span{
