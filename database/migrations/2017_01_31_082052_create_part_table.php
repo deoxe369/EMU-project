@@ -15,7 +15,7 @@ class CreatePartTable extends Migration
     {
         Schema::create('part', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('part_type_id');
+            $table->string('part_type');
             $table->date('manufactured_date');
             $table->date('expired_date');
             $table->string('brand');
@@ -23,7 +23,7 @@ class CreatePartTable extends Migration
             $table->float('total_time')->default(0);
             $table->integer('maintainance_id')->default(0);
             $table->integer('cars_id')->default(0);
-            $table->decimal('price');
+            $table->decimal('price',15,2);
             $table->string('status')->default('ใช้ได้');
             $table->timestamp('created_at');
         });

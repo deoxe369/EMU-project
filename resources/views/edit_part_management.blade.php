@@ -42,58 +42,61 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลศูนย์ซ่อม</center></h1>
-        <form class="form-horizontal">
-          <!--No.Depot-->
+        <h1 class="margin"><center>แก้ไขข้อมูลอะไหล่ </center></h1>
+        <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save">
+         
           <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
+            <label class="control-label col-sm-5" for="depotno">รหัสอะไหล่</label>
             <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
+            <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>  <br>
             </div>
           </div>
-
-          <!--Model-->
+          <!--Type-->
           <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
-            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
-              <option value="4cc">4cc</option>
-            </select>
-          </div>
+            <label class="control-label col-sm-5 for="cdmodel">ประเภท</label>    
 
-          <!--Capacity-->
+            <select class="col-sm-offset-2 col-sm-3" id="part_type" name="part_type">
+           @foreach ($part_type_info as $info)
+              <option value={{$info->part_type}}>{{$info->part_type}}</option>
+           @endforeach  
+            </select> 
+          </div><br>
+
+          <!--วันผลิต-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
-            <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
+            <label class="control-label col-sm-5" for="capacity">วันผลิต</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="date" name="m_day" value={{$origin_info[0]->manufactured_date}}>
+          </div><br>
 
-          <!--Position-->
+          <!--วันหมดอายุ-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            <label class="control-label col-sm-5" for="depotno">วันหมดอายุ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="date" name="e_day" value={{$origin_info[0]->expired_date}}>
+          </div>
+
+
+          <!--ยี่ห้อ-->
+          <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotno">ยี่ห้อ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <input type="text" name="brand" value={{$origin_info[0]->brand}}>
+          </div>
+
+
+          <!--ราคา-->
+          <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotno">ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <input type="text" name="price" value={{$origin_info[0]->price}}>
           </div>
 
           <!--Button Save & Cancel-->
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>

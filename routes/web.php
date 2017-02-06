@@ -65,8 +65,14 @@ Route::get('/edit_depot_management/{id}','DepotController@edit');
 
 Route::get('add_part','PartController@add');
 
+Route::get('search','PartController@search');
+
 // Route::get('/add_part_management', function () {
 //     return view('add_part_management');
+
+Route::get('/edit_part_management/{id}/save','PartController@update');
+
+Route::get('/edit_part_management/{id}','PartController@edit');
 // });
 Route::get('/add_part_management','PartController@part_type_info');
 
@@ -74,6 +80,6 @@ Route::get('/add_part_management','PartController@part_type_info');
 // ---------------------------------->เพิ่มข้อมูล part_type
 
 Route::get('/add_part_type', function () {
-    return view('addparttype');
+    return view('add_part_type');
 });
 Route::get('/add_part_type1', 'PartController@add_part_type');

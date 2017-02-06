@@ -11,45 +11,61 @@ class PartController extends Controller
 {
     public function add(Request $info1)
     {
-    	DB::insert('insert into part (part_type_id, manufactured_date,expired_date,brand,price) values (?, ?, ?, ?, ? )', [ $info1->part_type_id, $info1->m_day,$info1->e_day,$info1->brand,$info1->price]);
+        for ($x = 1; $x <= $info1->qauntity ; $x++) {
 
+
+    	DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price) values (?, ?, ?, ?, ? )', [ $info1->part_type, $info1->m_day,$info1->e_day,$info1->brand,$info1->price]);
+        }
     	return Redirect::action('PartController@part_info');	
+
+        // return $info1->qauntity;
 	    	
 	}
 
     public function part_info()
     {
     	$part_info = DB::table('part')->get();
+
+        $part_type_info = DB::table('part_type')->select('part_type')->get();
+
+        $part_brand_info = DB::table('part')->select('brand')->distinct()->get();
+
+        $part_cars_info = DB::table('part')->select('cars_id')->distinct()->get();
     	 
-    	return View::make('part_management', array('part_info' => $part_info));
+    	return View::make('part_management')->with('part_info',$part_info)
+        ->with('part_type_info',$part_type_info)->with('part_brand_info',$part_brand_info)->with('part_cars_info',$part_cars_info);
+        // return $part_cars_info;
     }
 
 // ---------------------------------------------เรียกข้อมูล part_type มาเป็นตัวเลือก
       public function part_type_info() 
     {
-    	$part_type_info = DB::table('part_type')->select('id','part_type')->get();
+    	$part_type_info = DB::table('part_type')->select('part_type')->get();
     	 
     	return View::make('add_part_management', array('part_type_info' => $part_type_info));
 
     }
 
 
- //    public function edit($id)
- //    {
- //    	$origin_info = DB::table('depot')->where('id',$id)->get();
+    public function edit($id)
+    {
+    	$origin_info = DB::table('part')->where('id',$id)->get();
 
- //    	return View::make('edit_depot_management', array('origin_info' => $origin_info));
+        $part_type_info = DB::table('part_type')->select('id','part_type')->get();  
+
+    	return View::make('edit_part_management', array('origin_info' => $origin_info), array('part_type_info' => $part_type_info));
+
     	
- //    }
+    }
 
- //    public function update(Request $info ,$id)
- //    {
+    public function update(Request $info ,$id)
+    {
     	
- //    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity]);
+    	DB::table('part')->where('id',$id)->update(['part_type'=>$info->part_type,'manufactured_date'=>$info->m_day,'expired_date'=>$info->e_day,'brand'=>$info->brand,'price'=>$info->price]);
 
- //    	 return Redirect::action('DepotController@depot_info');	
-    	     
-	// }
+    	 return Redirect::action('PartController@part_info');	
+            // return $info;    	     
+	}
 
 
 
@@ -62,7 +78,46 @@ class PartController extends Controller
     	DB::insert('insert into part_type (part_type, lifetime_time,lifetime_distance) values (?, ?, ?)', [ $info1->part_name, $info1->time,$info1->distance]);
 
     	//  return Redirect::action('PartController@part_info');	
-    	return view('addparttype');
+    	return view('add_part_type');
     }
 
+// ---------------------------------------------search part
+    public function search(Request $info)
+    {
+        if($info->part_cars_id == 'not' && $info->part_type == 'not' && $info->brand == 'not'){
+            // DB::table('part')->where('part_type',$info->part_type)->where('cars_id',$info->part_cars_id)->where('brand',$info->brand)->get();
+            $part_info = DB::table('part')->get();
+            // return $part_info;
+        }elseif($info->part_cars_id == 'not' && $info->part_type == 'not'){
+             $part_info =DB::table('part')->where('brand',$info->brand)->get();
+            // return $part_info;
+        }elseif($info->part_type == 'not' && $info->brand == 'not'){
+             $part_info =DB::table('part')->where('cars_id',$info->part_cars_id)->get();
+            // return $part_info;
+        }elseif($info->part_cars_id == 'not' && $info->brand == 'not'){
+            $part_info = DB::table('part')->where('part_type',$info->part_type)->get();
+            // return $part_info;
+        }elseif($info->brand == 'not'){
+             $part_info =DB::table('part')->where('part_type',$info->part_type)->where('cars_id',$info->part_cars_id)->get();
+            // return $part_info;
+        }elseif($info->part_cars_id == 'not'){
+            $part_info = DB::table('part')->where('part_type',$info->part_type)->where('brand',$info->brand)->get();
+            // return $part_info;
+        }elseif($info->part_type == 'not'){
+            $part_info = DB::table('part')->where('cars_id',$info->part_cars_id)->where('brand',$info->brand)->get();
+            // return $part_info;
+        }else{
+            $part_info = DB::table('part')->where('cars_id',$info->part_cars_id)->where('brand',$info->brand)->where('part_type',$info->part_type)->get();
+        }
+   
+
+        $part_type_info = DB::table('part_type')->select('part_type')->get();
+
+        $part_brand_info = DB::table('part')->select('brand')->distinct()->get();
+
+        $part_cars_info = DB::table('part')->select('cars_id')->distinct()->get();
+         
+        return View::make('part_management')->with('part_info',$part_info)
+        ->with('part_type_info',$part_type_info)->with('part_brand_info',$part_brand_info)->with('part_cars_info',$part_cars_info);
+    }
 }

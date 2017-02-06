@@ -44,39 +44,72 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div class="text-right margin">
-        <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
-      </div>      
+     
+       <div class="text-right margin">
+          <form class="form-horizontal" action="search">
+
+             <label class="control-label col-sm-1" for="cdmodel">ประเภท</label> 
+             <select class="col-sm-offset-0 col-sm-2" id="part_type" name="part_type">          <option value='not'>ประเภท</option> 
+                  @foreach ($part_type_info as $info)
+                    <option value={{$info->part_type}}>{{$info->part_type}}</option>
+                  @endforeach          
+             </select>
+             <label class="control-label col-sm-1" for="cdmodel">ยี่ห้อ</label> 
+             <select class="col-sm-offset-0 col-sm-2" id="brand" name="brand">
+             <option value='not'>ยี่ห้อ</option>           
+                    @foreach ($part_brand_info as $info)
+                    <option value={{$info->brand}}>{{$info->brand}}</option>
+                  @endforeach 
+              </select>   
+                
+              <label class="control-label col-sm-1" for="cdmodel">Car ID</label>   
+              <select class="col-sm-offset-0 col-sm-2" id="part_cars_id" name="part_cars_id">
+              <option value='not'>Car ID</option> 
+                        @foreach ($part_cars_info as $info)
+                    <option value={{$info->cars_id}}>{{$info->cars_id}}</option>
+                  @endforeach 
+                      
+                </select>
+             <button class="btn-search" style="vertical-align: middle"><span>ค้นหา</span></button></a>
+         </form><br>
+
+          <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
+
+
+      </div>   
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสศูนย์</th>
-                <th>โมเดล</th>
-                <th>จำนวนที่รับได้</th>
-                <th>ตำแหน่ง</th>
+                <th>รหัสอะไหล่</th>
+                <th>ประเภท</th>
+                <th>ยี่ห้อ</th>
+                <th>เวลาสะสม</th>
+                <th>ระยะทางสะสม</th>
+                <th>Cars ID</th>
                 <th>สถานะ</th>
                 <th style="color: #f4511e;">แก้ไข</th>
               </tr>
             </thead>
             <tbody>
+            @foreach ($part_info as $info)
               <tr>
-                <td>02</td>
-                <td>4cc</td>
-                <td>4</td>                
-                <td>6</td>            
-                <td>1</td>
-                <td><a href='../edit_part_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td>{{$info->id}}</td>
+                <td>{{$info->part_type}}</td>
+                <td>{{$info->brand}}</td>                   
+                <td>{{$info->total_distance}}</td>            
+                <td>{{$info->total_time}}</td>
+                <td>{{$info->cars_id}}</td>            
+                <td>{{$info->status}}</td>         
+                <td><a href='../edit_part_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>      
     </div>
-
-    
-  <!--Footer-->
 
 </body>
 </html>

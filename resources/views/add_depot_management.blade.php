@@ -98,7 +98,7 @@
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../depot_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>

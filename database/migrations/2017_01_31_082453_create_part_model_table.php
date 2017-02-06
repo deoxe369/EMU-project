@@ -15,7 +15,8 @@ class CreatePartModelTable extends Migration
     {
         Schema::create('part_model', function (Blueprint $table) {
             $table->increments('model');
-            $table->integer('part_type_id');
+            $table->integer('cars_type');
+            $table->integer('part_type');
             $table->string('brand');
             $table->timestamp('created_at');
         });
