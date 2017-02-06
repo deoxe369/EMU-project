@@ -12,8 +12,8 @@
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript"></script>
-
 </head>
+
 <body data-spy="scroll">
 
   <!--Header-->
@@ -45,7 +45,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <button class="btn-add" style="vertical-align: middle"><a href='../add_depot_management'><span>เพิ่มศูนย์ซ่อม</span></a></button>
+        <a href='../add_depot_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button></a>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->
