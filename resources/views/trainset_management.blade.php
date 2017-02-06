@@ -42,19 +42,41 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+    <div class="container-fluid">
     <!--First Container-->
-      <div class="text-right margin">
-        <a href="../add_trainset_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button></a>
-      </div>      
+      <div>
+        <form class="form-horizontal" action="search">
+          <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
+          <input type="text" name="trainsetno">
+
+          <label for="trsettype"><h3 class="margin">ชนิด</h3></label>
+          <select id="trsettype" name="trsettype">
+            <option value="มกราคม">มกราคม</option>
+            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+          </select>
+
+          <label for="trstatus"><h3 class="margin">สถานะ</h3></label>
+          <select id="trstatus" name="trstatus">
+            <option value="มกราคม">มกราคม</option>
+            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+          </select>
+
+          <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+
+        </form>
+
     <!--Second Container-->
+        <div class="text-right margin">
+          <a href="../add_trainset_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button></a>
+        </div>      
+      </div>
+    <!--Third Container-->
       <!--Table Detail-->
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th>รหัสชุดรถไฟ</th>
-                <th>โมเดล</th>
                 <th>ชนิด</th>
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
@@ -65,7 +87,6 @@
             <tbody>
               <tr>
                 <td>423</td>
-                <td>4cc</td>
                 <td>All</td>                
                 <td>500 km</td>
                 <td>YY.HH.DD
@@ -75,7 +96,6 @@
               </tr>
               <tr>
                 <td>423</td>
-                <td>4cc</td>
                 <td>All</td>                
                 <td>500 km</td>
                 <td>YY.HH.DD

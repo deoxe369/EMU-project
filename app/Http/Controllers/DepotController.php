@@ -7,7 +7,6 @@ use DB;
 use View;
 use Redirect;
 
-
 class DepotController extends Controller
 {
     public function add(Request $info1)

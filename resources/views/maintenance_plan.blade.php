@@ -44,9 +44,27 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
+      <div>
+        <form class="form-horizontal" action="search">
+          <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
+          <select id="trsettype" name="trsettype">
+            <option value="มกราคม">มกราคม</option>
+            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+          </select>
+
+          <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
+          <select id="trstatus" name="trstatus">
+            <option value="มกราคม">มกราคม</option>
+            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+          </select>
+
+          <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+        </form>
+    <!--Third Container-->
       <div class="text-right margin">
         <a href="#"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
-      </div>      
+      </div>
+    </div>      
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">

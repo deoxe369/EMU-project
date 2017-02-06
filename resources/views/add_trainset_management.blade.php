@@ -48,6 +48,8 @@
       <div class="container">
         <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ</center></h1>
         <form class="form-horizontal" action="add_trainset">
+
+          
           <!--No.Train Set-->
           <!--<div class="form-group">
             <label class="control-label col-sm-5" for="trainsetno">รหัสชุดรถไฟ</label>
@@ -59,16 +61,17 @@
           <div class="form-group">
             <label class="control-label col-sm-5" for="trsettype">ชนิด</label>
             <select class="col-sm-offset-2 col-sm-3" id="trsettype" name="trsettype">
-              <option value="All">ชุดรถไฟโดยสาร 3</option>
-              <option value="All">ชุดรถไฟโดยสาร 4</option>              
-              <option value="All">ชุดรถไฟขนส่ง</option>
-              <option value="All">รถราง</option>
+
+              <option value="ชุดรถไฟโดยสาร 3">ชุดรถไฟโดยสาร 3</option>
+              <option value="ชุดรถไฟโดยสาร 4">ชุดรถไฟโดยสาร 4</option>
+              <option value="ชุดรถไฟขนส่ง">ชุดรถไฟขนส่ง</option>
+              <option value="รถราง">รถราง</option>
             </select>
           </div>
 
           <!--Composition-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">Composition</label>
+          <!--<div class="form-group margin">
+            <label class="control-label col-sm-5" for="composition">Composition</label>
             <select class="col-sm-offset-2 col-sm-3" id="composition" name="composition">
               <option value="D1">D1</option>
               <option value="D2">D2</option>
@@ -76,7 +79,7 @@
               <option value="D4">D4</option>
               <option value="D5">D5</option>
             </select>
-          </div>
+          </div>-->
 
           <!--Button Save & Cancel-->
           <div class="form-group">

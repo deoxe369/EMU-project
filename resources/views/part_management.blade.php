@@ -44,40 +44,42 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-     
-       <div class="text-right margin">
-          <form class="form-horizontal" action="search">
+      <div>
+        <form class="form-horizontal" action="search">
 
-             <label class="control-label col-sm-1" for="cdmodel">ประเภท</label> 
-             <select class="col-sm-offset-0 col-sm-2" id="part_type" name="part_type">          <option value='not'>ประเภท</option> 
-                  @foreach ($part_type_info as $info)
-                    <option value={{$info->part_type}}>{{$info->part_type}}</option>
-                  @endforeach          
-             </select>
-             <label class="control-label col-sm-1" for="cdmodel">ยี่ห้อ</label> 
-             <select class="col-sm-offset-0 col-sm-2" id="brand" name="brand">
-             <option value='not'>ยี่ห้อ</option>           
-                    @foreach ($part_brand_info as $info)
-                    <option value={{$info->brand}}>{{$info->brand}}</option>
-                  @endforeach 
-              </select>   
+            <label for="part_type"><h3 class="margin">ประเภท</h3></label>
+            <select id="part_type" name="part_type">          
+              <option value='not'>ประเภท</option> 
+                @foreach ($part_type_info as $info)
+              <option value={{$info->part_type}}>{{$info->part_type}}</option>
+                @endforeach          
+            </select>
+
+            <label for="brand"><h3 class="margin">ยี่ห้อ</h3></label>
+            <select id="brand" name="brand">
+              <option value='not'>ยี่ห้อ</option>           
+                @foreach ($part_brand_info as $info)
+              <option value={{$info->brand}}>{{$info->brand}}</option>
+                @endforeach 
+            </select>   
                 
-              <label class="control-label col-sm-1" for="cdmodel">Car ID</label>   
-              <select class="col-sm-offset-0 col-sm-2" id="part_cars_id" name="part_cars_id">
+            <label for="part_cars_id"><h3 class="margin">รหัสตู้รถไฟ</h3></label>
+            <select id="part_cars_id" name="part_cars_id">
               <option value='not'>Car ID</option> 
-                        @foreach ($part_cars_info as $info)
-                    <option value={{$info->cars_id}}>{{$info->cars_id}}</option>
-                  @endforeach 
-                      
-                </select>
-             <button class="btn-search" style="vertical-align: middle"><span>ค้นหา</span></button></a>
-         </form><br>
+                @foreach ($part_cars_info as $info)
+              <option value={{$info->cars_id}}>{{$info->cars_id}}</option>
+                @endforeach  
+            </select>
+              
+             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
+         </form>
 
-          <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
-
-
-      </div>   
     <!--Second Container-->
+          <div class="text-right margin">
+            <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
+          </div>   
+      </div>
+    <!--Third Container-->
       <!--Table Detail-->
         <div class="table-responsive">
           <table class="table">

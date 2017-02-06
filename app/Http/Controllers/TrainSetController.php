@@ -11,8 +11,15 @@ class TrainSetController extends Controller
 {
     public function add(Request $info1)
     {
-    	DB::insert('insert into train_set(type, composition) value(?, ?)', [$info1->trsettype, $info1->composition]);
+    	DB::insert('insert into train_set(type) value(?)', [$info1->trsettype]);
 
     	return Redirect::action('TrainSetController@trainset_info)');
+    }
+
+     public function trainset_info()
+    {
+    	$trainset_info = DB::table('train_set')->get();
+    	 
+    	return View::make('trainset_management', array('trainset_info' => $trainset_info));
     }
 }
