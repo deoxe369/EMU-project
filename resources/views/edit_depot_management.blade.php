@@ -83,7 +83,6 @@
               <option value="5">5</option>
             </select>
           </div>
-
           <!--Position-->
           <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -100,7 +99,6 @@
               <option value="6">6</option>
             </select>
           </div> -->
-
           <!--Button Save & Cancel-->
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
@@ -111,11 +109,7 @@
         </form>
       </div>
     </div>
-
     
   <!--Footer-->
-
 </body>
 </html>
-  
-
