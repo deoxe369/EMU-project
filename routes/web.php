@@ -43,6 +43,12 @@ Route::get('/edit_part_management', function () {
 });
 
 
+// Trainset------------------------------------->
+Route::get('add_trainset', 'TrainSetController@add');
+
+Route::get('/add_trainset_management', function(){
+    return view('add_trainset_management');
+});
 
 
 

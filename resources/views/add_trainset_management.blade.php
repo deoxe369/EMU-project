@@ -24,7 +24,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
+            <span class="icon-bar"></span>                       
           </button>
           <a class="navbar-brand" href='../'>EMU Utilization System</a>
         </div>
@@ -44,48 +44,49 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div class="text-right margin">
-        <a href="../add_trainset_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button></a>
-      </div>      
-    <!--Second Container-->
-      <!--Table Detail-->
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>รหัสชุดรถไฟ</th>
-                <th>โมเดล</th>
-                <th>ชนิด</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
-                <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>423</td>
-                <td>4cc</td>
-                <td>All</td>                
-                <td>500 km</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>                
-                <td>1</td>
-                <td><a href='../edit_trainset_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
-              </tr>
-              <tr>
-                <td>423</td>
-                <td>4cc</td>
-                <td>All</td>                
-                <td>500 km</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>                
-                <td>1</td>
-                <td><a href='../edit_trainset_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>      
+      <!--Select Edit-->
+      <div class="container">
+        <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ</center></h1>
+        <form class="form-horizontal" action="add_trainset">
+          <!--No.Train Set-->
+          <!--<div class="form-group">
+            <label class="control-label col-sm-5" for="trainsetno">รหัสชุดรถไฟ</label>
+            <div class="col-sm-offset-2 col-sm-3">
+              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
+            </div>-->
+
+          <!--Types Of Train Set-->
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="trsettype">ชนิด</label>
+            <select class="col-sm-offset-2 col-sm-3" id="trsettype" name="trsettype">
+              <option value="All">ชุดรถไฟโดยสาร 3</option>
+              <option value="All">ชุดรถไฟโดยสาร 4</option>              
+              <option value="All">ชุดรถไฟขนส่ง</option>
+              <option value="All">รถราง</option>
+            </select>
+          </div>
+
+          <!--Composition-->
+          <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotno">Composition</label>
+            <select class="col-sm-offset-2 col-sm-3" id="composition" name="composition">
+              <option value="D1">D1</option>
+              <option value="D2">D2</option>
+              <option value="D3">D3</option>
+              <option value="D4">D4</option>
+              <option value="D5">D5</option>
+            </select>
+          </div>
+
+          <!--Button Save & Cancel-->
+          <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-5">
+              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
     
