@@ -44,6 +44,14 @@ Route::get('/edit_part_management', function () {
 });
 
 
+// car----------------------------------------------------------------------------
+
+Route::get('/add_car_management', function () {
+    return view('add_car_management');
+});
+
+// --------------------------------------------------------------------------------
+
 // Trainset------------------------------------->
 Route::get('add_trainset','TrainSetController@add');
 
