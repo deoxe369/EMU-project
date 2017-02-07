@@ -18,9 +18,9 @@ Route::get('/', function () {
 Route::get('/maintenance_plan', function () {
     return view('maintenance_plan');
 });
-Route::get('/trainset_management', function () {
-    return view('trainset_management');
-});
+Route::get('/trainset_management', 'TrainSetController@trainset_info');
+
+
 Route::get('/car_management', function () {
     return view('car_management');
 });

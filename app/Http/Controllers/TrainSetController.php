@@ -11,9 +11,9 @@ class TrainSetController extends Controller
 {
     public function add(Request $info1)
     {
-    	DB::insert('insert into train_set(type) value(?)', [$info1->trsettype]);
+    	DB::insert('insert into train_set(type, train_set_number) value(?, ?)', [$info1->trsettype, $info1->trainsetno]);
 
-    	return Redirect::action('TrainSetController@trainset_info)');
+    	return Redirect::action('TrainSetController@trainset_info');
     }
 
      public function trainset_info()
