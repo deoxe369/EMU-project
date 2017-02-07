@@ -45,7 +45,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div class="text-right margin">
-        <a href="#"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
+        <a href='../add_car_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
       </div>      
     <!--Second Container-->
       <!--Table Detail-->
@@ -61,7 +61,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+            <tr>
                 <td>1</td>
                 <td>4cc</td>
                 <td>โดยสาร</td>                
@@ -78,3 +78,4 @@
 
 </body>
 </html>
+

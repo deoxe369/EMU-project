@@ -49,13 +49,12 @@
         <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
         <form class="form-horizontal" action="add_trainset">
 
-          
           <!--No.Train Set-->
-          <!--<div class="form-group">
+          <div class="form-group">
             <label class="control-label col-sm-5" for="trainsetno">รหัสชุดรถไฟ</label>
             <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
-            </div>-->
+              <input type="text" name="trainsetno">
+            </div>
 
           <!--Types Of Train Set-->
           <div class="form-group">
@@ -84,7 +83,7 @@
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>

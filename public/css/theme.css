@@ -96,7 +96,7 @@ body {
   .btn-add{
     display: inline-block;
     border-radius: 4px;
-    background-color: #ffab00;
+    background-color: #bf360c;
     border: none;
     color: #ffffff;
     text-align: center;
@@ -108,7 +108,7 @@ body {
   }
 
   .btn-add:hover{
-    background-color: #bf360c;
+    background-color: #000000;
   }
 
   .btn-add span{
@@ -162,7 +162,7 @@ ul.pagination li a {
 
 ul.pagination li a.active {
     background-color: #ff6f00;
-    color: white;
+    color: #ffffff;
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}

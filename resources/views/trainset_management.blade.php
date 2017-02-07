@@ -45,30 +45,39 @@
     <div class="container-fluid">
     <!--First Container-->
       <div>
-        <form class="form-horizontal" action="search">
-          <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
-          <input type="text" name="trainsetno">
+        <form class="form-inline" action="search">
+          <div class="form-group">
+            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
+            <input type="text" name="trainsetno">
+          </div>
 
-          <label for="trsettype"><h3 class="margin">ชนิด</h3></label>
-          <select id="trsettype" name="trsettype">
-            <option value="มกราคม">มกราคม</option>
-            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-          </select>
+          <div class="form-group">
+            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
+            <select id="trsettype" name="trsettype">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            </select>
+          </div>
 
-          <label for="trstatus"><h3 class="margin">สถานะ</h3></label>
-          <select id="trstatus" name="trstatus">
-            <option value="มกราคม">มกราคม</option>
-            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-          </select>
+          <div class="form-group">
+            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
+            <select id="trstatus" name="trstatus">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            </select>
+          </div>
 
-          <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-
+          <div class="form-group">
+             <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+          </div>
         </form>
 
     <!--Second Container-->
-        <div class="text-right margin">
+        <div class="form-group text-right margin">
           <a href="../add_trainset_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button></a>
-        </div>      
+        </div>
+          
       </div>
     <!--Third Container-->
       <!--Table Detail-->

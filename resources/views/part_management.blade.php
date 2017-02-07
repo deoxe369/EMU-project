@@ -45,8 +45,9 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div>
-        <form class="form-horizontal" action="search">
+        <form class="form-inline" action="search">
 
+          <div class="form-group">
             <label for="part_type"><h3 class="margin">ประเภท</h3></label>
             <select id="part_type" name="part_type">          
               <option value='not'>ประเภท</option> 
@@ -54,7 +55,9 @@
               <option value={{$info->part_type}}>{{$info->part_type}}</option>
                 @endforeach          
             </select>
+          </div>
 
+          <div class="form-group">
             <label for="brand"><h3 class="margin">ยี่ห้อ</h3></label>
             <select id="brand" name="brand">
               <option value='not'>ยี่ห้อ</option>           
@@ -62,7 +65,9 @@
               <option value={{$info->brand}}>{{$info->brand}}</option>
                 @endforeach 
             </select>   
-                
+          </div>
+
+          <div class="form-group">
             <label for="part_cars_id"><h3 class="margin">รหัสตู้รถไฟ</h3></label>
             <select id="part_cars_id" name="part_cars_id">
               <option value='not'>Car ID</option> 
@@ -70,14 +75,15 @@
               <option value={{$info->cars_id}}>{{$info->cars_id}}</option>
                 @endforeach  
             </select>
+          </div>
               
              <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
          </form>
-
+                                                                                                                                                                          
     <!--Second Container-->
-          <div class="text-right margin">
-            <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
-          </div>   
+        <span class="text-right margin">
+          <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
+        </span>
       </div>
     <!--Third Container-->
       <!--Table Detail-->
