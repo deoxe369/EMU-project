@@ -46,7 +46,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ</center></h1>
+        <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
         <form class="form-horizontal" action="add_trainset">
 
           
@@ -61,7 +61,6 @@
           <div class="form-group">
             <label class="control-label col-sm-5" for="trsettype">ชนิด</label>
             <select class="col-sm-offset-2 col-sm-3" id="trsettype" name="trsettype">
-
               <option value="ชุดรถไฟโดยสาร 3">ชุดรถไฟโดยสาร 3</option>
               <option value="ชุดรถไฟโดยสาร 4">ชุดรถไฟโดยสาร 4</option>
               <option value="ชุดรถไฟขนส่ง">ชุดรถไฟขนส่ง</option>

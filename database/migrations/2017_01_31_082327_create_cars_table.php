@@ -17,6 +17,8 @@ class CreateCarsTable extends Migration
             $table->increments('id');
             $table->string('model');
             $table->string('cars_type');
+            $table->float('total_distance')->default(0);
+            $table->float('total_time')->default(0);
             $table->string('status')->default('ว่าง');
             $table->decimal('price',15,2);
             $table->timestamp('created_at');

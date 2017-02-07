@@ -16,9 +16,9 @@ class CreateTrainSetTable extends Migration
         Schema::create('train_set', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->float('total_distance');
-            $table->time('total_time');
-            $table->string('status');
+            $table->float('total_distance')->default(0);
+            $table->float('total_time')->default(0);
+            $table->string('status')->default('ว่าง');
             $table->string('train_set_number');
             $table->timestamp('created_at');
         });
