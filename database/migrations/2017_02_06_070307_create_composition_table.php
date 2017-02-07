@@ -17,7 +17,7 @@ class CreateCompositionTable extends Migration
             $table->increments('id');
             $table->integer('cars_id');
             $table->string('train_set_number');
-            $table->timestamps('created_at');
+            $table->timestamps();
         });
     }
 

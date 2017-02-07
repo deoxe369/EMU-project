@@ -16,8 +16,8 @@ class CreateLevelTable extends Migration
         Schema::create('level', function (Blueprint $table) {
             $table->increments('level');
             $table->float('total_distance');
-            $table->time('total_time');
-            $table->timestamp('created_at');
+            $table->float('total_time');
+            $table->timestamps();
         });
     }
 

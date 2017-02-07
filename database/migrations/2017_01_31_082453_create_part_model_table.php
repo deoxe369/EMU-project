@@ -18,7 +18,7 @@ class CreatePartModelTable extends Migration
             $table->integer('cars_type');
             $table->integer('part_type');
             $table->string('brand');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

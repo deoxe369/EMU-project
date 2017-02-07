@@ -46,16 +46,10 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลใบเข้าซ่อม</center></h1>
+        <h1 class="margin"><center>เพิ่มข้อมูลใบเข้าซ่อม</center></h1>
         <form class="form-horizontal">
           <!--No.Maintenance-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="maintainno">เลขเข้าซ่อม</label>
-            <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
-            </div>
-          </div>
-
+        
           <!--No.Train Set-->
           <div class="form-group">
             <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
@@ -123,4 +117,4 @@
   <!--Footer-->
 
 </body>
-</html>
+</html>s

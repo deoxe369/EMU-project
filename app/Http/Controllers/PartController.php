@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use DB;
 use View;
 use Redirect;
@@ -14,7 +15,7 @@ class PartController extends Controller
         for ($x = 1; $x <= $info1->qauntity ; $x++) {
 
 
-    	DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price) values (?, ?, ?, ?, ? )', [ $info1->part_type, $info1->m_day,$info1->e_day,$info1->brand,$info1->price]);
+    	DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at) values (?, ?, ?, ?, ? ,? )', [ $info1->part_type, $info1->m_day,$info1->e_day,$info1->brand,$info1->price,Carbon::now()]);
         }
     	return Redirect::action('PartController@part_info');	
 
@@ -61,7 +62,7 @@ class PartController extends Controller
     public function update(Request $info ,$id)
     {
     	
-    	DB::table('part')->where('id',$id)->update(['part_type'=>$info->part_type,'manufactured_date'=>$info->m_day,'expired_date'=>$info->e_day,'brand'=>$info->brand,'price'=>$info->price]);
+    	DB::table('part')->where('id',$id)->update(['part_type'=>$info->part_type,'manufactured_date'=>$info->m_day,'expired_date'=>$info->e_day,'brand'=>$info->brand,'price'=>$info->price,'updated_at'=>Carbon::now()]);
 
     	 return Redirect::action('PartController@part_info');	
             // return $info;    	     

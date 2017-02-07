@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use DB;
 use View;
 use Redirect;
@@ -11,7 +12,7 @@ class DepotController extends Controller
 {
     public function add(Request $info1)
     {
-    	DB::insert('insert into depot (capacity, location_name,location) values (?, ?, ?)', [ $info1->capacity, $info1->location_name,$info1->depotno]);
+    	DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at) values (?, ?, ?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now()]);
 
     	 return Redirect::action('DepotController@depot_info');	
     }
@@ -34,7 +35,7 @@ class DepotController extends Controller
     public function update(Request $info ,$id)
     {
     	
-    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity]);
+    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity,'updated_at'=>Carbon::now()]);
 
     	 return Redirect::action('DepotController@depot_info');	
     	     

@@ -62,7 +62,7 @@
         </form>
     <!--Third Container-->
       <div class="text-right margin">
-        <a href="#"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
+        <a href="/add_maintenance_plan"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
       </div>
     </div>      
     <!--Second Container-->
