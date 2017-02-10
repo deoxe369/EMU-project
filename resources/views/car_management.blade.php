@@ -44,6 +44,41 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
+    <form class="form-inline" action="search_cars">
+
+          <div class="form-group">
+            <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
+            <select id="cars_type" name="cars_type">
+              <option value='not'>ประเภท</option> 
+              <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
+              <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
+              <option value="logistic">ขนส่ง</option>
+                       
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cars_model"><h3 class="margin">โมเดล</h3></label>
+            <select id="cars_model" name="cars_model">
+              <option value='not'>โมเดล</option>           
+                 @foreach ($cars_model_info as $info)
+              <option value={{$info->model}}>{{$info->model}}</option>
+                @endforeach 
+            </select>   
+          </div>
+
+          <div class="form-group">
+            <label for="status"><h3 class="margin">สถานะ</h3></label>
+            <select id="status" name="status">
+              <option value='not'>สถานะ</option> 
+                @foreach ($cars_status_info as $info)
+              <option value={{$info->status}}>{{$info->status}}</option>
+                @endforeach 
+            </select>
+          </div>
+              
+             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
+         </form>
       <div class="text-right margin">
         <a href='../add_car_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
       </div>      
@@ -61,15 +96,18 @@
               </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>4cc</td>
-                <td>โดยสาร</td>                
-                <td>6</td> 
-                <td><a href='../edit_car_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+            @foreach ($cars_info as $info)
+              <tr>
+                <td>{{$info->id}}</td>
+                <td>{{$info->model}}</td>                
+                <td>{{$info->cars_type}}</td>            
+                <td>{{$info->status}}</td>
+                <td><a href='/edit_cars_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
+              @endforeach
             </tbody>
           </table>
+          {{$cars_info->links()}}
         </div>      
     </div>
 

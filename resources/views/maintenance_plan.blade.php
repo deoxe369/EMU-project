@@ -78,31 +78,21 @@
                 <th>วันเวลาเข้า</th>
                 <th>วันเวลาออก</th>
                 <th style="color: #f4511e;">แก้ไข</th>
+                <th style="color: #f4511e;">Checklists</th>
               </tr>
             </thead>
             <tbody>
+            @foreach ($maintenance_info as $info)
               <tr>
-                <td>2003</td>
-                <td>423</td>
-                <td>02</td>
-                <td>1</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>
+                <td>{{$info->id}}</td>
+                <td>{{$info->train_set_id}}</td>
+                <td>{{$info->depot_id}}</td>
+                <td>{{$info->level}}</td>
+                <td>{{$info->in_date}}</td>
+                <td>{{$info->out_date}}</td>
                 <td><a href='../edit_maintenance_plan'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
-              <tr>
-                <td>2003</td>
-                <td>423</td>
-                <td>02</td>
-                <td>1</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>
-                <td><a href='../edit_maintenance_plan'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
-              </tr>
+               @endforeach
             </tbody>
           </table>
         </div>      

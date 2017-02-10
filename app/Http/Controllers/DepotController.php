@@ -12,14 +12,15 @@ class DepotController extends Controller
 {
     public function add(Request $info1)
     {
-    	DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at) values (?, ?, ?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now()]);
+    	 DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at) values (?, ?, ?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now()]);
 
     	 return Redirect::action('DepotController@depot_info');	
+        // return $test;
     }
 
     public function depot_info()
     {
-    	$depot_info = DB::table('depot')->get();
+    	$depot_info = DB::table('depot')->paginate(15);
     	 
     	return View::make('depot_management', array('depot_info' => $depot_info));
     }

@@ -45,7 +45,7 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div>
-        <form class="form-inline" action="search">
+        <form class="form-inline" action="search_part">
 
           <div class="form-group">
             <label for="part_type"><h3 class="margin">ประเภท</h3></label>
@@ -114,8 +114,11 @@
                 <td><a href='../edit_part_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
               @endforeach
+
             </tbody>
+
           </table>
+           {{$part_info->links()}}
         </div>      
     </div>
 

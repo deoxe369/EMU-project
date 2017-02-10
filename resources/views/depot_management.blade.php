@@ -72,6 +72,7 @@
               @endforeach
             </tbody>
           </table>
+          {{$depot_info->links()}}
         </div>      
     </div>
 

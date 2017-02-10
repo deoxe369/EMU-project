@@ -15,15 +15,12 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/maintenance_plan', function () {
-    return view('maintenance_plan');
-});
-Route::get('/trainset_management', 'TrainSetController@trainset_info');
+Route::get('/maintenance_plan','MaintenanceController@maintenance_info');
 
+Route::get('/trainset_management','TrainSetController@trainset_info');
 
-Route::get('/car_management', function () {
-    return view('car_management');
-});
+Route::get('/car_management','CarsController@cars_info');
+
 Route::get('/part_management', 'PartController@part_info');
 
 Route::get('/depot_management','DepotController@depot_info');
@@ -50,10 +47,19 @@ Route::get('/edit_car_management', function () {
 Route::get('/add_car_management', function () {
     return view('add_car_management');
 });
+Route::get('search_cars','CarsController@search');
 
-// --------------------------------------------------------------------------------
+Route::get('add_cars','CarsController@add');
+
+Route::get('/edit_cars_management/{id}/save','CarsController@update');
+
+Route::get('/edit_cars_management/{id}','CarsController@edit');
+
+
+
 
 // Trainset------------------------------------->
+
 Route::get('add_trainset','TrainSetController@add');
 
 Route::get('/add_trainset_management', function(){
@@ -87,7 +93,7 @@ Route::get('/edit_depot_management/{id}','DepotController@edit');
 
 Route::get('add_part','PartController@add');
 
-Route::get('search','PartController@search');
+Route::get('search_part','PartController@search');
 
 // Route::get('/add_part_management', function () {
 //     return view('add_part_management');
@@ -109,9 +115,34 @@ Route::get('/add_part_type1', 'PartController@add_part_type');
 
 
 
-
 // Maintenance plan ---------------------------------------->\
 
  Route::get('/add_maintenance_plan', function () {
     return view('add_maintenance_plan');
 });
+
+ Route::get('/add_maintenance_plan', 'MaintenanceController@maintenance_add_info');
+
+ Route::get('add_maintenance','MaintenanceController@add');
+
+// ---------------------------------->เพิ่มข้อมูล level
+
+Route::get('/add_level', function () {
+    return view('add_level');
+});
+Route::get('/add_level1', 'MaintenanceController@add_level');
+
+// ---------------------------------->เพิ่มข้อมูล checklist
+
+Route::get('/add_checklist', function () {
+    return view('add_checklist');
+});
+Route::post('add_checklist1',function () {
+    return 'ktikri';
+});
+
+
+
+ // 'MaintenanceController@add_checklist');
+
+

@@ -47,19 +47,20 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>เพิ่มข้อมูลตู้รถไฟ</center></h1>
-        <form class="form-horizontal" action="add_cars">
+        <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save">
          
 
           <!--Model-->
           <div class="form-group margin">
             <label class="control-label col-sm-5" for="cars_model" >Model</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_model">
+            <input type="text" name="cars_model" value={{$origin_info[0]->model}}>
           </div>
 
           <!--Type-->
           <div class="form-group margin">
              <label class="control-label col-sm-5" for="cars_type">ชนิดของตู้รถไฟ</label>
              <select class="col-sm-offset-2 col-sm-3" id="cars_type" name="cars_type">
+              
               <option value="1">ขนส่ง</option>
               <option value="2">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="3">โดยสารประเภทขับเคลือนไม่ได้</option>
@@ -70,20 +71,16 @@
           <!--Price-->
           <div class="form-group margin">
             <label class="control-label col-sm-5" for="cars_price" >ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_price">
+            <input type="text" name="cars_price"  value={{$origin_info[0]->price}}>
           </div>
 
-          <!--Price-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_qty" >จำนวน</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_qty">
-          </div>
+          
 
           <!--Button Save & Cancel-->
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../car_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>

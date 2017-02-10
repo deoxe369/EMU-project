@@ -13,7 +13,7 @@ class CreateTrainCirculationTable extends Migration
      */
     public function up()
     {
-        Schema::create('=train_circulation', function (Blueprint $table) {
+        Schema::create('train_circulation', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateTrainCirculationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('=train_circulation');
+        Schema::dropIfExists('train_circulation');
     }
 }
