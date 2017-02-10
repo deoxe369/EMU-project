@@ -68,18 +68,17 @@
           </div>
 
           <div class="form-group">
-             <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin">&nbsp</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+
+            <label for="addtr"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
           </div>
         </form>
-
-    <!--Second Container-->
-        <div class="form-group text-right margin">
-          <a href="../add_trainset_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button></a>
-        </div>
           
       </div>
-    <!--Third Container-->
+
+    <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
           <table class="table">

@@ -76,16 +76,18 @@
                 @endforeach  
             </select>
           </div>
-              
-             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
+          
+          <div class="form-group">
+            <label for="search"><h3 class="margin">&nbsp</h3></label>    
+            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button>
+
+            <label for="addpart"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_part_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button>
+          </div>
          </form>
-                                                                                                                                                                          
+        </div>
+
     <!--Second Container-->
-        <span class="text-right margin">
-          <a href='../add_part_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button></a>
-        </span>
-      </div>
-    <!--Third Container-->
       <!--Table Detail-->
         <div class="table-responsive">
           <table class="table">

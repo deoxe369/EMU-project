@@ -45,26 +45,34 @@
     <div class="container-fluid">    
     <!--First Container-->
       <div>
-        <form class="form-horizontal" action="search">
-          <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
-          <select id="trsettype" name="trsettype">
-            <option value="มกราคม">มกราคม</option>
-            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-          </select>
+        <form class="form-inline" action="search">
 
-          <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
-          <select id="trstatus" name="trstatus">
-            <option value="มกราคม">มกราคม</option>
-            <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-          </select>
+          <div class="form-group">
+            <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
+            <select id="trsettype" name="trsettype">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            </select>
+          </div>
 
-          <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+          <div class="form-group">
+            <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
+            <select id="trstatus" name="trstatus">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+
+            <label for="addmaintpl"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+          </div>
         </form>
-    <!--Third Container-->
-      <div class="text-right margin">
-        <a href="/add_maintenance_plan"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
-      </div>
     </div>      
+
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
