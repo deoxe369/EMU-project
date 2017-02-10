@@ -11,7 +11,15 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    function composition(ele){
+      switch(ele.parentNode.id){
+        case "composition":
+          if (true) {}
+      }
+    }
+    
+  </script>
 </head>
 
 <body data-spy="scroll">
@@ -68,16 +76,34 @@
           </div>
 
           <!--Composition-->
-          <!--<div class="form-group margin">
+          <div class="form-group">
             <label class="control-label col-sm-5" for="composition">Composition</label>
-            <select class="col-sm-offset-2 col-sm-3" id="composition" name="composition">
+            <div class="form-group" id="composition" onchange="composition($this)">
+            <select class="col-sm-offset-2 col-sm-1" id="composition1" name="composition">
               <option value="D1">D1</option>
               <option value="D2">D2</option>
               <option value="D3">D3</option>
               <option value="D4">D4</option>
               <option value="D5">D5</option>
             </select>
-          </div>-->
+
+            <select class="col-sm-1" id="composition2" name="composition">
+              <option value="D1">D1</option>
+              <option value="D2">D2</option>
+              <option value="D3">D3</option>
+              <option value="D4">D4</option>
+              <option value="D5">D5</option>
+            </select>
+
+            <select class="col-sm-1" id="composition3" name="composition">
+              <option value="D1">D1</option>
+              <option value="D2">D2</option>
+              <option value="D3">D3</option>
+              <option value="D4">D4</option>
+              <option value="D5">D5</option>
+            </select>
+            </div>
+          </div>
 
           <!--Button Save & Cancel-->
           <div class="form-group">
