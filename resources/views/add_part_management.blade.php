@@ -41,55 +41,67 @@
       </div>
     </nav>
 
+
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>เพิ่มข้อมูลอะไหล่</center></h1>
+
+        <!--Form Add-->
         <form class="form-horizontal" action="add_part">
-         
+          <!--New Structure: Table-->
+          <table class="table-add col-sm-offset-4">
 
-          <!--Type-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">ประเภท</label>    
+            <!--Part Type-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cdmodel">ประเภท</label></td>
+              <td>
+                <select id="part_type" name="part_type">
+                  <option value=" ">เลือกประเภทของอะไหล่</option>
+                @foreach ($part_type_info as $info)
+                  <option value={{$info->part_type}} >{{$info->part_type}}</option>
+                @endforeach  
+                </select>
+              </td>
+            </tr>
 
-            <select class="col-sm-offset-2 col-sm-3" id="part_type" name="part_type">
-           @foreach ($part_type_info as $info)
-              <option value={{$info->part_type}} >{{$info->part_type}}</option>
-           @endforeach  
-            </select> 
-          </div><br>
+            
+          </table>
+
+
+          
 
           <!--วันผลิต-->
           <div class="form-group">
-            <label class="control-label col-sm-5" >วันผลิต</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5" >วันผลิต</label>
             <input type="date" name="m_day">
           </div><br>
 
           <!--วันหมดอายุ-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5" >วันหมดอายุ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5" >วันหมดอายุ</label>
             <input type="date" name="e_day">
           </div>
 
 
           <!--ยี่ห้อ-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5" >ยี่ห้อ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5" >ยี่ห้อ</label>
            <input type="text" name="brand">
           </div>
 
 
           <!--ราคา-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5">ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5">ราคา</label>
            <input type="text" name="price">
           </div>
 
           <!--จำนวน-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5">จำนวน</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5">จำนวน</label>
            <input type="text" name="qauntity">
           </div>
 

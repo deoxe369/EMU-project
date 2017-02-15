@@ -1,12 +1,13 @@
-body {
+  body {
       font: 20px "Trirong", serif;
       line-height: 1.8;
       color: #333;
-    }
-  p {font-size: 18px;}
+  }
+  p { font-size: 18px;}
+
   .margin {
-    margin-bottom: 45px;
-    margin-left: : 45px;
+      margin-bottom: 45px;
+      margin-left: : 45px;
   }
   .bg-1 { 
       background-color: #E65100; /* Orange */
@@ -51,6 +52,7 @@ body {
       color: #f4511e; 
       background-color: #ffffff !important;
   }
+
   
   /*.dropbtn{
     background-color: #f4511e;

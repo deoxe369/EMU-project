@@ -82,26 +82,30 @@
       </div>
     </nav>
 
+
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
+
+        <!--Form Add-->
         <form class="form-horizontal" action="add_trainset">
+          <!--New Structure: Table-->
+          <table class="table-add col-sm-offset-4">
 
-          <!--No.Train Set-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="trainsetno">รหัสชุดรถไฟ</label>
-            <div class="col-sm-offset-2 col-sm-3">
-              <input type="text" name="trainsetno">
-            </div>
+            <!--No.Trian Set-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <!--Choose No.Train Set-->
+              <td><input type="text" name="trainsetno"></td>
+            </tr>
 
-          <!--New Structure-->
-          <table>
             <!--Trainset Type-->
-            <tr>
-              <td><label for="trtype">ชนิด</label></td>
+            <tr class="tr-add">
+              <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <!--Choose Trainset Type-->
               <td>
                 <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
                   <option value=" ">เลือกชนิดของชุดรถไฟ</option>
@@ -114,14 +118,12 @@
             </tr>
 
             <!--Composition-->
-            <tr>
-              <td><label for="composition">composition</label></td>
-
+            <tr class="tr-add">
+              <td class="td-add"><label for="composition">composition</label></td>
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
                 <p>CHOOSE COMPOSITION</p>         
               </td>
-
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
                 <select id="comtrcar3_1">
@@ -140,7 +142,6 @@
                   <option value="c3_33">c3.33</option>
                 </select>
               </td>
-
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
                 <select id="comtrcar4_1">
@@ -164,12 +165,10 @@
                   <option value="c4_43">c4.43</option>
                 </select>
               </td>
-
               <!--Composition TrainsetGoods Don't done-->
               <td id="comtrgoods" style="display: none;">
                 <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
               </td>
-
               <!--Composition Trainset Trolley-->
               <td id="comtrtrolley" style="display: none;">
                 <select id="comtrtroll">
@@ -177,20 +176,19 @@
                   <option value="comtrtroll_2">comtroll2</option>
                   <option value="comtrtroll_3">comtroll3</option>
                 </select>         
-              </td>
+              </td>   
             </tr>
           </table>
 
+          <br>
+
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
-          </div>
+          <div class="col-sm-offset-5 col-sm-5">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+          </div>     
 
-
-        </form>
+        </form>       
       </div>
     </div>
 
@@ -199,44 +197,3 @@
 
 </body>
 </html>
-
-<!--Types Of Train Set-->
-          <!--div class="form-group">
-            <label class="control-label col-sm-5" for="trsettype">ชนิด</label>
-            <select class="col-sm-offset-2 col-sm-3" id="trsettype" name="trsettype" onchange="compositiontype(this)">
-              <option value="ชุดรถไฟโดยสาร 3">ชุดรถไฟโดยสาร 3</option>
-              <option value="ชุดรถไฟโดยสาร 4">ชุดรถไฟโดยสาร 4</option>
-              <option value="ชุดรถไฟขนส่ง">ชุดรถไฟขนส่ง</option>
-              <option value="รถราง">รถราง</option>
-            </select>
-          </div-->
-
-          <!--Composition-->
-          <!--div class="form-group">
-            <label class="control-label col-sm-5" for="composition">Composition</label>
-            <div class="form-group" id="composition">
-            <select class="col-sm-offset-2 col-sm-1" id="composition1" name="composition">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
-            </select>
-
-            <select class="col-sm-1" id="composition2" name="composition">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
-            </select>
-
-            <select class="col-sm-1" id="composition3" name="composition">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
-            </select>
-            </div>
-          </div-->

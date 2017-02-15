@@ -153,3 +153,18 @@ input[type=submit]:hover {
     opacity: 1;
     right: 0;
   }
+
+  .table-add{
+    text-align: left;
+    width: 85%;
+    padding: 5px;
+  }
+
+  .td-add{
+    padding-right: 10px;
+    width: 30%;
+  }
+
+  .tr-add{
+    padding-top: 10px;
+  }
