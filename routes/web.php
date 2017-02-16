@@ -137,12 +137,5 @@ Route::get('/add_level1', 'MaintenanceController@add_level');
 Route::get('/add_checklist', function () {
     return view('add_checklist');
 });
-Route::post('add_checklist1',function () {
-    return 'ktikri';
-});
-
-
-
- // 'MaintenanceController@add_checklist');
-
+Route::post('add_checklist1','MaintenanceController@add_checklist');
 

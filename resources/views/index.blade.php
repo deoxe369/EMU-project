@@ -19,15 +19,15 @@
   <!--Header-->
     <!-- Navbar -->
     <nav class="navbar navbar-default">
-     <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                          
-          </button>
-          <a class="navbar-brand" href='../'>EMU Utilization System</a>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                          
+        </button>
+        <a class="navbar-brand" href='../'><p class="nav-brand">EMU Utilization System</p></a>
+      </div>
+
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ</a></li>
@@ -37,7 +37,7 @@
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
-        </div>
+     
       </div>
     </nav>
 
