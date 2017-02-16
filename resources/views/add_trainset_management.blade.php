@@ -53,6 +53,8 @@
       }
     }
   </script>
+
+  
 </head>
 
 <body data-spy="scroll">
@@ -111,8 +113,8 @@
                   <option value=" ">เลือกชนิดของชุดรถไฟ</option>
                   <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
                   <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
-                  <option value="trgoods">ชุดรถไฟขนส่ง</option>
-                  <option value="trtrolley">รถรางโยก</option>
+            <!--       <option value="trgoods">ชุดรถไฟขนส่ง</option>
+                  <option value="trtrolley">รถรางโยก</option> -->
                 </select>
               </td>
             </tr>
@@ -126,57 +128,57 @@
               </td>
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
-                <select id="comtrcar3_1">
-                  <option value="c3_11">c3.11</option>
-                  <option value="c3_12">c3.12</option>
-                  <option value="c3_13">c3.13</option>
+                <select id="comtrcar3_1" name="comtrcar3_1">
+                 @foreach ($cars_loco_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
                 </select>
-                <select id="comtrcar3_2">
-                  <option value="c3_21">c3.21</option>
-                  <option value="c3_22">c3.22</option>
-                  <option value="c3_23">c3.23</option>
+                <select id="comtrcar3_2" name="comtrcar3_2">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
                 </select>
-                <select id="comtrcar3_3">
-                  <option value="c3_31">c3.31</option>
-                  <option value="c3_32">c3.32</option>
-                  <option value="c3_33">c3.33</option>
+                <select id="comtrcar3_3" name="comtrcar3_3">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                  @endforeach
                 </select>
               </td>
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
-                <select id="comtrcar4_1">
-                  <option value="c4_11">c4.11</option>
-                  <option value="c4_12">c4.12</option>
-                  <option value="c4_13">c4.13</option>
+                <select id="comtrcar4_1" name="comtrcar4_1">
+                  @foreach ($cars_loco_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
                 </select>
-                <select id="comtrcar4_2">
-                  <option value="c4_21">c4.21</option>
-                  <option value="c4_22">c4.22</option>
-                  <option value="c4_23">c4.23</option>
+                <select id="comtrcar4_2" name="comtrcar4_2">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
                 </select>
-                <select id="comtrcar4_3">
-                  <option value="c4_31">c4.31</option>
-                  <option value="c4_32">c4.32</option>
-                  <option value="c4_33">c4.33</option>
+                <select id="comtrcar4_3" name="comtrcar4_3">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
                 </select>
-                <select id="comtrcar4_4">
-                  <option value="c4_41">c4.41</option>
-                  <option value="c4_42">c4.42</option>
-                  <option value="c4_43">c4.43</option>
+                <select id="comtrcar4_4" name="comtrcar4_4">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
                 </select>
               </td>
               <!--Composition TrainsetGoods Don't done-->
-              <td id="comtrgoods" style="display: none;">
+              <!-- <td id="comtrgoods" style="display: none;">
                 <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
-              </td>
+              </td> -->
               <!--Composition Trainset Trolley-->
-              <td id="comtrtrolley" style="display: none;">
+              <!-- <td id="comtrtrolley" style="display: none;">
                 <select id="comtrtroll">
                   <option value="comtrtroll_1">comtroll1</option>
                   <option value="comtrtroll_2">comtroll2</option>
                   <option value="comtrtroll_3">comtroll3</option>
                 </select>         
-              </td>   
+              </td>    -->
             </tr>
           </table>
 

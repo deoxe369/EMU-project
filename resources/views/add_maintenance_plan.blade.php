@@ -47,7 +47,7 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>เพิ่มข้อมูลใบเข้าซ่อม</center></h1>
-        <form class="form-horizontal" action="/add_maintenance_plan">
+        <form class="form-horizontal" action="/add_maintenance">
           <!--No.Maintenance-->
         
           <!--No.Train Set-->
@@ -73,14 +73,12 @@
           </div>
 
           <!--Level-->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label col-sm-5" for="level">ระดับ</label>
             <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
-            @foreach ($level_info as $info)
-              <option value={{$info->level}}>{{$info->level}}</option>
-              @endforeach
+          
             </select>
-          </div>
+          </div> -->
 
           <!--Enter DateTime-->
           <div class="form-group">

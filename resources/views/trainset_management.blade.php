@@ -93,24 +93,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>423</td>
-                <td>All</td>                
-                <td>500 km</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>                
-                <td>1</td>
-                <td><a href='../edit_trainset_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+               @foreach ($trainset_info as $info)
+                <td>{{$info->train_set_number}}</td>
+                <td>{{$info->type}}</td>                
+                <td>{{$info->total_distance}}</td>
+                <td>{{$info->total_time}}</td>                
+                <td>{{$info->status}}</td>
+                <td><a href='../edit_trainset_management/{{$info->train_set_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
-              <tr>
-                <td>423</td>
-                <td>All</td>                
-                <td>500 km</td>
-                <td>YY.HH.DD
-                HH.mm.ss</td>                
-                <td>1</td>
-                <td><a href='../edit_trainset_management'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>      

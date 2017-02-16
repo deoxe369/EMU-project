@@ -11,7 +11,59 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+
+  //
+    function comtrdisplay(){
+       // var origin = "<?php $origin_info[0]->type ?>"
+        
+        var option = document.getElementById("trtype").value;
+      if (option == " ") {
+        document.getElementById("comtrchoose").style.display = "block";
+        document.getElementById("comtrcar3").style.display = "none";
+        document.getElementById("comtrcar4").style.display = "none";
+        document.getElementById("comtrgoods").style.display = "none";
+        document.getElementById("comtrtrolley").style.display = "none";
+      }
+      if (option == "trcar3") {
+        document.getElementById("comtrchoose").style.display = "none";
+        document.getElementById("comtrcar3").style.display = "block";
+        document.getElementById("comtrcar4").style.display = "none";
+        document.getElementById("comtrgoods").style.display = "none";
+        document.getElementById("comtrtrolley").style.display = "none";
+      }
+      if (option == "trcar4") {
+        document.getElementById("comtrchoose").style.display = "none";
+        document.getElementById("comtrcar3").style.display = "none";
+        document.getElementById("comtrcar4").style.display = "block";     
+        document.getElementById("comtrgoods").style.display = "none";
+        document.getElementById("comtrtrolley").style.display = "none";
+      }
+      if (option == "trgoods") {
+        document.getElementById("comtrchoose").style.display = "none";
+        document.getElementById("comtrcar3").style.display = "none";
+        document.getElementById("comtrcar4").style.display = "none";
+        document.getElementById("comtrgoods").style.display = "block";
+        document.getElementById("comtrtrolley").style.display = "none";
+      }
+      if (option == "trtrolley") {
+        document.getElementById("comtrchoose").style.display = "none";
+        document.getElementById("comtrcar3").style.display = "none";
+        document.getElementById("comtrcar4").style.display = "none";
+        document.getElementById("comtrgoods").style.display = "none";
+        document.getElementById("comtrtrolley").style.display = "block";
+      }
+
+      
+        
+      
+
+      
+    }
+     
+  </script>
+
+  
 </head>
 
 <body data-spy="scroll">
@@ -41,57 +93,113 @@
       </div>
     </nav>
 
+
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลขบวนรถไฟ</center></h1>
-        <form class="form-horizontal">
-          <!--No.Train Set-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="trainsetno">รหัสชุดรถไฟ</label>
-            <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
-            </div>
-          </div>
+        <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
 
-          <!--Model-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
-            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
-              <option value="4cc">4cc</option>
-            </select>
-          </div>
+        <!--Form Add-->
+        <form class="form-horizontal" action="add_trainset">
+          <!--New Structure: Table-->
+          <table class="table-add col-sm-offset-4">
 
-          <!--Types Of Train Set-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="trsettype">ชนิด</label>
-            <select class="col-sm-offset-2 col-sm-3" id="trsettype" name="trsettype">
-              <option value="All">All</option>
-            </select>
-          </div>
+            <!--No.Trian Set-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <!--Choose No.Train Set-->
+              <td><input type="text" name="trainsetno" value={{$origin_info[0]->train_set_number}}></td>
+            </tr>
 
-          <!--Depot Center-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ศูนย์ซ่อมประจำ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
-            </select>
-          </div>
+            <!--Trainset Type-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <!--Choose Trainset Type-->
+              <td>
+                <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
+                  <option value=" ">เลือกชนิดของชุดรถไฟ</option>
+                  <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
+                  <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
+            <!--       <option value="trgoods">ชุดรถไฟขนส่ง</option>
+                  <option value="trtrolley">รถรางโยก</option> -->
+                </select>
+              </td>
+            </tr>
+
+            <!--Composition-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="composition">composition</label></td>
+              <!--Choose Composition-->
+              <td id="comtrchoose" style="display: block;">
+                <p>CHOOSE COMPOSITION</p>         
+              </td>
+              <!--Composition TransetCar 3-->
+              <td id="comtrcar3" style="display: none;">
+                <select id="comtrcar3_1" name="comtrcar3_1">
+                 @foreach ($cars_loco_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
+                </select>
+                <select id="comtrcar3_2" name="comtrcar3_2">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
+                </select>
+                <select id="comtrcar3_3" name="comtrcar3_3">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                  @endforeach
+                </select>
+              </td>
+              <!--Composition TransetCar 4-->
+              <td id="comtrcar4" style="display: none;">
+                <select id="comtrcar4_1" name="comtrcar4_1">
+                  @foreach ($cars_loco_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach  
+                </select>
+                <select id="comtrcar4_2" name="comtrcar4_2">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
+                </select>
+                <select id="comtrcar4_3" name="comtrcar4_3">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
+                </select>
+                <select id="comtrcar4_4" name="comtrcar4_4">
+                  @foreach ($cars_bogie_info as $info)
+                  <option value={{$info->id}}>{{$info->id}}</option>
+                @endforeach
+                </select>
+              </td>
+              <!--Composition TrainsetGoods Don't done-->
+              <!-- <td id="comtrgoods" style="display: none;">
+                <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
+              </td> -->
+              <!--Composition Trainset Trolley-->
+              <!-- <td id="comtrtrolley" style="display: none;">
+                <select id="comtrtroll">
+                  <option value="comtrtroll_1">comtroll1</option>
+                  <option value="comtrtroll_2">comtroll2</option>
+                  <option value="comtrtroll_3">comtroll3</option>
+                </select>         
+              </td>    -->
+            </tr>
+          </table>
+
+          <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
-          </div>
-        </form>
+          <div class="col-sm-offset-5 col-sm-5">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+          </div>     
+
+        </form>       
       </div>
     </div>
 

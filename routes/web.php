@@ -62,12 +62,9 @@ Route::get('/edit_cars_management/{id}','CarsController@edit');
 
 Route::get('add_trainset','TrainSetController@add');
 
-Route::get('/add_trainset_management', function(){
-    return view('add_trainset_management');
-});
+Route::get('add_trainset_management','TrainSetController@add_trainset_info');
 
-
-
+Route::get('/edit_trainset_management/{id}','TrainSetController@edit');
 
 
 
@@ -111,6 +108,8 @@ Route::get('/add_part_type', function () {
     return view('add_part_type');
 });
 Route::get('/add_part_type1', 'PartController@add_part_type');
+
+
 
 
 

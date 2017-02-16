@@ -15,6 +15,7 @@ class CreateTrainSetTable extends Migration
     {
         Schema::create('train_set', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cars_id');
             $table->string('type');
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);

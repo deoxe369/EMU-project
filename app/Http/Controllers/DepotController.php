@@ -12,7 +12,7 @@ class DepotController extends Controller
 {
     public function add(Request $info1)
     {
-    	 DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at) values (?, ?, ?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now()]);
+    	 DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at,level) values (?, ?, ?,?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now(),$info1->depotlevel]);
 
     	 return Redirect::action('DepotController@depot_info');	
         // return $test;
@@ -36,7 +36,7 @@ class DepotController extends Controller
     public function update(Request $info ,$id)
     {
     	
-    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity,'updated_at'=>Carbon::now()]);
+    	DB::table('depot')->where('id',$id)->update(['location'=>$info->location,'location_name'=>$info->location_name,'capacity'=>$info->capacity,'updated_at'=>Carbon::now(),'level'=>$info->depotlevel]);
 
     	 return Redirect::action('DepotController@depot_info');	
     	     

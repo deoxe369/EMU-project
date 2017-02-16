@@ -19,6 +19,7 @@ class CreateDepotTable extends Migration
             $table->integer('location');
             $table->integer('capacity');
             $table->integer('free_slot');//รถว่าง
+            $table->integer('level');
             $table->string('status')->default('ว่าง');
             $table->timestamps();
         });

@@ -60,7 +60,7 @@
           <div class="form-group margin">
              <label class="control-label col-sm-5" for="cars_type">ชนิดของตู้รถไฟ</label>
              <select class="col-sm-offset-2 col-sm-3" id="cars_type" name="cars_type">
-              <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
+              <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
               <option value="logistic">ขนส่ง</option>
               </select>

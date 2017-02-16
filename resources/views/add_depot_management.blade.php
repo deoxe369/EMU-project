@@ -92,6 +92,18 @@
               <option value="6">6</option>
             </select>
           </div>
+          <!-- Level -->
+          <div class="form-group margin">
+            <label class="control-label col-sm-5" for="depotlevel">ระดับ</label>
+            <select class="col-sm-offset-2 col-sm-3" id="depotlevel" name="depotlevel">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
 
 
           <!--Button Save & Cancel-->
