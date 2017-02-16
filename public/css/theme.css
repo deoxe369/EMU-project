@@ -9,6 +9,8 @@
       margin-bottom: 45px;
       margin-left: : 45px;
   }
+
+  /*Background*/
   .bg-1 { 
       background-color: #E65100; /* Orange */
       color: #ffffff;
@@ -34,6 +36,8 @@
       padding-bottom: 70px;
       padding-left: 30px;
   }
+
+  /*Navbar ul li*/
   .navbar {
       border: 0;
       border-radius: 0;
@@ -60,8 +64,20 @@
     color: #000000;
   }
 
+  /*List Navbar*/
+  .dropnav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  li{
+    float: left;
+  }
   
-  /*.dropbtn{
+  /*DropDown Navbar-Header*/
+  .dropbtn{
     background-color: #f4511e;
     color: #ffffff;
     padding: 10px;
@@ -100,8 +116,9 @@
 
   .dropdown:hover .dropbtn{
     background-color: #ffb200;
-  }*/
+  }
 
+  /*Button Add*/
   .btn-add{
     display: inline-block;
     border-radius: 4px;
@@ -145,6 +162,10 @@
     right: 0;
   }
 
+
+
+
+/*ListPagination*/
 ul.pagination {
     display: inline-block;
     padding: 0;
@@ -175,6 +196,7 @@ ul.pagination li a.active {
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
 
 
  /*.slideanim {visibility:hidden;}

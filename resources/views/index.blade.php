@@ -29,9 +29,15 @@
       </div>
 
         <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right dropnav">
             <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ</a></li>
-            <li><a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+            <li class="dropdown">
+              <a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a>
+              <!--Drop Maintenance Plan-->
+              <div class="dropdown-content">
+                <a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อมบำรุง</a>
+              </div>
+            </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
             <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
