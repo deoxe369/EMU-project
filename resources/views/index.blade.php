@@ -21,7 +21,7 @@
      <nav class="navbar navbar-default b">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header">
+        <div class="navbar-header bg-5">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -39,7 +39,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='../maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
                 <li><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
@@ -51,10 +51,6 @@
         </div>
       </div>
     </nav>
-
-    
-
-
 
 
   <!--Content-->
