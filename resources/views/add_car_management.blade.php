@@ -9,9 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
-  <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript"></script>
+  <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
+  <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
+  <script src="{{ URL::asset('/js/function.js') }}"></script>
 </head>
 
 <body data-spy="scroll">

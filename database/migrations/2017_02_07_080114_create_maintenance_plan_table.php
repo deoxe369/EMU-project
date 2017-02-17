@@ -15,7 +15,7 @@ class CreateMaintenancePlanTable extends Migration
     {
         Schema::create('maintenance_plan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('train_set_id');
+            $table->string('train_set_id');
             $table->integer('depot_id');
             $table->integer('level');
             $table->date('in_date');

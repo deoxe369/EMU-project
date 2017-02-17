@@ -9,61 +9,11 @@
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
-  <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript">
 
-  //
-    function comtrdisplay(){
-       // var origin = "<?php $origin_info[0]->type ?>"
-        
-        var option = document.getElementById("trtype").value;
-      if (option == " ") {
-        document.getElementById("comtrchoose").style.display = "block";
-        document.getElementById("comtrcar3").style.display = "none";
-        document.getElementById("comtrcar4").style.display = "none";
-        document.getElementById("comtrgoods").style.display = "none";
-        document.getElementById("comtrtrolley").style.display = "none";
-      }
-      if (option == "trcar3") {
-        document.getElementById("comtrchoose").style.display = "none";
-        document.getElementById("comtrcar3").style.display = "block";
-        document.getElementById("comtrcar4").style.display = "none";
-        document.getElementById("comtrgoods").style.display = "none";
-        document.getElementById("comtrtrolley").style.display = "none";
-      }
-      if (option == "trcar4") {
-        document.getElementById("comtrchoose").style.display = "none";
-        document.getElementById("comtrcar3").style.display = "none";
-        document.getElementById("comtrcar4").style.display = "block";     
-        document.getElementById("comtrgoods").style.display = "none";
-        document.getElementById("comtrtrolley").style.display = "none";
-      }
-      if (option == "trgoods") {
-        document.getElementById("comtrchoose").style.display = "none";
-        document.getElementById("comtrcar3").style.display = "none";
-        document.getElementById("comtrcar4").style.display = "none";
-        document.getElementById("comtrgoods").style.display = "block";
-        document.getElementById("comtrtrolley").style.display = "none";
-      }
-      if (option == "trtrolley") {
-        document.getElementById("comtrchoose").style.display = "none";
-        document.getElementById("comtrcar3").style.display = "none";
-        document.getElementById("comtrcar4").style.display = "none";
-        document.getElementById("comtrgoods").style.display = "none";
-        document.getElementById("comtrtrolley").style.display = "block";
-      }
+  <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
+  <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
+  <script src="{{ URL::asset('/js/function.js') }}"></script>
 
-      
-        
-      
-
-      
-    }
-     
-  </script>
-
-  
 </head>
 
 <body data-spy="scroll">
@@ -99,7 +49,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
+        <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ </center></h1>
 
         <!--Form Add-->
         <form class="form-horizontal" action="add_trainset">
@@ -138,16 +88,19 @@
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
                 <select id="comtrcar3_1" name="comtrcar3_1">
+                 <option value={{$origin_info[0]->cars_id}}>{{$origin_info[0]->cars_id}}</option>
                  @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar3_2" name="comtrcar3_2">
+                <option value={{$origin_info[1]->cars_id}}>{{$origin_info[1]->cars_id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar3_3" name="comtrcar3_3">
+                <option value={{$origin_info[2]->cars_id}}>{{$origin_info[2]->cars_id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                   @endforeach
@@ -156,21 +109,25 @@
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
                 <select id="comtrcar4_1" name="comtrcar4_1">
+                <option value={{$origin_info[0]->cars_id}}>{{$origin_info[0]->cars_id}}</option>
                   @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar4_2" name="comtrcar4_2">
+                <option value={{$origin_info[1]->cars_id}}>{{$origin_info[1]->cars_id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
                 <select id="comtrcar4_3" name="comtrcar4_3">
+                <option value={{$origin_info[2]->cars_id}}>{{$origin_info[2]->cars_id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
                 <select id="comtrcar4_4" name="comtrcar4_4">
+                
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
