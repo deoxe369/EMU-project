@@ -12,6 +12,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
 </head>
 
 <body data-spy="scroll">
@@ -95,7 +96,7 @@
             <tbody>
                @foreach ($trainset_info as $info)
                 <td>{{$info->train_set_number}}</td>
-                <td>{{$info->type}}</td>                
+                <td>{{$info->type}}</td>        
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
