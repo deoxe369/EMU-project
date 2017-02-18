@@ -12,9 +12,11 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+  
 </head>
 
-<body data-spy="scroll">
+<body data-spy="scroll" >
+
 
   <!--Header-->
     <!-- Navbar -->
@@ -93,22 +95,43 @@
               </tr>
             </thead>
             <tbody>
+            <tr>
                @foreach ($trainset_info as $info)
                 <td>{{$info->train_set_number}}</td>
-                <td>{{$info->type}}</td>                
-                <td>{{$info->total_distance}}</td>
+                <td id="{{$info->train_set_number}}" >{{$info->type}}</td> <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
                 <td><a href='../edit_trainset_management/{{$info->train_set_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
+
+               <script type="text/javascript">
+               
+                var trtype = document.getElementById("{{$info->train_set_number}}").innerHTML;
+                
+                 
+                 switch(trtype){
+                  case "trcar3":  
+                  document.getElementById("{{$info->train_set_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
+                  
+                    break;
+                   case "trcar4": 
+                   document.getElementById("{{$info->train_set_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
+                   
+                   break;
+                 }
+              
+              </script>
               @endforeach
+
+              
+           
             </tbody>
           </table>
         </div>      
     </div>
 
-    
-  <!--Footer-->
 
+   
+  <!--Footer-->
 </body>
 </html>
