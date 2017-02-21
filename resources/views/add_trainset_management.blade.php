@@ -84,7 +84,7 @@
                   <option value=" ">เลือกชนิดของชุดรถไฟ</option>
                   <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
                   <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
-            <!--       <option value="trgoods">ชุดรถไฟขนส่ง</option>
+            <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
                   <option value="trtrolley">รถรางโยก</option> -->
                 </select>
               </td>

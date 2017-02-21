@@ -118,7 +118,7 @@
               @endforeach
             </tbody>
           </table>
-          {{$cars_info->links()}}
+          {{$cars_info->links()}} 
         </div>      
     </div>
 
