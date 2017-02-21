@@ -20,7 +20,7 @@ class CreateTrainSetTable extends Migration
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);
             $table->string('status')->default('ว่าง');
-            $table->string('train_set_number')->unique();;
+            $table->string('train_set_number');
             $table->timestamps();
         });
     }
