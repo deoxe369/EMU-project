@@ -39,8 +39,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li class="normal"><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="active"><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -52,73 +52,73 @@
       </div>
     </nav>
 
-
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <!--Select Edit-->
-      <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลใบเข้าซ่อม</center></h1>
-        <form class="form-horizontal" action="/add_maintenance">
-          <!--No.Maintenance-->
-        
-          <!--No.Train Set-->
+      <div>
+        <form class="form-inline" action="search">
+
           <div class="form-group">
-            <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
-            
-            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno"> @foreach ($trian_set_info as $info)
-              <option value={{$info->train_set_number}} >{{$info->train_set_number}}</option>
-           @endforeach 
-              
+            <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
+            <select id="trsettype" name="trsettype">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
-          <!--Depot Location name-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depot" name="depotno">
-            @foreach ($depot_info as $info)
-              <option value={{$info->location_name}}>{{$info->location_name}}</option>
-              @endforeach
-              
+            <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
+            <select id="trstatus" name="trstatus">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
-          <!--Level-->
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-5" for="level">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
-          
-            </select>
-          </div> -->
-
-          <!--Enter DateTime-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="date" value="in_date" >
-          </div>
+            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-          <!--Leave DateTime-->
-          <!-- <div class="form-group margin">
-            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
-            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
-          </div> -->
-
-          <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../maintenance_plan" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+            <label for="addmaintpl"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
           </div>
         </form>
-      </div>
+    </div>      
+
+    <!--Second Container-->
+      <!--Table Detail-->
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>เลขเข้าซ่อม</th>
+                <th>รหัสชุดรถไฟ</th>
+                <th>รหัสศูนย์ซ่อม</th>
+                <th>ระดับ</th>
+                <th>วันเวลาเข้า</th>
+                <th>วันเวลาออก</th>
+                <th style="color: #f4511e;">แก้ไข</th>
+                <th style="color: #f4511e;">Checklists</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($maintenance_info as $info)
+              <tr>
+                <td>{{$info->id}}</td>
+                <td>{{$info->train_set_id}}</td>
+                <td>{{$info->depot_id}}</td>
+                <td>{{$info->level}}</td>
+                <td>{{$info->in_date}}</td>
+                <td>{{$info->out_date}}</td>
+                <td><a href='../edit_maintenance_plan'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+              </tr>
+               @endforeach
+            </tbody>
+          </table>
+        </div>      
     </div>
 
     
   <!--Footer-->
 
 </body>
-</html>s
+</html>

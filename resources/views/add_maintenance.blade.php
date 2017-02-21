@@ -35,17 +35,17 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
             <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
-            <li class="active"><a href='../part_management'>จัดการอะไหล่</a></li>            
+            <li><a href='../part_management'>จัดการอะไหล่</a></li>            
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
@@ -58,69 +58,59 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลอะไหล่</center></h1>
-
-        <!--Form Add-->
-        <form class="form-horizontal" action="add_part">
-          <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
-
-            <!--Part Type-->
-            <tr class="tr-add">
-              <td class="td-add"><label for="cdmodel">ประเภท</label></td>
-              <td>
-                <select id="part_type" name="part_type">
-                  <option value=" ">เลือกประเภทของอะไหล่</option>
-                @foreach ($part_type_info as $info)
-                  <option value={{$info->part_type}} >{{$info->part_type}}</option>
-                @endforeach  
-                </select>
-              </td>
-            </tr>
-
-            
-          </table>
-
-
-          
-
-          <!--วันผลิต-->
+        <h1 class="margin"><center>เพิ่มข้อมูลใบเข้าซ่อม</center></h1>
+        <form class="form-horizontal" action="/add_maintenance">
+          <!--No.Maintenance-->
+        
+          <!--No.Train Set-->
           <div class="form-group">
-            <label class="control-label col-sm-5" >วันผลิต</label>
-            <input type="date" name="m_day">
-          </div><br>
-
-          <!--วันหมดอายุ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >วันหมดอายุ</label>
-            <input type="date" name="e_day">
+            <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
+            
+            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno"> @foreach ($trian_set_info as $info)
+              <option value={{$info->train_set_number}} >{{$info->train_set_number}}</option>
+           @endforeach 
+              
+            </select>
           </div>
 
-
-          <!--ยี่ห้อ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >ยี่ห้อ</label>
-           <input type="text" name="brand">
+          <!--Depot Location name-->
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
+            <select class="col-sm-offset-2 col-sm-3" id="depot" name="depotno">
+            @foreach ($depot_info as $info)
+              <option value={{$info->location_name}}>{{$info->location_name}}</option>
+              @endforeach
+              
+            </select>
           </div>
 
+          <!--Level-->
+          <!-- <div class="form-group">
+            <label class="control-label col-sm-5" for="level">ระดับ</label>
+            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
+          
+            </select>
+          </div> -->
 
-          <!--ราคา-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">ราคา</label>
-           <input type="text" name="price">
+          <!--Enter DateTime-->
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="date"  name="endate">
           </div>
 
-          <!--จำนวน-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">จำนวน</label>
-           <input type="text" name="qauntity">
-          </div>
+          <!--Leave DateTime-->
+          <!-- <div class="form-group margin">
+            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
+            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
+              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
+            </select>
+          </div> -->
 
           <!--Button Save & Cancel-->
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../maintenance_plan" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>
@@ -131,4 +121,4 @@
   <!--Footer-->
 
 </body>
-</html>
+</html>s

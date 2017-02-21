@@ -39,8 +39,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>

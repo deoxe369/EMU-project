@@ -15,7 +15,10 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/maintenance_plan','MaintenanceController@maintenance_info');
+
+Route::get('/maintenance_plan','MaintenanceController@maintenance_info1');
+
+Route::get('/maintenance','MaintenanceController@maintenance_info');
 
 Route::get('/trainset_management','TrainSetController@trainset_info');
 
@@ -113,17 +116,21 @@ Route::get('/add_part_type1', 'PartController@add_part_type');
 
 
 
-
 // Maintenance plan ---------------------------------------->\
 
- Route::get('/add_maintenance_plan', function () {
-    return view('add_maintenance_plan');
-});
 
- Route::get('/add_maintenance_plan', 'MaintenanceController@maintenance_add_info');
+
+
+// Maintenance  ---------------------------------------->\
+
+//  Route::get('/add_maintenance', function () {
+//     return view('add_maintenance');
+// });
+
+ Route::get('/add_maintenance_management', 'MaintenanceController@maintenance_add_info');
 
  Route::get('add_maintenance','MaintenanceController@add');
-
+// 
 // ---------------------------------->เพิ่มข้อมูล level
 
 Route::get('/add_level', function () {

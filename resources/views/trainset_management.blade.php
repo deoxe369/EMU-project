@@ -15,7 +15,8 @@
 
 </head>
 
-<body data-spy="scroll">
+<body data-spy="scroll" >
+
 
   <!--Header-->
     <!-- Navbar -->
@@ -40,8 +41,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li class="active"><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -106,22 +107,44 @@
               </tr>
             </thead>
             <tbody>
+            <tr>
                @foreach ($trainset_info as $info)
                 <td>{{$info->train_set_number}}</td>
-                <td>{{$info->type}}</td>        
+                <td id="{{$info->train_set_number}}" >{{$info->type}}</td>        
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
                 <td><a href='../edit_trainset_management/{{$info->train_set_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
+
+               <script type="text/javascript">
+               
+                var trtype = document.getElementById("{{$info->train_set_number}}").innerHTML;
+                
+                 
+                 switch(trtype){
+                  case "trcar3":  
+                  document.getElementById("{{$info->train_set_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
+                  
+                    break;
+                   case "trcar4": 
+                   document.getElementById("{{$info->train_set_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
+                   
+                   break;
+                 }
+              
+              </script>
               @endforeach
+
+              
+           
             </tbody>
           </table>
         </div>      
     </div>
 
-    
-  <!--Footer-->
 
+   
+  <!--Footer-->
 </body>
 </html>

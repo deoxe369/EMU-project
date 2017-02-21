@@ -39,8 +39,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li class="normal"><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="active"><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="active"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="normal"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -53,13 +53,17 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+    <div class="container-fluid">
     <!--First Container-->
       <div>
         <form class="form-inline" action="search">
+          <div class="form-group">
+            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
+            <input type="text" name="trainsetno">
+          </div>
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
+            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
             <select id="trsettype" name="trsettype">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
@@ -67,7 +71,7 @@
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
+            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
             <select id="trstatus" name="trstatus">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
@@ -78,11 +82,12 @@
             <label for="search"><h3 class="margin">&nbsp</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addmaintpl"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+            <label for="addtr"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
           </div>
         </form>
-    </div>      
+          
+      </div>
 
     <!--Second Container-->
       <!--Table Detail-->
@@ -90,35 +95,55 @@
           <table class="table">
             <thead>
               <tr>
-                <th>เลขเข้าซ่อม</th>
+                <th>เลือก</th>
                 <th>รหัสชุดรถไฟ</th>
-                <th>รหัสศูนย์ซ่อม</th>
-                <th>ระดับ</th>
-                <th>วันเวลาเข้า</th>
-                <th>วันเวลาออก</th>
+                <th>ชนิด</th>
+                <th>ระยะทางสะสม</th>
+                <th>ระยะเวลาสะสม</th>
+                <th>สถานะ</th>
                 <th style="color: #f4511e;">แก้ไข</th>
-                <th style="color: #f4511e;">Checklists</th>
               </tr>
             </thead>
             <tbody>
-            @foreach ($maintenance_info as $info)
-              <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->train_set_id}}</td>
-                <td>{{$info->depot_id}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->in_date}}</td>
-                <td>{{$info->out_date}}</td>
-                <td><a href='../edit_maintenance_plan'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+            <tr>
+               @foreach ($trainset_info as $info)
+                <td><input type="checkbox" name="choose" value={{$info->train_set_number}}></td>
+                <td>{{$info->train_set_number}}</td>
+                <td id="{{$info->train_set_number}}" >{{$info->type}}</td>        
+                <td>{{$info->total_distance}}</td>
+                <td>{{$info->total_time}}</td>                
+                <td>{{$info->status}}</td>
+                <td><a href='../edit_trainset_management/{{$info->train_set_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
-               @endforeach
+
+               <script type="text/javascript">
+               
+                var trtype = document.getElementById("{{$info->train_set_number}}").innerHTML;
+                
+                 
+                 switch(trtype){
+                  case "trcar3":  
+                  document.getElementById("{{$info->train_set_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
+                  
+                    break;
+                   case "trcar4": 
+                   document.getElementById("{{$info->train_set_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
+                   
+                   break;
+                 }
+              
+              </script>
+              @endforeach
+
+              
+           
             </tbody>
           </table>
         </div>      
     </div>
 
-    
-  <!--Footer-->
 
+   
+  <!--Footer-->
 </body>
 </html>

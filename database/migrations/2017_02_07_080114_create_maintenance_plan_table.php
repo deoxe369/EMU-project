@@ -13,7 +13,7 @@ class CreateMaintenancePlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('maintenance_plan', function (Blueprint $table) {
+        Schema::create('maintenance', function (Blueprint $table) {
             $table->increments('id');
             $table->string('train_set_id');
             $table->integer('depot_id');
@@ -31,6 +31,6 @@ class CreateMaintenancePlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maintenance_plan');
+        Schema::dropIfExists('maintenance');
     }
 }

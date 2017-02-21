@@ -39,8 +39,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='#'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li><a href='../maintenance_plan'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -68,7 +68,7 @@
                 <th>รหัสศูนย์</th>
                 <th>จำนวนที่รับได้</th>
                 <th>ตำแหน่ง</th>
-                <th>สถานะ</th>
+                <th>ว่าง</th>
                 <th style="color: #f4511e;">แก้ไข</th>
               </tr>
             </thead>
@@ -78,7 +78,7 @@
                 <td>{{$info->id}}</td>
                 <td>{{$info->capacity}}</td>                
                 <td>{{$info->location_name}}</td>            
-                <td>{{$info->status}}</td>
+                <td>{{$info->free_slot}}</td>
                 <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
               @endforeach
