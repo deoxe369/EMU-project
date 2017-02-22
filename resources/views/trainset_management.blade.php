@@ -87,6 +87,10 @@
 
             <label for="addtr"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
+
+            <!--add page: delete trainset_management-->
+            <label for="deltr"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button>
           </div>
         </form>
           

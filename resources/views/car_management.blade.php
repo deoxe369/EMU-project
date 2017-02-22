@@ -53,7 +53,7 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+  <div class="container-fluid">    
     <!--First Container-->
     <form class="form-inline" action="search_cars">
 
@@ -87,12 +87,22 @@
                 @endforeach 
             </select>
           </div>
-              
-             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
-         </form>
-      <div class="text-right margin">
-        <a href='../add_car_management'><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
-      </div>      
+          
+          <div class="form-group">
+            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
+
+            <label for="addcar"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
+
+             <!--add page: delete trainset_management-->
+            <label for="delcar"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_car_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
+          </div>
+    </form>
+  </div>  
+
+
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">

@@ -51,6 +51,7 @@
       font-size: 13px;
       letter-spacing: 2px;
       padding: 10px;
+      cursor: pointer;
   }
 
   .navbar-nav li a:hover{
@@ -92,7 +93,15 @@
   }*/
 
   /* Dropdown */
+
+  .dropdown{
+    position: relative;
+    display: inline-block;
+  }
+
   .dropdown-menu{
+    display: none;
+    position: absolute;
     border: none;
     background-color: #ffffff !important;
   }
@@ -111,6 +120,14 @@
   .dropdown-menu li.normal a:hover{
       background-color:#ffab00 !important;
       color: #ffffff !important;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown:hover{
+    background-color: #e8e8e8;
   }
 
   
@@ -173,7 +190,7 @@
   .btn-add{
     display: inline-block;
     border-radius: 4px;
-    background-color: #bf360c;
+    background-color: #4f4b4b;/*#bf360c*/
     border: none;
     color: #ffffff;
     text-align: center;
@@ -185,7 +202,7 @@
   }
 
   .btn-add:hover{
-    background-color: #000000;
+    background-color: #006064;
   }
 
   .btn-add span{
@@ -209,6 +226,51 @@
   }
 
   .btn-add:hover span:after{
+    opacity: 1;
+    right: 0;
+  }
+
+
+  /*Button Delete*/
+  .btn-del{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #212121;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-del:hover{
+    background-color: #B71C1C;
+  }
+
+  .btn-del span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btn-del span:after{
+    content: '\268A';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+  }
+
+  .btn-del:hover span{
+    padding-right: 22px;
+  }
+
+  .btn-del:hover span:after{
     opacity: 1;
     right: 0;
   }
