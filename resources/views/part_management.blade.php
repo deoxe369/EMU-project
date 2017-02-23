@@ -94,6 +94,10 @@
 
             <label for="addpart"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_part_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button>
+
+            <!--add page: delete part_management-->
+            <label for="delpart"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_part_management" class="btn-del" style="vertical-align: middle"><span>ลบอะไหล่</span></button>
           </div>
          </form>
         </div>

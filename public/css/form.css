@@ -125,7 +125,7 @@ input[type=submit]:hover {
   }
 
   .btn-search:hover{
-    background-color: #00838f;
+    background-color: #0097A7; /*#00838f*/
   }
 
   .btn-search span{
