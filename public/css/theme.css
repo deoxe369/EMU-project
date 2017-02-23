@@ -85,15 +85,9 @@
       font-size: 24px !important;
       text-shadow: 3px 3px #ff6f00 !important;
   }
-  /*.nav-brand:hover{
-      color: #ffab00 !important;
-      font-weight: bolder;
-      font-size: 24px !important;
-      text-shadow: 3px 3px #ffffff !important;
-  }*/
+  
 
   /* Dropdown */
-
   .dropdown{
     position: relative;
     display: inline-block;
@@ -104,6 +98,7 @@
     position: absolute;
     border: none;
     background-color: #ffffff !important;
+    box-shadow: 1px 1px #e8e8e8 !important;
   }
   .dropdown-menu li a:hover{
       background-color:#ffab00 !important;

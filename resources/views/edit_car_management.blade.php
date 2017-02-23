@@ -57,7 +57,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลตู้รถไฟ</center></h1>
+        <h1 class="margin"><center>แก้ไขข้อมูลตู้รถไฟ</center></h1>
         <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save">
          
 
