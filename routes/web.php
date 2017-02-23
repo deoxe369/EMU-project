@@ -32,15 +32,6 @@ Route::get('/depot_management','DepotController@depot_info');
 
 
 /**/
-Route::get('/edit_maintenance_plan', function () {
-    return view('edit_maintenance_plan');
-});
-Route::get('/edit_trainset_management', function () {
-    return view('edit_trainset_management');
-});
-Route::get('/edit_car_management', function () {
-    return view('edit_car_management');
-});
 
 
 
@@ -68,6 +59,8 @@ Route::get('add_trainset','TrainSetController@add');
 Route::get('add_trainset_management','TrainSetController@add_trainset_info');
 
 Route::get('/edit_trainset_management/{id}','TrainSetController@edit');
+
+Route::get('/edit_trainset_management/{id}/save','TrainSetController@update');
 
 
 
@@ -126,6 +119,10 @@ Route::get('/add_part_type1', 'PartController@add_part_type');
 //  Route::get('/add_maintenance', function () {
 //     return view('add_maintenance');
 // });
+Route::get('/edit_maintenance/{id}/','MaintenanceController@edit');
+
+Route::get('/edit_maintenance/{id}/save','MaintenanceController@update');
+
 
  Route::get('/add_maintenance_management', 'MaintenanceController@maintenance_add_info');
 

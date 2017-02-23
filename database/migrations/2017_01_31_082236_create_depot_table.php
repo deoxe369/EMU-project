@@ -22,6 +22,7 @@ class CreateDepotTable extends Migration
             $table->integer('level');
             $table->string('status')->default('ว่าง');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

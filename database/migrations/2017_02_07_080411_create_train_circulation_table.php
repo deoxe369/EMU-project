@@ -16,6 +16,7 @@ class CreateTrainCirculationTable extends Migration
         Schema::create('train_circulation', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

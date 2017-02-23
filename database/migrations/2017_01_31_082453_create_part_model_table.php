@@ -20,6 +20,7 @@ class CreatePartModelTable extends Migration
             $table->integer('part_type');
             $table->string('brand');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

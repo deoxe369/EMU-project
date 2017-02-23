@@ -14,7 +14,7 @@ class MaintenanceController extends Controller
 {
     public function maintenance_add_info() 
     {
-    	$trian_set_info = DB::table('train_set')->select('train_set_number')->where('status','ว่าง')->distinct()->get();
+    	$trian_set_info = DB::table('train_set')->select('train_number')->where('status','ว่าง')->distinct()->get();
     	$depot_info = DB::table('depot')->select('location_name')->where('status','ว่าง')->get();
     	// $level_info = DB::table('level')->select('level')->get();
     	 
@@ -24,23 +24,23 @@ class MaintenanceController extends Controller
     }
     public function add(Request $info1)
     {
-        $depot_id = DB::table('depot')->select('id')->where('location_name',$info1->depotno)->get();
+        // $depot_id = DB::table('depot')->select('id')->where('location_name',$info1->depotno)->get();
 
-        $train_set_info = DB::table('train_set')->select('total_distance','total_time')->where('train_set_number',$info1->trainsetno)->distinct()->get();
+        $train_set_info = DB::table('train_set')->select('total_distance','total_time')->where('train_number',$info1->trainsetno)->distinct()->get();
         $level_info = DB::table('level')->orderBy('level', 'asc')->get();
        
        foreach ($level_info as $value) {
   
             if($value->total_time > $train_set_info[0]->total_time ) {
                 $level = $value->level;
-                break;
+                break; 
             }
         }
   
 
-    	DB::insert('insert into maintenance (train_set_id, depot_id,level,in_date,created_at) values (?, ?, ?, ?, ?  )', [ $info1->trainsetno, $depot_id[0]->id,$level,$info1->endate,Carbon::now()]);
+    	DB::insert('insert into maintenance (train_set_id, depot,level,in_date,created_at) values (?, ?, ?, ?, ?  )', [ $info1->trainsetno,$info1->depotno,$level,$info1->endate,Carbon::now()]);
 
-        DB::table('train_set')->where('train_set_number',$info1->trainsetno)->update(['status'=>'ไม่ว่าง','updated_at'=>Carbon::now()]);
+        DB::table('train_set')->where('train_number',$info1->trainsetno)->update(['status'=>'ไม่ว่าง','updated_at'=>Carbon::now()]);
 
         $depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$info1->depotno)->get();
 
@@ -50,8 +50,8 @@ class MaintenanceController extends Controller
 
 
     	return Redirect::action('MaintenanceController@maintenance_info');	
-
-        // return $depot_slot1;
+// return $level;
+       
 	    	
 	}
 	public function maintenance_info()
@@ -62,6 +62,60 @@ class MaintenanceController extends Controller
     }
 
 
+    public function edit($id) 
+    {
+        $origin_info = DB::table('maintenance')->where('id',$id)->get();
+        
+        $trian_set_info = DB::table('train_set')->select('train_number')->where('status','ว่าง')->distinct()->get();
+        $depot_info = DB::table('depot')->select('location_name')->where('status','ว่าง')->get();
+
+
+       return View::make('edit_maintenance')->with('trian_set_info',$trian_set_info)->with('depot_info',$depot_info)->with('origin_info',$origin_info);
+       //  // ->with('level_info',$level_info);
+
+        return $origin_info[0]->id;
+
+    }
+
+    public function update(Request $info ,$id) 
+    {
+        $origin_info = DB::table('maintenance')->where('id',$id)->get();
+        
+        DB::table('train_set')->where('train_number',$origin_info[0]->train_set_id)->update(['status'=>'ว่าง','updated_at'=>Carbon::now()]);
+
+          $origin_depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$origin_info[0]->depot)->get();
+
+          $origin_depot_slot1 = $origin_depot_slot[0]->free_slot +1;
+
+          DB::table('depot')->where('location_name',$origin_info[0]->depot)->update(['free_slot'=>$origin_depot_slot1,'updated_at'=>Carbon::now()]);
+     
+
+        $train_set_info = DB::table('train_set')->select('total_distance','total_time')->where('train_number',$info->trainsetno)->distinct()->get();
+        $level_info = DB::table('level')->orderBy('level', 'asc')->get();
+       
+       foreach ($level_info as $value) {
+  
+            if($value->total_time > $train_set_info[0]->total_time ) {
+                $level = $value->level;
+                break; 
+            }
+        }
+
+        DB::table('maintenance')->where('id',$id)->update(['train_set_id'=>$info->trainsetno,'depot'=>$info->depotno,'level'=>$level,'in_date'=>$info->endate,'updated_at'=>Carbon::now()]);
+
+         DB::table('train_set')->where('train_number',$info->trainsetno)->update(['status'=>'ไม่ว่าง','updated_at'=>Carbon::now()]);
+
+         $depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$info->depotno)->get();
+
+        $depot_slot1 = $depot_slot[0]->free_slot -1;
+
+        DB::table('depot')->where('location_name',$info->depotno)->update(['free_slot'=>$depot_slot1,'updated_at'=>Carbon::now()]);
+
+
+       return Redirect::action('MaintenanceController@maintenance_info');   
+        // return $origin_info[0]->depot;
+
+    }
 
 
 //--------------------------------------------->checklist
@@ -87,9 +141,9 @@ class MaintenanceController extends Controller
 
     public function maintenance_info1()
     {
-        $trainset_info = DB::table('train_set')->select('train_set_number','type','total_distance','total_time','status')->distinct()->get();
+        $trainset_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->distinct()->get();
 
-        // $composit_info = DB::table('train_set')->select('train_set_number','type','total_distance','total_time','status')->distinct()->get();
+        // $composit_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->distinct()->get();
          
          // $trainset_info['composit'] = '';
         return View::make(' maintenance_plan', array('trainset_info' => $trainset_info));

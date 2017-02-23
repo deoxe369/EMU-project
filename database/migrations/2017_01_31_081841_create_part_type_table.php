@@ -19,6 +19,7 @@ class CreatePartTypeTable extends Migration
             $table->integer('lifetime_time'); //year
             $table->integer('lifetime_distance');//km
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

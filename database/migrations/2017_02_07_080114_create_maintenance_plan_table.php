@@ -16,11 +16,12 @@ class CreateMaintenancePlanTable extends Migration
         Schema::create('maintenance', function (Blueprint $table) {
             $table->increments('id');
             $table->string('train_set_id');
-            $table->integer('depot_id');
+            $table->string('depot');
             $table->integer('level');
             $table->date('in_date');
             $table->date('out_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

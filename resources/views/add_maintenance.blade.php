@@ -66,8 +66,9 @@
           <div class="form-group">
             <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
             
-            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno"> @foreach ($trian_set_info as $info)
-              <option value={{$info->train_set_number}} >{{$info->train_set_number}}</option>
+            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
+             @foreach ($trian_set_info as $info)
+              <option value={{$info->train_number}} >{{$info->train_number}}</option>
            @endforeach 
               
             </select>

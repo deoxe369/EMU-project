@@ -26,6 +26,7 @@ class CreatePartTable extends Migration
             $table->decimal('price',15,2);
             $table->string('status')->default('ใช้ได้');
             $table->timestamps();
+            $table->softDeletes();
            
 
         });

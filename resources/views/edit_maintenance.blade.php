@@ -58,12 +58,12 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin"><center>แก้ไขข้อมูลใบเข้าซ่อม</center></h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
           <!--No.Maintenance-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="maintainno">เลขเข้าซ่อม</label>
             <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
+              <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>
             </div>
           </div>
 
@@ -71,28 +71,27 @@
           <div class="form-group">
             <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
             <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
-              <option value="21">21</option>
-              <option value="335">335</option>
-              <option value="423">423</option>
-              <option value="425">425</option>
-              <option value="431">431</option>
+               <option value={{$origin_info[0]->train_set_id}}>{{$origin_info[0]->train_set_id}}</option>
+               @foreach ($trian_set_info as $info)
+              <option value={{$info->train_set_number}} >{{$info->train_set_number}}</option>
+           @endforeach 
+              
             </select>
           </div>
 
           <!--No.Depot-->
           <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
+            <label class="control-label col-sm-5" for="depotno">ศูนย์ซ่อม</label>
             <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value="D1">D1</option>
-              <option value="D2">D2</option>
-              <option value="D3">D3</option>
-              <option value="D4">D4</option>
-              <option value="D5">D5</option>
+            <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
+              @foreach ($depot_info as $info)
+              <option value={{$info->location_name}}>{{$info->location_name}}</option>
+              @endforeach
             </select>
           </div>
 
           <!--Level-->
-          <div class="form-group">
+   <!--        <div class="form-group">
             <label class="control-label col-sm-5" for="level">ระดับ</label>
             <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
               <option value="1">1</option>
@@ -101,14 +100,13 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-          </div>
+          </div> -->
 
           <!--Enter DateTime-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>
-            <select class="col-sm-offset-2 col-sm-3" id="endate" name="endate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
+             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             <input type="date"  name="endate" value={{$origin_info[0]->in_date}}>
           </div>
 
           <!--Leave DateTime-->

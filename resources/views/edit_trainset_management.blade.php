@@ -63,7 +63,7 @@
         <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ </center></h1>
 
         <!--Form Add-->
-        <form class="form-horizontal" action="add_trainset">
+        <form class="form-horizontal" action="/edit_trainset_management/{{$origin_info[0]->train_number}}/save">
           <!--New Structure: Table-->
           <table class="table-add col-sm-offset-4">
 
@@ -71,7 +71,7 @@
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
               <!--Choose No.Train Set-->
-              <td><input type="text" name="trainsetno" value={{$origin_info[0]->train_set_number}}></td>
+              <td><p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->train_number}}</p> </td>
             </tr>
 
             <!--Trainset Type-->
@@ -99,19 +99,19 @@
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
                 <select id="comtrcar3_1" name="comtrcar3_1">
-                 <option value={{$origin_info[0]->cars_id}}>{{$origin_info[0]->cars_id}}</option>
+                 <option value={{$origin_cars_info[0]->id}}>{{$origin_cars_info[0]->id}}</option>
                  @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar3_2" name="comtrcar3_2">
-                <option value={{$origin_info[1]->cars_id}}>{{$origin_info[1]->cars_id}}</option>
+                <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar3_3" name="comtrcar3_3">
-                <option value={{$origin_info[2]->cars_id}}>{{$origin_info[2]->cars_id}}</option>
+                <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                   @endforeach
@@ -120,19 +120,19 @@
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
                 <select id="comtrcar4_1" name="comtrcar4_1">
-                <option value={{$origin_info[0]->cars_id}}>{{$origin_info[0]->cars_id}}</option>
+                <option value={{$origin_cars_info[0]->id}}>{{$origin_cars_info[0]->id}}</option>
                   @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar4_2" name="comtrcar4_2">
-                <option value={{$origin_info[1]->cars_id}}>{{$origin_info[1]->cars_id}}</option>
+                <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
                 <select id="comtrcar4_3" name="comtrcar4_3">
-                <option value={{$origin_info[2]->cars_id}}>{{$origin_info[2]->cars_id}}</option>
+                <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach

@@ -15,13 +15,16 @@ class CreateTrainSetTable extends Migration
     {
         Schema::create('train_set', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cars_id');
+            $table->string('train_number')->unique();
+            // $table->integer('cars_id');
             $table->string('type');
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);
             $table->string('status')->default('ว่าง');
-            $table->string('train_set_number');
+            $table->string('location_name')->nullable();
+            $table->integer('location')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

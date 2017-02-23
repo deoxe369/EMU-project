@@ -21,7 +21,9 @@ class CreateCarsTable extends Migration
             $table->float('total_time')->default(0);
             $table->string('status')->default('ว่าง');
             $table->decimal('price',15,2);
+            $table->string('train_number')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

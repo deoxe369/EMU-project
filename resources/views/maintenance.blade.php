@@ -92,7 +92,7 @@
               <tr>
                 <th>เลขเข้าซ่อม</th>
                 <th>รหัสชุดรถไฟ</th>
-                <th>รหัสศูนย์ซ่อม</th>
+                <th>ศูนย์ซ่อม</th>
                 <th>ระดับ</th>
                 <th>วันเวลาเข้า</th>
                 <th>วันเวลาออก</th>
@@ -105,11 +105,12 @@
               <tr>
                 <td>{{$info->id}}</td>
                 <td>{{$info->train_set_id}}</td>
-                <td>{{$info->depot_id}}</td>
+                <td>{{$info->depot}}</td>
                 <td>{{$info->level}}</td>
                 <td>{{$info->in_date}}</td>
                 <td>{{$info->out_date}}</td>
-                <td><a href='../edit_maintenance_plan'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
               </tr>
                @endforeach
             </tbody>

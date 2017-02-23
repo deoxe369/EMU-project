@@ -18,6 +18,7 @@ class CreateChecklistTable extends Migration
             $table->string('checklist');
             $table->integer('level');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

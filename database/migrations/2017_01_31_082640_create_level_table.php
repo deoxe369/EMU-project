@@ -19,6 +19,7 @@ class CreateLevelTable extends Migration
             $table->float('total_distance');
             $table->float('total_time');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
