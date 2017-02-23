@@ -78,8 +78,12 @@
             <label for="search"><h3 class="margin">&nbsp</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addmaintpl"><h3 class="margin">&nbsp</h3></label>
+            <label for="addmaint"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+
+            <!--add page: delete maintenance_management-->
+            <label for="delmaint"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_maintenance_management" class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button>
           </div>
         </form>
     </div>      
