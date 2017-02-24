@@ -58,7 +58,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลใบเข้าซ่อม</center></h1>
+        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลใบเข้าซ่อม</h1>
         <form class="form-horizontal" action="/add_maintenance">
           <!--No.Maintenance-->
         

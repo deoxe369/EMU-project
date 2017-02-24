@@ -58,7 +58,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลอะไหล่</center></h1>
+        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลอะไหล่</h1>
 
         <!--Form Add-->
         <form class="form-horizontal" action="add_part">

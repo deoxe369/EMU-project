@@ -61,23 +61,28 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
+        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลชุดรถไฟ</h1>
 
         <!--Form Add-->
         <form class="form-horizontal" action="add_trainset">
           <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
+          <table class="table-add" align="center">
 
             <!--No.Trian Set-->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <td class="col-sm-2"><span></span></td>
               <!--Choose No.Train Set-->
-              <td><input type="text" name="trainsetno"></td>
+              <td>
+                <input type="text" name="trainsetno">                
+                <p id="car" class="checkform"></p>
+              </td>
             </tr>
 
             <!--Trainset Type-->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <td class="col-sm-2"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
                 <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
@@ -93,9 +98,10 @@
             <!--Composition-->
             <tr class="tr-add">
               <td class="td-add"><label for="composition">composition</label></td>
+              <td class="col-sm-2"><span></span></td>
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
-                <p>CHOOSE COMPOSITION</p>         
+                <p>เลือก COMPOSITION</p>         
               </td>
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">

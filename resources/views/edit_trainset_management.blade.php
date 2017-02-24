@@ -60,7 +60,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลชุดรถไฟ </center></h1>
+        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลชุดรถไฟ</h1>
 
         <!--Form Add-->
         <form class="form-horizontal" action="/edit_trainset_management/{{$origin_info[0]->train_number}}/save">

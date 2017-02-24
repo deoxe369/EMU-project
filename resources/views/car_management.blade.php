@@ -55,7 +55,8 @@
   <!--Content-->
   <div class="container-fluid">    
     <!--First Container-->
-    <form class="form-inline" action="search_cars">
+    <div>
+      <form class="form-inline" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
@@ -99,8 +100,8 @@
             <label for="delcar"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_car_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
           </div>
-    </form>
-  </div>  
+      </form>
+    </div>
 
 
     <!--Second Container-->
@@ -130,8 +131,7 @@
           </table>
           {{$cars_info->links()}} 
         </div>      
-    </div>
-
+  </div>
     
   <!--Footer-->
 
