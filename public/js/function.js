@@ -1,4 +1,4 @@
-  //Relation Between Train Set Type and Composition
+  /*********************** Relation Between Train Set Type and Composition ***********************/
     function comtrdisplay(){
       var option = document.getElementById("trtype").value;
       if (option == " ") {
@@ -38,9 +38,12 @@
       }
     }
 
+  /************************************* Go Back **************************************/
+  function goBack() {
+    window.history.back();
+  }
 
-  //Add Car Management
-
+  /************************************* Add Car Management **************************************/
     function cars(){
     var carsmodel = document.chkcar.cars_model.value;
     var carstype = document.chkcar.cars_type.value;
@@ -88,8 +91,6 @@
     }else{
       document.getElementById("chkcars_qty").innerHTML = "";
     }
-
-
     return status;
   }
 

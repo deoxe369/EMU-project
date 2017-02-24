@@ -124,11 +124,9 @@
           <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../car_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
       </div>

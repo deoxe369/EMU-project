@@ -71,7 +71,7 @@
             <!--No.Trian Set-->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
-              <td class="col-sm-2"><span></span></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose No.Train Set-->
               <td>
                 <input type="text" name="trainsetno">                
@@ -82,7 +82,7 @@
             <!--Trainset Type-->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ชนิด</label></td>
-              <td class="col-sm-2"><span></span></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
                 <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
@@ -98,7 +98,7 @@
             <!--Composition-->
             <tr class="tr-add">
               <td class="td-add"><label for="composition">composition</label></td>
-              <td class="col-sm-2"><span></span></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
                 <p>เลือก COMPOSITION</p>         
