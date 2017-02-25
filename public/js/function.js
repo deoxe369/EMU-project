@@ -51,46 +51,41 @@
     var carsqty = document.chkcar.cars_qty.value;
     var status = false;
 
-    if (carsmodel == "") {
-      document.getElementById("chkcars_model").innerHTML = " *โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
+    if (carsmodel == "" || carsmodel == null) {
+      document.getElementById("chkcars_model").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
       status = false;
     }else{
-      document.getElementById("chkcars_model").innerHTML = "";
+      document.getElementById("chkcars_model").innerHTML = "<img src= 'image/icon/check.png'>";
       status = true;
     }
 
     if (carstype == " ") {
-      document.getElementById("chkcars_type").innerHTML = " *โปรดเลือกชนิดของตู้รถไฟ";
+      document.getElementById("chkcars_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกชนิดของตู้รถไฟ";
       status = false;
     }else{
-      document.getElementById("chkcars_type").innerHTML = "";
+      document.getElementById("chkcars_type").innerHTML = "<img src= 'image/icon/check.png'>";
     }
 
     if (carsprice == "") {
-      document.getElementById("chkcar_price").innerHTML = " *โปรดกรอกข้อมูลราคาของตู้รถไฟ";
-      status = false;
-    }else if (isNaN(carsprice)) {
-      document.getElementById("chkcar_price").innerHTML = " *โปรดกรอกราคาเป็นตัวเลข";
+      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
       status = false;
     }else if (carsprice < 0 ) {
-      document.getElementById("chkcar_price").innerHTML = " *โปรดกรอกราคาเป็นจำนวนเต็มบวก";
+      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkcars_price").innerHTML = "";
+      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/check.png'>";
     }
 
     if (carsqty == "") {
-      document.getElementById("chkcar_qty").innerHTML = " *โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
+      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
       status = false;
-    }else if (isNaN(carsprice)) {
-      document.getElementById("chkcar_qty").innerHTML = " *โปรดกรอกข้อมูลจำนวนเป็นตัวเลข";
-      status = false;
-    }else if (carsprice < 0 ) {
-      document.getElementById("chkcar_qty").innerHTML = " *โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+    }else if (carsqty < 0 ) {
+      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkcars_qty").innerHTML = "";
+      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/check.png'>";
     }
+
     return status;
   }
 

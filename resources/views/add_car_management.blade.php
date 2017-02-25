@@ -105,7 +105,7 @@
               <!-- Input Cars Price -->
               <td>
                 <input type="number" name="cars_price">
-                <span id="chkcar_price" class="checkform"></span>
+                <span id="chkcars_price" class="checkform"></span>
               </td>
             </tr>
 
@@ -115,7 +115,7 @@
               <td class="col-sm-1"><span></span></td>
               <td>
                 <input type="number" name="cars_qty">            
-                <span id="chkcar_qty" class="checkform"></span>
+                <span id="chkcars_qty" class="checkform"></span>
               </td>
             </tr>
         

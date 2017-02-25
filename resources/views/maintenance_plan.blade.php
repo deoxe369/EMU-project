@@ -117,25 +117,16 @@
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
-                <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
-               <script type="text/javascript">
-               
+              <!-- JS change name cartype -->
+              <script type="text/javascript">
                 var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
-                
-                 
-                 switch(trtype){
-                  case "trcar3":  
-                  document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
-                  
-                    break;
-                   case "trcar4": 
-                   document.getElementById("{{$info->train_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
-                   
-                   break;
-                 }
-              
+                switch(trtype){
+                  case "trcar3": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
+                  case "trcar4": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                }
               </script>
               @endforeach
 
