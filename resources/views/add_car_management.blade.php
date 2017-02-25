@@ -13,10 +13,6 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
-  <script type="text/javascript">
-  
-  </script>
-
 </head>
 
 <body data-spy="scroll">
