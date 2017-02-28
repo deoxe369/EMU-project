@@ -70,66 +70,77 @@
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลใบเข้าซ่อม</h1>
 
         <!--Form Add-->
-        <form class="form-horizontal" action="/add_maintenance" name="chktrset" onsubmit="return maintenance()">
+        <form class="form-horizontal" action="/add_maintenance" name="chkmaint" onsubmit="return maint()">
           <!-- New Structure: Table  -->
           <table class="table_add" align="center">
 
+            <!--No.Train Set-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose No. Train Set -->
+              <td>
+                <select class="sel" id="trainsetno" name="trainsetno">
+                  <option value=" ">เลือกรหัสชุดรถไฟ</option>
+                  @foreach ($trian_set_info as $info)
+                  <option value={{$info->train_number}} >{{$info->train_number}}</option>
+                  @endforeach
+                </select>
+                <span id="chkmaint_trsetno" class="checkform"></span>
+              </td>
+            </tr>
 
+            <!--Depot Location name-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotno">รหัสศูนย์ซ่อม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Depot Location -->
+              <td>
+                <select class="sel" id="depot" name="depotno">
+                  <option value=" ">เลือกรหัสศูนย์ซ่อม</option>
+                  @foreach ($depot_info as $info)
+                  <option value={{$info->location_name}}>{{$info->location_name}}</option>
+                  @endforeach
+                </select>
+                <span id="chkmaint_depotno" class="checkform"></span>
+              </td>
+            </tr>
 
+            <!-- Level -->
+          <!-- <tr class="tr-add">
+              <td class="td-add"><label for="level">ระดับ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <td>
+                <select class="col-sm-offset-2 col-sm-3" id="level" name="level"></select>
+              </td>
+            </tr> -->
+
+            <!--Enter DateTime-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="endate">วันเวลาเข้า</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Enter DateTime -->
+              <td>
+                <input type="date"  name="endate">
+                <span id="chkmaint_endate" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!--Leave DateTime-->
+            <!-- <tr class="tr-add">
+              <td class="td-add"><label for="lvdate">วันเวลาออก</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <td><input type="date"  name="lvdate"></td>
+            </tr> -->
             
           </table>
-        
-          <!--No.Train Set-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
-            
-            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
-             @foreach ($trian_set_info as $info)
-              <option value={{$info->train_number}} >{{$info->train_number}}</option>
-           @endforeach 
-              
-            </select>
-          </div>
 
-          <!--Depot Location name-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depot" name="depotno">
-            @foreach ($depot_info as $info)
-              <option value={{$info->location_name}}>{{$info->location_name}}</option>
-              @endforeach
-              
-            </select>
-          </div>
-
-          <!--Level-->
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-5" for="level">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
-          
-            </select>
-          </div> -->
-
-          <!--Enter DateTime-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="date"  name="endate" value=" ">
-          </div>
-
-          <!--Leave DateTime-->
-          <!-- <div class="form-group margin">
-            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
-            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
-          </div> -->
+          <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../maintenance_plan" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+          <div class="col-sm-offset-5 col-sm-5">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
       </div>

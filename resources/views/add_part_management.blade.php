@@ -97,6 +97,7 @@
               <!-- Input วันผลิต -->
               <td>
                 <input type="date" name="m_day">
+                <span id="chkpart_mday" class="checkform"></span>
               </td>
             </tr>
 
@@ -107,6 +108,7 @@
               <!-- Input วันหมดอายุ -->
               <td>
                 <input type="date" name="e_day">
+                <span id="chkpart_eday" class="checkform"></span>
               </td>
             </tr>
 
