@@ -49,7 +49,9 @@ Route::get('/edit_cars_management/{id}/save','CarsController@update');
 
 Route::get('/edit_cars_management/{id}','CarsController@edit');
 
+Route::get('/delete_cars_management','CarsController@cars_info1');
 
+Route::get('/delete_cars','CarsController@delete');
 
 
 // Trainset------------------------------------->
@@ -61,6 +63,10 @@ Route::get('add_trainset_management','TrainSetController@add_trainset_info');
 Route::get('/edit_trainset_management/{id}','TrainSetController@edit');
 
 Route::get('/edit_trainset_management/{id}/save','TrainSetController@update');
+
+Route::get('/delete_trainset_management','TrainSetController@trainset_info1');
+
+Route::get('/delete_trainset','TrainSetController@delete');
 
 
 
@@ -76,8 +82,9 @@ Route::get('/add_depot_management', function () {
 });
 Route::get('/edit_depot_management/{id}','DepotController@edit');
 
+Route::get('/delete_depot_management','DepotController@depot_info1');
 
-
+Route::get('/delete_depot','DepotController@delete');
 
 
 
@@ -96,6 +103,11 @@ Route::get('/edit_part_management/{id}/save','PartController@update');
 Route::get('/edit_part_management/{id}','PartController@edit');
 // });
 Route::get('/add_part_management','PartController@part_type_info');
+
+Route::get('/delete_part_management','PartController@part_info1');
+
+Route::get('/delete_part','PartController@delete');
+
 
 
 // ---------------------------------->เพิ่มข้อมูล part_type

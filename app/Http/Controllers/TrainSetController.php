@@ -46,7 +46,7 @@ class TrainSetController extends Controller
 
      public function trainset_info()
     {
-    	$trainset_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->get();
+    	$trainset_info = DB::table('train_set')->select('id','train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->get();
 
         // $composit_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->distinct()->get();
     	 
@@ -56,6 +56,20 @@ class TrainSetController extends Controller
        // return $trainset_info;
         
     }
+
+     public function trainset_info1()
+    {
+        $trainset_info = DB::table('train_set')->select('id','train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->get();
+
+        // $composit_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->distinct()->get();
+         
+         // $trainset_info['composit'] = '';
+        return View::make('delete_trainset_management', array('trainset_info' => $trainset_info));
+
+       // return $trainset_info;
+        
+    }
+
 
      public function add_trainset_info()
     {
@@ -158,5 +172,22 @@ class TrainSetController extends Controller
         // }
          // return  $origin_cars_info[1]->id ;
         
+    }
+
+
+    public function delete(Request $info)
+    {
+    
+        $input  = explode('&', $info->server->get('QUERY_STRING'));
+        $all_id = array();
+
+        foreach ($input as $id) {
+
+            $id1 = substr($id,7);
+            DB::table('train_set')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+           
+        }
+            // return $id1;
+              return Redirect::action('TrainSetController@depot_info');
     }
 }

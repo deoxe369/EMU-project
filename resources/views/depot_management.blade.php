@@ -68,7 +68,7 @@
 
             <!--add page: delete part_management-->
             <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
+            <button formaction="../delete_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
           </div>
         </form>
       </div>

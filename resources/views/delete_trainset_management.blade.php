@@ -12,9 +12,11 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
 </head>
 
-<body data-spy="scroll">
+<body data-spy="scroll" >
+
 
   <!--Header-->
     <!-- Navbar -->
@@ -35,15 +37,15 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li class="active"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="normal"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
-            <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
+            <li class="active"><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
             <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
@@ -51,6 +53,7 @@
         </div>
       </div>
     </nav>
+    
 
   <!--Content-->
     <div class="container-fluid">
@@ -82,11 +85,11 @@
             <label for="search"><h3 class="margin">&nbsp</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <!-- <label for="addtr"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button> -->
+           <!--  <label for="addtr"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
 
-            <!--add page: delete trainset_management-->
-            <!-- <label for="deltr"><h3 class="margin">&nbsp</h3></label>
+            add page: delete trainset_management
+            <label for="deltr"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button> -->
           </div>
         </form>
@@ -96,28 +99,28 @@
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
+         <form action="delete_trainset">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
-                <th>เลือก</th>
+              <th>เลือก</th>
                 <th>รหัสชุดรถไฟ</th>
                 <th>ชนิด</th>
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
-                <!-- <th style="color: #f4511e;">แก้ไข</th> -->
               </tr>
             </thead>
             <tbody>
             <tr>
                @foreach ($trainset_info as $info)
-                <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
+                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
                 <td>{{$info->train_number}}</td>
                 <td id="{{$info->train_number}}" >{{$info->type}}</td>        
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
-                <!-- <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td> -->
               </tr>
 
                <script type="text/javascript">
@@ -143,6 +146,7 @@
            
             </tbody>
           </table>
+          </form>
         </div>      
     </div>
 

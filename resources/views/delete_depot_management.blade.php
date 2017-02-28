@@ -45,86 +45,64 @@
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
             <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
-            <li class="active"><a href='../part_management'>จัดการอะไหล่</a></li>            
-            <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
+            <li><a href='../part_management'>จัดการอะไหล่</a></li>            
+            <li class="active"><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
       </div>
     </nav>
-
+    
 
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <!--Select Edit-->
-      <div class="container">
-        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลอะไหล่</h1>
+      <div>
+        <form class="form-inline" action="search_depot">
 
-        <!--Form Add-->
-        <form class="form-horizontal" action="add_part">
-          <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
-
-            <!--Part Type-->
-            <tr class="tr-add">
-              <td class="td-add"><label for="cdmodel">ประเภท</label></td>
-              <td>
-                <select id="part_type" name="part_type">
-                  <option value=" ">เลือกประเภทของอะไหล่</option>
-                @foreach ($part_type_info as $info)
-                  <option value={{$info->part_type}} >{{$info->part_type}}</option>
-                @endforeach  
-                </select>
-              </td>
-            </tr>
-
-            
-          </table>
-
-
-          
-
-          <!--วันผลิต-->
           <div class="form-group">
-            <label class="control-label col-sm-5" >วันผลิต</label>
-            <input type="date" name="m_day">
-          </div><br>
+            <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
+            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
 
-          <!--วันหมดอายุ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >วันหมดอายุ</label>
-            <input type="date" name="e_day">
-          </div>
+            <!-- <label for="adddepot"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button> -->
 
-
-          <!--ยี่ห้อ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >ยี่ห้อ</label>
-           <input type="text" name="brand">
-          </div>
-
-
-          <!--ราคา-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">ราคา</label>
-           <input type="text" name="price">
-          </div>
-
-          <!--จำนวน-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">จำนวน</label>
-           <input type="text" name="qauntity">
-          </div>
-
-          <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+            <!--add page: delete part_management-->
+            <!-- <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button> -->
           </div>
         </form>
       </div>
+           
+    <!--Second Container-->
+      <!--Table Detail-->
+        <div class="table-responsive">
+        <form action="delete_depot">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+          <table class="table">
+            <thead>
+              <tr>
+               <th>เลือก</th>
+                <th>รหัสศูนย์</th>
+                <th>จำนวนที่รับได้</th>
+                <th>ตำแหน่ง</th>
+                <th>ว่าง</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($depot_info as $info)
+              <tr>
+                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
+                <td>{{$info->id}}</td>
+                <td>{{$info->capacity}}</td>                
+                <td>{{$info->location_name}}</td>            
+                <td>{{$info->free_slot}}</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+          </form>
+          {{$depot_info->links()}}
+        </div>      
     </div>
 
     

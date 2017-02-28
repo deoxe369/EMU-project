@@ -12,11 +12,9 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-
 </head>
 
-<body data-spy="scroll" >
-
+<body data-spy="scroll">
 
   <!--Header-->
     <!-- Navbar -->
@@ -45,110 +43,102 @@
                 <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
-            <li class="active"><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
-            <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
+            <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
+            <li class="active"><a href='../car_management'>จัดการตู้รถไฟ</a></li>
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    
 
   <!--Content-->
-    <div class="container-fluid">
+  <div class="container-fluid">    
     <!--First Container-->
-      <div>
-        <form class="form-inline" action="search">
-          <div class="form-group">
-            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
-            <input type="text" name="trainsetno">
-          </div>
+    <form class="form-inline" action="search_cars">
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
-            <select id="trsettype" name="trsettype">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
+            <select id="cars_type" name="cars_type">
+              <option value='not'>ประเภท</option> 
+              <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
+              <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
+              <option value="logistic">ขนส่ง</option>
+                       
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
-            <select id="trstatus" name="trstatus">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-            </select>
+            <label for="cars_model"><h3 class="margin">โมเดล</h3></label>
+            <select id="cars_model" name="cars_model">
+              <option value='not'>โมเดล</option>           
+                 @foreach ($cars_model_info as $info)
+              <option value={{$info->model}}>{{$info->model}}</option>
+                @endforeach 
+            </select>   
           </div>
 
+          <div class="form-group">
+            <label for="status"><h3 class="margin">สถานะ</h3></label>
+            <select id="status" name="status">
+              <option value='not'>สถานะ</option> 
+                @foreach ($cars_status_info as $info)
+              <option value={{$info->status}}>{{$info->status}}</option>
+                @endforeach 
+            </select>
+          </div>
+          
           <div class="form-group">
             <label for="search"><h3 class="margin">&nbsp</h3></label>
-            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
+<!-- 
+            <label for="addcar"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
 
-            <label for="addtr"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
-
-            <!--add page: delete trainset_management-->
-            <label for="deltr"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../delete_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button>
+             add page: delete trainset_management
+            <label for="delcar"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../delete_car_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button> -->
           </div>
-        </form>
-          
-      </div>
+    </form>
+  </div>  
+
 
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
+         <form action="delete_cars">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสชุดรถไฟ</th>
+              <th>เลือก</th>
+                <th>รหัสตู้รถไฟ</th>
+                <th>โมเดล</th>
                 <th>ชนิด</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+               
               </tr>
             </thead>
             <tbody>
-            <tr>
-               @foreach ($trainset_info as $info)
-                <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
+            @foreach ($cars_info as $info)
+              <tr>
+              <td><input type="checkbox" name='choose' value={{$info->id}}></td>
+                <td>{{$info->id}}</td>
+                <td>{{$info->model}}</td>                
+                <td>{{$info->cars_type}}</td>            
                 <td>{{$info->status}}</td>
-                <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
-              </tr>
-
-               <script type="text/javascript">
-               
-                var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
                 
-                 
-                 switch(trtype){
-                  case "trcar3":  
-                  document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
-                  
-                    break;
-                   case "trcar4": 
-                   document.getElementById("{{$info->train_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
-                   
-                   break;
-                 }
-              
-              </script>
+              </tr>
               @endforeach
-
-              
-           
             </tbody>
           </table>
+          {{$cars_info->links()}} 
         </div>      
     </div>
 
-
-   
+    
   <!--Footer-->
+
 </body>
 </html>
+

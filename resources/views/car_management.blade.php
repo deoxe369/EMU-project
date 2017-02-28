@@ -97,7 +97,7 @@
 
              <!--add page: delete trainset_management-->
             <label for="delcar"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_car_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
+            <button formaction="delete_cars_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
           </div>
     </form>
   </div>  
