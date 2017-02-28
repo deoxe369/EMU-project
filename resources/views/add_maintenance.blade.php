@@ -59,8 +59,16 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลใบเข้าซ่อม</h1>
-        <form class="form-horizontal" action="/add_maintenance">
-          <!--No.Maintenance-->
+
+        <!--Form Add-->
+        <form class="form-horizontal" action="/add_maintenance" name="chktrset" onsubmit="return maintenance()">
+          <!-- New Structure: Table  -->
+          <table class="table_add" align="center">
+
+
+
+            
+          </table>
         
           <!--No.Train Set-->
           <div class="form-group">
@@ -96,7 +104,7 @@
           <!--Enter DateTime-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="date"  name="endate">
+            <input type="date"  name="endate" value=" ">
           </div>
 
           <!--Leave DateTime-->

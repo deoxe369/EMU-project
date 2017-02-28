@@ -80,10 +80,10 @@
   }
 
   .nav-brand:hover{
-      color: #ffffff !important;
+      color: #000000 !important;
       font-weight: bolder;
       font-size: 24px !important;
-      text-shadow: 3px 3px #ff6f00 !important;
+      /*text-shadow: 3px 3px #ff6f00 !important;*/
   }
   
 

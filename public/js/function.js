@@ -127,5 +127,18 @@
   }
 
 
+   /************************************* Add Part Management **************************************/
+   function part(){
+    var parttype = document.chkpart.part_type.value;
+    var status = false;
 
-    
+    if (parttype == " ") {
+      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกประเภทของอะไหล่";
+      return false;
+    }else{
+      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/check.png'>";
+      return true;
+    }
+
+    return status;
+   }

@@ -1,11 +1,11 @@
-input[type=text], input[type=number], select {
+input[type=text], input[type=number], input[type=date], select {
     padding: 5px 18px;
     margin: 15px 0px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    text-align: center; 
+    text-align: center;
 }
 
 /*select option:hover{
