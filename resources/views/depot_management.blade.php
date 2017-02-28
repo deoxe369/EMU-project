@@ -93,7 +93,7 @@
                 <td>{{$info->capacity}}</td>                
                 <td>{{$info->location_name}}</td>            
                 <td>{{$info->free_slot}}</td>
-                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach
             </tbody>

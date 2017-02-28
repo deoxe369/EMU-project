@@ -58,7 +58,7 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>แก้ไขข้อมูลอะไหล่ </center></h1>
+        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลอะไหล่</h1>
         <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save">
          
           <div class="form-group">

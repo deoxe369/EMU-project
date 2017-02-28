@@ -1,11 +1,17 @@
-input[type=text], select {
-    padding: 10px 18px;
-    margin: 8px 0;
+input[type=text], input[type=number], select {
+    padding: 5px 18px;
+    margin: 15px 0px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    text-align: center; 
 }
+
+/*select option:hover{
+  color: #f4511e!important; 
+}*/
+
 
 input[type=submit] {
     background-color: #f4511e;
@@ -155,16 +161,23 @@ input[type=submit]:hover {
   }
 
   .table-add{
-    text-align: left;
-    width: 85%;
+    width: 80%
     padding: 5px;
   }
 
   .td-add{
     padding-right: 10px;
-    width: 30%;
+    text-align: right;
+    width: 40%;
   }
 
   .tr-add{
-    padding-top: 10px;
+    padding-top: 10px !important;
+  }
+
+  span.checkform{
+    margin-bottom: 15px;
+    color: #FF6F00;
+    font-size: 16px;
+    font-weight: bold;
   }

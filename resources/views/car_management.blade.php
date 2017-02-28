@@ -55,7 +55,8 @@
   <!--Content-->
   <div class="container-fluid">    
     <!--First Container-->
-    <form class="form-inline" action="search_cars">
+    <div>
+      <form class="form-inline" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
@@ -99,8 +100,8 @@
             <label for="delcar"><h3 class="margin">&nbsp</h3></label>
             <button formaction="delete_cars_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
           </div>
-    </form>
-  </div>  
+      </form>
+    </div>
 
 
     <!--Second Container-->
@@ -123,15 +124,14 @@
                 <td>{{$info->model}}</td>                
                 <td>{{$info->cars_type}}</td>            
                 <td>{{$info->status}}</td>
-                <td><a href='/edit_cars_management/{{$info->id}}'><img src="image/edit_orange.png" onmouseover="this.src='image/edit_yellow.png'" onmouseout="this.src='image/edit_orange.png'"></a></td>
+                <td><a href='/edit_cars_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach
             </tbody>
           </table>
           {{$cars_info->links()}} 
         </div>      
-    </div>
-
+  </div>
     
   <!--Footer-->
 

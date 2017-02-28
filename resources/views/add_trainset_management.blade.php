@@ -9,8 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
-
- 
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
@@ -61,23 +59,28 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลชุดรถไฟ</center></h1>
+        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลชุดรถไฟ</h1>
 
         <!--Form Add-->
-        <form class="form-horizontal" action="add_trainset">
+        <form class="form-horizontal" action="add_trainset" name="chktrset" onsubmit="return trset()">
           <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
+          <table class="table-add" align="center">
 
             <!--No.Trian Set-->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
-              <!--Choose No.Train Set-->
-              <td><input type="text" name="trainsetno"></td>
+              <td class="col-sm-1"><span></span></td>
+              <!--Input No.Train Set-->
+              <td>
+                <input type="text" name="trainsetno">              
+                <span id="chktrset_no" class="checkform"></span>
+              </td>
             </tr>
 
             <!--Trainset Type-->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
                 <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
@@ -87,57 +90,73 @@
             <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
                   <option value="trtrolley">รถรางโยก</option> -->
                 </select>
+                <span id="chktrset_type" class="checkform"></span>
               </td>
             </tr>
 
             <!--Composition-->
             <tr class="tr-add">
               <td class="td-add"><label for="composition">composition</label></td>
+              <td class="col-sm-1"><span></span></td>
+
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
-                <p>CHOOSE COMPOSITION</p>         
+                <p style="margin-left: 15px;">เลือก COMPOSITION</p>
+                <span id="chktrset_type" class="checkform"></span>         
               </td>
+
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
                 <select id="comtrcar3_1" name="comtrcar3_1">
+                  <option value=" "></option>
                  @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar3_2" name="comtrcar3_2">
+                <select id="comtrcar3_2" name="comtrcar3_2">                
+                  <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar3_3" name="comtrcar3_3">
+                  <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                   @endforeach
                 </select>
+                <span id="chkcomtrcar3" class="checkform"></span>
               </td>
+
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
-                <select id="comtrcar4_1" name="comtrcar4_1">
+                <select id="comtrcar4_1" name="comtrcar4_1">                  
+                  <option value=" "></option>
                   @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
                 <select id="comtrcar4_2" name="comtrcar4_2">
+                  <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
                 <select id="comtrcar4_3" name="comtrcar4_3">
+                  <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
                 <select id="comtrcar4_4" name="comtrcar4_4">
+                  <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
+                <span id="chkcomtrcar4" class="checkform"></span>
               </td>
+
               <!--Composition TrainsetGoods Don't done-->
               <!-- <td id="comtrgoods" style="display: none;">
                 <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
@@ -145,6 +164,7 @@
               <!--Composition Trainset Trolley-->
               <!-- <td id="comtrtrolley" style="display: none;">
                 <select id="comtrtroll">
+                  <option value=" "></option>
                   <option value="comtrtroll_1">comtroll1</option>
                   <option value="comtrtroll_2">comtroll2</option>
                   <option value="comtrtroll_3">comtroll3</option>
@@ -158,7 +178,7 @@
           <!--Button Save & Cancel-->
           <div class="col-sm-offset-5 col-sm-5">
             <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-            <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>     
 
         </form>       

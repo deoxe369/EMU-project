@@ -57,13 +57,13 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลตู้รถไฟ</center></h1>
+        <h1 class="margin" style="text-align: center;"><center>แก้ไขข้อมูลตู้รถไฟ</center></h1>
         <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save">
          
 
           <!--Model-->
           <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_model" >Model</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <label class="control-label col-sm-5" for="cars_model" >โมเดล</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <input type="text" name="cars_model" value={{$origin_info[0]->model}}>
           </div>
 

@@ -12,6 +12,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
 </head>
 
 <body data-spy="scroll">
@@ -58,45 +59,70 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin"><center>เพิ่มข้อมูลตู้รถไฟ</center></h1>
-        <form class="form-horizontal" action="add_cars">
-         
+        <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลตู้รถไฟ</h1>
 
-          <!--Model-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_model">โมเดล</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_model">
-          </div>
+        <!-- Form -->
+        <form class="form-horizontal" action="add_cars" name="chkcar" onsubmit="return cars()">
 
-          <!--Type-->
-          <div class="form-group margin">
-             <label class="control-label col-sm-5" for="cars_type">ชนิดของตู้รถไฟ</label>
-             <select class="col-sm-offset-2 col-sm-3" id="cars_type" name="cars_type">
-              <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
-              <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
-              <option value="logistic">ขนส่ง</option>
-              </select>
-          </div>
+          <!-- New Structure: Table -->
+          <table class="table-add" align="center">
 
+            <!-- Cars Model -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_model">โมเดล</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Car Model -->
+              <td>
+                <input type="text" name="cars_model">
+                <span id="chkcars_model" class="checkform"></span>
+              </td>
+            </tr>
 
-          <!--Price-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_price" >ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_price">
-          </div>
+            <!-- Type -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_type">ชนิดของตู้รถไฟ</td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Cars Type -->
+              <td>
+                <select id="cars_type" name="cars_type">
+                  <option value=" ">เลือกชนิดของตู้รถไฟ</option>
+                  <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
+                  <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
+                  <option value="logistic">ขนส่ง</option>
+                </select>
+                <span id="chkcars_type" class="checkform"></span>
+              </td>
+            </tr>
 
-          <!--Price-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_qty" >จำนวน</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_qty">
-          </div>
+            <!--Price-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_price">ราคา</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Cars Price -->
+              <td>
+                <input type="number" name="cars_price">
+                <span id="chkcars_price" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- Quantity -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_qty">จำนวน</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <td>
+                <input type="number" name="cars_qty">            
+                <span id="chkcars_qty" class="checkform"></span>
+              </td>
+            </tr>
+        
+          </table>
+
+          <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../car_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
       </div>
