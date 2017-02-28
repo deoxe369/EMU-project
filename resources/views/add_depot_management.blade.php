@@ -4,14 +4,23 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
   <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/SansationLight/font.css') }}">
+
+  <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
 </head>
 
 <body data-spy="scroll">

@@ -4,11 +4,19 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
   <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/SansationLight/font.css') }}">
+
+  <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
@@ -71,8 +79,9 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Part Type -->
               <td>
-                <select id="part_type" name="part_type">
+                <select id="part_type" name="part_type" class="sel">
                   <option value=" ">เลือกประเภทของอะไหล่</option>
+                  <option value="window">กระจก</option>
                 @foreach ($part_type_info as $info)
                   <option value={{$info->part_type}} >{{$info->part_type}}</option>
                 @endforeach  
@@ -108,6 +117,7 @@
               <!-- Input Part Brand -->
               <td>
                 <input type="text" name="brand">
+                <span id="chkpart_brand" class="checkform"></span>
               </td>
             </tr>
 
@@ -118,6 +128,7 @@
               <!-- Input Part Price -->
               <td>
                 <input type="number" name="price">
+                <span id="chkpart_price" class="checkform"></span>
               </td>
             </tr>
 
@@ -128,9 +139,12 @@
               <!-- Input Part Qauntity -->
               <td>
                 <input type="number" name="qauntity">
+                <span id="chkpart_qty" class="checkform"></span>
               </td>
             </tr>
           </table>
+
+          <br>
 
           <!--Button Save & Cancel-->
           <div class="col-sm-offset-5 col-sm-5">

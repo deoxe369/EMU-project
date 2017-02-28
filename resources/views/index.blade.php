@@ -4,14 +4,23 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
   <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/SansationLight/font.css') }}">
+
+  <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
 </head>
 
 <body data-spy="scroll">
@@ -57,7 +66,7 @@
     <!--First Container-->
     <div class="container-fluid text-left">
       <!--Date Current-->
-      <div class="row col-md-12">
+      <div class="row col-md-12 margin">
         <h1 id="datenow" class="margin"></h1>
         <script type="text/javascript">
           now = new Date();
@@ -69,12 +78,12 @@
       </div>
 
       <!--Search Form-->
-      <div class="row col-md-12">
+      <div class="row col-md-12 margin">
         <form>
           <!--Date-->
           <div class="form-group">
             <label for="date"><h3 class="margin">วันที่</h3></label>
-            <select id="date" name="date">
+            <select id="date" name="date" class="sel sel-1">
               <option value="1">1</option>
               <option value="10">10</option>
               <option value="20">20</option>
@@ -83,7 +92,7 @@
             </select>            
           
             <label for="month"><h3 class="margin">เดือน</h3></label>
-            <select id="month" name="month">
+            <select id="month" name="month" class="sel sel-2">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
               <option value="มีนาคม">มีนาคม</option>
@@ -92,7 +101,7 @@
             </select>            
           
             <label for="year"><h3 class="margin">พ.ศ.</h3></label>
-            <select id="year" name="year">
+            <select id="year" name="year" class="sel sel-2">
               <option value="2555">2555</option>
               <option value="2556">2556</option>
               <option value="2557">2557</option>
@@ -101,7 +110,7 @@
             </select>   
 
             <label for="originstate"><h3 class="margin">สถานีต้นทาง</h3></label>
-            <select id="originstate" name="originstate">
+            <select id="originstate" name="originstate" class="sel sel-2">
               <option value="ลำชี">ลำชี</option>
               <option value="ชุมทางแก่งคอย">ชุมทางแก่งคอย</option>
               <option value="กรุงเทพ">กรุงเทพ</option>
@@ -112,7 +121,7 @@
             </select> 
 
             <label for="destinationstate"><h3 class="margin">สถานีปลายทาง</h3></label>
-            <select id="destinationstate" name="destinationstate">
+            <select id="destinationstate" name="destinationstate" class="sel sel-2">
               <option value="ลำชี">ลำชี</option>
               <option value="ชุมทางแก่งคอย">ชุมทางแก่งคอย</option>
               <option value="กรุงเทพ">กรุงเทพ</option>

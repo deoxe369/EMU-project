@@ -106,7 +106,7 @@
     if (carsprice == "") {
       document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
       status = false;
-    }else if (carsprice < 0 ) {
+    }else if (carsprice < 0) {
       document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
       status = false;
     }else{
@@ -116,7 +116,7 @@
     if (carsqty == "") {
       document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
       status = false;
-    }else if (carsqty < 0 ) {
+    }else if (carsqty < 0) {
       document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
@@ -130,15 +130,35 @@
    /************************************* Add Part Management **************************************/
    function part(){
     var parttype = document.chkpart.part_type.value;
+    var partbrand = document.chkpart.brand.value;
+    var partprice = document.chkpart.price.value;
+    var partqty = document.chkpart.qauntity.value;
     var status = false;
+
+    if (partbrand == "") {
+      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/check.png'>";
+      status = true;
+    }
+
+    if (partprice == "") {
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      status = false;
+    }else if (partprice < 0) {
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      status = false;
+    }else{
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
 
     if (parttype == " ") {
       document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกประเภทของอะไหล่";
       return false;
     }else{
       document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/check.png'>";
-      return true;
     }
 
-    return status;
-   }
+      return status;
+  }
