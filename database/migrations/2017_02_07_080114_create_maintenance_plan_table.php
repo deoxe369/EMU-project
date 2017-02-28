@@ -20,6 +20,7 @@ class CreateMaintenancePlanTable extends Migration
             $table->integer('level');
             $table->date('in_date');
             $table->date('out_date')->nullable();
+            $table->string('checklist')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -56,7 +56,7 @@ class MaintenanceController extends Controller
 	}
 	public function maintenance_info()
     {
-    	$maintenance_info = DB::table('maintenance')->get();
+    	$maintenance_info = DB::table('maintenance')->whereNull('deleted_at')->get();
     	 
     	return View::make('maintenance')->with('maintenance_info',$maintenance_info);
     }

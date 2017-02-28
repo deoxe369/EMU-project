@@ -21,8 +21,8 @@ class CreatePartTable extends Migration
             $table->string('brand');
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);
-            $table->integer('maintainance_id')->default(0);
-            $table->integer('cars_id')->default(0);
+            $table->integer('maintainance_id')->nullable();
+            $table->integer('cars_id')->nullable();
             $table->decimal('price',15,2);
             $table->string('status')->default('ใช้ได้');
             $table->timestamps();

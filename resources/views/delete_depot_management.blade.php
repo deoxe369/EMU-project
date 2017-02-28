@@ -63,12 +63,12 @@
             <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
 
-            <label for="adddepot"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
+            <!-- <label for="adddepot"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button> -->
 
             <!--add page: delete part_management-->
-            <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../delete_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
+            <!-- <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button> -->
           </div>
         </form>
       </div>
@@ -76,28 +76,31 @@
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
+        <form action="delete_depot">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
+               <th>เลือก</th>
                 <th>รหัสศูนย์</th>
                 <th>จำนวนที่รับได้</th>
                 <th>ตำแหน่ง</th>
                 <th>ว่าง</th>
-                <th style="color: #f4511e;">แก้ไข</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($depot_info as $info)
               <tr>
+                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
                 <td>{{$info->id}}</td>
                 <td>{{$info->capacity}}</td>                
                 <td>{{$info->location_name}}</td>            
                 <td>{{$info->free_slot}}</td>
-                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach
             </tbody>
           </table>
+          </form>
           {{$depot_info->links()}}
         </div>      
     </div>

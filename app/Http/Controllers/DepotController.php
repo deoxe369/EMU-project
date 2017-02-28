@@ -20,9 +20,16 @@ class DepotController extends Controller
 
     public function depot_info()
     {
-    	$depot_info = DB::table('depot')->paginate(15);
+    	$depot_info = DB::table('depot')->whereNull('deleted_at')->paginate(15);
     	 
     	return View::make('depot_management', array('depot_info' => $depot_info));
+    }
+
+    public function depot_info1()
+    {
+        $depot_info = DB::table('depot')->whereNull('deleted_at')->paginate(15);
+         
+        return View::make('delete_depot_management', array('depot_info' => $depot_info));
     }
 
     public function edit($id)
@@ -41,4 +48,21 @@ class DepotController extends Controller
     	 return Redirect::action('DepotController@depot_info');	
     	     
 	}
+
+
+    public function delete(Request $info)
+    {
+    
+        $input  = explode('&', $info->server->get('QUERY_STRING'));
+        $all_id = array();
+
+        foreach ($input as $id) {
+
+            $id1 = substr($id,7);
+            DB::table('depot')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+           
+        }
+        
+              return Redirect::action('DepotController@depot_info');
+    }
 }

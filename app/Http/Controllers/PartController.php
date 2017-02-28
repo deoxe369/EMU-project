@@ -25,7 +25,7 @@ class PartController extends Controller
 
     public function part_info()
     {
-    	$part_info = DB::table('part')->paginate(15);
+    	$part_info = DB::table('part')->whereNull('deleted_at')->paginate(15);
 
         $part_type_info = DB::table('part_type')->select('part_type')->get();
 
@@ -34,6 +34,21 @@ class PartController extends Controller
         $part_cars_info = DB::table('part')->select('cars_id')->distinct()->get();
     	 
     	return View::make('part_management')->with('part_info',$part_info)
+        ->with('part_type_info',$part_type_info)->with('part_brand_info',$part_brand_info)->with('part_cars_info',$part_cars_info);
+        // return $part_cars_info;
+    }
+
+    public function part_info1()
+    {
+        $part_info = DB::table('part')->whereNull('deleted_at')->paginate(15);
+
+        $part_type_info = DB::table('part_type')->select('part_type')->get();
+
+        $part_brand_info = DB::table('part')->select('brand')->distinct()->get();
+
+        $part_cars_info = DB::table('part')->select('cars_id')->distinct()->get();
+         
+        return View::make('delete_part_management')->with('part_info',$part_info)
         ->with('part_type_info',$part_type_info)->with('part_brand_info',$part_brand_info)->with('part_cars_info',$part_cars_info);
         // return $part_cars_info;
     }
@@ -123,5 +138,22 @@ class PartController extends Controller
             ->with('part_type_info',$part_type_info)->with('part_brand_info',$part_brand_info)
             ->with('part_cars_info',$part_cars_info);
         // return 'krikri';
+    }
+
+
+     public function delete(Request $info)
+    {
+    
+        $input  = explode('&', $info->server->get('QUERY_STRING'));
+        $all_id = array();
+
+        foreach ($input as $id) {
+
+            $id1 = substr($id,7);
+            DB::table('part')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+           
+        }
+        
+              return Redirect::action('PartController@part_info');
     }
 }

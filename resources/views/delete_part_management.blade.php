@@ -92,12 +92,12 @@
             <label for="search"><h3 class="margin">&nbsp</h3></label>    
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button>
 
-            <label for="addpart"><h3 class="margin">&nbsp</h3></label>
+            <!-- <label for="addpart"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_part_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button>
-
+ -->
             <!--add page: delete part_management-->
-            <label for="delpart"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../delete_part_management" class="btn-del" style="vertical-align: middle"><span>ลบอะไหล่</span></button>
+            <!-- <label for="delpart"><h3 class="margin">&nbsp</h3></label>
+            <button formaction="../add_part_management" class="btn-del" style="vertical-align: middle"><span>ลบอะไหล่</span></button> -->
           </div>
          </form>
         </div>
@@ -105,9 +105,12 @@
     <!--Second Container-->
       <!--Table Detail-->
         <div class="table-responsive">
+        <form action="delete_part">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
+              <th>เลือก</th>
                 <th>รหัสอะไหล่</th>
                 <th>ประเภท</th>
                 <th>ยี่ห้อ</th>
@@ -115,12 +118,13 @@
                 <th>ระยะทางสะสม</th>
                 <th>Cars ID</th>
                 <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                
               </tr>
             </thead>
             <tbody>
             @foreach ($part_info as $info)
               <tr>
+               <td><input type="checkbox" name='choose' value={{$info->id}}></td>
                 <td>{{$info->id}}</td>
                 <td>{{$info->part_type}}</td>
                 <td>{{$info->brand}}</td>                   
@@ -128,13 +132,13 @@
                 <td>{{$info->total_time}}</td>
                 <td>{{$info->cars_id}}</td>            
                 <td>{{$info->status}}</td>         
-                <td><a href='../edit_part_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach
 
             </tbody>
 
           </table>
+          </form>
            {{$part_info->links()}}
         </div>      
     </div>
