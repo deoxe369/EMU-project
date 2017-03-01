@@ -1,16 +1,29 @@
-input[type=text], input[type=number], select {
+input[type=text], input[type=number], input[type=date], select.sel {
     padding: 5px 18px;
     margin: 15px 0px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    text-align: center; 
+    text-align: center;
+    width: 250px;
 }
 
 /*select option:hover{
   color: #f4511e!important; 
 }*/
+
+
+label{font-size: 24px;}
+
+.sel-1{
+  width: 80px !important;
+  margin-right: 10px !important;
+}
+
+.sel-2{
+  width: 150px !important;
+}
 
 
 input[type=submit] {
@@ -37,8 +50,8 @@ input[type=submit]:hover {
     border: none;
     color: #ffffff;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 25px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -80,8 +93,8 @@ input[type=submit]:hover {
     border: none;
     color: #ffffff;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 25px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -123,8 +136,8 @@ input[type=submit]:hover {
     border: none;
     color: #ffffff;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -178,6 +191,6 @@ input[type=submit]:hover {
   span.checkform{
     margin-bottom: 15px;
     color: #FF6F00;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
   }

@@ -1,13 +1,18 @@
   body {
-      font: 20px "Trirong", serif;
+      font: 22px 'quarklight','Trirong', serif;
       line-height: 1.8;
       color: #333;
   }
+
+  h1{font-size: 50px;}
+
+  h3{font-size: 30px;}
+
   p { font-size: 18px;}
 
   .margin {
-      margin-bottom: 45px;
-      margin-left: : 45px;
+      margin: auto;
+      padding-bottom: 10px;
   }
 
   /*Background*/
@@ -48,7 +53,7 @@
       border: 0;
       border-radius: 0;
       margin-bottom: 0;
-      font-size: 13px;
+      font-size: 18px;
       letter-spacing: 2px;
       padding: 10px;
       cursor: pointer;
@@ -73,6 +78,7 @@
   }
 
   .nav-brand{
+      font-family: 'SansationLight';
       color: #ff6f00 !important;
       font-weight: bolder;
       font-size: 24px !important;
@@ -80,10 +86,10 @@
   }
 
   .nav-brand:hover{
-      color: #ffffff !important;
+      color: #000000 !important;
       font-weight: bolder;
       font-size: 24px !important;
-      text-shadow: 3px 3px #ff6f00 !important;
+      /*text-shadow: 3px 3px #ff6f00 !important;*/
   }
   
 
@@ -94,6 +100,7 @@
   }
 
   .dropdown-menu{
+    font-size: 16px;
     display: none;
     position: absolute;
     border: none;
