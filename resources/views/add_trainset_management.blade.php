@@ -4,11 +4,19 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CSS -->
   <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
   <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/SansationLight/font.css') }}">
+
+  <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
@@ -79,12 +87,12 @@
 
             <!--Trainset Type-->
             <tr class="tr-add">
-              <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <td class="td-add"><label for="trtype">ประเภท</label></td>
               <td class="col-sm-1"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
-                <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
-                  <option value=" ">เลือกชนิดของชุดรถไฟ</option>
+                <select id="trtype" name="trtype" onchange="comtrdisplay(this)" class="sel">
+                  <option value=" ">เลือกประเภทของชุดรถไฟ</option>
                   <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
                   <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
             <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
@@ -101,25 +109,25 @@
 
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
-                <p style="margin-left: 15px;">เลือก COMPOSITION</p>
+                <p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p>
                 <span id="chktrset_type" class="checkform"></span>         
               </td>
 
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
-                <select id="comtrcar3_1" name="comtrcar3_1">
+                <select id="comtrcar3_1" name="comtrcar3_1" class="sel sel-1">
                   <option value=" "></option>
                  @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar3_2" name="comtrcar3_2">                
+                <select id="comtrcar3_2" name="comtrcar3_2" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar3_3" name="comtrcar3_3">
+                <select id="comtrcar3_3" name="comtrcar3_3" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
@@ -130,25 +138,25 @@
 
               <!--Composition TransetCar 4-->
               <td id="comtrcar4" style="display: none;">
-                <select id="comtrcar4_1" name="comtrcar4_1">                  
+                <select id="comtrcar4_1" name="comtrcar4_1" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar4_2" name="comtrcar4_2">
+                <select id="comtrcar4_2" name="comtrcar4_2" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
-                <select id="comtrcar4_3" name="comtrcar4_3">
+                <select id="comtrcar4_3" name="comtrcar4_3" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
-                <select id="comtrcar4_4" name="comtrcar4_4">
+                <select id="comtrcar4_4" name="comtrcar4_4" class="sel sel-1">
                   <option value=" "></option>
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>

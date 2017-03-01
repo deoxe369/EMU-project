@@ -44,6 +44,38 @@
   }
 
   /************************************* Add Trainset Management **************************************/
+  function maint(){
+    var mainttrno = document.chkmaint.trainsetno.value;
+    var maintdepno = document.chkmaint.depotno.value;
+    var maintendate = document.chkmaint.endate.value;
+    var status = false;
+
+    if (maintendate == "") {
+      document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
+      status = false;
+    }else{
+      document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/check.png'>";
+      status = true;
+    }
+
+    if (mainttrno == " ") {
+      document.getElementById("chkmaint_trsetno").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      status = false;
+    }else{
+      document.getElementById("chkmaint_trsetno").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
+
+    if (maintdepno == " ") {
+      document.getElementById("chkmaint_depotno").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      status = false;
+    }else{
+      document.getElementById("chkmaint_depotno").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
+
+    return status;
+  }
+
+  /************************************* Add Trainset Management **************************************/
   function trset(){
     var trsetno = document.chktrset.trainsetno.value;
     var trsettype = document.chktrset.trtype.value;
@@ -106,7 +138,7 @@
     if (carsprice == "") {
       document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
       status = false;
-    }else if (carsprice < 0 ) {
+    }else if (carsprice < 0) {
       document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
       status = false;
     }else{
@@ -116,7 +148,7 @@
     if (carsqty == "") {
       document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
       status = false;
-    }else if (carsqty < 0 ) {
+    }else if (carsqty < 0) {
       document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
@@ -127,5 +159,66 @@
   }
 
 
+   /************************************* Add Part Management **************************************/
+   function part(){
+    var parttype = document.chkpart.part_type.value;
+    var mday = document.chkpart.m_day.value;
+    var eday = document.chkpart.e_day.value;
+    var partbrand = document.chkpart.brand.value;
+    var partprice = document.chkpart.price.value;
+    var partqty = document.chkpart.qauntity.value;
+    var status = false;
 
-    
+    if (partbrand == "") {
+      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/check.png'>";
+      status = true;
+    }
+
+    if (mday == "") {
+      document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/check.png'>";
+      status = true;
+    }
+
+    if (eday == "") {
+      document.getElementById("chkpart_eday").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_eday").innerHTML = "<img src= 'image/icon/check.png'>";
+      status = true;
+    }
+
+    if (partprice == "") {
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      status = false;
+    }else if (partprice < 0) {
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      status = false;
+    }else{
+      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
+
+    if (partqty == "") {
+      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของอะไหล่";
+      status = false;
+    }else if (partqty < 0) {
+      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      status = false;
+    }else{
+      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
+
+    if (parttype == " ") {
+      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกประเภทของอะไหล่";
+      return false;
+    }else{
+      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/check.png'>";
+    }
+
+      return status;
+  }

@@ -4,11 +4,19 @@
   <title>EMU Utilization System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link href="{{ URL::asset('/css/bootstrap.css') }}" rel="stylesheet" >
   <link href="{{ URL::asset('/css/bootstrap-responsive.css') }}" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/SansationLight/font.css') }}">
+
+  <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
@@ -54,74 +62,96 @@
 
 
   <!--Content-->
-    <div class="container-fluid">    
+    <div class="container-fluid">
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลอะไหล่</h1>
 
         <!--Form Add-->
-        <form class="form-horizontal" action="add_part">
+        <form class="form-horizontal" action="add_part" name="chkpart" onsubmit="return part()">
           <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
+          <table class="table-add" align="center"> 
 
             <!--Part Type-->
             <tr class="tr-add">
               <td class="td-add"><label for="cdmodel">ประเภท</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Part Type -->
               <td>
-                <select id="part_type" name="part_type">
+                <select id="part_type" name="part_type" class="sel">
                   <option value=" ">เลือกประเภทของอะไหล่</option>
+                  <option value="window">กระจก</option>
                 @foreach ($part_type_info as $info)
                   <option value={{$info->part_type}} >{{$info->part_type}}</option>
                 @endforeach  
                 </select>
+                <span id="chkpart_type" class="checkform"></span>
               </td>
             </tr>
 
-            
+            <!-- วันผลิต -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="m_day">วันผลิต</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input วันผลิต -->
+              <td>
+                <input type="date" name="m_day">
+                <span id="chkpart_mday" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- วันหมดอายุ -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="e_day">วันหมดอายุ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input วันหมดอายุ -->
+              <td>
+                <input type="date" name="e_day">
+                <span id="chkpart_eday" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- ยี่ห้อ -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="brand">ยี่ห้อ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Part Brand -->
+              <td>
+                <input type="text" name="brand">
+                <span id="chkpart_brand" class="checkform"></span>
+              </td>
+            </tr>
+
+           <!--  ราคา -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="price">ราคา</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Part Price -->
+              <td>
+                <input type="number" name="price">
+                <span id="chkpart_price" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- จำนวน -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="qauntity">จำนวน</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Part Qauntity -->
+              <td>
+                <input type="number" name="qauntity">
+                <span id="chkpart_qty" class="checkform"></span>
+              </td>
+            </tr>
           </table>
 
-
-          
-
-          <!--วันผลิต-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" >วันผลิต</label>
-            <input type="date" name="m_day">
-          </div><br>
-
-          <!--วันหมดอายุ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >วันหมดอายุ</label>
-            <input type="date" name="e_day">
-          </div>
-
-
-          <!--ยี่ห้อ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" >ยี่ห้อ</label>
-           <input type="text" name="brand">
-          </div>
-
-
-          <!--ราคา-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">ราคา</label>
-           <input type="text" name="price">
-          </div>
-
-          <!--จำนวน-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5">จำนวน</label>
-           <input type="text" name="qauntity">
-          </div>
+          <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+          <div class="col-sm-offset-5 col-sm-5">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
       </div>
