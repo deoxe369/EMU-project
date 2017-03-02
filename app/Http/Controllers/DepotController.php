@@ -12,10 +12,10 @@ class DepotController extends Controller
 {
     public function add(Request $info1)
     {
-    	 DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at,level) values (?, ?, ?,?,?,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now(),$info1->depotlevel]);
+    	 DB::insert('insert into depot (capacity,free_slot, location_name,location,created_at,level) values (?, ?, ?, ?, ? ,?)', [ $info1->capacity,$info1->capacity, $info1->location_name,$info1->depotno,Carbon::now(),$info1->depotlevel]);
 
     	 return Redirect::action('DepotController@depot_info');	
-        // return $test;
+        // return $info1;
     }
 
     public function depot_info()
