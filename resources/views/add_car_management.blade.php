@@ -92,7 +92,7 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Cars Type -->
               <td>
-                <select id="cars_type" name="cars_type">
+                <select id="cars_type" name="cars_type" class="sel">
                   <option value=" ">เลือกชนิดของตู้รถไฟ</option>
                   <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
                   <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>

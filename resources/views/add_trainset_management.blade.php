@@ -133,7 +133,6 @@
                   <option value={{$info->id}}>{{$info->id}}</option>
                   @endforeach
                 </select>
-                <span id="chkcomtrcar3" class="checkform"></span>
               </td>
 
               <!--Composition TransetCar 4-->
@@ -162,9 +161,7 @@
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach
                 </select>
-                <span id="chkcomtrcar4" class="checkform"></span>
               </td>
-
               <!--Composition TrainsetGoods Don't done-->
               <!-- <td id="comtrgoods" style="display: none;">
                 <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
@@ -179,6 +176,12 @@
                 </select>         
               </td>    -->
             </tr>
+
+            <!-- Composition -->
+            <tr class="tr-add">
+              <td class="td-add"></td>
+              <td class="col-sm-1"><span></span></td>
+              <td><span id="chkcomtrcar" class="checkform"></span></td></tr>
           </table>
 
           <br>
