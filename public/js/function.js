@@ -222,3 +222,31 @@
 
       return status;
   }
+
+
+  /************************************* Add Depot Management **************************************/
+  
+  function depot(){
+    var depotcapacity = document.chkdepot.depot_capacity.value;
+    var depotlocname = document.chkdepot.depot_locname.value;
+    var status = false;
+
+    if (depotlocname == "") {
+      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      return false;
+    }else{
+      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
+      return true;
+    }  
+
+    if (depotcapacity == " ") {
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      return false;
+    }else{
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
+    } 
+
+    
+
+    return status;
+  }
