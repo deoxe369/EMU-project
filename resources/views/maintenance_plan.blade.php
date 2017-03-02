@@ -132,7 +132,7 @@
             <tbody>
             <tr>
                @foreach ($trainset_info as $info)
-                <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
+                <td><input type="checkbox" name="choose" class="sel-3" value={{$info->train_number}}></td>
                 <td>{{$info->train_number}}</td>
                 <td id="{{$info->train_number}}" >{{$info->type}}</td>        
                 <td>{{$info->total_distance}}</td>
