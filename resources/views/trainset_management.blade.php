@@ -95,14 +95,14 @@
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addtr"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="addtr"><h3 class="margin"><span></span></h3></label>
             <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
 
             <!--add page: delete trainset_management-->
-            <label for="deltr"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="deltr"><h3 class="margin"><span></span></h3></label>
             <button formaction="../delete_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button>
           </div>
         </form> 
