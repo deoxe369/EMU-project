@@ -92,7 +92,7 @@
               <!-- Choose Capacity -->
               <td>
                 <select id="capacity" name="capacity" class="sel">
-                  <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <option value="">เลือกจำนวนที่รับชุดรถไฟได้</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -112,7 +112,7 @@
               <!-- Choose Position -->
               <td>
                 <select id="depotno" name="depotno" class="sel">
-                  <option value=" ">เลืกตำแหน่งศูนย์ซ่อม</option>
+                  <option value="">เลืกตำแหน่งศูนย์ซ่อม</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -131,7 +131,7 @@
               <!-- Choose Level -->
               <td>
                 <select id="depotlevel" name="depotlevel" class="sel">
-                  <option value=" ">เลือกระดับการเข้าซ่อมบำรุง</option>
+                  <option value="">เลือกระดับการเข้าซ่อมบำรุง</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

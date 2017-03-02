@@ -188,6 +188,6 @@ class TrainSetController extends Controller
            
         }
             // return $id1;
-              return Redirect::action('TrainSetController@depot_info');
+              return Redirect::action('TrainSetController@trainset_info');
     }
 }

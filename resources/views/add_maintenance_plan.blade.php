@@ -64,37 +64,31 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div class="row col-md-12 margin">
+      <div>
         <form class="form-inline" action="search">
-
-
           <div class="form-group">
-            <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
-            <input type="text" name="trainsetno" class="sel-3">
+            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
+            <input type="text" name="trainsetno">
           </div>
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
-            <select id="trsettype" name="trsettype" class="sel sel-3">
-              <option value=" ">เลือกประเภทชุดรถไฟ</option>
-              <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
-              <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
-          <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
-                <option value="trtrolley">รถรางโยก</option> -->
+            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
+            <select id="trsettype" name="trsettype">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin label-padding">สถานะ</h3></label>
-            <select id="trstatus" name="trstatus" class="sel sel-3">
-              <option value=" ">เลือกสถานะชุดรถไฟ</option>
-              <option value="ไม่ว่าง">ไม่ว่าง</option>
-              <option value="ว่าง">ว่าง</option>
+            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
+            <select id="trstatus" name="trstatus">
+              <option value="มกราคม">มกราคม</option>
+              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="search"><h3 class="margin">&nbsp</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
             <!-- <label for="addtr"><h3 class="margin">&nbsp</h3></label>
@@ -110,54 +104,68 @@
 
     <!--Second Container-->
       <!--Table Detail-->
-
-       
-
-      <div class="row col-md-12 margin">
         <div class="table-responsive">
-           <form action="/add_maintenance_plan">
-              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+        <form action="/add_maintenance_plan/save">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
-                <th>เลือก</th>
+               <th></th>
                 <th>รหัสชุดรถไฟ</th>
-                <th>ประเภท</th>
+                <th>ชนิด</th>
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
+                <th>ตำแหน่งงปัจุบัน</th>
+                <th>ศูนย์ซ่อม</th>
+                <th>วันเข้าซ่อม</th>
+
                 <!-- <th style="color: #f4511e;">แก้ไข</th> -->
               </tr>
             </thead>
             <tbody>
             <tr>
                @foreach ($trainset_info as $info)
-                <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
+                <td><input type="checkbox" id="{{$info->train_number}}" checked name="trainsetno" value={{$info->train_number}} ></td>
+
+
+                <script type="text/javascript">
+                document.getElementById("{{$info->train_number}}").style.display = "none";
+              </script> 
+
+
                 <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
-                <td>{{$info->status}}</td>
-
-                <!-- <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td> -->
-              </tr>
-
-              <!-- JS change name cartype -->
+                <td id="{{$info->train_number}}" >{{$info->type}}</td>
+                <!-- JS change name cartype -->
               <script type="text/javascript">
                 var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
                 switch(trtype){
                   case "trcar3": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
                   case "trcar4": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
-              </script>
+              </script>        
+                <td>{{$info->total_distance}}</td>
+                <td>{{$info->total_time}}</td>                
+                <td>{{$info->status}}</td>
+                <td>{{$info->location_name}}</td>
+                <td><select class="sel" id="depot" name="depotno">
+                    @foreach ($depot_info as $info)
+                      <option value={{$info->id}}>{{$info->location_name}}</option>
+                    @endforeach 
+                    </select></td>
+                <td><input type="date"  name="endate"></td>
+                
+              </tr>
+
+              
               @endforeach
 
+              
+           
             </tbody>
           </table>
-
           </form>
         </div>      
-      </div>
     </div>
 
 

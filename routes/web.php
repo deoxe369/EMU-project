@@ -122,9 +122,9 @@ Route::get('/add_part_type1', 'PartController@add_part_type');
 
 
 // Maintenance plan ---------------------------------------->\
+Route::get('/add_maintenance_plan','MaintenanceController@add_plan');
 
-
-
+Route::get('/add_maintenance_plan/save','MaintenanceController@add_plan1');
 
 // Maintenance  ---------------------------------------->\
 
