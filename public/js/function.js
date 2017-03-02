@@ -1,6 +1,7 @@
   /*********************** Relation Between Train Set Type and Composition ***********************/
     function comtrdisplay(){
       var option = document.getElementById("trtype").value;
+
       if (option == " ") {
         document.getElementById("comtrchoose").style.display = "block";
         document.getElementById("comtrcar3").style.display = "none";
@@ -101,13 +102,46 @@
       status = true;
     }
 
+    // if (trsettype == " ") {
+    //   document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+    //   status = false;
+    // }else{
+    //   document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+    // }
+
     if (trsettype == " ") {
       document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
-    }else{
+    } else if (trsettype == "trcar3") {
+      if (comtrcar3_1 == " " || comtrcar3_2 == " " || comtrcar3_3 == " ") {
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
+        status = false;
+      } else if (comtrcar3_2 == comtrcar3_3) {
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟไม่ซ้ำกัน";
+        status = false;
+      } else{
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/check.png'>";
+      }
+    } else if (trsettype == "trcar4") {
+      if (comtrcar4_1 == " " || comtrcar4_2 == " " || comtrcar4_3 == " " || comtrcar4_4 == " ") {
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
+        status = false;
+      } else if (comtrcar4_2 == comtrcar4_3 || comtrcar4_3 == comtrcar4_4 || comtrcar4_2 == comtrcar4_4) {
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟไม่ซ้ำกัน";
+        status = false;
+      } else{
+        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
+        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/check.png'>";
+      }
+    } else{
       document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
     }
- 
+
     return status;
   }
 
@@ -221,4 +255,32 @@
     }
 
       return status;
+  }
+
+
+  /************************************* Add Depot Management **************************************/
+  
+  function depot(){
+    var depotcapacity = document.chkdepot.depot_capacity.value;
+    var depotlocname = document.chkdepot.depot_locname.value;
+    var status = false;
+
+    if (depotlocname == "") {
+      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      return false;
+    }else{
+      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
+      return true;
+    }  
+
+    if (depotcapacity == " ") {
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      return false;
+    }else{
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
+    } 
+
+    
+
+    return status;
   }
