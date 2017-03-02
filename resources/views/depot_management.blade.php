@@ -65,18 +65,18 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search_depot">
 
           <div class="form-group">
             <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
 
-            <label for="adddepot"><h3 class="margin">&nbsp</h3></label>
+            <label for="adddepot"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
 
             <!--add page: delete part_management-->
-            <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
+            <label for="deldepot"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../delete_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
           </div>
         </form>
@@ -84,6 +84,7 @@
            
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -108,7 +109,8 @@
             </tbody>
           </table>
           {{$depot_info->links()}}
-        </div>      
+        </div> 
+      </div>     
     </div>
 
     

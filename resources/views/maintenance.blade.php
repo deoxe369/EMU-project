@@ -64,41 +64,44 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search">
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin">รหัสชุดรถไฟ</h3></label>
-            <select id="trsettype" name="trsettype">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            <label for="trsettype"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
+            <select id="trsettype" name="trsettype" class="sel sel-3">
+              <option value=" ">เลือกรหัสชุดรถไฟ</option>
+              <option value="AAAA">AAAA</option>
+              <option value="BBBB">BBBB</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin">ศูนย์ซ่อม</h3></label>
-            <select id="trstatus" name="trstatus">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            <label for="trstatus"><h3 class="margin label-padding">ศูนย์ซ่อม</h3></label>
+            <select id="trstatus" name="trstatus" class="sel sel-3">
+              <option value=" ">เลือกศูนย์ซ่อมบำรุง</option>
+              <option value="มักกะสัน">มักกะสัน</option>
+              <option value="บางซื่อ">บางซี่อ</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addmaint"><h3 class="margin">&nbsp</h3></label>
+            <label for="addmaint"><h3 class="margin label-padding"></h3></label>
             <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
 
             <!--add page: delete maintenance_management-->
-            <label for="delmaint"><h3 class="margin">&nbsp</h3></label>
+            <label for="delmaint"><h3 class="margin label-padding"></h3></label>
             <button formaction="../add_maintenance_management" class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button>
           </div>
         </form>
-    </div>      
+      </div>
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -128,7 +131,8 @@
                @endforeach
             </tbody>
           </table>
-        </div>      
+        </div> 
+      </div>     
     </div>
 
     

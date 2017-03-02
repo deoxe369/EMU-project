@@ -82,7 +82,7 @@
         <form>
           <!--Date-->
           <div class="form-group">
-            <label for="date"><h3 class="margin">วันที่</h3></label>
+            <label for="date"><h3 class="margin label-padding1">วันที่</h3></label>
             <select id="date" name="date" class="sel sel-1">
               <option value="1">1</option>
               <option value="10">10</option>
@@ -91,7 +91,7 @@
               <option value="31">31</option>
             </select>            
           
-            <label for="month"><h3 class="margin">เดือน</h3></label>
+            <label for="month"><h3 class="margin label-padding1">เดือน</h3></label>
             <select id="month" name="month" class="sel sel-2">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
@@ -100,7 +100,7 @@
               <option value="พฤษภาคม">พฤษภาคม</option>
             </select>            
           
-            <label for="year"><h3 class="margin">พ.ศ.</h3></label>
+            <label for="year"><h3 class="margin label-padding1">พ.ศ.</h3></label>
             <select id="year" name="year" class="sel sel-2">
               <option value="2555">2555</option>
               <option value="2556">2556</option>
@@ -109,7 +109,7 @@
               <option value="2559">2559</option>
             </select>   
 
-            <label for="originstate"><h3 class="margin">สถานีต้นทาง</h3></label>
+            <label for="originstate"><h3 class="margin label-padding1">สถานีต้นทาง</h3></label>
             <select id="originstate" name="originstate" class="sel sel-2">
               <option value="ลำชี">ลำชี</option>
               <option value="ชุมทางแก่งคอย">ชุมทางแก่งคอย</option>
@@ -120,7 +120,7 @@
               <option value="อุบลราชธานี">อุบลราชธานี</option>
             </select> 
 
-            <label for="destinationstate"><h3 class="margin">สถานีปลายทาง</h3></label>
+            <label for="destinationstate"><h3 class="margin label-padding1">สถานีปลายทาง</h3></label>
             <select id="destinationstate" name="destinationstate" class="sel sel-2">
               <option value="ลำชี">ลำชี</option>
               <option value="ชุมทางแก่งคอย">ชุมทางแก่งคอย</option>
