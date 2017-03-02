@@ -266,122 +266,41 @@
     var depotlocname = document.chkdepot.location_name.value;
     var depotposition = document.chkdepot.depotno.value;
     var depotlv = document.chkdepot.depotlevel.value;
-    var status = false;
+    var status;
 
 
-
-    if (depotlocname == "" && depotcapacity == "" && depotposition == "" && depotlv == "") {
+    if (depotlocname == "") {
       document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity == "" && depotposition == "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    } else if (depotlocname == "" && depotcapacity != "" && depotposition == "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-    
-    } else if (depotlocname == "" && depotcapacity == "" && depotposition != "" && depotlv == ""){
-       document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-       document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-       document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-       document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-    
-    } else if (depotlocname == "" && depotcapacity == "" && depotposition == "" && depotlv != ""){
-       document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-       document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-       document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-       document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-
-    }else if (depotlocname != "" && depotcapacity != "" && depotposition == "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity == "" && depotposition != "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity == "" && depotposition == "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return false;
-
-    }else if (depotlocname == "" && depotcapacity != "" && depotposition != "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    }else if (depotlocname == "" && depotcapacity != "" && depotposition == "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return false;
-
-    }else if (depotlocname == "" && depotcapacity == "" && depotposition != "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity != "" && depotposition != "" && depotlv == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity != "" && depotposition == "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>"; 
-      return false;
-
-    }else if (depotlocname != "" && depotcapacity == "" && depotposition != "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return false;
-
-    }else if (depotlocname == "" && depotcapacity != "" && depotposition != "" && depotlv != "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return false;
-
+      status = false;
     }else{
       document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      return true;
-
+      status = true;
     }
-  
+
+    if (depotcapacity == "") {
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
+      status = false;
+    }else{
+      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
+     
+    }
+
+    if (depotposition == "") {
+      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      status = false;
+    }else{
+      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
+      
+    }
+
+    if (depotlv == "") {
+      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม"; 
+      status = false;
+    }else{
+      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
+      
+    }
+    
 
     return status;
   }
