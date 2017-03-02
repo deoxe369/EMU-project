@@ -66,52 +66,57 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search">
+
           <div class="form-group">
-            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
-            <input type="text" name="trainsetno">
+            <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
+            <input type="text" name="trainsetno" class="sel-3">
           </div>
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
-            <select id="trsettype" name="trsettype">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
+            <select id="trsettype" name="trsettype" class="sel sel-3">
+              <option value=" ">เลือกประเภทชุดรถไฟ</option>
+              <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
+              <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
+          <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
+                <option value="trtrolley">รถรางโยก</option> -->
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
-            <select id="trstatus" name="trstatus">
-              <option value="มกราคม">มกราคม</option>
-              <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+            <label for="trstatus"><h3 class="margin label-padding">สถานะ</h3></label>
+            <select id="trstatus" name="trstatus" class="sel sel-3">
+              <option value=" ">เลือกสถานะชุดรถไฟ</option>
+              <option value="ไม่ว่าง">ไม่ว่าง</option>
+              <option value="ว่าง">ว่าง</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addtr"><h3 class="margin">&nbsp</h3></label>
+            <label for="addtr"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button>
 
             <!--add page: delete trainset_management-->
-            <label for="deltr"><h3 class="margin">&nbsp</h3></label>
+            <label for="deltr"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../delete_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button>
           </div>
-        </form>
-          
+        </form> 
       </div>
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th>รหัสชุดรถไฟ</th>
-                <th>ชนิด</th>
+                <th>ประเภท</th>
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
@@ -129,12 +134,10 @@
                 <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
-               <script type="text/javascript">
-               
+               <script type="text/javascript">               
                 var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
-                
-                 
-                 switch(trtype){
+              
+                  switch(trtype){
                   case "trcar3":  
                   document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
                   
@@ -144,15 +147,14 @@
                    
                    break;
                  }
-              
+
               </script>
               @endforeach
 
-              
-           
             </tbody>
           </table>
-        </div>      
+        </div>   
+      </div>   
     </div>
 
 

@@ -62,13 +62,13 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search_part">
 
           <div class="form-group">
-            <label for="part_type"><h3 class="margin">ประเภท</h3></label>
-            <select id="part_type" name="part_type">          
-              <option value='not'>ประเภท</option> 
+            <label for="part_type"><h3 class="margin label-padding">ประเภท</h3></label>
+            <select id="part_type" name="part_type" class="sel sel-3">          
+              <option value='not'>ประเภทอะไหล่</option> 
                 @foreach ($part_type_info as $info)
               <option value={{$info->part_type}}>{{$info->part_type}}</option>
                 @endforeach          
@@ -76,9 +76,9 @@
           </div>
 
           <div class="form-group">
-            <label for="brand"><h3 class="margin">ยี่ห้อ</h3></label>
-            <select id="brand" name="brand">
-              <option value='not'>ยี่ห้อ</option>           
+            <label for="brand"><h3 class="margin label-padding">ยี่ห้อ</h3></label>
+            <select id="brand" name="brand" class="sel sel-3">
+              <option value='not'>เลือกยี่ห้ออะไหล่</option>           
                 @foreach ($part_brand_info as $info)
               <option value={{$info->brand}}>{{$info->brand}}</option>
                 @endforeach 
@@ -86,8 +86,8 @@
           </div>
 
           <div class="form-group">
-            <label for="part_cars_id"><h3 class="margin">รหัสตู้รถไฟ</h3></label>
-            <select id="part_cars_id" name="part_cars_id">
+            <label for="part_cars_id"><h3 class="margin label-padding">รหัสตู้รถไฟ</h3></label>
+            <select id="part_cars_id" name="part_cars_id" class="sel sel-3">
               <option value='not'>Car ID</option> 
                 @foreach ($part_cars_info as $info)
               <option value={{$info->cars_id}}>{{$info->cars_id}}</option>
@@ -96,21 +96,22 @@
           </div>
           
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>    
+            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>    
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button>
 
-            <label for="addpart"><h3 class="margin">&nbsp</h3></label>
+            <label for="addpart"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../add_part_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มอะไหล่</span></button>
 
             <!--add page: delete part_management-->
-            <label for="delpart"><h3 class="margin">&nbsp</h3></label>
+            <label for="delpart"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../delete_part_management" class="btn-del" style="vertical-align: middle"><span>ลบอะไหล่</span></button>
           </div>
-         </form>
-        </div>
+        </form>
+      </div>
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -143,7 +144,8 @@
 
           </table>
            {{$part_info->links()}}
-        </div>      
+        </div> 
+      </div>     
     </div>
 
 </body>

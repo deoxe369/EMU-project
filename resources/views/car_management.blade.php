@@ -64,13 +64,13 @@
   <!--Content-->
   <div class="container-fluid">    
     <!--First Container-->
-    <div>
+    <div class="row col-md-12 margin">
       <form class="form-inline" action="search_cars">
 
           <div class="form-group">
-            <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
-            <select id="cars_type" name="cars_type">
-              <option value='not'>ประเภท</option> 
+            <label for="cars_type"><h3 class="margin label-padding">ประเภท</h3></label>
+            <select id="cars_type" name="cars_type" class="sel sel-3">
+              <option value='not'>เลือกประเภทตู้รถไฟ</option> 
               <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
               <option value="logistic">ขนส่ง</option>
@@ -79,9 +79,9 @@
           </div>
 
           <div class="form-group">
-            <label for="cars_model"><h3 class="margin">โมเดล</h3></label>
-            <select id="cars_model" name="cars_model">
-              <option value='not'>โมเดล</option>           
+            <label for="cars_model"><h3 class="margin label-padding">โมเดล</h3></label>
+            <select id="cars_model" name="cars_model" class="sel sel-3">
+              <option value='not'>เลือกโมเดลตู้รถไฟ</option>           
                  @foreach ($cars_model_info as $info)
               <option value={{$info->model}}>{{$info->model}}</option>
                 @endforeach 
@@ -89,9 +89,9 @@
           </div>
 
           <div class="form-group">
-            <label for="status"><h3 class="margin">สถานะ</h3></label>
-            <select id="status" name="status">
-              <option value='not'>สถานะ</option> 
+            <label for="status"><h3 class="margin label-padding">สถานะ</h3></label>
+            <select id="status" name="status" class="sel sel-3">
+              <option value='not'>สถานะตู้รถไฟ</option> 
                 @foreach ($cars_status_info as $info)
               <option value={{$info->status}}>{{$info->status}}</option>
                 @endforeach 
@@ -99,14 +99,14 @@
           </div>
           
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
 
-            <label for="addcar"><h3 class="margin">&nbsp</h3></label>
+            <label for="addcar"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
 
              <!--add page: delete trainset_management-->
-            <label for="delcar"><h3 class="margin">&nbsp</h3></label>
+            <label for="delcar"><h3 class="margin label-padding"><span></span></h3></label>
             <button formaction="delete_cars_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
           </div>
       </form>
@@ -115,6 +115,7 @@
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -139,8 +140,9 @@
             </tbody>
           </table>
           {{$cars_info->links()}} 
-        </div>      
-  </div>
+        </div> 
+      </div>
+    </div>
     
   <!--Footer-->
 
