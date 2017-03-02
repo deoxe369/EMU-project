@@ -64,8 +64,29 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
+
+        <!-- Form -->
         <form class="form-inline" action="search">
+
+          <!-- New Structure: Table -->
+          <table>
+
+            <!-- Search -->
+            <tr>
+              <!-- No. Trainset -->
+              <td><label for="trainsetno"><h3 class="margin form-padding">รหัสชุดรถไฟ</h3></label></td>
+              <td><input type="text" name="trainsetno" class="sel-3"></td>
+
+              <td><label for="trsettype"><h3 class="margin form-padding">ประเภท</h3></label></td>
+
+
+            </tr>
+
+            
+          </table>
+
+
           <div class="form-group">
             <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
             <input type="text" name="trainsetno">
@@ -104,13 +125,14 @@
 
     <!--Second Container-->
       <!--Table Detail-->
-        <div class="table-responsive">
+      <div class="row col-md-12 margin">
+        <div class="table-responsive margin">
           <table class="table">
             <thead>
               <tr>
                 <th>เลือก</th>
                 <th>รหัสชุดรถไฟ</th>
-                <th>ชนิด</th>
+                <th>ประเภท</th>
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
@@ -140,11 +162,10 @@
               </script>
               @endforeach
 
-              
-           
             </tbody>
           </table>
-        </div>      
+        </div>  
+      </div>    
     </div>
 
 

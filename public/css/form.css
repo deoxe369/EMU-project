@@ -7,6 +7,7 @@ input[type=text], input[type=number], input[type=date], select.sel {
     box-sizing: border-box;
     text-align: center;
     width: 250px;
+    height: 40px;
 }
 
 /*select option:hover{
@@ -24,7 +25,19 @@ label{font-size: 24px;}
 
 .sel-2{
   width: 150px !important;
+  margin-right: 10px !important;
 }
+
+.sel-3{
+  width: 200px !important;
+  margin-right: 10px !important;
+}
+
+.form-padding{
+  padding: 5px 10px 0px 0px;
+}
+
+
 
 
 input[type=submit] {

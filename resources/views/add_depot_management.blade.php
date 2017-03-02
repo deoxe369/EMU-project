@@ -69,9 +69,79 @@
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลศูนย์ซ่อม</h1>
 
         <!--Form Add-->
-        <form class="form-horizontal" action="add_depot">
+        <form class="form-horizontal" action="add_depot" name="chkdepot" onsubmit="return depot()">
+
           <!--New Structure: Table-->
           <table class="table-add" align="center">
+
+            <!-- Location Name -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location_name">ชื่อตำแหน่ง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Location Name -->
+              <td>
+                <input type="text" name="location_name">
+                <span id="chkdepot_locname" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- Capacity -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="capacity">จำนวนที่รับได้</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Capacity -->
+              <td>
+                <select id="capacity" name="capacity" class="sel">
+                  <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <span id="chkdepot_capacity" class="checkform"></span>
+              </td>
+            </tr>
+
+            
+
+            <!-- Position -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotno">ตำแหน่ง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Position -->
+              <td>
+                <select id="depotno" name="depotno" class="sel">
+                  <option value=" ">เลืกตำแหน่งศูนย์ซ่อม</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+                <span id="chkdepot_position" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- Level -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotlevel">ระดับ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Level -->
+              <td>
+                <select id="depotlevel" name="depotlevel" class="sel">
+                  <option value=" ">เลือกระดับการเข้าซ่อมบำรุง</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+                <span id="chkdepot_level" class="checkform"></span>
+              </td>
+            </tr>
 
             <!-- No.Depot -->
             <!-- <tr class="tr-add">
@@ -94,73 +164,12 @@
           </table>
          
 
-
-
-
-          <!--No.Depot-->
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
-            <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">GENARATE</p>
-            </div>
-          </div> -->
-
-          <!--Model-->
-         <!--  <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">โมเดล</label>
-            <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
-              <option value="4cc">4cc</option>
-            </select>
-          </div> -->
-
-          <!--Capacity-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
-            <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div><br> 
-          <!--location name-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="location_name">
-          </div>
-          <!--Position-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-          <!-- Level -->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotlevel">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotlevel" name="depotlevel">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-
+          <br>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../depot_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
-            </div>
+          <div class="col-sm-offset-5 col-sm-5">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button type="button" value="cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
       </div>
