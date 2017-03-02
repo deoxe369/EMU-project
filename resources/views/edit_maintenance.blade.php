@@ -82,7 +82,7 @@
             <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
                <option value={{$origin_info[0]->train_set_id}}>{{$origin_info[0]->train_set_id}}</option>
                @foreach ($trian_set_info as $info)
-              <option value={{$info->train_set_number}} >{{$info->train_set_number}}</option>
+              <option value={{$info->train_number}} >{{$info->train_number}}</option>
            @endforeach 
               
             </select>
@@ -130,7 +130,7 @@
           <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button formaction="../maintenance" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
           </div>
         </form>

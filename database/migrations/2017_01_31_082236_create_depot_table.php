@@ -15,7 +15,7 @@ class CreateDepotTable extends Migration
     {
         Schema::create('depot', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('location_name')->unique();;
+            $table->string('location_name')->nullable()->unique();
             $table->integer('location');
             $table->integer('capacity');
             $table->integer('free_slot');//รถว่าง

@@ -67,7 +67,36 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลศูนย์ซ่อม</h1>
+
+        <!--Form Add-->
         <form class="form-horizontal" action="add_depot">
+          <!--New Structure: Table-->
+          <table class="table-add" align="center">
+
+            <!-- No.Depot -->
+            <!-- <tr class="tr-add">
+              <td class="td-add"><label for="depotno">รหัสศูนย์ซ่อม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <td><input type="text" name="depot"></td>
+            </tr> -->
+
+            <!-- Model -->
+            <!-- <tr class="tr-add">
+              <td class="td-add"><label class="control-label col-sm-5 for="cdmodel">โมเดล</label></td>
+              <td class="td-add"><span></span></td>
+              <td>
+                <select class="col-sm-offset-2 col-sm-3" id="cdmodel" name="cdmodel">
+                  <option value="4cc">4cc</option>
+                 </select>
+              </td>
+            </tr> -->
+          
+          </table>
+         
+
+
+
+
           <!--No.Depot-->
           <!-- <div class="form-group">
             <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
