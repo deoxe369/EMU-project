@@ -66,41 +66,78 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin" style="text-align: center;"><center>แก้ไขข้อมูลตู้รถไฟ</center></h1>
-        <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save">
-         
+        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลตู้รถไฟ</h1>
 
-          <!--Model-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_model" >โมเดล</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_model" value={{$origin_info[0]->model}}>
-          </div>
 
-          <!--Type-->
-          <div class="form-group margin">
-             <label class="control-label col-sm-5" for="cars_type">ชนิดของตู้รถไฟ</label>
-             <select class="col-sm-offset-2 col-sm-3" id="cars_type" name="cars_type">
-              
-              <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
-              <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
-              <option value="logistic">ขนส่ง</option>
+        <!--Form Edit-->
+        <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save" name="chkcar" onsubmit="return cars()">
+          <!--New Structure: Table-->
+          <table class="table-add" align="center">
+            
+            <!-- Model -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_model" >โมเดล</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Car Model -->
+              <td>
+                <input type="text" name="cars_model" value={{$origin_info[0]->model}}>
+                <span id="chkcars_model" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!--Car Type-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_type">ชนิดของตู้รถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Car Type -->
+              <td>                
+              <select id="carstype" name="cars_type" class="sel">
+                <option value={{$origin_info[0]->cars_type}}>{{$origin_info[0]->cars_type}}</option>
+                <option value=" ">เลือกชนิดของตู้รถไฟ</option>
+                <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
+                <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
+                <option value="logistic">ขนส่ง</option>
               </select>
-          </div>
+              <span id="chkcars_type" class="checkform"></span>
+              </td>
+            </tr>
 
+            <!-- Price -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_price" >ราคา</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Price -->
+              <td>
+                <input type="text" name="cars_price"  value={{$origin_info[0]->price}}>
+                <span id="chkcars_price" class="checkform"></span>
+              </td>
+            </tr>
 
-          <!--Price-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="cars_price" >ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="cars_price"  value={{$origin_info[0]->price}}>
-          </div>
+              <!-- JS translation -->
+              <script type="text/javascript">               
+                var carstype = document.getElementById("carstype").value;
+              
+                  switch(carstype){
+                    case "locomotive":  
+                      document.getElementById("{{$origin_info[0]->cars_type}}").innerHTML= 'โดยสารประเภทขับเคลื่อนได้';
+                    break;
 
-          
+                    case "bogie": 
+                      document.getElementById("{{$origin_info[0]->cars_type}}").innerHTML='โดยสารประเภทขับเคลือนไม่ได้'; 
+                    break;
+
+                    case "logistic":
+                      document.getElementById("{{$origin_info[0]->cars_type}}").innerHTML='ขนส่ง';
+                    break;
+                 }
+              </script>
+
+          </table>
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
             <div class="col-sm-offset-5 col-sm-5">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../car_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button type="button" value="cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
           </div>
         </form>

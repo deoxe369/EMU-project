@@ -68,6 +68,13 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลศูนย์ซ่อม</h1>
         <form class="form-horizontal" action="/edit_depot_management/{{$origin_info[0]->id}}/save">
+          
+          <table class="table-add" align="center">
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+
           <!--No.Depot-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
