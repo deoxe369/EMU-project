@@ -141,6 +141,7 @@
               @endforeach
             </tbody>
           </table>
+          </form>
           {{$cars_info->links()}} 
         </div>      
     </div>

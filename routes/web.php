@@ -68,6 +68,7 @@ Route::get('/delete_trainset_management','TrainSetController@trainset_info1');
 
 Route::get('/delete_trainset','TrainSetController@delete');
 
+Route::get('search_train_set','TrainSetController@search');
 
 
 // Depot---------------------------------------->
@@ -126,19 +127,34 @@ Route::get('/add_maintenance_plan','MaintenanceController@add_plan');
 
 Route::get('/add_maintenance_plan/save','MaintenanceController@add_plan1');
 
+Route::get('search_train_set1','MaintenanceController@search');
+
+Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_plan');
+
 // Maintenance  ---------------------------------------->\
 
 //  Route::get('/add_maintenance', function () {
 //     return view('add_maintenance');
 // });
-Route::get('/edit_maintenance/{id}/','MaintenanceController@edit');
+ Route::get('/edit_maintenance/{id}/','MaintenanceController@edit');
 
-Route::get('/edit_maintenance/{id}/save','MaintenanceController@update');
+ Route::get('/edit_maintenance/{id}/save','MaintenanceController@update');
 
+ Route::get('search_maintenance','MaintenanceController@search_maintenance');
 
  Route::get('/add_maintenance_management', 'MaintenanceController@maintenance_add_info');
 
  Route::get('add_maintenance','MaintenanceController@add');
+
+ Route::get('checklist_maintenance/{id}' ,'MaintenanceController@checklist_maintenance');
+
+ Route::get('checklist_maintenance/{id}/save','MaintenanceController@checklist_checked');
+
+ Route::get('/delete_maintenance','MaintenanceController@maintenance_info2');
+
+ Route::get('/delete_maintenance1','MaintenanceController@delete');
+ 	
+
 // 
 // ---------------------------------->เพิ่มข้อมูล level
 
@@ -152,5 +168,5 @@ Route::get('/add_level1', 'MaintenanceController@add_level');
 Route::get('/add_checklist', function () {
     return view('add_checklist');
 });
-Route::post('add_checklist1','MaintenanceController@add_checklist');
+Route::get('add_checklist1','MaintenanceController@add_checklist');
 

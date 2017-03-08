@@ -81,7 +81,6 @@
               <td>
                 <select id="part_type" name="part_type" class="sel">
                   <option value=" ">เลือกประเภทของอะไหล่</option>
-                  <option value="window">กระจก</option>
                 @foreach ($part_type_info as $info)
                   <option value={{$info->part_type}} >{{$info->part_type}}</option>
                 @endforeach  

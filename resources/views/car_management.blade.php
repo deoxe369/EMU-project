@@ -71,7 +71,7 @@
             <label for="cars_type"><h3 class="margin label-padding">ประเภท</h3></label>
             <select id="cars_type" name="cars_type" class="sel sel-3">
               <option value='not'>เลือกประเภทตู้รถไฟ</option> 
-              <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
+              <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
               <option value="logistic">ขนส่ง</option>
                        

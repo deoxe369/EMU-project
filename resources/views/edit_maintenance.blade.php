@@ -80,7 +80,7 @@
           <div class="form-group">
             <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
             <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
-               <option value={{$origin_info[0]->train_set_id}}>{{$origin_info[0]->train_set_id}}</option>
+               <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
                @foreach ($trian_set_info as $info)
               <option value={{$info->train_number}} >{{$info->train_number}}</option>
            @endforeach 

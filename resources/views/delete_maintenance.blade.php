@@ -20,7 +20,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-  
+
 </head>
 
 <body data-spy="scroll">
@@ -44,71 +44,100 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
             <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
-            <li class="active"><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
+            <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    
 
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
       <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_depot">
+        <form class="form-inline" action="search_maintenance">
 
           <div class="form-group">
-            <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
-            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
-
-            <label for="adddepot"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
-
-            <!--add page: delete part_management-->
-            <label for="deldepot"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="../delete_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
+            <label for="trsettype"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
+            <select id="train_number" name="train_number" class="sel sel-3">
+              <option value="not">เลือกรหัสชุดรถไฟ</option>
+               @foreach ($maintenance_info as $info)
+              <option value={{$info->train_number}}>{{$info->train_number}}</option>
+                @endforeach        
+            </select>
           </div>
+
+          <div class="form-group">
+            <label for="trstatus"><h3 class="margin label-padding">ศูนย์ซ่อม</h3></label>
+            <select id="depot" name="depot" class="sel sel-3">
+              <option value="not">เลือกศูนย์ซ่อมบำรุง</option>
+              @foreach ($maintenance_info as $info)
+              <option value={{$info->depot}}>{{$info->depot}}</option>
+                @endforeach        
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
+            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+
+         <!--    <label for="addmaint"><h3 class="margin label-padding"></h3></label>
+            <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+
+            add page: delete maintenance_management
+            <label for="delmaint"><h3 class="margin label-padding"></h3></label>
+            <button formaction="../add_maintenance_management" class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button>
+          </div> -->
         </form>
       </div>
-           
+
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
+        <form action="delete_maintenance1">
+        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+          <table class="table">
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสศูนย์</th>
-                <th>ตำแหน่ง</th>
-                <th>จำนวนที่รับได้</th>
-                <th>ว่าง</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th>เลือก</th>
+                <th>เลขเข้าซ่อม</th>
+                <th>รหัสชุดรถไฟ</th>
+                <th>ศูนย์ซ่อม</th>
+                <th>ระดับ</th>
+                <th>วันเวลาเข้า</th>
+                <th>วันเวลาออก</th>
+                
               </tr>
             </thead>
             <tbody>
-            @foreach ($depot_info as $info)
+            @foreach ($maintenance_info as $info)
               <tr>
+                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
                 <td>{{$info->id}}</td>
-                <td>{{$info->location_name}}</td> 
-                <td>{{$info->capacity}}</td>                           
-                <td>{{$info->free_slot}}</td>
-                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td>{{$info->train_number}}</td>
+                <td>{{$info->depot}}</td>
+                <td>{{$info->level}}</td>
+                <td>{{$info->in_date}}</td>
+                <td>{{$info->out_date}}</td>
+            
               </tr>
-              @endforeach
+               @endforeach
             </tbody>
           </table>
-          {{$depot_info->links()}}
+          </form>
+          {{ $maintenance_info->links()}}
         </div> 
       </div>     
     </div>

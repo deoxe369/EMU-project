@@ -46,7 +46,7 @@ class TrainSetController extends Controller
 
      public function trainset_info()
     {
-    	$trainset_info = DB::table('train_set')->select('id','train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->get();
+    	$trainset_info = DB::table('train_set')->select('id','train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->paginate(15);
 
         // $composit_info = DB::table('train_set')->select('train_number','type','total_distance','total_time','status')->distinct()->get();
     	 
@@ -190,4 +190,41 @@ class TrainSetController extends Controller
             // return $id1;
               return Redirect::action('TrainSetController@trainset_info');
     }
+
+    public function search(Request $info)
+    {
+        if($info->trainsetno == '' && $info->trsettype == 'not' && $info->trstatus == 'not'){
+        
+            $trainset_info = DB::table('train_set')->select('id','train_number','type','total_distance','total_time','status')->whereNull('deleted_at')->distinct()->get();
+            
+        }elseif($info->trsettype == 'not' && $info->trstatus == 'not'){
+             $trainset_info =DB::table('train_set')->where('train_number',$info->trainsetno)->paginate(15);
+            
+        }elseif($info->trstatus == 'not' && $info->trainsetno == ''){
+             $trainset_info =DB::table('train_set')->where('type',$info->trsettype)->paginate(15);
+           
+        }elseif($info->trsettype == 'not' && $info->trainsetno == ''){
+            $trainset_info =DB::table('train_set')->where('status',$info->trstatus)->paginate(15);
+            
+        }elseif($info->trainsetno == ''){
+             $trainset_info =DB::table('train_set')->where('type',$info->trsettype)->where('status',$info->trstatus)->paginate(15);
+           
+        }elseif($info->trsettype == 'not'){
+            $trainset_info =DB::table('train_set')->where('train_number',$info->trainsetno)->where('status',$info->trstatus)->paginate(15);
+           
+        }elseif($info->trstatus == 'not'){
+            $trainset_info =DB::table('train_set')->where('train_number',$info->trainsetno)->where('type',$info->trsettype)->paginate(15);
+            
+        }else{
+            $trainset_info =DB::table('train_set')->where('train_number',$info->trainsetno)->where('type',$info->trsettype)->where('status',$info->trstatus)->paginate(15);
+        }
+        
+
+
+        
+         return View::make('trainset_management', array('trainset_info' => $trainset_info));
+ 
+    }
+
+    
 }

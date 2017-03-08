@@ -91,7 +91,7 @@ class PartController extends Controller
 
 	  public function add_part_type(Request $info1)
     {
-    	DB::insert('insert into part_type (part_type, lifetime_time,lifetime_distance) values (?, ?, ?)', [ $info1->part_name, $info1->time,$info1->distance]);
+    	DB::insert('insert into part_type (part_type, lifetime_time,lifetime_distance,created_at) values (?, ?, ?,?)', [ $info1->part_name, $info1->time,$info1->distance,Carbon::now()]);
 
     	//  return Redirect::action('PartController@part_info');	
     	return view('add_part_type');

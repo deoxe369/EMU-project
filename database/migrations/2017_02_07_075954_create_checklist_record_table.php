@@ -15,6 +15,9 @@ class CreateChecklistRecordTable extends Migration
     {
         Schema::create('checklist_record', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('checklist_id');
+            $table->integer('maintenance_id');
+            $table->string('result');
             $table->timestamps();
             $table->softDeletes();
         });

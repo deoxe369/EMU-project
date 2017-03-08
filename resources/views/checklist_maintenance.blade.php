@@ -48,8 +48,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="active"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="normal"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -62,84 +62,100 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+    <div class="container-fluid">
     <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_maintenance">
+     <!--  <div class="row col-md-12 margin">
+        <form class="form-inline" action="search_train_set1">
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
-            <select id="train_number" name="train_number" class="sel sel-3">
-              <option value="not">เลือกรหัสชุดรถไฟ</option>
-               @foreach ($maintenance_info as $info)
-              <option value={{$info->train_number}}>{{$info->train_number}}</option>
-                @endforeach        
+            <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
+            <input type="text" name="trainsetno" class="sel-3">
+          </div>
+
+          <div class="form-group">
+            <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
+            <select id="trsettype" name="trsettype" class="sel sel-3">
+              <option value='not'>เลือกประเภทชุดรถไฟ</option>
+              <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
+              <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
+           <option value="trgoods">ชุดรถไฟขนส่ง</option>
+                <option value="trtrolley">รถรางโยก</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin label-padding">ศูนย์ซ่อม</h3></label>
-            <select id="depot" name="depot" class="sel sel-3">
-              <option value="not">เลือกศูนย์ซ่อมบำรุง</option>
-              @foreach ($maintenance_info as $info)
-              <option value={{$info->depot}}>{{$info->depot}}</option>
-                @endforeach        
+            <label for="trstatus"><h3 class="margin label-padding">สถานะ</h3></label>
+            <select id="trstatus" name="trstatus" class="sel sel-3">
+              <option value='not'>เลือกสถานะชุดรถไฟ</option>
+              <option value="ไม่ว่าง">ไม่ว่าง</option>
+              <option value="ว่าง">ว่าง</option>
+              <option value="ซ่อม">ซ่อม</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <label for="addmaint"><h3 class="margin label-padding"></h3></label>
-            <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
+            <label for="addtr"><h3 class="margin"><span></span></h3></label>
+            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
 
-            <!--add page: delete maintenance_management-->
-            <label for="delmaint"><h3 class="margin label-padding"></h3></label>
-            <button formaction="../delete_maintenance" class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button>
+            
           </div>
-        </form>
+        </form>  -->
       </div>
 
     <!--Second Container-->
       <!--Table Detail-->
+
+       
+
       <div class="row col-md-12 margin">
         <div class="table-responsive">
+           <form action="/checklist_maintenance/{{$id}}/save">
+              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+              <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button>
           <table class="table">
             <thead>
               <tr>
-                <th>เลขเข้าซ่อม</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ศูนย์ซ่อม</th>
-                <th>ระดับ</th>
-                <th>วันเวลาเข้า</th>
-                <th>วันเวลาออก</th>
-                <th style="color: #f4511e;">แก้ไข</th>
-                <th style="color: #f4511e;">Checklists</th>
+                <th></th>
+               
+                <th>รายการ</th>
+                <th>ผ่าน </th>
+                <th>ไม่ผ่าน</th>
+                 
               </tr>
             </thead>
             <tbody>
-            @foreach ($maintenance_info as $info)
-              <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->train_number}}</td>
-                <td>{{$info->depot}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->in_date}}</td>
-                <td>{{$info->out_date}}</td>
-                <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
-                <td><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+            <tr>
+               @foreach ($checklist_info as $info)
+                <td><input type="checkbox" id="{{$info->id}}" checked name="checklist" value={{$info->id}} ></td>
+
+                <script type="text/javascript">
+                document.getElementById("{{$info->id}}").style.display = "none";
+                </script> 
+
+                <td>{{$info->checklist}}</td>
+                <td><input type="checkbox" name="checked" value=yes></td>
+                <td><input type="checkbox" name="checked" value=no></td>
+                
               </tr>
-               @endforeach
+              @endforeach
+              <script>
+
+                document.getElementById("kri").innerHTML = "1";
+
+              </script>
             </tbody>
           </table>
-          {{ $maintenance_info->links()}}
-        </div> 
-      </div>     
+          {{ $checklist_info->links()}}
+          </form>
+        </div>      
+      </div>
     </div>
 
-    
-  <!--Footer-->
 
+   
+  <!--Footer-->
 </body>
 </html>

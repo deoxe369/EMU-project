@@ -65,8 +65,7 @@
     <div class="container-fluid">
     <!--First Container-->
       <div class="row col-md-12 margin">
-        <form class="form-inline" action="search">
-
+        <form class="form-inline" action="search_train_set1">
 
           <div class="form-group">
             <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
@@ -76,7 +75,7 @@
           <div class="form-group">
             <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
             <select id="trsettype" name="trsettype" class="sel sel-3">
-              <option value=" ">เลือกประเภทชุดรถไฟ</option>
+              <option value='not'>เลือกประเภทชุดรถไฟ</option>
               <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
               <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
           <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
@@ -87,25 +86,23 @@
           <div class="form-group">
             <label for="trstatus"><h3 class="margin label-padding">สถานะ</h3></label>
             <select id="trstatus" name="trstatus" class="sel sel-3">
-              <option value=" ">เลือกสถานะชุดรถไฟ</option>
+              <option value='not'>เลือกสถานะชุดรถไฟ</option>
               <option value="ไม่ว่าง">ไม่ว่าง</option>
               <option value="ว่าง">ว่าง</option>
+              <option value="ซ่อม">ซ่อม</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
+            <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
-            <!-- <label for="addtr"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_trainset_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มชุดรถไฟ</span></button> -->
+            <label for="addtr"><h3 class="margin"><span></span></h3></label>
+            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
 
-            <!--add page: delete trainset_management-->
-            <!-- <label for="deltr"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button> -->
+            
           </div>
-        </form>
-          
+        </form> 
       </div>
 
     <!--Second Container-->
@@ -154,7 +151,7 @@
 
             </tbody>
           </table>
-
+          {{$trainset_info->links()}}
           </form>
         </div>      
       </div>
