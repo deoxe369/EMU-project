@@ -110,11 +110,12 @@
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
-        <form action="/add_maintenance_plan/save">
+        <form action="/add_maintenance_plan/show">
         <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
           <table class="table">
             <thead>
               <tr>
+               <th></th>
                <th></th>
                 <th>รหัสชุดรถไฟ</th>
                 <th>ชนิด</th>
@@ -129,42 +130,70 @@
               </tr>
             </thead>
             <tbody>
+            
+          @foreach($trainset_info as $info )
             <tr>
-               @foreach ($trainset_info as $info)
-                <td><input type="checkbox" id="{{$info->train_number}}" checked name="trainsetno" value={{$info->train_number}} ></td>
+              
+                <td><input type="checkbox" id="{{$info->train_number}}2" checked name="trainsetno" value={{$info->train_number}} ></td>
 
+                <td><input type="checkbox" id="{{$info->level}}{{$info->train_number}}" checked name="level" value={{$info->level}} ></td>
 
-                <script type="text/javascript">
-                document.getElementById("{{$info->train_number}}").style.display = "none";
-              </script> 
-
-
+               
+               
                 <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>
+                <td id="{{$info->train_number}}1" >{{$info->type}}</td>
                 <!-- JS change name cartype -->
               <script type="text/javascript">
-                var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
-                switch(trtype){
-                  case "trcar3": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
-                  case "trcar4": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                document.getElementById("{{$info->train_number}}2").style.display = "none";
+                document.getElementById("{{$info->level}}{{$info->train_number}}").style.display = "none";
+                
+                var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
+               
+               switch(trtype){
+                  case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
+                  case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
               </script>        
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
                 <td>{{$info->location_name}}</td>
-                <td><select class="sel" id="depot" name="depotno">
-                    @foreach ($depot_info as $info)
-                      <option value={{$info->id}}>{{$info->location_name}}</option>
+
+                
+
+                <td><select class="sel" name="depotno">
+                  <option value="">เลือกศูนย์ซ่อม</option>
+                    @foreach ($depot_info as $info1)
+                      <option id="{{$info1->id}}{{$info->train_number}}" value="{{$info1->id}}" label={{$info1->location_name}}>{{$info1->level}}</option>
+
+                          <script type="text/javascript">
+                          var a = document.getElementById("{{$info1->id}}{{$info->train_number}}").innerHTML;
+                          console.log(a);
+                          // var c = Number(a);
+                          // console.log(c);
+                          var b = {{$info->level}};
+                           console.log(b); 
+
+                           if(a >= b){
+                              // document.getElementById("{{$info1->id}}").label = {{$info1->location_name}};
+                              console.log('ใด้');
+                           }else{
+                              document.getElementById("{{$info1->id}}{{$info->train_number}}").style.display ="none";
+                              console.log('ไม่ได้');
+                           }
+
+
+                          </script>
+                        
                     @endforeach 
                     </select></td>
+
+            
                 <td><input type="date"  name="endate"></td>
-                
               </tr>
-
+                @endforeach
               
-              @endforeach
-
+           
               
            
             </tbody>

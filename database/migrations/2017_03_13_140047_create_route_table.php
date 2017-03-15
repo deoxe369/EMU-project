@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaintenancePlanTable extends Migration
+class CreateRouteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateMaintenancePlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('maintenance', function (Blueprint $table) {
+        Schema::create('route', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('train_number');
-            $table->string('depot');
-            $table->integer('level');
-            $table->date('in_date');
-            $table->date('out_date')->nullable();
-            $table->string('checklist')->nullable();
+            $table->string('name');
+            $table->string('type')->nullable();
+            $table->string('point');
+            $table->float('distance');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('mark')->nullable();
-
         });
     }
 
@@ -35,6 +31,6 @@ class CreateMaintenancePlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maintenance');
+        Schema::dropIfExists('route');
     }
 }

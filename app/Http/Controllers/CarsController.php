@@ -12,11 +12,49 @@ class CarsController extends Controller
 {
    public function add(Request $info)
     {
-    	 for ($x = 1; $x <= $info->cars_qty ; $x++) {
-    	DB::insert('insert into cars (model, cars_type,price,created_at) values (?, ?, ?,?)', [ $info->cars_model, $info->cars_type,$info->cars_price,Carbon::now()]);
-    	}
+        $round = $info->cars_qty;
+    	 for ($x = 0; $x < $round ; $x++){
+
+        DB::insert('insert into cars (model, cars_type,price,created_at) values (?, ?, ?,?)', [ $info->cars_model, $info->cars_type,$info->cars_price,Carbon::now()]);
+       $cars_id = DB::table('cars')->select('id')->MAX('id');
+        	
+            if($info->cars_type == "locomotive"){
+ 
+                $part_model = DB::table('part_model')->select('part_type','brand')->where('cars_type',"locomotive")->get();
+
+                foreach($part_model as $info1){
+                 
+                 $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
+                 $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
+                 $month = Carbon::now()->month;
+                 $day = Carbon::now()->day;
+                 $expired_date = ($expired_year."-".$month."-".$day);
+                    
+                DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at,cars_id) values (?, ?, ?, ?, ? ,? , ? )', [ $info1->part_type, Carbon::now(),$expired_date,$info1->brand,0,Carbon::now(),$cars_id]);
+
+                }
+
+            }else if($info->cars_type == "bogie"){
+                 $part_model = DB::table('part_model')->select('part_type','brand')->where('cars_type',"bogie")->get();
+
+                foreach($part_model as $info1){
+                 
+                 $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
+                 $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
+                 $month = Carbon::now()->month;
+                 $day = Carbon::now()->day;
+                 $expired_date = ($expired_year."-".$month."-".$day);
+                    
+                DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at,cars_id) values (?, ?, ?, ?, ? ,?,? )', [ $info1->part_type, Carbon::now(),$expired_date,$info1->brand,0,Carbon::now(),$cars_id]);
+
+                }
+
+            }
+        }
+
     	 return Redirect::action('CarsController@cars_info');	
-    	// return $info;
+    	// return $info->cars_model;
+
     } 
     public function cars_info()
     {

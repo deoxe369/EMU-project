@@ -111,15 +111,7 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Position -->
               <td>
-                <select id="depotno" name="depotno" class="sel">
-                  <option value="">เลืกตำแหน่งศูนย์ซ่อม</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                </select>
+                <input type="text" id="depotno" name="depotno">
                 <span id="chkdepot_position" class="checkform"></span>
               </td>
             </tr>
