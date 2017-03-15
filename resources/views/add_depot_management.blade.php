@@ -27,10 +27,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -103,8 +103,6 @@
               </td>
             </tr>
 
-            
-
             <!-- Position -->
             <tr class="tr-add">
               <td class="td-add"><label for="depotno">ตำแหน่ง</label></td>
@@ -112,7 +110,7 @@
               <!-- Choose Position -->
               <td>
                 <select id="depotno" name="depotno" class="sel">
-                  <option value="">เลืกตำแหน่งศูนย์ซ่อม</option>
+                  <option value="">เลือกตำแหน่งศูนย์ซ่อม</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -167,7 +165,7 @@
           <br>
 
           <!--Button Save & Cancel-->
-          <div class="col-sm-offset-5 col-sm-5">
+          <div style="text-align: center;">
             <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
             <button type="button" value="cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>

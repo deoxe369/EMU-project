@@ -27,10 +27,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -92,7 +92,7 @@
             </select>            
           
             <label for="month"><h3 class="margin label-padding1">เดือน</h3></label>
-            <select id="month" name="month" class="sel sel-2">
+            <select id="month" name="month" class="sel sel-4">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
               <option value="มีนาคม">มีนาคม</option>
@@ -101,7 +101,7 @@
             </select>            
           
             <label for="year"><h3 class="margin label-padding1">พ.ศ.</h3></label>
-            <select id="year" name="year" class="sel sel-2">
+            <select id="year" name="year" class="sel sel-4">
               <option value="2555">2555</option>
               <option value="2556">2556</option>
               <option value="2557">2557</option>
@@ -148,14 +148,11 @@
                 <a href="#">31</a>   
               </div>
             </div-->
-
-
-
-
         <!--div class="col-md-2">พ.ศ.</div>
         <div class="col-md-2">สถานีต้นทาง</div>
         <div class="col-md-2">สถานีปลายทาง</div-->
     <!--Second Container-->
+    
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">          

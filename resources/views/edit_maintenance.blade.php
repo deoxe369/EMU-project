@@ -27,10 +27,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -68,6 +68,24 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลใบเข้าซ่อม</h1>
         <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
+
+        <table class="table-add">
+
+          <!-- No.Maintenance -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Generate No.Maintenance -->
+            <td>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+            </td>
+          </tr>
+          
+        </table>
+
+
+
+
           <!--No.Maintenance-->
           <div class="form-group">
             <label class="control-label col-sm-5" for="maintainno">เลขเข้าซ่อม</label>
@@ -127,12 +145,10 @@
           </div> -->
 
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
+            <div  style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button formaction="../maintenance" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>
-          </div>
         </form>
       </div>
     </div>

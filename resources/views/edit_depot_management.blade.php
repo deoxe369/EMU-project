@@ -27,10 +27,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -67,55 +67,68 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลศูนย์ซ่อม</h1>
+        <br>
         <form class="form-horizontal" action="/edit_depot_management/{{$origin_info[0]->id}}/save">
           
+          <!--New Structure: Table-->
           <table class="table-add" align="center">
-            <tr>
-              <td></td>
+
+            <!--No.Depot-->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotno">รหัสศูนย์ซ่อม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Generate No.Depot -->
+              <td>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+              </td>
             </tr>
-          </table>
 
-          <!--No.Depot-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสศูนย์ซ่อม</label>
-            <div class="col-sm-offset-2 col-sm-3">
-            <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>  
-            </div>
-          </div>
+            <!-- location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่งระยะทาง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose location -->
+              <td>
+                <select id="location" name="location" class="sel">
+                  <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
+                  <option value="1">เลือกตำแหน่งระยะทาง</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </td>
+            </tr>
 
+            <!-- Capacity -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="capacity">จำนวนที่รับได้</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose Capacity -->
+              <td>
+                <select id="capacity" name="capacity" class="sel">
+                  <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
+                  <option value="">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </td>
+            </tr>
 
-          <!--Model-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">ตำแหน่งระยะทาง</label>
-            <select class="col-sm-offset-2 col-sm-3" id="location" name="location">
-              <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-
-
-          <!--Capacity-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="capacity">จำนวนที่รับได้</label>
-            <select class="col-sm-offset-2 col-sm-3" id="capacity" name="capacity">
-              <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-          <!--Position-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ชื่อตำแหน่ง</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
-          </div>
-          <!-- <div class="form-group margin">
+            <!-- Position -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotno">ชื่อตำแหน่ง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <td>
+                <!-- Input Position -->
+                <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
+              </td>
+            </tr>
+            <!-- <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
             <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
               <option value={{$origin_info[0]->location_name}} selected="selected">{{$origin_info[0]->location_name}}</option>
@@ -126,26 +139,35 @@
               <option value="6">6</option>
             </select>
           </div> -->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotlevel">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotlevel" name="depotlevel">
-              <option value={{$origin_info[0]->level}} selected="selected">{{$origin_info[0]->level}}</option>
-              <option value="1
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
+
+            <!-- Level -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotlevel">ระดับ</label></td>
+              <td class="col-sm-1"><span></span></td>
+             <!-- Choose Level -->
+             <td>
+               <select id="depotlevel" name="depotlevel" class="sel">
+                <option value={{$origin_info[0]->level}} selected="selected">{{$origin_info[0]->level}}</option>
+                <option value="">เลือกตำแหน่งศูนย์ซ่อม</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
             </select>
-          </div>
+             </td>
+            </tr>
+
+          </table>
+
+          <br>
+
           <!--Button Save & Cancel-->
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-5">
+            <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../depot_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button type="button" value="cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
-          </div>
         </form>
       </div>
     </div>
