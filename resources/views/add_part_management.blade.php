@@ -26,10 +26,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -148,7 +148,7 @@
           <br>
 
           <!--Button Save & Cancel-->
-          <div class="col-sm-offset-5 col-sm-5">
+          <div style="text-align: center;">
             <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
             <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>

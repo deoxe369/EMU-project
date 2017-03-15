@@ -1,3 +1,6 @@
+  html{
+    margin: 0;
+  }
   body {
       font: 22px 'quarklight','Trirong', serif;
       line-height: 1.8;
@@ -14,7 +17,6 @@
       margin: auto;
       padding-bottom: 10px;
   }
-
   .margin-right{margin-right: 10px;}
 
   /*Background*/
@@ -84,14 +86,12 @@
       color: #ff6f00 !important;
       font-weight: bolder;
       font-size: 24px !important;
-      text-shadow: 3px 3px #ffffff;
   }
 
   .nav-brand:hover{
       color: #000000 !important;
       font-weight: bolder;
       font-size: 24px !important;
-      /*text-shadow: 3px 3px #ff6f00 !important;*/
   }
   
 

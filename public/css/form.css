@@ -15,7 +15,6 @@ input[type=text], input[type=number], input[type=date], select.sel {
 }*/
 
 
-
 label{font-size: 24px;}
 
 .sel-1{
@@ -31,6 +30,11 @@ label{font-size: 24px;}
 .sel-3{
   width: 200px !important;
   margin-right: 18px !important;
+}
+
+.sel-4{
+  width: 120px !important;
+  margin-right: 5px !important;
 }
 
 .label-padding{
@@ -192,7 +196,7 @@ input[type=submit]:hover {
   }
 
   .table-add{
-    width: 80%
+    width: 100%
     padding: 5px;
   }
 
