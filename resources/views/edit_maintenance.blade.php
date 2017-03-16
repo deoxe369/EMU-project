@@ -67,21 +67,11 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลใบเข้าซ่อม</h1>
+        <br>
+
         <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
 
-        <table class="table-add">
-
-          <!-- No.Maintenance -->
-          <tr class="tr-add">
-            <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Generate No.Maintenance -->
-            <td>
-              <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
-            </td>
-          </tr>
-          
-        </table>
+       
 
 
 
@@ -144,8 +134,9 @@
             </select>
           </div> -->
 
+          <br>
           <!--Button Save & Cancel-->
-            <div  style="text-align: center;">
+            <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button formaction="../maintenance" value="cancel" class="btn-cancel"><span>Cancel</span></button>
             </div>

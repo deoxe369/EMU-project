@@ -68,7 +68,16 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลอะไหล่</h1>
+
+        <br>
+
         <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save">
+
+        <table >
+          <tr class="">
+            <td class=""></td>
+          </tr>
+        </table>
          
           <div class="form-group">
             <label class="control-label col-sm-5" for="depotno">รหัสอะไหล่</label>

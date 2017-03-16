@@ -71,6 +71,7 @@
 
         <!--Form Edit-->
         <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save" name="chkcar" onsubmit="return cars()">
+        
           <!--New Structure: Table-->
           <table class="table-add" align="center">
             
