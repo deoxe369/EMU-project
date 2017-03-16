@@ -92,14 +92,9 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Car Type -->
               <td>                
-              <select id="carstype" name="cars_type" class="sel">
-                <option value={{$origin_info[0]->cars_type}}>{{$origin_info[0]->cars_type}}</option>
-                <option value=" ">เลือกชนิดของตู้รถไฟ</option>
-                <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
-                <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
-                <option value="logistic">ขนส่ง</option>
-              </select>
-              <span id="chkcars_type" class="checkform"></span>
+              
+               {{$origin_info[0]->cars_type}}
+              <!-- <span id="chkcars_type" class="checkform"></span> -->
               </td>
             </tr>
 

@@ -127,6 +127,10 @@ Route::get('/add_maintenance_plan','MaintenanceController@add_plan');
 
 Route::get('/add_maintenance_plan/save','MaintenanceController@add_plan1');
 
+Route::get('/add_maintenance_plan/cancel','MaintenanceController@add_plan_cancel');
+
+Route::get('/add_maintenance_plan/show','MaintenanceController@show_maintenance_plan');
+
 Route::get('search_train_set1','MaintenanceController@search');
 
 Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_plan');
