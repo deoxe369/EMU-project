@@ -115,7 +115,7 @@
                 <th>วันเวลาเข้า</th>
                 <th>วันเวลาออก</th>
                 <th style="color: #f4511e;">แก้ไข</th>
-                <th style="color: #f4511e;">Checklists</th>
+                <th style="color: #006064;">Checklists</th>
               </tr>
             </thead>
             <tbody>
@@ -128,7 +128,7 @@
                 <td>{{$info->in_date}}</td>
                 <td>{{$info->out_date}}</td>
                 <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
-                <td><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
               </tr>
                @endforeach
             </tbody>

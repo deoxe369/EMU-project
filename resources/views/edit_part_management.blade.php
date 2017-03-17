@@ -73,59 +73,82 @@
 
         <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save">
 
-        <table >
-          <tr class="">
-            <td class=""></td>
+        <!-- New Structure: Table -->
+        <table class="table-add" align="center">
+
+          <!-- No.Part -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="partno">รหัสอะไหล่</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Generate No.Part -->
+            <td>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+            </td>
           </tr>
+
+          <!-- Part Type -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="cdmodel">ประเภท</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Choose Part Type -->
+            <td>
+              <select id="part_type" name="part_type" class="sel">
+                @foreach ($part_type_info as $info)
+                <option value={{$info->part_type}}>{{$info->part_type}}</option>
+                @endforeach  
+              </select>
+            </td>
+          </tr>
+
+          <!-- วันผลิต -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="m_day">วันผลิต</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input วันผลิต -->
+            <td>
+              <input type="date" name="m_day" value={{$origin_info[0]->manufactured_date}}>
+            </td>
+          </tr>
+
+          <!-- วันหมดอายุ -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="e_day">วันหมดอายุ</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input วันหมดอายุ -->
+            <td>
+              <input type="date" name="e_day" value={{$origin_info[0]->expired_date}}>
+            </td>
+          </tr>
+
+          <!-- Part Brand -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="brand">ยี่ห้อ</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Part Brand -->
+            <td>
+              <input type="text" name="brand" value={{$origin_info[0]->brand}}>
+            </td>
+          </tr>
+
+
+          <!-- Part Price -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="price">ราคา</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Part Price -->
+            <td>
+              <input type="text" name="price" value={{$origin_info[0]->price}}>
+            </td>
+          </tr>
+
         </table>
-         
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">รหัสอะไหล่</label>
-            <div class="col-sm-offset-2 col-sm-3">
-            <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>  <br>
-            </div>
-          </div>
-          <!--Type-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="cdmodel">ประเภท</label>    
 
-            <select class="col-sm-offset-2 col-sm-3" id="part_type" name="part_type">
-           @foreach ($part_type_info as $info)
-              <option value={{$info->part_type}}>{{$info->part_type}}</option>
-           @endforeach  
-            </select> 
-          </div><br>
-
-          <!--วันผลิต-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="capacity">วันผลิต</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="date" name="m_day" value={{$origin_info[0]->manufactured_date}}>
-          </div><br>
-
-          <!--วันหมดอายุ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">วันหมดอายุ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="date" name="e_day" value={{$origin_info[0]->expired_date}}>
-          </div>
-
-
-          <!--ยี่ห้อ-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ยี่ห้อ</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-           <input type="text" name="brand" value={{$origin_info[0]->brand}}>
-          </div>
-
-
-          <!--ราคา-->
-          <div class="form-group margin">
-            <label class="control-label col-sm-5" for="depotno">ราคา</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-           <input type="text" name="price" value={{$origin_info[0]->price}}>
-          </div>
+          <br>
 
           <!--Button Save & Cancel-->
             <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../part_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
         </form>
       </div>
