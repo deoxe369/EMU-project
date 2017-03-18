@@ -67,58 +67,55 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลใบเข้าซ่อม</h1>
+        <br>
+
         <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
 
-        <table class="table-add">
+          <!-- New Structure: Table -->
+          <table class="table-add" align="center">
 
-          <!-- No.Maintenance -->
-          <tr class="tr-add">
-            <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Generate No.Maintenance -->
-            <td>
-              <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
-            </td>
-          </tr>
-          
-        </table>
-
-
-
-
-          <!--No.Maintenance-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="maintainno">เลขเข้าซ่อม</label>
-            <div class="col-sm-offset-2 col-sm-3">
-              <p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->id}}</p>
-            </div>
-          </div>
-
-          <!--No.Train Set-->
-          <div class="form-group">
-            <label class="control-label col-sm-5 for="trainsetno">รหัสชุดรถไฟ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="trainsetno" name="trainsetno">
-               <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
-               @foreach ($trian_set_info as $info)
-              <option value={{$info->train_number}} >{{$info->train_number}}</option>
-           @endforeach 
-              
+            <!-- No.Maintenance -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Generate No.Maintenance -->
+              <td>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+              </td>
+            </tr>
+            
+            <!-- No.Trainset -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Chooose No.Trainset -->
+              <td>
+                <select id="trainsetno" name="trainsetno" class="sel">
+                  <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
+                  @foreach ($trian_set_info as $info)
+                  <option value={{$info->train_number}} >{{$info->train_number}}</option>
+                  @endforeach 
             </select>
-          </div>
+              </td>
+            </tr>
 
-          <!--No.Depot-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="depotno">ศูนย์ซ่อม</label>
-            <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
-            <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
-              @foreach ($depot_info as $info)
-              <option value={{$info->location_name}}>{{$info->location_name}}</option>
-              @endforeach
-            </select>
-          </div>
+            <!-- No.Depot -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="depotno">ศูนย์ซ่อม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose No.Depot -->
+              <td>
+                <select id="depotno" name="depotno" class="sel">
+                  <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
+                  @foreach ($depot_info as $info)
+                  <option value={{$info->location_name}}>{{$info->location_name}}</option>
+                  @endforeach
+                </select>
+              </td>
+            </tr>
 
-          <!--Level-->
-   <!--        <div class="form-group">
+            <!--Level-->
+            <!--<div class="form-group">
             <label class="control-label col-sm-5" for="level">ระดับ</label>
             <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
               <option value="1">1</option>
@@ -129,12 +126,15 @@
             </select>
           </div> -->
 
-          <!--Enter DateTime-->
-          <div class="form-group">
-            <label class="control-label col-sm-5" for="endate">วันเวลาเข้า</label>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-             <input type="date"  name="endate" value={{$origin_info[0]->in_date}}>
-          </div>
+          <!-- Enter Datetime -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="endate">วันเวลาเข้า</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <input type="date"  name="endate" value={{$origin_info[0]->in_date}}>
+            </td>
+          </tr>
 
           <!--Leave DateTime-->
           <!-- <div class="form-group margin">
@@ -144,10 +144,13 @@
             </select>
           </div> -->
 
+          </table>
+
+          <br>
           <!--Button Save & Cancel-->
-            <div  style="text-align: center;">
+            <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button formaction="../maintenance" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
         </form>
       </div>

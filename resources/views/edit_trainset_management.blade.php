@@ -171,7 +171,7 @@
           <!--Button Save & Cancel-->
           <div style="text-align: center;">
             <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-            <button formaction="../trainset_management" value="cancel" class="btn-cancel"><span>Cancel</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>     
 
         </form>       
