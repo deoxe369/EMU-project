@@ -131,55 +131,57 @@
             </thead>
             <tbody>
             
-          @foreach($trainset_info as $info )
+           
+          @for ($i = 0; $i < $number ; $i++)
+  
             <tr>
               
-                <td><input type="checkbox" id="{{$info->train_number}}2" checked name="trainsetno" value={{$info->train_number}} ></td>
+                <td><input type="checkbox" id="{{$trainset_info[$i]->train_number}}2" checked name="trainsetno" value={{$trainset_info[$i]->train_number}} ></td>
 
-                <td><input type="checkbox" id="{{$info->level}}{{$info->train_number}}" checked name="level" value={{$info->level}} ></td>
+                <td><input type="checkbox" id="{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}" checked name="level" value={{$trainset_info[$i]->level}} ></td>
 
                
                
-                <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}1" >{{$info->type}}</td>
-                <!-- JS change name cartype -->
+                <td>{{$trainset_info[$i]->train_number}}</td>
+                <td id="{{$trainset_info[$i]->train_number}}1" >{{$trainset_info[$i]->type}}</td>
               <script type="text/javascript">
-                document.getElementById("{{$info->train_number}}2").style.display = "none";
-                document.getElementById("{{$info->level}}{{$info->train_number}}").style.display = "none";
+                document.getElementById("{{$trainset_info[$i]->train_number}}2").style.display = "none";
+                document.getElementById("{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}").style.display = "none";
                 
-                var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
+                var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;
                
                switch(trtype){
-                  case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
-                  case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                  case "trcar3": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
+                  case "trcar4": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
+                
               </script>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
-                <td>{{$info->status}}</td>
-                <td>{{$info->location_name}}</td>
-
+                <td>{{$trainset_info[$i]->total_distance}}</td>
+                <td>{{$trainset_info[$i]->total_time}}</td>                
+                <td>{{$trainset_info[$i]->status}}</td>
+                <td id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}">
+                </td>
+                 <a id="{{$i}}location1" title="{{$train_schedule[$i]->destination_station}}"></a>  
                 
 
                 <td><select class="sel" name="depotno">
                   <option value="">เลือกศูนย์ซ่อม</option>
                     @foreach ($depot_info as $info1)
-                      <option id="{{$info1->id}}{{$info->train_number}}" value="{{$info1->id}}" label={{$info1->location_name}}>{{$info1->level}}</option>
+                      <option id="{{$info1->id}}{{$trainset_info[$i]->train_number}}" value="{{$info1->id}}" label={{$info1->location_name}}>{{$info1->level}}</option>
 
                           <script type="text/javascript">
-                          var a = document.getElementById("{{$info1->id}}{{$info->train_number}}").innerHTML;
-                          console.log(a);
-                          // var c = Number(a);
-                          // console.log(c);
-                          var b = {{$info->level}};
-                           console.log(b); 
+                          var a = {{$info1->level}};
+                          
+                          // console.log(a);
+                          var b = {{$trainset_info[$i]->level}};
+                           // console.log(b); 
 
                            if(a >= b){
-                              // document.getElementById("{{$info1->id}}").label = {{$info1->location_name}};
-                              console.log('ใด้');
+                              
+                              // console.log('ใด้');
                            }else{
-                              document.getElementById("{{$info1->id}}{{$info->train_number}}").style.display ="none";
-                              console.log('ไม่ได้');
+                              document.getElementById("{{$info1->id}}{{$trainset_info[$i]->train_number}}").style.display ="none";
+                              // console.log('ไม่ได้');
                            }
 
 
@@ -189,10 +191,95 @@
                     </select></td>
 
             
-                <td><input type="date"  name="endate"></td>
-              </tr>
-                @endforeach
+                <td><select class="sel" name="endate" id="{{$i}}train" onchange=" getSelectedOptions(this,this.id)">
+                <option id="{{$maintenance_date[$i]}}1"  ></option>
+                <option id="{{$maintenance_date[$i]}}"" value="{{$maintenance_date[$i]}}" label={{$maintenance_date[$i]}} selected=""></option>
+                <option id="{{$maintenance_date[$i]}}2"  ></option>
+                   <script type="text/javascript">
+                          var maintenance_d = "{{$maintenance_date[$i]}}";
+
+                          var yesterday = new Date(maintenance_d);
+                          yesterday.setDate(yesterday.getDate() - 1);
+                          var yesterday1 = yesterday.toISOString().substring(0, 10)
+
+                          var tomorrow = new Date(maintenance_d);
+                          tomorrow.setDate(tomorrow.getDate() + 1);
+                          var tomorrow1 = tomorrow.toISOString().substring(0, 10);
+
+                          document.getElementById("{{$maintenance_date[$i]}}1").label = yesterday1;
+                          document.getElementById("{{$maintenance_date[$i]}}2").label = tomorrow1;
+                          document.getElementById("{{$maintenance_date[$i]}}1").value = yesterday1;
+                          document.getElementById("{{$maintenance_date[$i]}}2").value = tomorrow1;
+                                // console.log(source);
+                                      var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                                       var secondDate = new Date(2016,01,1);
+
+                                      var firstDate = new Date(maintenance_d);
+                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                                      var mod = diffDays%2;
+                                      switch(mod){
+                                      case 0: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location").title;
+                                      break;
+                                      case 1: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location1").title;
+                                      break;
+                                         }
+                          
+
+
+                          function getSelectedOptions(sel,train_number){
+                                var opts = [],
+                                  opt;
+                                var len = len = sel.options.length;
+                                var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                                var secondDate = new Date(2016,01,1);
+                                var number = train_number.substr(0,train_number.length-5);
+                                var s = `${number}location`;
+                                var s1 = `${number}location1`;
+                                var source = document.getElementById(s).title;
+                                var destination = document.getElementById(s1).title;
+                                // console.log(source);
+                                // console.log(destination);
+                              
+
+                              // console.log(source8);
+                            
+                                for (var i = 0; i < len; i++) {
+                                  opt = sel.options[i];
+                                  // console.log("k");
+                                  if (opt.selected) {
+                                    opts.push(opt);
+                                    opt.value
+
+                                      var firstDate = new Date(opt.value);
+                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                                      var mod = diffDays%2;
+                                      switch(mod){
+                                      case 0: document.getElementById(s).innerHTML=source;
+                                      break;
+                                      case 1: document.getElementById(s).innerHTML=destination;
+                                      break;
+                                         }
+                                         
+                                     
+                                }
+
               
+                                 }
+
+                                return opt.value;
+
+                              }
+// ----------------------------------------
+                               
+
+                                         
+                                     
+                                
+                    </script>
+                </select><td>
+              </tr>
+                
+              @endfor
            
               
            

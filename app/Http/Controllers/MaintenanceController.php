@@ -178,17 +178,34 @@ class MaintenanceController extends Controller
         $level_info1 = array();
         $level_info2 = array();
         $trainset_number1 = array();
+        $level_distance = array();
+        $trainset_distance = array();
+        $balance_distance = array();
+        $train_schedule = array();
+        $source_station = array();
+        $destination_station = array();
+        $maintenance_date1 = array();
 
+       
 
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
            $trainset_info2 = DB::table('train_set')->select('train_number','total_distance','total_time')->where('train_number',$id1)->distinct()->get();
-
+         $trainschedule = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->whereNull('deleted_at')->get();
+            $location_name = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->get();
             array_push($trainset_number1,$id1);
             array_push($trainset_level_info,$trainset_info2[0]);
+            array_push($trainset_distance,$trainset_info2[0]->total_distance);
+            array_push($train_schedule,$trainschedule[0]);
+
         }
-        
+        $train_schedule1 = $train_schedule;
+        foreach ($train_schedule as $station) {
+             array_push($source_station,$station->source_station);
+             array_push($destination_station,$station->destination_station);
+             array_splice($train_schedule, 0, 1);
+        }
 
        
         $number = count($trainset_number1);
@@ -201,21 +218,48 @@ class MaintenanceController extends Controller
                     if($value->total_time >= $x->total_time and $value->total_distance >= $x->total_distance) {
                         $level = $value->level;
                         // DB::table('trainset')->where('train_number',$x->train_number)->update(['level'=>$level,'updated_at'=>Carbon::now()]);
+                        $distance = $value->total_distance;
                         break; 
                         
                     }
                    
                 }
-               
+
                 array_push($level_info1,$level);
+                array_push($level_distance,$distance);
             }
+
+
+
              for ($x = 0; $x < $number ; $x++) {
+
+                $balance =  $level_distance[$x] - $trainset_distance[$x];
+
+                $source_station_distance =  DB::table('route')->select('distance')->where('name',$source_station[$x])->get();
+
+                $destination_station_distance = DB::table('route')->select('distance')->where('name',$destination_station[$x])->get();
+
+                $range = $destination_station_distance[0]->distance - $source_station_distance[0]->distance;
+                
+                $limit = floor(300/$range);
+                if($limit<1){
+                $balance_day = floor($balance/$range)-1;
+                $balance_day1= ($balance_day)*$range;
+                $balance_day3= $balance - $balance_day1;
+                }else {
+                $balance_day = floor($balance/$range)-$limit;
+                $balance_day1= ($balance_day)*$range;
+                $balance_day3= $balance - $balance_day1;
+                }
+                $maintenance_date = Carbon::now()->addDays($balance_day)->format('Y-m-d');
 
                 DB::table('train_set')->where('train_number',$trainset_number1[$x])->update(['level'=>$level_info1[$x],'updated_at'=>Carbon::now()]);
 
                 $trainset_info1 = DB::table('train_set')->where('train_number',$trainset_number1[$x])->distinct()->get();
 
                 array_push($trainset_info,$trainset_info1[0]);
+                 array_push($maintenance_date1,$maintenance_date);
+                 // return $range;
              }
 
 
@@ -224,9 +268,8 @@ class MaintenanceController extends Controller
 
 
         
-        return View::make(' add_maintenance_plan')->with('trainset_info',$trainset_info)->with('depot_info',$depot_info);
-         // return $level_info;
-       
+        return View::make(' add_maintenance_plan')->with('trainset_info',$trainset_info)->with('depot_info',$depot_info)->with('maintenance_date',$maintenance_date1)->with('number',$number)->with('train_schedule',$train_schedule1);
+       // return $train_schedule1;
        
             
     }
@@ -305,7 +348,7 @@ public function show_maintenance_plan(Request $info )
   
        //      if($value->total_time > $train_set_info[0]->total_time ) {
        //          $level = $value->level;
-       //          break; 
+                // break; 
        //      }
         // }
 
@@ -326,7 +369,7 @@ public function show_maintenance_plan(Request $info )
                 $result = DB::table('maintenance')->where('mark',"yes")->get();
          
        
-               // return    $result;
+               // return    $info;
         // return Redirect::action('MaintenanceController@show_maintenance_plan'); 
                 return View::make('show_maintenance_plan')->with('plan',$result);
             
@@ -341,7 +384,7 @@ public function show_maintenance_plan(Request $info )
     public function add_plan_cancel()
     {
         DB::table('maintenance')->where('mark','yes')->delete();
-        return Redirect::action('MaintenanceController@maintenance_info');  
+        return Redirect::action('MaintenanceController@maintenance_info1');  
     }
 
 

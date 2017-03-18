@@ -12,6 +12,7 @@
 */
 
 /*Main Page*/
+// Route::get('/', 'TrainCirculationController@train_schedule_info');
 Route::get('/', function () {
     return view('index');
 });
