@@ -69,24 +69,29 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลชุดรถไฟ</h1>
 
+        <br>
+
         <!--Form Add-->
         <form class="form-horizontal" action="/edit_trainset_management/{{$origin_info[0]->train_number}}/save">
           <!--New Structure: Table-->
-          <table class="table-add col-sm-offset-4">
+          <table class="table-add" align="center">
 
             <!--No.Trian Set-->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose No.Train Set-->
-              <td><p class="form-control-static" style="color: #13a381;">{{$origin_info[0]->train_number}}</p> </td>
+              <td><p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->train_number}}</p> </td>
             </tr>
 
             <!--Trainset Type-->
             <tr class="tr-add">
-              <td class="td-add"><label for="trtype">ชนิด</label></td>
+              <td class="td-add"><label for="trtype">ประเภท</label></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
-                <select id="trtype" name="trtype" onchange="comtrdisplay(this)">
+                <select id="trtype" name="trtype" onchange="comtrdisplay(this)" class="sel">
+                  
                   <option value=" ">เลือกชนิดของชุดรถไฟ</option>
                   <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
                   <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
@@ -99,26 +104,27 @@
             <!--Composition-->
             <tr class="tr-add">
               <td class="td-add"><label for="composition">composition</label></td>
+              <td class="col-sm-1"><span></span></td>
               <!--Choose Composition-->
               <td id="comtrchoose" style="display: block;">
                 <p>CHOOSE COMPOSITION</p>         
               </td>
               <!--Composition TransetCar 3-->
               <td id="comtrcar3" style="display: none;">
-                <select id="comtrcar3_1" name="comtrcar3_1">
+                <select id="comtrcar3_1" name="comtrcar3_1"  class="sel sel-1">
                  <option value={{$origin_cars_info[0]->id}}>{{$origin_cars_info[0]->id}}</option>
                  @foreach ($cars_loco_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar3_2" name="comtrcar3_2">
-                <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option>
+                <select id="comtrcar3_2" name="comtrcar3_2"  class="sel sel-1">
+                <!-- <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option> -->
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                 @endforeach  
                 </select>
-                <select id="comtrcar3_3" name="comtrcar3_3">
-                <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option>
+                <select id="comtrcar3_3" name="comtrcar3_3"  class="sel sel-1">
+               <!--  <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option> -->
                   @foreach ($cars_bogie_info as $info)
                   <option value={{$info->id}}>{{$info->id}}</option>
                   @endforeach

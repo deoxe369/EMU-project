@@ -158,6 +158,10 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
  Route::get('/delete_maintenance','MaintenanceController@maintenance_info2');
 
  Route::get('/delete_maintenance1','MaintenanceController@delete');
+
+ Route::get('/check_parttrain',function(){
+ 	return view('check_parttrain');
+ });
  	
 
 // 

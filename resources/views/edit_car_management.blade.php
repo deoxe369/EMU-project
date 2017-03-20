@@ -68,6 +68,7 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลตู้รถไฟ</h1>
 
+        <br>
 
         <!--Form Edit-->
         <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save" name="chkcar" onsubmit="return cars()">
@@ -92,9 +93,8 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Car Type -->
               <td>                
-              
-               {{$origin_info[0]->cars_type}}
-              <!-- <span id="chkcars_type" class="checkform"></span> -->
+                <p>{{$origin_info[0]->cars_type}}</p>
+                <span id="chkcars_type" class="checkform"></span>
               </td>
             </tr>
 
@@ -130,8 +130,10 @@
 
           </table>
 
+          <br>
+
           <!--Button Save & Cancel-->
-            <div style="text-align: center;"">
+            <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button type="button" value="cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>

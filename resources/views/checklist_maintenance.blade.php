@@ -113,8 +113,13 @@
       <div class="row col-md-12 margin">
         <div class="table-responsive">
            <form action="/checklist_maintenance/{{$id}}/save">
+
               <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
               <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button>
+
+
+              <a href="/check_parttrain"><button type="button" class="btn-add">สภาพอะไหล่</button></a>
+
           <table class="table">
             <thead>
               <tr>

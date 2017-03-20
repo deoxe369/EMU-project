@@ -68,6 +68,8 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลศูนย์ซ่อม</h1>
 
+        <br>
+
         <!--Form Add-->
         <form class="form-horizontal" action="add_depot" name="chkdepot" onsubmit="return depot()">
 

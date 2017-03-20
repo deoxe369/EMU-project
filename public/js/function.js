@@ -49,7 +49,7 @@
     var mainttrno = document.chkmaint.trainsetno.value;
     var maintdepno = document.chkmaint.depotno.value;
     var maintendate = document.chkmaint.endate.value;
-    var status = false;
+    var status;
 
     if (maintendate == "") {
       document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
@@ -92,7 +92,7 @@
     var comtrcar4_3 = document.chktrset.comtrcar4_3.value;
     var comtrcar4_4 = document.chktrset.comtrcar4_4.value;
 
-    var status = false;
+    var status;
 
     if (trsetno == "") {
       document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
@@ -153,7 +153,7 @@
     var carstype = document.chkcar.cars_type.value;
     var carsprice = document.chkcar.cars_price.value;
     var carsqty = document.chkcar.cars_qty.value;
-    var status = false;
+    var status;
 
     if (carsmodel == "") {
       document.getElementById("chkcars_model").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
@@ -202,7 +202,7 @@
     var partbrand = document.chkpart.brand.value;
     var partprice = document.chkpart.price.value;
     var partqty = document.chkpart.qauntity.value;
-    var status = false;
+    var status;
 
     if (partbrand == "") {
       document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
@@ -212,7 +212,7 @@
       status = true;
     }
 
-    if (mday == "") {
+    if (mday == NULL) {
       document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันผลิตของอะไหล่";
       status = false;
     }else{
@@ -301,6 +301,5 @@
       
     }
     
-
     return status;
   }

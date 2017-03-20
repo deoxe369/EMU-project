@@ -69,6 +69,8 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลชุดรถไฟ</h1>
 
+        <br>
+
         <!--Form Add-->
         <form class="form-horizontal" action="add_trainset" name="chktrset" onsubmit="return trset()">
           <!--New Structure: Table-->

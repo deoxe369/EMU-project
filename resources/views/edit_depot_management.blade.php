@@ -67,8 +67,10 @@
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลศูนย์ซ่อม</h1>
+
         <br>
-        <form class="form-horizontal" action="/edit_depot_management/{{$origin_info[0]->id}}/save">
+
+        <form class="form-horizontal" action="/edit_depot_management/{{$origin_info[0]->id}}/save" name="chkdepot" onsubmit="return depot()">
           
           <!--New Structure: Table-->
           <table class="table-add" align="center">
@@ -91,7 +93,7 @@
               <td>
                 <select id="location" name="location" class="sel">
                   <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
-                  <option value="1">เลือกตำแหน่งระยะทาง</option>
+                  <!-- <option value=" ">เลือกตำแหน่งระยะทาง</option> -->
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -109,13 +111,14 @@
               <td>
                 <select id="capacity" name="capacity" class="sel">
                   <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
-                  <option value="">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <!-- <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option> -->
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
+                <!-- <span id="chkdepot_capacity" class="checkform"></span> -->
               </td>
             </tr>
 
@@ -126,6 +129,7 @@
               <td>
                 <!-- Input Position -->
                 <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
+                <span id="chkdepot_locname" class="checkform"></span>
               </td>
             </tr>
             <!-- <div class="form-group margin">
@@ -144,19 +148,20 @@
             <tr class="tr-add">
               <td class="td-add"><label for="depotlevel">ระดับ</label></td>
               <td class="col-sm-1"><span></span></td>
-             <!-- Choose Level -->
-             <td>
-               <select id="depotlevel" name="depotlevel" class="sel">
-                <option value={{$origin_info[0]->level}} selected="selected">{{$origin_info[0]->level}}</option>
-                <option value="">เลือกตำแหน่งศูนย์ซ่อม</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
-             </td>
+              <!-- Choose Level -->
+              <td>
+                <select id="depotlevel" name="depotlevel" class="sel">
+                  <option value={{$origin_info[0]->level}} selected="selected">{{$origin_info[0]->level}}</option>
+                  <!-- <option value=" ">เลือกตำแหน่งศูนย์ซ่อม</option> -->
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+                <!-- <span id="chkdepot_level" class="checkform"></span> -->
+              </td>
             </tr>
 
           </table>
