@@ -330,3 +330,27 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
       -webkit-animation-duration: 1s;
       visibility: visible;
   }*/ /*animation*/
+
+
+
+  /*Check Parts of Train CSS*/
+  .title-chkparts{
+    margin: 20px 2% 0 2%; 
+    font-size: 22px; 
+    color: #ffffff;  
+    background-color: rgba(0, 244, 255, 0.3);
+  }
+
+  .div-tchkparts{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .div-imgparts{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 20px 2% 0 2%;
+    background-color: #131617;
+  }

@@ -20,6 +20,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+  <script src="{{ URL::asset('/js/jquery.slimscroll.js') }}"></script>
   
 </head>
 
@@ -67,12 +68,17 @@
   
     <!-- Text Title Check -->
     <!-- <p id="desc" style="text-align: center; font-weight: bold; margin-top: 10px; font-size: 26px; color: #ff6f00;">ตรวจสภาพอะไหล่</p> -->
-    <div style="text-align: center; width: 100%; position: absolute; z-index: 1;">
-      <p id="desc" style="margin: 20px 2% 0 2%; font-size: 22px; color: #ffffff;  background-color: rgba(0, 244, 255, 0.3);">ตรวจสภาพอะไหล่</p>
+    <div class="div-tchkparts">
+      <p id="desc" class="title-chkparts">ตรวจสภาพอะไหล่</p>
     </div>
   
     <!-- Train Image -->
-    <div style="overflow-y: hidden; overflow-x: scroll; margin: 20px 2% 0 2%; background-color: #131617;">
+    <div class="div-imgparts">
+
+      <div id="scollhorz">
+      <script type="text/javascript">
+        $('#scollhorz').slimScroll({ color:'#ffab00', axis: 'x', height:'610px', railVisible: true});
+      </script>
       
       <img src="image/pic/train_4car_parts.png" usemap = "#locodetail" style="margin-top: 20px;">
       <map name="locodetail">
@@ -183,10 +189,7 @@
         <area shape="rect" coords="3238,149,3348,177" href="#4thcarDoors" onmouseover="writeText('4th car Doors')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="4th car Doors">
 
       </map>
-
-      
-
-
+    </div>
   </div>
 
  
