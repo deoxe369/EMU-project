@@ -24,6 +24,7 @@ class CreateTrainScheduleTable extends Migration
             $table->time('arrival_time');
             $table->string('trip_type');
             $table->string('reverse_trip');
+            $table->string('mark')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

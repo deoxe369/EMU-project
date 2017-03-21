@@ -104,7 +104,7 @@
             </select>
 
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-          
+             <button formaction="../create_traincirculation_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
             
           </div>
         </form>
@@ -117,29 +117,92 @@
           <table class="table">
             <thead>
               <tr>  
-                <th>ทริป</th>
-                <th>รหัสชุดรถไฟ</th>
+                <th>ชุดรถไฟ</th>
                 <th>ชนิด</th>
                 <th>สถานีต้นทาง</th>
                 <th>เวลาออก</th>
                 <th>สถานีปลายทาง</th>
                 <th>เวลาถึง</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th>เที่ยว</th>
+                
                </tr>
             </thead>
             <tbody>
-            @foreach($train_schedule_info as $train)
+            @foreach($time_table_info as $time_table)
               <tr>
-                <td>{{$train->train_trip}}</td>
-                <td>{{$train->train_number}}</td>
-                <td>{{$train->class}}</td>
-                <td>{{$train->source_station}}</td>
-                <td>{{$train->departure_time}}</td>
-                <td>{{$train->destination_station}}</td>
-                <td>{{$train->arrival_time}}</td>
-               
-                <td><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td><select  id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)">
+                  @foreach($train_set_info as $train)
+                  <option>{{$train->train_number}}</option>
+                  
+                  @endforeach
+                </select></td>
+                <td>{{$time_table->class}}</td>
+                <td>{{$time_table->source_station}}</td>
+                <td>{{$time_table->departure_time}}</td>
+                <td>{{$time_table->destination_station}}</td>
+                <td>{{$time_table->arrival_time}}</td>
+                <td id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
               </tr>
+              <script type="text/javascript">
+                var type = document.getElementById('{{$time_table->id}}triptype').innerHTML
+                if(type == "outbound"){
+                  document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวไป"
+                }else{
+                  document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวกลับ"
+                }
+                
+
+                function getSelectedOptions(sel,train_number){
+                                var opts = [],
+                                  opt;
+                                var len = len = sel.options.length;
+                                var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                                var secondDate = new Date(2016,01,1);
+                                // var number = train_number.substr(0,train_number.length-5);
+                                // var s = `${number}location`;
+                                // var s1 = `${number}location1`;
+                                // var source = document.getElementById(s).title;
+                                // var destination = document.getElementById(s1).title;
+                                // console.log(source);
+                                // console.log(destination);
+
+                                
+                                var dateObj = new Date();
+                                var month = dateObj.getMonth() ; //months from 1-12
+                                var day = dateObj.getDate();
+                                var year = dateObj.getFullYear();
+                                var todayDate = year + "-" + month + "-" + day;
+                                var firstDate = new Date(todayDate);
+                            
+                                for (var i = 0; i < len; i++) {
+                                  opt = sel.options[i];
+                                  // console.log("k");
+                                  if (opt.selected) {
+                                    opts.push(opt);
+                                    // opt.value
+                                    // console.log(opt.value);
+                                      // 
+                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                                      // console.log(diffDays);
+                                      var mod = diffDays%2;
+                                      // switch(mod){
+                                      case 0: document.getElementById(s).innerHTML=source;
+                                      // break;
+                                      case 1: document.getElementById(s).innerHTML=destination;
+                                      // break;
+                                      //    }
+                                         
+                                     
+                                }
+
+              
+                                 }
+
+                                return opt.value;
+
+                              }
+
+              </script>
               @endforeach
              
 

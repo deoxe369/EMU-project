@@ -22,8 +22,9 @@ class CreateTrainSetTable extends Migration
             $table->float('total_time')->default(0);
             $table->string('status')->default('ว่าง');
             $table->string('location_name')->nullable();
-            $table->integer('location')->nullable();
+            $table->string('location')->nullable();
             $table->integer('level')->nullable();
+            $table->string('mark')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

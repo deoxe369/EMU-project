@@ -12,10 +12,10 @@
 */
 
 /*Main Page*/
-// Route::get('/', 'TrainCirculationController@train_schedule_info');
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'TrainCirculationController@train_schedule_info');
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 Route::get('/maintenance_plan','MaintenanceController@maintenance_info1');
 
@@ -175,3 +175,10 @@ Route::get('/add_checklist', function () {
 });
 Route::get('add_checklist1','MaintenanceController@add_checklist');
 
+
+
+// ------------------------------------------->TrainCirculation
+
+Route::get('/create_traincirculation_plan', 'TrainCirculationController@create_train_schedule');
+
+Route::get('/traincirculation_plan', 'TrainCirculationController@train_schedule_info1');
