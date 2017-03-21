@@ -123,30 +123,42 @@
                 <th>ระยะทางสะสม</th>
                 <th>ระยะเวลาสะสม</th>
                 <th>สถานะ</th>
-                <!-- <th style="color: #f4511e;">แก้ไข</th> -->
+                
               </tr>
             </thead>
             <tbody>
-            <tr>
-               @foreach ($trainset_info as $info)
+            @foreach ($trainset_info as $info)
+            <tr id="{{$info->train_number}}">
+               
                 <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>        
+                <td id="{{$info->train_number}}1" >{{$info->type}}</td>        
                 <td>{{$info->total_distance}}</td>
                 <td>{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
-
-                <!-- <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td> -->
               </tr>
 
               <!-- JS change name cartype -->
               <script type="text/javascript">
-                var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
+                var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
                 switch(trtype){
-                  case "trcar3": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
-                  case "trcar4": document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                  case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
+                  case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
               </script>
+              @foreach ($trainset_maintenance as $trainmain)
+              <script type="text/javascript">
+                
+                var train_number =  parseInt(document.getElementById("{{$info->train_number}}").id);
+                var train_number1 = {{$trainmain->train_number}};
+                  
+                if( train_number == train_number1){
+                  document.getElementById("{{$info->train_number}}").style.display = "none";
+                console.log(train_number1);
+                
+                }
+              </script>
+              @endforeach
               @endforeach
 
             </tbody>
