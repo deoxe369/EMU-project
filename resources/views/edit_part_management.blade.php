@@ -107,6 +107,7 @@
             <!-- Input วันผลิต -->
             <td>
               <input type="date" name="m_day" value={{$origin_info[0]->manufactured_date}}>
+              <span id="chkpart_mday" class="checkform"></span>
             </td>
           </tr>
 

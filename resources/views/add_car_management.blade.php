@@ -69,6 +69,8 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลตู้รถไฟ</h1>
 
+        <br>
+
         <!-- Form -->
         <form class="form-horizontal" action="add_cars" name="chkcar" onsubmit="return cars()">
 

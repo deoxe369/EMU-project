@@ -13,6 +13,11 @@
 
   p { font-size: 18px;}
 
+  area:hover{
+    display: block; 
+    stroke: rgba(255,255,255,0.5);
+  }
+
   .margin {
       margin: auto;
       padding-bottom: 10px;
@@ -53,6 +58,7 @@
   }
 
   /*Navbar ul li*/
+
   .navbar {
       border: 0;
       border-radius: 0;
@@ -61,6 +67,7 @@
       letter-spacing: 2px;
       padding: 10px;
       cursor: pointer;
+
   }
 
   .navbar-nav li a:hover{

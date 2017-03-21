@@ -68,6 +68,8 @@
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลอะไหล่</h1>
 
+        <br>
+
         <!--Form Add-->
         <form class="form-horizontal" action="add_part" name="chkpart" onsubmit="return part()">
           <!--New Structure: Table-->
