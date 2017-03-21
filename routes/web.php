@@ -159,8 +159,12 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
 
  Route::get('/delete_maintenance1','MaintenanceController@delete');
 
- Route::get('/check_parttrain',function(){
- 	return view('check_parttrain');
+ Route::get('/check_3carparts',function(){
+ 	return view('check_3carparts');
+ });
+
+ Route::get('/check_4carparts',function(){
+ 	return view('check_4carparts');
  });
  	
 

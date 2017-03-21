@@ -64,10 +64,19 @@
   <!--Content-->
 
   <!--First Container-->
-  <p id="desc" style="text-align: center; font-weight: bold; margin-top: 10px; font-size: 20px;">ตรวจสภาพอะไหล่</p>
-  <div style="overflow-y: hidden; overflow-x: scroll; margin-left: 3%; margin-right: 3%; background-color: #131617;">
-      <img src="image/pic/loco_detail1.png" usemap = "#locodetail">
+  
+    <!-- Text Title Check -->
+    <!-- <p id="desc" style="text-align: center; font-weight: bold; margin-top: 10px; font-size: 26px; color: #ff6f00;">ตรวจสภาพอะไหล่</p> -->
+    <div style="text-align: center; width: 100%; position: absolute; z-index: 1;">
+      <p id="desc" style="margin: 20px 2% 0 2%; font-size: 22px; color: #ffffff;  background-color: rgba(0, 244, 255, 0.3);">ตรวจสภาพอะไหล่</p>
+    </div>
+  
+    <!-- Train Image -->
+    <div style="overflow-y: hidden; overflow-x: scroll; margin: 20px 2% 0 2%; background-color: #131617;">
+      
+      <img src="image/pic/train_3car_parts.png" usemap = "#locodetail" style="margin-top: 20px;">
       <map name="locodetail">
+        <!-- loco coords -->
         <area shape="rect" coords="83,437,248,464" href="#SteamEndConnection" onmouseover="writeText('Steam End Connection')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="SteamEndConnection">
         <area shape="rect" coords="210,510,346,537" href="#Batteries" onmouseover="writeText('Batteries')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="Batteries">
         <area shape="rect" coords="286,420,398,448" href="#Wheels" onmouseover="writeText('Wheels')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="Wheels">
@@ -112,7 +121,56 @@
         <area shape="rect" coords="32,198,168,226" href="#Headlight" onmouseover="writeText('Headlight')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="Headlight">
         <area shape="rect" coords="32,240,168,268" href="#SteamGenerator" onmouseover="writeText('Steam Generator')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="Steam Generator">
         <area shape="rect" coords="118,309,253,337" href="#WaterTreatment" onmouseover="writeText('Water Treatment')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="Water Treatment">
+
+
+        <!-- 1st car coords -->
+        <area shape="rect" coords="1245,418,1354,445" href="#1stcarBogies" onmouseover="writeText('1st car Bogies')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Bogies">
+        <area shape="rect" coords="1280,468,1391,495" href="#1stcarBattery" onmouseover="writeText('1st car Battery')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Battery">
+        <area shape="rect" coords="1402,508,1538,535" href="#1stcarSteamVaporTraps" onmouseover="writeText('1st car Steam Vapor Traps')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Steam Vapor Traps">
+        <area shape="rect" coords="1527,451,1636,478" href="#1stcarBrakeSet" onmouseover="writeText('1st car Brake Set')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Brake Set">
+        <area shape="rect" coords="1661,451,1771,479" href="#1stcarWheels" onmouseover="writeText('1st car Wheels')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Wheels">
+        <area shape="rect" coords="1726,404,1836,432" href="#1stcarSteelStep" onmouseover="writeText('1st car Steel Step')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Steel Step">
+        <area shape="rect" coords="1660,497,1835,524" href="#1stcarSteamEndConnection" onmouseover="writeText('1st car Steam End Connection')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Steam End Connection">
+        <area shape="rect" coords="1634,126,1809,153" href="#1stcarSaftyTailGates" onmouseover="writeText('1st car Safty Tail Gates')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Safty Tail Gates">
+        <area shape="rect" coords="1564,73,1673,101" href="#1stcarRoof" onmouseover="writeText('1st car Roof')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Roof">
+        <area shape="rect" coords="1472,119,1582,147" href="#1stcarWindows" onmouseover="writeText('1st car Windows')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Windows">
+        <area shape="rect" coords="1308,89,1417,116" href="#1stcarTumblehome" onmouseover="writeText('1st car Tumblehome')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Tumblehome">
+        <area shape="rect" coords="1160,149,1270,177" href="#1stcarDoors" onmouseover="writeText('1st car Doors')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="1st car Doors">
+
+
+        <!-- 2nd car coords -->
+        <area shape="rect" coords="1937,417,2047,445" href="#2ndcarBogies" onmouseover="writeText('2nd car Bogies')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Bogies">
+        <area shape="rect" coords="1973,467,2048,495" href="#2ndcarBattery" onmouseover="writeText('2nd car Battery')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Battery">
+        <area shape="rect" coords="2095,508,2231,535" href="#2ndcarSteamVaporTraps" onmouseover="writeText('2nd car Steam Vapor Traps')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Steam Vapor Traps">
+        <area shape="rect" coords="2220,450,2329,478" href="#2ndcarBrakeSet" onmouseover="writeText('2nd car Brake Set')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Brake Set">
+        <area shape="rect" coords="2353,451,2462,479" href="#2ndcarWheels" onmouseover="writeText('2nd car Wheels')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Wheels">
+        <area shape="rect" coords="2419,404,2528,432" href="#2ndcarSteelStep" onmouseover="writeText('2nd car Steel Step')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Steel Step">
+        <area shape="rect" coords="2353,497,2528,524" href="#2ndcarSteamEndConnection" onmouseover="writeText('2nd car Steam End Connection')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Steam End Connection">
+        <area shape="rect" coords="2327,125,2501,153" href="#2ndcarSaftyTailGates" onmouseover="writeText('2nd car Safty Tail Gates')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Safty Tail Gates">
+        <area shape="rect" coords="2256,73,2366,101" href="#2ndcarRoof" onmouseover="writeText('2nd car Roof')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Roof">
+        <area shape="rect" coords="2165,119,2275,147" href="#2ndcarWindows" onmouseover="writeText('2nd car Windows')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Windows">
+        <area shape="rect" coords="2001,89,2110,117" href="#2ndcarTumblehome" onmouseover="writeText('2nd car Tumblehome')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Tumblehome">
+        <area shape="rect" coords="1853,149,1963,177" href="#2ndcarDoors" onmouseover="writeText('2nd car Doors')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="2nd car Doors">
+
+
+        <!-- 3rd car coords -->
+        <area shape="rect" coords="2629,418,2738,445" href="#3rdcarBogies" onmouseover="writeText('3rd car Bogies')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Bogies">
+        <area shape="rect" coords="2666,468,2776,495" href="#3rdcarBattery" onmouseover="writeText('3rd car Battery')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Battery">
+        <area shape="rect" coords="2787,507,2923,535" href="#3rdcarSteamVaporTraps" onmouseover="writeText('3rd car Steam Vapor Traps')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Steam Vapor Traps">
+        <area shape="rect" coords="2921,450,3021,478" href="#3rdcarBrakeSet" onmouseover="writeText('3rd car Brake Set')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Brake Set">
+        <area shape="rect" coords="3045,451,3155,479" href="#3rdcarWheels" onmouseover="writeText('3rd car Wheels')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Wheels">
+        <area shape="rect" coords="3111,404,3220,432" href="#3rdcarSteelStep" onmouseover="writeText('3rd car Steel Step')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Steel Step">
+        <area shape="rect" coords="3045,497,3220,525" href="#3rdcarSteamEndConnection" onmouseover="writeText('3rd car Steam End Connection')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Steam End Connection">
+        <area shape="rect" coords="3019,125,3194,153" href="#3rdcarSaftyTailGates" onmouseover="writeText('3rd car Safty Tail Gates')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Safty Tail Gates">
+        <area shape="rect" coords="2949,73,3058,101" href="#3rdcarRoof" onmouseover="writeText('3rd car Roof')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Roof">
+        <area shape="rect" coords="2857,119,2967,147" href="#3rdcarWindows" onmouseover="writeText('3rd car Windows')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Windows">
+        <area shape="rect" coords="2693,89,2803,117" href="#3rdcarTumblehome" onmouseover="writeText('3rd car Tumblehome')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Tumblehome">
+        <area shape="rect" coords="2545,149,2655,177" href="#3rdcarDoors" onmouseover="writeText('3rd car Doors')" onmouseout="writeText('ตรวจสภาพอะไหล่')" alt="3rd car Doors">
       </map>
+
+      
+
+
   </div>
 
  
