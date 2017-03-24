@@ -46,6 +46,10 @@
     color: #333;
     border-radius: 4px;
   }
+  .bg-6{
+    background-color: #131617;
+  }
+
   .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
@@ -334,6 +338,12 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
 
   /*Check Parts of Train CSS*/
+  .div-tchkparts{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
   .title-chkparts{
     margin: 20px 2% 0 2%; 
     font-size: 22px; 
@@ -341,16 +351,64 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     background-color: rgba(0, 244, 255, 0.3);
   }
 
-  .div-tchkparts{
+  /*.div-tchkparts1{
+    margin: 3% 2% 3% 2%;
+    padding: 10px;
     text-align: center;
+    background-color: rgba(0, 244, 255, 0.3);
+  }
+  .title-chkparts1{ 
     width: 100%;
+    font-size: 40px; 
+    color: #ffffff;   
+  }*/
+
+  .contain-carpart{
+    height: 100%;
+    margin: 5% 1% 2% 1%;
+    text-align: center;
+  }
+
+  .title-carpart{
+    font-size: 40px;
+    margin: 0;
+    background-color: rgba(0, 244, 255, 0.3);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .detail-carpart{
+    font-size: 60px;
+    margin: auto;
+    width: 100%;
+    color: #ff6f00;
+    padding: 50px;
     position: absolute;
     z-index: 1;
   }
 
-  .div-imgparts{
-    overflow-y: hidden;
-    overflow-x: hidden;
-    margin: 20px 2% 0 2%;
-    background-color: #131617;
+  .detail-loco{
+    margin-top: 10px;
+    color: #ff6f00;
+    /*font-size: 18px;*/
   }
+
+  .img-carpart{
+    margin-top: 20px;
+  }
+
+
+
+
+
+  .div-imgparts{
+   
+    margin: 0 2% 0 2%;
+  }
+
+  .imgtrset{
+    
+  }
+
+  

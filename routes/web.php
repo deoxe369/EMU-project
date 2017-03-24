@@ -166,7 +166,10 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
  Route::get('/check_4carparts',function(){
  	return view('check_4carparts');
  });
- 	
+ 
+ Route::get('/check_locoparts',function(){
+ 	return view('check_locoparts');
+ });
 
 // 
 // ---------------------------------->เพิ่มข้อมูล level
