@@ -391,24 +391,15 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
   .detail-loco{
     margin-top: 10px;
     color: #ff6f00;
-    /*font-size: 18px;*/
+    font-size: 24px !important;
+  }
+
+  .detail-bogie{
+    margin-top: 20px;
+    color: #ffd800;
+    font-size: 24px !important;
   }
 
   .img-carpart{
     margin-top: 20px;
   }
-
-
-
-
-
-  .div-imgparts{
-   
-    margin: 0 2% 0 2%;
-  }
-
-  .imgtrset{
-    
-  }
-
-  

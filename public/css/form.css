@@ -1,4 +1,4 @@
-input[type=text], input[type=number], input[type=date], select.sel {
+input[type=text], input[type=number], input[type=date], input[type=time], select.sel {
     padding: 5px 18px;
     margin: 15px 0px;
     display: inline-block;

@@ -21,6 +21,7 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
   
+  
 </head>
 
 <body data-spy="scroll">
@@ -62,103 +63,99 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">    
+    <div class="container-fluid">
     <!--First Container-->
-      <!--Select Edit-->
+      <!-- Select Edit -->
       <div class="container">
-        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลใบเข้าซ่อม</h1>
-        
+        <h1 class="margin" style="text-align: center;">เปลี่ยนอะไหล่ของตู้รถไฟ</h1>
+
         <br>
 
-        <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
+        <form class="form-horizontal" action="#" name="chkedpart" onsubmit="return edpart()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
 
-            <!-- No.Maintenance -->
+            <!-- Part Type -->
             <tr class="tr-add">
-              <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
+              <td class="td-add"><label for="part_type">ประเภท</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Generate No.Maintenance -->
+              <!-- Generate Part Type -->
               <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
-              </td>
-            </tr>
-            
-            <!-- No.Trainset -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Chooose No.Trainset -->
-              <td>
-                <select id="trainsetno" name="trainsetno" class="sel">
-                  <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
-                  @foreach ($trian_set_info as $info)
-                  <option value={{$info->train_number}} >{{$info->train_number}}</option>
-                  @endforeach 
-            </select>
-              </td>
-            </tr>
-
-            <!-- No.Depot -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="depotno">ศูนย์ซ่อม</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Choose No.Depot -->
-              <td>
-                <select id="depotno" name="depotno" class="sel">
-                  <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
-                  @foreach ($depot_info as $info)
-                  <option value={{$info->location_name}}>{{$info->location_name}}</option>
-                  @endforeach
-                </select>
-              </td>
-            </tr>
-
-            <!--Level-->
-            <!--<div class="form-group">
-            <label class="control-label col-sm-5" for="level">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div> -->
-
-          <!-- Enter Datetime -->
-          <tr class="tr-add">
-            <td class="td-add"><label for="endate">วันเวลาเข้า</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <input type="date"  name="endate" value={{$origin_info[0]->in_date}}>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold;">Wheels</p>
             </td>
-          </tr>
+              
+            </tr>
 
-          <!--Leave DateTime-->
-          <!-- <div class="form-group margin">
-            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
-            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
-          </div> -->
+            <!-- No. Part -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="partno">รหัสอะไหล่</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Select No. Part -->
+              <td>
+                <select id="partno" name="partno" class="sel">
+                  <option value=" ">เลือกรหัสอะไหล่</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+                <span id="chkedp_partno" class="checkform"></span>
+              </td>
+            </tr>
 
+            <!-- Car ID -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="carid">รหัสตู้รถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Select Car ID -->
+              <td>
+                <select id="carid" name="carid" class="sel">
+                  <option value=" ">เลือกรหัสตู้รถไฟ</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+                <span id="chkedp_carid" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- Total Distance -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="totle_dist">ระยะทางสะสม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Total Distance -->
+              <td>
+                <input type="number" name="totle_dist">
+                <span id="chkedp_dist" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- Total Time -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="totle_time">ระยะเวลาสะสม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Total Time -->
+              <td>
+                <input type="time" name="totle_time">
+                <span id="chkedp_time" class="checkform"></span>
+              </td>
+            </tr>
           </table>
 
           <br>
+
           <!--Button Save & Cancel-->
             <div style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
+
         </form>
+        
       </div>
     </div>
-
     
-  <!--Footer-->
+  
+    
 
+  <!--Footer-->
 </body>
 </html>

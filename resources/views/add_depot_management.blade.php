@@ -94,7 +94,7 @@
               <!-- Choose Capacity -->
               <td>
                 <select id="capacity" name="capacity" class="sel">
-                  <option value="">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

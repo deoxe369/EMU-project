@@ -171,6 +171,14 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
  	return view('check_locoparts');
  });
 
+ Route::get('/check_bogieparts',function(){
+ 	return view('check_bogieparts');
+ });
+
+ Route::get('/check_editpart', function(){
+ 	return view('check_editpart');
+ });
+
 // 
 // ---------------------------------->เพิ่มข้อมูล level
 

@@ -88,7 +88,7 @@
 
           <!-- Part Type -->
           <tr class="tr-add">
-            <td class="td-add"><label for="cdmodel">ประเภท</label></td>
+            <td class="td-add"><label for="part_type">ประเภท</label></td>
             <td class="col-sm-1"><span></span></td>
             <!-- Choose Part Type -->
             <td>

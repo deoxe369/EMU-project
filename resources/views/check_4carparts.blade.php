@@ -20,7 +20,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-  <script src="{{ URL::asset('/js/jquery.slimscroll.js') }}"></script>
+  
   
 </head>
 
@@ -74,10 +74,10 @@
       <map name="tr4carparts">
         <!-- tr4carparts coords -->
         <area shape="rect" coords="17,172,329,330" href="/check_locoparts" onmouseover="writeText('- Locomative -')" onmouseout="writeText('')" alt="locomative">
-        <area shape="rect" coords="330,172,570,330" href="#1stcar" onmouseover="writeText('- 1st car -')" onmouseout="writeText('')" alt="1st car">
-        <area shape="rect" coords="571,172,812,330" href="#2ndcar" onmouseover="writeText('- 2nd car -')" onmouseout="writeText('')" alt="2nd car">
-        <area shape="rect" coords="813,172,1054,330" href="#3rdcar" onmouseover="writeText('- 3rd car -')" onmouseout="writeText('')" alt="3rdcar">
-        <area shape="rect" coords="1055,172,1297,330" href="#4thcar" onmouseover="writeText('- 4th car -')" onmouseout="writeText('')" alt="4thcar">
+        <area shape="rect" coords="330,172,570,330" href="/check_bogieparts" onmouseover="writeText('- 1st car -')" onmouseout="writeText('')" alt="1st car">
+        <area shape="rect" coords="571,172,812,330" href="/check_bogieparts" onmouseover="writeText('- 2nd car -')" onmouseout="writeText('')" alt="2nd car">
+        <area shape="rect" coords="813,172,1054,330" href="/check_bogieparts" onmouseover="writeText('- 3rd car -')" onmouseout="writeText('')" alt="3rdcar">
+        <area shape="rect" coords="1055,172,1297,330" href="/check_bogieparts" onmouseover="writeText('- 4th car -')" onmouseout="writeText('')" alt="4thcar">
       </map>
 
     </div>

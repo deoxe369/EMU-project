@@ -19,7 +19,7 @@
   <!-- Javascript -->
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
-  <script src="{{ URL::asset('/js/function.js') }}"></script></script>
+  <script src="{{ URL::asset('/js/function.js') }}"></script>
   
 </head>
 
@@ -67,19 +67,26 @@
   
     <!-- Train Image -->
     <div class="bg-6 contain-carpart">
-      <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
-      <p id="desc" class="detail-carpart"></p>
-      <img src="image/pic/trset_3car1.png" usemap = "#tr3carparts" class="img-carpart">
-      <map name="tr3carparts">
-        <!-- tr3carparts coords -->
-        <area shape="rect" coords="12,170,398,330" href="/check_locoparts" onmouseover="writeText('- Locomative -')" onmouseout="writeText('')" alt="locomative">
-        <area shape="rect" coords="399,170,700,330" href="/check_bogieparts" onmouseover="writeText('- 1st car -')" onmouseout="writeText('')" alt="1st car">
-        <area shape="rect" coords="701,170,999,330" href="/check_bogieparts" onmouseover="writeText('- 2nd car -')" onmouseout="writeText('')" alt="2nd car">
-        <area shape="rect" coords="1000,170,1301,330" href="/check_bogieparts" onmouseover="writeText('- 3rd car -')" onmouseout="writeText('')" alt="3rdcar">
+      <p class="title-carpart">เลือกตรวจสภาพอะไหล่</p>
+      <p id="desc" class="detail-bogie">&nbsp;</p>
+      <img src="image/pic/bo_detail1.png" usemap = "#bogiedetail">
+      <map name="bogiedetail">
+        <!-- bogie coords -->
+        <area shape="rect" coords="233,425,352,455" href="/check_editpart" onmouseover="writeText('Bogies')" onmouseout="writeText('&nbsp;')" alt="Bogies">
+        <area shape="rect" coords="273,479,392,509" href="/check_editpart" onmouseover="writeText('Battery')" onmouseout="writeText('&nbsp;')" alt="Battery">
+        <area shape="rect" coords="405,523,552,552" href="/check_editpart" onmouseover="writeText('Steam Vapor Traps')" onmouseout="writeText('&nbsp;')" alt="Steam Vapor Traps">
+        <area shape="rect" coords="540,460,658,489" href="/check_editpart" onmouseover="writeText('Brake Set')" onmouseout="writeText('&nbsp;')" alt="Brake Set">
+        <area shape="rect" coords="685,461,803,490" href="/check_editpart" onmouseover="writeText('Wheels')" onmouseout="writeText('&nbsp;')" alt="Wheels">
+        <area shape="rect" coords="756,410,874,439" href="/check_editpart" onmouseover="writeText('Steel Step')" onmouseout="writeText('&nbsp;')" alt="Steel Step">
+        <area shape="rect" coords="685,511,873,540" href="/check_editpart" onmouseover="writeText('Steam End Connection')" onmouseout="writeText('&nbsp;')" alt="Steam End Connection">
+        <area shape="rect" coords="656,107,845,136" href="/check_editpart" onmouseover="writeText('Safty Tail Gates')" onmouseout="writeText('&nbsp;')" alt="Safty Tail Gates">
+        <area shape="rect" coords="580,50,698,79" href="/check_editpart" onmouseover="writeText('Roof')" onmouseout="writeText('&nbsp;')" alt="Roof">
+        <area shape="rect" coords="481,100,599,130" href="/check_editpart" onmouseover="writeText('Windows')" onmouseout="writeText('&nbsp;')" alt="Windows">
+        <area shape="rect" coords="303,67,421,96" href="/check_editpart" onmouseover="writeText('Tumblehome')" onmouseout="writeText('&nbsp;')" alt="Tumblehome">
+        <area shape="rect" coords="142,133,260,162" href="/check_editpart" onmouseover="writeText('Doors')" onmouseout="writeText('&nbsp;')" alt="Doors">
       </map>
-
     </div>
-    
+
   <!--Footer-->
 </body>
 </html>
