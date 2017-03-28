@@ -12,9 +12,9 @@ class TrainCirculationController extends Controller
 {
     public function train_schedule_info()
     {
-    	$train_schedule_info = DB::table('train_schedule')->get();
+    	$train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
         return View::make('index')->with('train_schedule_info',$train_schedule_info);
-        // return "krirki";
+       
     }
 
      public function train_schedule_info1()
@@ -24,22 +24,24 @@ class TrainCirculationController extends Controller
     	$train_set_info = DB::table('train_set')->get();
     	$train_set_location = DB::table('route')->get();
         return View::make('traincirculation_plan')->with('time_table_info',$time_table_info)->with('number',$number)->with('train_set_info',$train_set_info);
-        // return "krirki";
+       
     }
 
      public function create_train_schedule()
     {	
 
-    	$train_set_info = DB::table('train_set')->where('status','ว่าง')->orwhere('status','วิ่ง')->distinct()->get();
+    	
     	$time_table_info = DB::table('time_table')->whereNull('deleted_at')->distinct()->get();
     	$train_schedule_info = DB::table('train_schedule')->get();
     	
     	$number = count($time_table_info);
-    	$count = count($train_set_info);
+    	
     	$rangee = array();
 
 
     	for($i = 0 ; $i < $number ; $i++){
+    		$train_set_info = DB::table('train_set')->where('status','ว่าง')->orwhere('status','วิ่ง')->where('mark',NULL)->distinct()->get();
+    		$count = count($train_set_info);
 			$shortest = array();
 			$train_set1 = array();
     		$train_set_distance1 = array();
@@ -126,11 +128,12 @@ class TrainCirculationController extends Controller
 			}	 	
 				$train_trip = $i+1;
 
-				// DB::insert('insert into train_schedule (train_trip, train_number,class,source_station,departure_time,destination_station,arrival_time,trip_type,reverse_trip,mark,created_at) values (?, ?, ?, ?, ? ,?,?, ?, ?, ?, ? )', [$train_trip,$tain_set_choose,$time_table_info[$i]->class,$time_table_info[$i]->source_station,$time_table_info[$i]->departure_time,$time_table_info[$i]->destination_station,$time_table_info[$i]->arrival_time,$time_table_info[$i]->trip_type,1,"yes",Carbon::now()]);
+				DB::insert('insert into train_schedule (train_trip, train_number,class,source_station,departure_time,destination_station,arrival_time,trip_type,reverse_trip,mark,created_at) values (?, ?, ?, ?, ? ,?,?, ?, ?, ?, ? )', [$train_trip,$tain_set_choose,$time_table_info[$i]->class,$time_table_info[$i]->source_station,$time_table_info[$i]->departure_time,$time_table_info[$i]->destination_station,$time_table_info[$i]->arrival_time,$time_table_info[$i]->trip_type,1,"yes",Carbon::now()]);
 
-				// DB::insert('insert into train_set (status,mark,updated_at) values ( ?, ?, ?)', ["ซ่อม","yes",Carbon::now()]);
+				 DB::table('train_set')->where('train_number',$tain_set_choose)->update(['mark'=>"yes"]);
 				
-			// return $time_table_info[$i]->source_station;
+				
+		
     	}
     	// ------------------------------------------------------------------------------
     	// foreach($train_set_info as $train){
@@ -147,9 +150,33 @@ class TrainCirculationController extends Controller
     	// }
     	// --------------------------------------------------------------------------------
 
-    	$result = DB::table('train_schedule')->where('mark',"yes")->get();
-          return View::make('show_traincirculation_plan')->with('plan',$result);
-    	// return count($train_set1);
-     //    return View::make('index')->with('train_schedule_info',$train_schedule_info);
+    	// $result = DB::table('train_schedule')->where('mark',"yes")->get();
+     //      return View::make('show_traincirculation_plan')->with('plan',$result);
     }
+   	                                                       																																																											
+    
+
+    public function add_plan()
+    {
+        DB::table('train_schedule')->where('mark',NULL)->update(['deleted_at'=>Carbon::now()]);
+        DB::table('train_schedule')->where('mark','yes')->update(['mark'=>'yes']);
+
+        DB::table('train_set')->where('mark',NULL)->where('status','ว่าง')->orwhere('status','วิ่ง')->update(['status'=>'ว่าง']);
+        DB::table('train_set')->where('mark','yes')->update(['status'=>'วิ่ง','mark'=>NULL]);
+
+         $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
+
+        return View::make('index')->with('train_schedule_info',$train_schedule_info);  
+    }
+
+    public function add_plan_cancel()
+    {
+        DB::table('train_schedule')->where('mark','yes')->delete();
+         DB::table('train_set')->where('mark',"yes")->update(['mark'=>NULL]);
+
+        $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
+
+        return View::make('index')->with('train_schedule_info',$train_schedule_info);
+
+       }
 }

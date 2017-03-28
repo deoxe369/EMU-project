@@ -15,10 +15,12 @@ class CreatePartModelTable extends Migration
     {
         Schema::create('part_model', function (Blueprint $table) {
             $table->increments('id');
-            // $table->string('model')->uniqid();
+            $table->string('model')->uniqid;
             $table->string('cars_type');
             $table->string('part_type');
             $table->string('brand');
+            $table->string('code');
+            $table->integer('quantity');
             $table->timestamps();
             $table->softDeletes();
         });

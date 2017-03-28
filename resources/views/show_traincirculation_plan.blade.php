@@ -67,8 +67,8 @@
     
             
             
-           <a href='../add_maintenance_plan/save'>สร้างแผนการใช้ชุดรถไฟ</a>
-           <a href='../add_maintenance_plan/cancel'>ยกเลิก</a>
+           <a href='../traincirculation_plan/save'>สร้างแผนการใช้ชุดรถไฟ</a>
+           <a href='../traincirculation_plan/cancel'>ยกเลิก</a>
 
            
        

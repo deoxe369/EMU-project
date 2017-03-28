@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartTypeTable extends Migration
+class CreatePartCarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePartTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('part_type', function (Blueprint $table) {
+        Schema::create('part_cars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('part_type')->unique();
-            $table->integer('lifetime_time'); //year
-            $table->integer('lifetime_distance');//km
+            $table->string('cars_type');
+            $table->string('part_type');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,7 +29,6 @@ class CreatePartTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('part_type');
+        Schema::dropIfExists('part_cars');
     }
 }
-

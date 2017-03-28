@@ -20,9 +20,9 @@ class CarsController extends Controller
         	
             if($info->cars_type == "locomotive"){
  
-                $part_model = DB::table('part_model')->select('part_type','brand')->where('cars_type',"locomotive")->get();
+                $part_cars = DB::table('part_cars')->select('part_type','brand')->where('cars_type',"locomotive")->get();
 
-                foreach($part_model as $info1){
+                foreach($part_cars as $info1){
                  
                  $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
                  $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
@@ -35,9 +35,9 @@ class CarsController extends Controller
                 }
 
             }else if($info->cars_type == "bogie"){
-                 $part_model = DB::table('part_model')->select('part_type','brand')->where('cars_type',"bogie")->get();
+                 $part_cars = DB::table('part_cars')->select('part_type','brand')->where('cars_type',"bogie")->get();
 
-                foreach($part_model as $info1){
+                foreach($part_cars as $info1){
                  
                  $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
                  $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
@@ -156,4 +156,43 @@ class CarsController extends Controller
         
               return Redirect::action('CarsController@cars_info');
     }
+
+     public function add_model(Request $info)
+    {
+            $locomotive = DB::table('part_cars')->where('cars_type',"locomotive")->get();
+            $bogie = DB::table('part_cars')->where('cars_type',"bogie")->get();  
+             
+              return View::make('car_model')->with('locomotive',$locomotive)->with('bogie', $bogie);
+       
+    }
+
+    public function add_model_save(Request $info)
+    {           
+            $input  = explode('&', $info->server->get('QUERY_STRING'));
+            $cars_model = substr($input[0],11);
+            $cars_type = substr($input[1],10);
+            $all_part_type = array_splice($input,2);
+            $number = count($all_part_type)/4;
+            $part_name = array();
+            $brand = array();
+            $code = array();
+            $qty = array();
+            for($i = 0; $i<$number; $i++){
+                $part_name1 = substr($all_part_type[0],10);
+                $brand1 = substr($all_part_type[1],6);
+                $code1 = substr($all_part_type[2],5);
+                $qty1 = substr($all_part_type[3],4);
+                // array_push($part_name,$part_name1);
+                // array_push($brand,$brand1);
+                // array_push($code,$code1);
+                // array_push($qty,$qty1);
+                     DB::insert('insert into part_model (model,cars_type,part_type,brand,code,quantity,created_at) values (?, ?, ?, ?, ? ,?,? )', [ $cars_model, $cars_type,$part_name1,$brand1 ,$code1,$qty,Carbon::now()]);
+
+                array_splice($all_part_type,0,4);
+                
+            }
+           return View::make('add_car_management');
+    }
+               
+
 }

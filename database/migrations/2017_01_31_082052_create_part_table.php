@@ -15,10 +15,12 @@ class CreatePartTable extends Migration
     {
         Schema::create('part', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('serial_number')->nullable();
             $table->string('part_type');
+            $table->string('brand');
+            $table->string('code');
             $table->date('manufactured_date');
             $table->date('expired_date');
-            $table->string('brand');
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);
             $table->integer('maintainance_id')->nullable();

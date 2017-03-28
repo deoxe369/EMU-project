@@ -65,6 +65,7 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
+     <a href ="../add_model">เพิ่มโมเดล</a>
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลตู้รถไฟ</h1>
@@ -83,7 +84,9 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Input Car Model -->
               <td>
-                <input type="text" name="cars_model">
+                 <select  name="cars_model" class="sel">
+                  <option value=" ">เลือกโมเดลตู้รถไฟ</option>
+                </select>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>

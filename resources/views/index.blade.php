@@ -43,7 +43,6 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <!-- <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li> -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -124,7 +123,9 @@
                 <th>เวลาออก</th>
                 <th>สถานีปลายทาง</th>
                 <th>เวลาถึง</th>
+                <th>เที่ยว</th>
                 <th style="color: #f4511e;">แก้ไข</th>
+
                </tr>
             </thead>
             <tbody>
@@ -137,7 +138,15 @@
                 <td>{{$train->departure_time}}</td>
                 <td>{{$train->destination_station}}</td>
                 <td>{{$train->arrival_time}}</td>
-               
+                <td id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
+               <script type="text/javascript">
+                var type = document.getElementById('{{$train->id}}triptype').innerHTML
+                if(type == "outbound"){
+                  document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวไป"
+                }else{
+                  document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวกลับ"
+                }
+                </script>
                 <td><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach

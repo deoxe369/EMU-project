@@ -73,44 +73,9 @@
     <!--First Container-->
     <div class="container-fluid text-left">
       <!--Date Current-->
-      <div class="row col-md-12 margin">
-        <h1 id="datenow" class="margin"></h1>
-        <script type="text/javascript">
-          now = new Date();
-          var thday = new Array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์");
-          var thmonth = new Array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม" ,"สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
 
-          document.getElementById("datenow").innerHTML = "วัน" + thday[now.getDay()] + "ที่" + " " + now.getDate() + " " + thmonth[now.getMonth()] + " " + (0+now.getFullYear()+543);
-        </script>
-      </div>
-
-      <!--Search Form-->
-      <div class="row col-md-12 margin">
-        <form>
-          <!--Date-->
-          <div class="form-group">
-            <label for="date"><h3 class="margin label-padding1">วันที่</h3></label>
-            <input type="date" id="date" name="date"  class="td-add">
-                 
-
-            <label for="originstate"><h3 class="margin label-padding1">สถานีต้นทาง</h3></label>
-            <select id="originstate" name="originstate" class="sel sel-2">
-              
-            </select> 
-
-            <label for="destinationstate"><h3 class="margin label-padding1">สถานีปลายทาง</h3></label>
-            <select id="destinationstate" name="destinationstate" class="sel sel-2">
-              
-            </select>
-
-            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
              <button formaction="../create_traincirculation_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
-            
-          </div>
-        </form>
-      </div>
 
-    
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">          
@@ -152,55 +117,55 @@
                 }
                 
 
-                function getSelectedOptions(sel,train_number){
-                                var opts = [],
-                                  opt;
-                                var len = len = sel.options.length;
-                                var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                                var secondDate = new Date(2016,01,1);
-                                // var number = train_number.substr(0,train_number.length-5);
-                                // var s = `${number}location`;
-                                // var s1 = `${number}location1`;
-                                // var source = document.getElementById(s).title;
-                                // var destination = document.getElementById(s1).title;
-                                // console.log(source);
-                                // console.log(destination);
+                // function getSelectedOptions(sel,train_number){
+                //                 var opts = [],
+                //                   opt;
+                //                 var len = len = sel.options.length;
+                //                 var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                //                 var secondDate = new Date(2016,01,1);
+                //                 // var number = train_number.substr(0,train_number.length-5);
+                //                 // var s = `${number}location`;
+                //                 // var s1 = `${number}location1`;
+                //                 // var source = document.getElementById(s).title;
+                //                 // var destination = document.getElementById(s1).title;
+                //                 // console.log(source);
+                //                 // console.log(destination);
 
                                 
-                                var dateObj = new Date();
-                                var month = dateObj.getMonth() ; //months from 1-12
-                                var day = dateObj.getDate();
-                                var year = dateObj.getFullYear();
-                                var todayDate = year + "-" + month + "-" + day;
-                                var firstDate = new Date(todayDate);
+                //                 var dateObj = new Date();
+                //                 var month = dateObj.getMonth() ; //months from 1-12
+                //                 var day = dateObj.getDate();
+                //                 var year = dateObj.getFullYear();
+                //                 var todayDate = year + "-" + month + "-" + day;
+                //                 var firstDate = new Date(todayDate);
                             
-                                for (var i = 0; i < len; i++) {
-                                  opt = sel.options[i];
-                                  // console.log("k");
-                                  if (opt.selected) {
-                                    opts.push(opt);
-                                    // opt.value
-                                    // console.log(opt.value);
-                                      // 
-                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-                                      // console.log(diffDays);
-                                      var mod = diffDays%2;
-                                      // switch(mod){
-                                      case 0: document.getElementById(s).innerHTML=source;
-                                      // break;
-                                      case 1: document.getElementById(s).innerHTML=destination;
-                                      // break;
-                                      //    }
+                //                 for (var i = 0; i < len; i++) {
+                //                   opt = sel.options[i];
+                //                   // console.log("k");
+                //                   if (opt.selected) {
+                //                     opts.push(opt);
+                //                     // opt.value
+                //                     // console.log(opt.value);
+                //                       // 
+                //                       var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                //                       // console.log(diffDays);
+                //                       var mod = diffDays%2;
+                //                       // switch(mod){
+                //                       case 0: document.getElementById(s).innerHTML=source;
+                //                       // break;
+                //                       case 1: document.getElementById(s).innerHTML=destination;
+                //                       // break;
+                //                       //    }
                                          
                                      
-                                }
+                //                 }
 
               
-                                 }
+                //                  }
 
-                                return opt.value;
+                //                 return opt.value;
 
-                              }
+                //               }
 
               </script>
               @endforeach

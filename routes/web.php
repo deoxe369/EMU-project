@@ -186,3 +186,16 @@ Route::get('add_checklist1','MaintenanceController@add_checklist');
 Route::get('/create_traincirculation_plan', 'TrainCirculationController@create_train_schedule');
 
 Route::get('/traincirculation_plan', 'TrainCirculationController@train_schedule_info1');
+
+Route::get('/traincirculation_plan/save','TrainCirculationController@add_plan');
+
+Route::get('/traincirculation_plan/cancel','TrainCirculationController@add_plan_cancel');
+
+// -------------------------------------------Model
+
+Route::get('/add_model', 'CarsController@add_model');
+
+Route::get('/add_model/save', 'CarsController@add_model_save');
+
+
+
