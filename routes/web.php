@@ -159,10 +159,25 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
 
  Route::get('/delete_maintenance1','MaintenanceController@delete');
 
- Route::get('/check_parttrain',function(){
- 	return view('check_parttrain');
+ Route::get('/check_3carparts',function(){
+ 	return view('check_3carparts');
  });
- 	
+
+ Route::get('/check_4carparts',function(){
+ 	return view('check_4carparts');
+ });
+ 
+ Route::get('/check_locoparts',function(){
+ 	return view('check_locoparts');
+ });
+
+ Route::get('/check_bogieparts',function(){
+ 	return view('check_bogieparts');
+ });
+
+ Route::get('/check_editpart', function(){
+ 	return view('check_editpart');
+ });
 
 // 
 // ---------------------------------->เพิ่มข้อมูล level
