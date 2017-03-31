@@ -75,7 +75,7 @@
     <div class="container-fluid text-left">
       <!--Date Current-->
 
-             <button formaction="../create_traincirculation_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+             <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
 
       <!--Table Detail-->
       <div class="row col-md-12 margin">
@@ -95,7 +95,7 @@
             </thead>
             <tbody>
             @foreach($time_table_info as $time_table)
-              <tr>
+              <tr id="{{$time_table->id}}">
                 <td><select  id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)">
                   @foreach($train_set_info as $train)
                   <option>{{$train->train_number}}</option>
@@ -110,6 +110,8 @@
                 <td id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
               </tr>
               <script type="text/javascript">
+              
+                
                 var type = document.getElementById('{{$time_table->id}}triptype').innerHTML
                 if(type == "outbound"){
                   document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวไป"

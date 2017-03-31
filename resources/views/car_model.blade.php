@@ -43,7 +43,14 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown normal">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
+              <!-- Drop Maintenance Plan -->
+              <ul class="dropdown-menu">
+                <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
+                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+                </ul>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -124,11 +131,11 @@
                  @endforeach
                 </div>
         <div id = "addpart">
-        <input type="text" name="part_type"  />      
+       <!--  <input type="text" name="part_type"  />      
         <input type="text" name="brand"  /> 
         <input type="text" name="code" />
-        <input type="number" name="qty" />  
-        <input onclick="addRow(this.form);" type="button" value="Add part" />
+        <input type="number" name="qty" />   -->
+        <input onclick="addRow(this.form);" type="button" value="Add part type" />
         </div>
 
         <script type="text/javascript">
@@ -140,7 +147,7 @@
             var rowNum = 0;
             function addRow(frm) {
             rowNum ++;
-            var row = '<p id="rowNum'+rowNum+'"><input type="text" name="part_type" value="'+frm.part_type.value+'" /><input type="text" name="brand" value="'+frm.brand.value+'"><input type="text" name="code" value="'+frm.code.value+'"> <input type="number" name="qty" size="4" value="'+frm.qty.value+'" /> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"> <input onclick="addRow(this.form);" type="button" value="Add part" /> </p>';
+            var row = '<p id="rowNum'+rowNum+'"><input type="text" name="part_type" value="'+frm.part_type.value+'" /><input type="text" name="brand" value="'+frm.brand.value+'"><input type="text" name="code" value="'+frm.code.value+'"> <input type="number" name="qty" size="4" value="'+frm.qty.value+'" /> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"> </p>';
             jQuery('#itemRows').append(row);
             frm.brand.value = '';
             frm.code.value = '';

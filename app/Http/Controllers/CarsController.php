@@ -11,52 +11,53 @@ use Redirect;
 class CarsController extends Controller
 {
    public function add(Request $info)
-    {
+    {   
+        $test = array();
         $round = $info->cars_qty;
-    	 for ($x = 0; $x < $round ; $x++){
+        // return $round;
+        $cars_type = DB::table('part_model')->select('cars_type')->where('model',$info->cars_model)->distinct()->get();
 
-        DB::insert('insert into cars (model, cars_type,price,created_at) values (?, ?, ?,?)', [ $info->cars_model, $info->cars_type,$info->cars_price,Carbon::now()]);
+        
+    	 for ($x = 0; $x < $round ; $x++){ //วนรถ
+
+        DB::insert('insert into cars (model, cars_type,price,created_at) values (?, ?, ?,?)', [ $info->cars_model,  $cars_type[0]->cars_type,$info->cars_price,Carbon::now()]);
        $cars_id = DB::table('cars')->select('id')->MAX('id');
         	
-            if($info->cars_type == "locomotive"){
+          
  
-                $part_cars = DB::table('part_cars')->select('part_type','brand')->where('cars_type',"locomotive")->get();
-
-                foreach($part_cars as $info1){
+                $part_model = DB::table('part_model')->select('part_type','brand','code','quantity')->where('model',$info->cars_model)->get();
                  
-                 $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
+                // return count($part_model);
+
+                foreach($part_model as $pm){
+                 
+                 $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type', $pm->part_type)->get();
                  $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
                  $month = Carbon::now()->month;
                  $day = Carbon::now()->day;
                  $expired_date = ($expired_year."-".$month."-".$day);
-                    
-                DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at,cars_id) values (?, ?, ?, ?, ? ,? , ? )', [ $info1->part_type, Carbon::now(),$expired_date,$info1->brand,0,Carbon::now(),$cars_id]);
-
+                 // return$pm->quantity;
+                 if($pm->quantity == 1){
+                    DB::insert('insert into part (part_type,brand,code, manufactured_date,expired_date,total_distance,total_time,cars_id,price,status,created_at) values (?, ?, ?, ?, ? ,? , ? , ? , ? , ? , ?)', [$pm->part_type,$pm->brand,$pm->code,Carbon::now(),$expired_date,0,0,$cars_id,$info->cars_price,"ใช้ได้",Carbon::now()]);
+                     
+                 }else{
+                    for ($x = 0; $x < $pm->quantity ; $x++){
+                DB::insert('insert into part (part_type,brand,code, manufactured_date,expired_date,total_distance,total_time,cars_id,price,status,created_at) values (?, ?, ?, ?, ? ,? , ? , ? , ? , ? , ?)', [$pm->part_type,$pm->brand,$pm->code,Carbon::now(),$expired_date,0,0,$cars_id,$info->cars_price,"ใช้ได้",Carbon::now()]);
+                        array_push($test,$pm->quantity);
+                     }
+                 }
+                 // 
                 }
-
-            }else if($info->cars_type == "bogie"){
-                 $part_cars = DB::table('part_cars')->select('part_type','brand')->where('cars_type',"bogie")->get();
-
-                foreach($part_cars as $info1){
-                 
-                 $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type',$info1->part_type)->get();
-                 $expired_year = Carbon::now()->year + $part_expired[0]->lifetime_time;
-                 $month = Carbon::now()->month;
-                 $day = Carbon::now()->day;
-                 $expired_date = ($expired_year."-".$month."-".$day);
-                    
-                DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at,cars_id) values (?, ?, ?, ?, ? ,?,? )', [ $info1->part_type, Carbon::now(),$expired_date,$info1->brand,0,Carbon::now(),$cars_id]);
-
-                }
-
-            }
+                // return $test;
         }
 
     	 return Redirect::action('CarsController@cars_info');	
-    	// return $info->cars_model;
+    	// return $round;
 
     } 
+
     public function cars_info()
+
     {
     	$cars_info = DB::table('cars')->whereNull('deleted_at')->paginate(15);;
 
@@ -168,31 +169,75 @@ class CarsController extends Controller
 
     public function add_model_save(Request $info)
     {           
+        // return $info;
             $input  = explode('&', $info->server->get('QUERY_STRING'));
             $cars_model = substr($input[0],11);
             $cars_type = substr($input[1],10);
             $all_part_type = array_splice($input,2);
-            $number = count($all_part_type)/4;
             $part_name = array();
             $brand = array();
             $code = array();
             $qty = array();
-            for($i = 0; $i<$number; $i++){
-                $part_name1 = substr($all_part_type[0],10);
-                $brand1 = substr($all_part_type[1],6);
-                $code1 = substr($all_part_type[2],5);
-                $qty1 = substr($all_part_type[3],4);
-                // array_push($part_name,$part_name1);
-                // array_push($brand,$brand1);
-                // array_push($code,$code1);
-                // array_push($qty,$qty1);
-                     DB::insert('insert into part_model (model,cars_type,part_type,brand,code,quantity,created_at) values (?, ?, ?, ?, ? ,?,? )', [ $cars_model, $cars_type,$part_name1,$brand1 ,$code1,$qty,Carbon::now()]);
+            $locomotive = DB::table('part_cars')->where('cars_type',"locomotive")->get();
+            $bogie = DB::table('part_cars')->where('cars_type',"bogie")->get();  
+            $loco = count($locomotive);
+            $bo = count($bogie);
 
-                array_splice($all_part_type,0,4);
-                
+            if($cars_type == "locomotive"){
+                $number = (count($all_part_type)/4)-$bo;
+                for($i = 0; $i<$number; $i++){
+                    $part_name1 = substr($all_part_type[0],10);
+                    $brand1 = substr($all_part_type[1],6);
+                    $code1 = substr($all_part_type[2],5);
+                    $qty1 = (int)substr($all_part_type[3],4);
+                         DB::insert('insert into part_model (model,cars_type,part_type,brand,code,quantity,created_at) values (?, ?, ?, ?, ? ,?,? )', [ $cars_model,$cars_type,$part_name1,$brand1,$code1,$qty1,Carbon::now()]);
+                    if($i > $loco-1 ){
+                        DB::insert('insert into part_type (part_type,lifetime_time,lifetime_distance,created_at) values (?, ?, ?, ?)', [ $part_name1,NULL,NULL,Carbon::now()]);
+                        DB::insert('insert into part_cars (cars_type,part_type,created_at) values (?, ?, ?)', [ $cars_type,$part_name1,Carbon::now()]);
+                    }
+                    array_splice($all_part_type,0,4);
+                    if($i == $loco-1){
+                        array_splice($all_part_type,0,$bo*4);
+                        // return $part_name1;
+                    }
+                    
+                }
+            }else if($cars_type == "bogie"){
+                $number = (count($all_part_type)/4)-$loco;
+
+                array_splice($all_part_type,0,$loco*4);
+                 for($i = 0; $i<$number; $i++){
+
+                    $part_name1 = substr($all_part_type[0],10);
+                    $brand1 = substr($all_part_type[1],6);
+                    $code1 = substr($all_part_type[2],5);
+                    $qty1 = (int)substr($all_part_type[3],4);
+                    
+                         DB::insert('insert into part_model (model,cars_type,part_type,brand,code,quantity,created_at) values (?, ?, ?, ?, ? ,?,? )', [ $cars_model,$cars_type,$part_name1,$brand1,$code1,$qty1,Carbon::now()]);
+                    if($i > $bo-1 ){
+                        DB::insert('insert into part_type (part_type,lifetime_time,lifetime_distance,created_at) values (?, ?, ?, ?)', [ $part_name1,NULL,NULL,Carbon::now()]);
+                        DB::insert('insert into part_cars (cars_type,part_type,created_at) values (?, ?, ?)', [ $cars_type,$part_name1,Carbon::now()]);
+                        
+                    }
+                    array_splice($all_part_type,0,4);
+                    // return$part_name1;
+                }
             }
-           return View::make('add_car_management');
+            
+            $model = DB::table('part_model')->select('model')->distinct()->get();
+          
+             
+              return View::make('add_car_management')->with('model',$model);
+            // return $cars_type;
     }
                
+  public function add_car_info(Request $info)
 
+    {           
+            $model = DB::table('part_model')->select('model')->distinct()->get();
+          
+             
+              return View::make('add_car_management')->with('model',$model);
+       
+    }
 }

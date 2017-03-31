@@ -43,7 +43,14 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown normal">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
+              <!-- Drop Maintenance Plan -->
+              <ul class="dropdown-menu">
+                <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
+                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+                </ul>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -98,7 +105,8 @@
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
             <label for="addtr"><h3 class="margin"><span></span></h3></label>
-            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>
+              สร้างแผนอัตโนมัติ</span></button>
 
             
           </div>
@@ -134,6 +142,7 @@
                 <td id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
                 <td id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
+                <td>{{$info->level}}</td>
               </tr>
 
               <!-- JS change name cartype -->
@@ -171,8 +180,10 @@
 
               </script>
               @endforeach
+              
+              
               @endforeach
-            
+
             </tbody>
           </table>
           {{$trainset_info->links()}}

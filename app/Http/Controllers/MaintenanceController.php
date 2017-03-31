@@ -184,7 +184,7 @@ class MaintenanceController extends Controller
         $trainset_info = DB::table('train_set')->where('status','ว่าง')->orwhere('status','วิ่ง')->distinct()->paginate(15);
         
 
-        return View::make(' maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number);
+        return View::make(' maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number)->with('level_info',$level_info);
 
 
         
@@ -425,7 +425,7 @@ public function show_maintenance_plan(Request $info )
                     
                   $balance =  $level_info[0]->total_distance - $train_level1[0]->total_distance;
                
-                $source_station_distance =  DB::table('route')->select('distance')->where('name',$s)->get();
+                $source_station_distance =  DB::table('route')->select('distance')->where('name',$trainschedule[0]->source_station)->get();
                 $destination_station_distance = DB::table('route')->select('distance')->where('name',$trainschedule[0]->destination_station)->get();
                 $range = $destination_station_distance[0]->distance - $source_station_distance[0]->distance;
                

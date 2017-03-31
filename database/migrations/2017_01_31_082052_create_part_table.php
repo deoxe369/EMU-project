@@ -19,8 +19,8 @@ class CreatePartTable extends Migration
             $table->string('part_type');
             $table->string('brand');
             $table->string('code');
-            $table->date('manufactured_date');
-            $table->date('expired_date');
+            $table->date('manufactured_date')->nullable();
+            $table->date('expired_date')->nullable();
             $table->float('total_distance')->default(0);
             $table->float('total_time')->default(0);
             $table->integer('maintainance_id')->nullable();

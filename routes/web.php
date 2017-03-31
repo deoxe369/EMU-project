@@ -39,9 +39,7 @@ Route::get('/depot_management','DepotController@depot_info');
 
 // car----------------------------------------------------------------------------
 
-Route::get('/add_car_management', function () {
-    return view('add_car_management');
-});
+Route::get('/add_car_management','CarsController@add_car_info');
 Route::get('search_cars','CarsController@search');
 
 Route::get('add_cars','CarsController@add');

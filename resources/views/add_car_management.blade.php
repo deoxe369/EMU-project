@@ -43,7 +43,18 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+
+            
+
+            <!-- <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li> -->
+            <li class="dropdown normal">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
+              <!-- Drop Maintenance Plan -->
+              <ul class="dropdown-menu">
+                <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
+                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+              </ul>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -53,7 +64,7 @@
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
-            <li class="active"><a href='../car_management'>จัดการตู้รถไฟ</a></li>
+            <li class="active" ><a href='../car_management'>จัดการตู้รถไฟ</a></li>
             <li><a href='../part_management'>จัดการอะไหล่</a></li>            
             <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
@@ -85,17 +96,20 @@
               <!-- Input Car Model -->
               <td>
                  <select  name="cars_model" class="sel">
-                  <option value=" ">เลือกโมเดลตู้รถไฟ</option>
+                 <option value=" ">เลือกโมเดลตู้รถไฟ</option>
+                 @foreach($model as $m)
+                  <option value={{$m->model}}>{{$m->model}}</option>
+                  @endforeach
                 </select>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>
 
             <!-- Type -->
-            <tr class="tr-add">
+      <!--       <tr class="tr-add">
               <td class="td-add"><label for="cars_type">ชนิดของตู้รถไฟ</td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Choose Cars Type -->
+              
               <td>
                 <select id="cars_type" name="cars_type" class="sel">
                   <option value=" ">เลือกชนิดของตู้รถไฟ</option>
@@ -105,7 +119,7 @@
                 </select>
                 <span id="chkcars_type" class="checkform"></span>
               </td>
-            </tr>
+            </tr> -->
 
             <!--Price-->
             <tr class="tr-add">

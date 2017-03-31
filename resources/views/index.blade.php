@@ -136,7 +136,7 @@
             </thead>
             <tbody>
             @foreach($train_schedule_info as $train)
-              <tr>
+              <tr id='{{$train->train_trip}}'>
                 <td>{{$train->train_trip}}</td>
                 <td>{{$train->train_number}}</td>
                 <td>{{$train->class}}</td>
@@ -146,6 +146,12 @@
                 <td>{{$train->arrival_time}}</td>
                 <td id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
                <script type="text/javascript">
+               var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
+                
+                if(id%2 == 1){
+                  document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#ffe7d1";  
+                  console.log(id);
+                }
                 var type = document.getElementById('{{$train->id}}triptype').innerHTML
                 if(type == "outbound"){
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวไป"

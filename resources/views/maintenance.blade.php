@@ -43,7 +43,14 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown normal">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
+              <!-- Drop Maintenance Plan -->
+              <ul class="dropdown-menu">
+                <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
+                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+                </ul>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -120,7 +127,7 @@
             </thead>
             <tbody>
             @foreach ($maintenance_info as $info)
-              <tr>
+              <tr id="{{$info->id}}">
                 <td>{{$info->id}}</td>
                 <td>{{$info->train_number}}</td>
                 <td>{{$info->depot}}</td>
@@ -130,7 +137,16 @@
                 <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
                 <td><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
               </tr>
+              <script type="text/javascript">
+                 var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                if(id%2 == 1){
+                  document.getElementById("{{$info->id}}").style.backgroundColor = "#ffe7d1";  
+                  console.log(id);
+                }
+               </script>
                @endforeach
+               
             </tbody>
           </table>
           {{ $maintenance_info->links()}}
