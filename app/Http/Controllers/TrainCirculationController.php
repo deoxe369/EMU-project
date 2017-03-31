@@ -81,14 +81,14 @@ class TrainCirculationController extends Controller
 				$level_distance = DB::table('level')->select('total_distance')->where('level',$train_set_info[$k]->level)->get();
 	    		$train_total_distance = DB::table('train_set')->select('total_distance')->where('train_number',$train_set_info[$k]->train_number)->get();	
 				$gap =  abs($train_total_distance[0]->total_distance - $level_distance[0]->total_distance);
-
+               
 	    			foreach($train_distance as $train_d){
 	    			
 		    			if($gap > $range*4){
 		    				$distance = abs($train_d->distance - $location);
 		    				array_push($train_set1,$train_set_info[$k]->train_number);
 		    				array_push($shortest,$distance);
-
+                            
 		    			}
 	    			
 	    			}	
@@ -150,8 +150,8 @@ class TrainCirculationController extends Controller
     	// }
     	// --------------------------------------------------------------------------------
 
-    	// $result = DB::table('train_schedule')->where('mark',"yes")->get();
-     //      return View::make('show_traincirculation_plan')->with('plan',$result);
+    	$result = DB::table('train_schedule')->where('mark',"yes")->get();
+          return View::make('show_traincirculation_plan')->with('plan',$result);
     }
    	                                                       																																																											
     

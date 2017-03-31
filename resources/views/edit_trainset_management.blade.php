@@ -43,7 +43,14 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+           <li class="dropdown normal">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
+              <!-- Drop Maintenance Plan -->
+              <ul class="dropdown-menu">
+                <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
+                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+                </ul>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -71,116 +78,115 @@
 
         <br>
 
-        <!--Form Add-->
-        <form class="form-horizontal" action="/edit_trainset_management/{{$origin_info[0]->train_number}}/save">
-          <!--New Structure: Table-->
+         <form class="form-horizontal" action="add_trainset" name="chktrset"  >
+            
           <table class="table-add" align="center">
-
-            <!--No.Trian Set-->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!--Choose No.Train Set-->
-              <td><p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->train_number}}</p> </td>
+              <!--Input No.Train Set-->
+              <td>{{$origin_info[0]->train_number}}              
+                <span id="chktrset_no" class="checkform"></span>
+              </td>
             </tr>
-
-            <!--Trainset Type-->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ประเภท</label></td>
               <td class="col-sm-1"><span></span></td>
               <!--Choose Trainset Type-->
               <td>
-                <select id="trtype" name="trtype" onchange="comtrdisplay(this)" class="sel">
-                  
-                  <option value=" ">เลือกชนิดของชุดรถไฟ</option>
-                  <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
-                  <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
-            <!--       <option value="trgoods">ชุดรถไฟขนส่ง</option>
-                  <option value="trtrolley">รถรางโยก</option> -->
+                <select id="trtype" name="trtype" onchange=" getSelectedOptions(this)" class="sel">
+                  <option value=" ">เลือกประเภทของชุดรถไฟ</option>
+                  <option value="passenger" id='passenger'>ชุดรถไฟโดยสาร</option>
                 </select>
+                <span id="chktrset_type" class="checkform"></span>
               </td>
             </tr>
-
-            <!--Composition-->
-            <tr class="tr-add">
-              <td class="td-add"><label for="composition">composition</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!--Choose Composition-->
-              <td id="comtrchoose" style="display: block;">
-                <p>CHOOSE COMPOSITION</p>         
-              </td>
-              <!--Composition TransetCar 3-->
-              <td id="comtrcar3" style="display: none;">
-                <select id="comtrcar3_1" name="comtrcar3_1"  class="sel sel-1">
-                 <option value={{$origin_cars_info[0]->id}}>{{$origin_cars_info[0]->id}}</option>
-                 @foreach ($cars_loco_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach  
-                </select>
-                <select id="comtrcar3_2" name="comtrcar3_2"  class="sel sel-1">
-                <!-- <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option> -->
-                  @foreach ($cars_bogie_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach  
-                </select>
-                <select id="comtrcar3_3" name="comtrcar3_3"  class="sel sel-1">
-               <!--  <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option> -->
-                  @foreach ($cars_bogie_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                  @endforeach
-                </select>
-              </td>
-              <!--Composition TransetCar 4-->
-              <td id="comtrcar4" style="display: none;">
-                <select id="comtrcar4_1" name="comtrcar4_1">
-                <option value={{$origin_cars_info[0]->id}}>{{$origin_cars_info[0]->id}}</option>
-                  @foreach ($cars_loco_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach  
-                </select>
-                <select id="comtrcar4_2" name="comtrcar4_2">
-                <option value={{$origin_cars_info[1]->id}}>{{$origin_cars_info[1]->id}}</option>
-                  @foreach ($cars_bogie_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach
-                </select>
-                <select id="comtrcar4_3" name="comtrcar4_3">
-                <option value={{$origin_cars_info[2]->id}}>{{$origin_cars_info[2]->id}}</option>
-                  @foreach ($cars_bogie_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach
-                </select>
-                <select id="comtrcar4_4" name="comtrcar4_4">
+            
+            <tr id="composition" align="right">
                 
-                  @foreach ($cars_bogie_info as $info)
-                  <option value={{$info->id}}>{{$info->id}}</option>
-                @endforeach
-                </select>
-              </td>
-              <!--Composition TrainsetGoods Don't done-->
-              <!-- <td id="comtrgoods" style="display: none;">
-                <input type="number" name="comtrgoods" id="comtrgoods" size="20" maxlength="4" value="numcomtrgoods">
-              </td> -->
-              <!--Composition Trainset Trolley-->
-              <!-- <td id="comtrtrolley" style="display: none;">
-                <select id="comtrtroll">
-                  <option value="comtrtroll_1">comtroll1</option>
-                  <option value="comtrtroll_2">comtroll2</option>
-                  <option value="comtrtroll_3">comtroll3</option>
-                </select>         
-              </td>    -->
-            </tr>
-          </table>
+                <td class="td-add"><p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>
+                <td class="col-sm-1"><span></span></td>
+                <td><input onclick="addRow(this.form);" type="button" value="Add cars" />
+                    <select name="cars_id"> 
+                     <option value={{$origin_loco[0]->id}}>{{$origin_loco[0]->id}}</option>
+                      @foreach($cars_loco_info as $loco)
+                      <option value={{$loco->id}}>{{$loco->id}}</option>
+                      @endforeach
+                    </select>
+                      @foreach($origin_bogie as $bogie)                      
+                        <select name="cars_id">
+                         <option value={{$bogie->id}}>{{$bogie->id}}</option>
+                          @foreach($cars_bogie_info as $bogie)
+                          <option value={{$bogie->id}}>{{$bogie->id}}</option>
+                          @endforeach
+                        </select>
+                      @endforeach   
+                   
+                <div id="itemRows">
+                </div></td>
+            </tr> 
+            </table>
+            <table>
+            
+            <script type="text/javascript">
+            document.getElementById("composition").style.display = "none";
+              var train_type = "{{$origin_info[0]->type}}";
+              if(train_type == "passenger"){
+                document.getElementById("trtype").value = 'passenger';
+                document.getElementById("composition").style.display = "block";
+              
+                console.log(train_type);  
+              }
+             
 
-          <br>
+              // console.log(x);
+              
+              var rowNum = 0;
+              function addRow(frm) {
+                rowNum ++;
+                var row = '<a id="rowNum'+rowNum+'">  <select name="cars_id">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="-" onclick="removeRow('+rowNum+');"></a>';
+                jQuery('#itemRows').after(row);
+                frm.cars_id.value = '';
+                console.log( document.getElementById("composition"));
+              }
+              
+              function removeRow(rnum) {
+                jQuery('#rowNum'+rnum).remove();
+                console.log( rowNum);
+              }
 
-          <!--Button Save & Cancel-->
-          <div style="text-align: center;">
-            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
-          </div>     
+              function getSelectedOptions(sel){
+                                var opts = [],
+                                  opt;
+                                var len = len = sel.options.length;
+                                for (var i = 0; i < len; i++) {
+                                  opt = sel.options[i];
+                                  // console.log("k");
+                                  if (opt.selected) {
+                                    opts.push(opt);
+                                    console.log(opt.value);
+                                      switch(opt.value){
+                                        case "passenger": 
+                                            document.getElementById("composition").style.display = "block";       
+                                        break;
+                                      }
+                                    }
+                                 }
 
-        </form>       
+                                return opt.value;
+
+                              }
+              
+            </script>
+            
+           
+           </table>
+           <div  style="text-align: center;">
+              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+          </div>
+        </form>
+          
       </div>
     </div>
 
