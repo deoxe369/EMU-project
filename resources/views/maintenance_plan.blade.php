@@ -107,9 +107,6 @@
 
     <!--Second Container-->
       <!--Table Detail-->
-
-       
-
       <div class="row col-md-12 margin">
         <div class="table-responsive">
            <form action="/add_maintenance_plan">
@@ -126,20 +123,22 @@
                 
               </tr>
             </thead>
+
             <tbody>
             @foreach ($trainset_info as $info)
-            <tr id="{{$info->train_number}}">
-               
+            
+              <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td>{{$info->train_number}}</td>
                 <td id="{{$info->train_number}}1" >{{$info->type}}</td>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
+                <td id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
+                <td id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
                 <td>{{$info->status}}</td>
               </tr>
 
               <!-- JS change name cartype -->
               <script type="text/javascript">
+
                 var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
                 switch(trtype){
                   case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
@@ -147,6 +146,7 @@
                 }
               </script>
               @foreach ($trainset_maintenance as $trainmain)
+             
               <script type="text/javascript">
                 
                 var train_number =  parseInt(document.getElementById("{{$info->train_number}}").id);
@@ -154,13 +154,25 @@
                   
                 if( train_number == train_number1){
                   document.getElementById("{{$info->train_number}}").style.display = "none";
-                console.log(train_number1);
-                
+                  console.log(train_number1);
                 }
+
+
+                var cell = $('td');
+                cell.each(function(){
+                  var cell_value = $(this).html();
+                  if ((cell_value >= 0) && (cell_value <= 1000)) {
+                    $(this).css({'background':"#b71c1c"});
+                    $(this).css({'color':"#ffffff"});
+                  }else if (cell_value <= 8000) {
+                    $(this).css({'background':"#ffab00"});
+                  }
+                });
+
               </script>
               @endforeach
               @endforeach
-
+            
             </tbody>
           </table>
           {{$trainset_info->links()}}
