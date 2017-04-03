@@ -123,37 +123,63 @@
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ประเภท</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
-                <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ประเภท</th>
+                <th class="text-center">ระยะทางสะสม</th>
+                <th class="text-center">ระยะเวลาสะสม</th>
+                <th class="text-center">สถานะ</th>
+                <th class="text-center th-edit">แก้ไข</th>
               </tr>
             </thead>
+
             <tbody>
-            <tr>
-               @foreach ($trainset_info as $info)
-                <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
-                <td>{{$info->status}}</td>
-                <td><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+              <tr>
+                @foreach ($trainset_info as $info)
+                <td class="text-center">{{$info->train_number}}</td>
+                <td class="text-center" id="{{$info->train_number}}trsettype">{{$info->type}}</td>        
+                <td class="text-center">{{$info->total_distance}}</td>
+                <td class="text-center">{{$info->total_time}}</td>                
+                <td class="text-center">{{$info->status}}</td>
+                <td class="text-center"><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
-               <script type="text/javascript">               
-                var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
+                <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->train_number}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ffffff"; 
+                    document.getElementById("{{$info->train_number}}").style.color = "#FF3D00";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->train_number}}").style.backgroundColor = "#F5F5F5";
+                    document.getElementById("{{$info->train_number}}").style.color = "#5D4037";
+                    console.log(id);
+                  }
+
+                  //row color td-edit
+                  var id = parseInt(document.getElementById("{{$info->train_number}}edittrset").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FAFAFA";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FFA726";
+                    console.log(id);
+                  }
+
+                  //rename
+                  var trtype = document.getElementById("{{$info->train_number}}trsettype").innerHTML;
               
                   switch(trtype){
-                  case "passenger":  
-                  document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร';
-                  
-                    break;
-                  
-                 }
+                    case "passenger":  
+                      document.getElementById("{{$info->train_number}}trsettype").innerHTML= 'ชุดรถไฟโดยสาร';
+                      break;
+                  }
 
-              </script>
+                </script>
+
               @endforeach
 
             </tbody>

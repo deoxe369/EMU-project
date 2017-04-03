@@ -115,27 +115,27 @@
           <table class="table">
             <thead>
               <tr>
-                <th>เลขเข้าซ่อม</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ศูนย์ซ่อม</th>
-                <th>ระดับ</th>
-                <th>วันเวลาเข้า</th>
-                <th>วันเวลาออก</th>
-                <th style="color: #f4511e;">แก้ไข</th>
-                <th style="color: #006064;">Checklists</th>
+                <th class="text-center">เลขเข้าซ่อม</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ศูนย์ซ่อม</th>
+                <th class="text-center">ระดับ</th>
+                <th class="text-center">วันเวลาเข้า</th>
+                <th class="text-center">วันเวลาออก</th>
+                <th class="text-center th-edit">แก้ไข</th>
+                <th class="text-center th-chklist">Checklists</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($maintenance_info as $info)
               <tr id="{{$info->id}}">
-                <td>{{$info->id}}</td>
-                <td>{{$info->train_number}}</td>
-                <td>{{$info->depot}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->in_date}}</td>
-                <td>{{$info->out_date}}</td>
-                <td><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
-                <td><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
+                <td class="text-center">{{$info->id}}</td>
+                <td class="text-center">{{$info->train_number}}</td>
+                <td class="text-center">{{$info->depot}}</td>
+                <td class="text-center">{{$info->level}}</td>
+                <td class="text-center">{{$info->in_date}}</td>
+                <td class="text-center">{{$info->out_date}}</td>
+                <td class="text-center"><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td class="text-center"><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
               </tr>
               <script type="text/javascript">
                  var id = parseInt(document.getElementById("{{$info->id}}").id);

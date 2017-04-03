@@ -87,23 +87,22 @@
           <table class="table">
             <thead>
               <tr>
-                <th>เลขเข้าซ่อม</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ศูนย์ซ่อม</th>
-                <th>ระดับ</th>
-                <th>วันเวลาเข้า</th>
-      
-                
+                <th class="text-center">เลขเข้าซ่อม</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ศูนย์ซ่อม</th>
+                <th class="text-center">ระดับ</th>
+                <th class="text-center">วันเวลาเข้า</th>
               </tr>
             </thead>
+            
             <tbody>
             @foreach ($plan as $info)
               <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->train_number}}</td>
-                <td>{{$info->depot}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->in_date}}</td>
+                <td class="text-center">{{$info->id}}</td>
+                <td class="text-center">{{$info->train_number}}</td>
+                <td class="text-center">{{$info->depot}}</td>
+                <td class="text-center">{{$info->level}}</td>
+                <td class="text-center">{{$info->in_date}}</td>
               </tr>
                @endforeach
             </tbody>

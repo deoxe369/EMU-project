@@ -127,30 +127,61 @@
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสตู้รถไฟ</th>
-                <th>โมเดล</th>
-                <th>ชนิด</th>
-                <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th class="text-center">รหัสตู้รถไฟ</th>
+                <th class="text-center">โมเดล</th>
+                <th class="text-center">ชนิด</th>
+                <th class="text-center">สถานะ</th>
+                <th class="text-center th-edit">แก้ไข</th>
               </tr>
             </thead>
+
             <tbody>
             @foreach ($cars_info as $info)
-              <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->model}}</td>                
-                <td id = "{{$info->id}}">{{$info->cars_type}}</td>
-                <script type="text/javascript">
-                var type = document.getElementById('{{$info->id}}').innerHTML
-                if(type == "locomotive"){
-                  document.getElementById('{{$info->id}}').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
-                }else{
-                  document.getElementById('{{$info->id}}').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
-                }
-                </script>           
-                <td>{{$info->status}}</td>
-                <td><a href='/edit_cars_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+              <tr id='{{$info->id}}'>
+                <td class="text-center">{{$info->id}}</td>
+                <td class="text-center">{{$info->model}}</td>                
+                <td class="text-center" id = "{{$info->id}}cartype">{{$info->cars_type}}</td>
+                <td class="text-center">{{$info->status}}</td>
+                <!-- <td class="text-center" id="{{$info->id}}editcar"><a href='/edit_cars_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td> -->
+                <td class="text-center" id="{{$info->id}}editcar"><a href='/edit_cars_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
+
+              <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff"; 
+                    document.getElementById("{{$info->id}}").style.color = "#FF3D00";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    document.getElementById("{{$info->id}}").style.color = "#5D4037";
+                    console.log(id);
+                  }
+
+                  //row color td-edit
+                  var id = parseInt(document.getElementById("{{$info->id}}editcar").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}editcar").style.backgroundColor = "#FAFAFA";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}editcar").style.backgroundColor = "#FFA726";
+                    console.log(id);
+                  }
+
+                  //rename
+                  var type = document.getElementById('{{$info->id}}cartype').innerHTML
+                  if(type == "locomotive"){
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
+                  }else{
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
+                  }
+
+                </script>
+
               @endforeach
             </tbody>
           </table>

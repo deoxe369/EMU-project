@@ -96,24 +96,54 @@
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสศูนย์</th>
-                <th>ตำแหน่ง</th>
-                <th>ระดับ</th>
-                <th>จำนวนที่รับได้</th>
-                <th>ว่าง</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th class="text-center">รหัสศูนย์</th>
+                <th class="text-center">ตำแหน่ง</th>
+                <th class="text-center">ระดับ</th>
+                <th class="text-center">จำนวนที่รับได้</th>
+                <th class="text-center">ว่าง</th>
+                <th class="text-center  th-edit">แก้ไข</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($depot_info as $info)
-              <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->location_name}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->capacity}}</td>                           
-                <td>{{$info->free_slot}}</td>
-                <td><a href='../edit_depot_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+              <tr id='{{$info->id}}'>
+                <td class="text-center">{{$info->id}}</td>
+                <td class="text-center">{{$info->location_name}}</td>
+                <td class="text-center">{{$info->level}}</td>
+                <td class="text-center">{{$info->capacity}}</td>                           
+                <td class="text-center">{{$info->free_slot}}</td>
+                <td class="text-center" id="{{$info->id}}editdep"><a href='../edit_depot_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
+
+              <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff"; 
+                    document.getElementById("{{$info->id}}").style.color = "#FF3D00";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    document.getElementById("{{$info->id}}").style.color = "#5D4037";
+                    console.log(id);
+                  }
+
+                  //row color td-edit
+                  var id = parseInt(document.getElementById("{{$info->id}}editdep").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}editdep").style.backgroundColor = "#FAFAFA";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}editdep").style.backgroundColor = "#FFA726";
+                    console.log(id);
+                  }
+
+                </script>
+
+
               @endforeach
             </tbody>
           </table>

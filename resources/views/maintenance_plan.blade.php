@@ -122,13 +122,12 @@
           <table class="table">
             <thead>
               <tr>
-                <th>เลือก</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ประเภท</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
-                <th>สถานะ</th>
-                
+                <th class="text-center th-edit">เลือก</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ประเภท</th>
+                <th class="text-center">ระยะทางสะสม</th>
+                <th class="text-center">ระยะเวลาสะสม</th>
+                <th class="text-center">สถานะ</th>
               </tr>
             </thead>
 
@@ -136,13 +135,13 @@
             @foreach ($trainset_info as $info)
             
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
-                <td><input type="checkbox" name="choose" value={{$info->train_number}}></td>
-                <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}1" >{{$info->type}}</td>        
-                <td id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
-                <td id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
-                <td>{{$info->status}}</td>
-                <td>{{$info->level}}</td>
+                <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
+                <td class="text-center">{{$info->train_number}}</td>
+                <td class="text-center" id="{{$info->train_number}}1" >{{$info->type}}</td>        
+                <td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
+                <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
+                <td class="text-center">{{$info->status}}</td>
+                <td class="text-center">{{$info->level}}</td>
               </tr>
 
               <!-- JS change name cartype -->
