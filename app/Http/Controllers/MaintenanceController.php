@@ -10,6 +10,7 @@ use View;
 use Redirect;
 
 
+
 class MaintenanceController extends Controller
 {
     public function maintenance_add_info() 
@@ -154,8 +155,8 @@ class MaintenanceController extends Controller
         $trainset_maintenance = DB::table('maintenance')->select('train_number')->distinct()->get();
         $number = count($trainset_maintenance);
         $trainset_level_info = DB::table('train_set')->select('train_number','total_distance','total_time')->distinct()->get();
-        $level_info = DB::table('level')->orderBy('level', 'asc')->get();
-       
+        $level_info = DB::table('level')->select('level','total_time','total_distance')->orderBy('level', 'asc')->get();
+
             foreach ($trainset_level_info as $x) {
                 // if($x == NULL){
                    foreach ($level_info as $value) {
@@ -182,9 +183,8 @@ class MaintenanceController extends Controller
         }
 
         $trainset_info = DB::table('train_set')->where('status','ว่าง')->orwhere('status','วิ่ง')->distinct()->paginate(15);
-        
 
-        return View::make(' maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number)->with('level_info',$level_info);
+        return View::make('maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number)->with('level_info',$level_info);
 
 
         

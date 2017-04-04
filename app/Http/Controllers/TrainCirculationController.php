@@ -128,9 +128,9 @@ class TrainCirculationController extends Controller
 			}	 	
 				$train_trip = $i+1;
 
-				DB::insert('insert into train_schedule (train_trip, train_number,class,source_station,departure_time,destination_station,arrival_time,trip_type,reverse_trip,mark,created_at) values (?, ?, ?, ?, ? ,?,?, ?, ?, ?, ? )', [$train_trip,$tain_set_choose,$time_table_info[$i]->class,$time_table_info[$i]->source_station,$time_table_info[$i]->departure_time,$time_table_info[$i]->destination_station,$time_table_info[$i]->arrival_time,$time_table_info[$i]->trip_type,1,"yes",Carbon::now()]);
+				// DB::insert('insert into train_schedule (train_trip, train_number,class,source_station,departure_time,destination_station,arrival_time,trip_type,reverse_trip,mark,created_at) values (?, ?, ?, ?, ? ,?,?, ?, ?, ?, ? )', [$train_trip,$tain_set_choose,$time_table_info[$i]->class,$time_table_info[$i]->source_station,$time_table_info[$i]->departure_time,$time_table_info[$i]->destination_station,$time_table_info[$i]->arrival_time,$time_table_info[$i]->trip_type,1,"yes",Carbon::now()]);
 
-				 DB::table('train_set')->where('train_number',$tain_set_choose)->update(['mark'=>"yes"]);
+				//  DB::table('train_set')->where('train_number',$tain_set_choose)->update(['mark'=>"yes"]);
 				
 				
 		
