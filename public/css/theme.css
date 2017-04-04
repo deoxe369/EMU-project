@@ -18,6 +18,25 @@
     stroke: rgba(255,255,255,0.5);
   }
 
+  table{
+    border: 0;
+  }
+
+  thead{
+    background-color: #ff6f00;
+    color: #ffffff;
+  }
+
+  .th-edit{
+    background-color: #212121;
+    color: #ff6f00;
+  }
+
+  .th-chklist{
+    background-color: #161616;
+    color: #009688;
+  }
+
   .margin {
       margin: auto;
       padding-bottom: 10px;
