@@ -108,11 +108,13 @@
             <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>
               สร้างแผนอัตโนมัติ</span></button>
 
-            
           </div>
         </form> 
       </div>
-
+    
+                     
+      
+         
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
@@ -128,12 +130,14 @@
                 <th class="text-center">ระยะทางสะสม</th>
                 <th class="text-center">ระยะเวลาสะสม</th>
                 <th class="text-center">สถานะ</th>
+               
               </tr>
             </thead>
 
             <tbody>
             @foreach ($trainset_info as $info)
-            
+              
+             
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td class="text-center">{{$info->train_number}}</td>
@@ -141,44 +145,56 @@
                 <td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
                 <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
                 <td class="text-center">{{$info->status}}</td>
-                <td class="text-center">{{$info->level}}</td>
-              </tr>
+                <a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a>
+                </tr>
+                 @foreach($level_info as $level)
+                      
+                       <p id="{{$info->train_number}}{{$level->level}}" style="margin:0px; padding: 0px">{{$level->level}}</p>
+                       <p id="{{$info->train_number}}{{$level->level}}time" style="margin:0px; padding: 0px">{{$level->total_time}}</p>
+                       <p id="{{$info->train_number}}{{$level->level}}dis" style="margin:0px; padding: 0px">{{$level->total_distance}}</p>
+                      
+                       <script type="text/javascript">
+                          var level_info = parseInt(document.getElementById("{{$info->train_number}}{{$level->level}}").innerHTML);
+                          var train_level = document.getElementById("level{{$info->train_number}}").innerHTML;
+                         if(level_info == train_level){
+                            var train_dis =  parseInt(document.getElementById("total_dist{{$info->train_number}}").innerHTML);
+                            var train_time =   parseFloat(document.getElementById("total_time{{$info->train_number}}").innerHTML); 
+                            var level_dis = parseInt(document.getElementById("{{$info->train_number}}{{$level->level}}dis").innerHTML); 
+                            var level_time = parseFloat(document.getElementById("{{$info->train_number}}{{$level->level}}time").innerHTML);  
 
+                            var time_result = level_time-train_time;
+                            var dis_result = level_dis-train_dis;
+                              if(time_result <= 0.08 || dis_result <= 1000){
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#fccb58";
+                              
+                            }else if(time_result <= 0.20 || dis_result <= 3000){
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
+                              
+                            }
+                          }
+
+
+                         document.getElementById("{{$info->train_number}}{{$level->level}}").style.display = "none";
+                         document.getElementById("{{$info->train_number}}{{$level->level}}time").style.display = "none";
+                         document.getElementById("{{$info->train_number}}{{$level->level}}dis").style.display = "none";  
+                          document.getElementById("level{{$info->train_number}}").style.display = "none";  
+                       
+
+                       </script> 
+                 @endforeach 
+              
+                
               <!-- JS change name cartype -->
               <script type="text/javascript">
-
                 var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
                 switch(trtype){
                   case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
                   case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
+                       
               </script>
-              @foreach ($trainset_maintenance as $trainmain)
+
              
-              <script type="text/javascript">
-                
-                var train_number =  parseInt(document.getElementById("{{$info->train_number}}").id);
-                var train_number1 = {{$trainmain->train_number}};
-                  
-                if( train_number == train_number1){
-                  document.getElementById("{{$info->train_number}}").style.display = "none";
-                  console.log(train_number1);
-                }
-
-
-                var cell = $('td');
-                cell.each(function(){
-                  var cell_value = $(this).html();
-                  if ((cell_value >= 0) && (cell_value <= 1000)) {
-                    $(this).css({'background':"#b71c1c"});
-                    $(this).css({'color':"#ffffff"});
-                  }else if (cell_value <= 8000) {
-                    $(this).css({'background':"#ffab00"});
-                  }
-                });
-
-              </script>
-              @endforeach
               
               
               @endforeach
