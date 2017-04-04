@@ -21,6 +21,11 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
   
+  <style type="text/css">
+    th,td{
+      padding: 8px;
+    }
+  </style>
 
 </head>
 
@@ -120,52 +125,57 @@
       <div class="row col-md-12 margin">
         <div class="table-responsive">          
           <table class="table">
-            <thead>
+            <thead style="background-color: #ff6f00; color: #ffffff;">
               <tr>  
-                <th>ทริป</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ชนิด</th>
-                <th>สถานีต้นทาง</th>
-                <th>เวลาออก</th>
-                <th>สถานีปลายทาง</th>
-                <th>เวลาถึง</th>
-                <th>เที่ยว</th>
-                <th style="color: #f4511e;">แก้ไข</th>
-
-               </tr>
+                <th class="text-center">ทริป</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ชนิด</th>
+                <th class="text-center">สถานีต้นทาง</th>
+                <th class="text-center">เวลาออก</th>
+                <th class="text-center">สถานีปลายทาง</th>
+                <th class="text-center">เวลาถึง</th>
+                <th class="text-center">เที่ยว</th>
+                <th class="text-center th-edit">แก้ไข</th>
+              </tr>
             </thead>
+            
             <tbody>
+           
             @foreach($train_schedule_info as $train)
               <tr id='{{$train->train_trip}}'>
-                <td>{{$train->train_trip}}</td>
-                <td>{{$train->train_number}}</td>
-                <td>{{$train->class}}</td>
-                <td>{{$train->source_station}}</td>
-                <td>{{$train->departure_time}}</td>
-                <td>{{$train->destination_station}}</td>
-                <td>{{$train->arrival_time}}</td>
-                <td id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
-               <script type="text/javascript">
-               var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
-                
+                <td class="text-center">{{$train->train_trip}}</td>
+                <td class="text-center">{{$train->train_number}}</td>
+                <td class="text-center">{{$train->class}}</td>
+                <td class="text-center">{{$train->source_station}}</td>
+                <td class="text-center">{{$train->departure_time}}</td>
+                <td class="text-center">{{$train->destination_station}}</td>
+                <td class="text-center">{{$train->arrival_time}}</td>
+                <td class="text-center" id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
+                <td><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+              </tr>
+
+              <script type="text/javascript">
+                //row color
+                var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
                 if(id%2 == 1){
-                  document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#ffe7d1";  
+                  document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#f2f2f2";  
                   console.log(id);
                 }
+
+                //rename
                 var type = document.getElementById('{{$train->id}}triptype').innerHTML
                 if(type == "outbound"){
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวไป"
                 }else{
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวกลับ"
                 }
-                </script>
-                <td><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
-              </tr>
+              </script>
+                
               @endforeach
-             
-
-
-    </div>
+             </tbody>
+            </table>
+          </div>
+      </div>
 
 
 

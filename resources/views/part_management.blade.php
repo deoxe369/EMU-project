@@ -123,27 +123,27 @@
           <table class="table">
             <thead>
               <tr>
-                <th>รหัสอะไหล่</th>
-                <th>ประเภท</th>
-                <th>ยี่ห้อ</th>
-                <th>เวลาสะสม</th>
-                <th>ระยะทางสะสม</th>
-                <th>Cars ID</th>
-                <th>สถานะ</th>
-                <th style="color: #f4511e;">แก้ไข</th>
+                <th class="text-center">รหัสอะไหล่</th>
+                <th class="text-center">ประเภท</th>
+                <th class="text-center">ยี่ห้อ</th>
+                <th class="text-center">เวลาสะสม</th>
+                <th class="text-center">ระยะทางสะสม</th>
+                <th class="text-center">Cars ID</th>
+                <th class="text-center">สถานะ</th>
+                <th class="text-center th-edit">แก้ไข</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($part_info as $info)
               <tr>
-                <td>{{$info->id}}</td>
-                <td>{{$info->part_type}}</td>
-                <td>{{$info->brand}}</td>                   
-                <td>{{$info->total_distance}}</td>            
-                <td>{{$info->total_time}}</td>
-                <td>{{$info->cars_id}}</td>            
-                <td>{{$info->status}}</td>         
-                <td><a href='../edit_part_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td class="text-center">{{$info->id}}</td>
+                <td class="text-center">{{$info->part_type}}</td>
+                <td class="text-center">{{$info->brand}}</td>                   
+                <td class="text-center">{{$info->total_distance}}</td>            
+                <td class="text-center">{{$info->total_time}}</td>
+                <td class="text-center">{{$info->cars_id}}</td>            
+                <td class="text-center">{{$info->status}}</td>         
+                <td class="text-center"><a href='../edit_part_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
               @endforeach
 

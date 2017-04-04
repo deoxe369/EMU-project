@@ -87,29 +87,28 @@
           <table class="table">
             <thead>
               <tr>
-                <th>ทริป</th>
-                <th>ชุดรถไฟ</th>
-                <th>ชนิด</th>
-                <th>สถานีต้นทาง</th>
-                <th>เวลาออก</th>
-                <th>สถานีปลายทาง</th>
-                <th>เวลาถึง</th>
-                <th>เที่ยว</th>
-      
-                
+                <th class="text-center">ทริป</th>
+                <th class="text-center">ชุดรถไฟ</th>
+                <th class="text-center">ชนิด</th>
+                <th class="text-center">สถานีต้นทาง</th>
+                <th class="text-center">เวลาออก</th>
+                <th class="text-center">สถานีปลายทาง</th>
+                <th class="text-center">เวลาถึง</th>
+                <th class="text-center">เที่ยว</th>
               </tr>
             </thead>
+            
             <tbody>
            @foreach($plan as $ts)
               <tr>
-                <td>{{$ts->train_trip}}</td>
-                <td>{{$ts->train_number}}</td>
-                <td>{{$ts->class}}</td>
-                <td>{{$ts->source_station}}</td>
-                <td>{{$ts->departure_time}}</td>
-                <td>{{$ts->destination_station}}</td>
-                <td>{{$ts->arrival_time}}</td>
-                <td  id='{{$ts->id}}triptype'>{{$ts->trip_type}}</td>
+                <td class="text-center">{{$ts->train_trip}}</td>
+                <td class="text-center">{{$ts->train_number}}</td>
+                <td class="text-center">{{$ts->class}}</td>
+                <td class="text-center">{{$ts->source_station}}</td>
+                <td class="text-center">{{$ts->departure_time}}</td>
+                <td class="text-center">{{$ts->destination_station}}</td>
+                <td class="text-center">{{$ts->arrival_time}}</td>
+                <td class="text-center" id='{{$ts->id}}triptype'>{{$ts->trip_type}}</td>
                 <script type="text/javascript">
                 var type = document.getElementById('{{$ts->id}}triptype').innerHTML
                 if(type == "outbound"){

@@ -83,31 +83,31 @@
           <table class="table">
             <thead>
               <tr>  
-                <th>ชุดรถไฟ</th>
-                <th>ชนิด</th>
-                <th>สถานีต้นทาง</th>
-                <th>เวลาออก</th>
-                <th>สถานีปลายทาง</th>
-                <th>เวลาถึง</th>
-                <th>เที่ยว</th>
+                <th class="text-center th-edit">ชุดรถไฟ</th>
+                <th class="text-center">ชนิด</th>
+                <th class="text-center">สถานีต้นทาง</th>
+                <th class="text-center">เวลาออก</th>
+                <th class="text-center">สถานีปลายทาง</th>
+                <th class="text-center">เวลาถึง</th>
+                <th class="text-center">เที่ยว</th>
                 
                </tr>
             </thead>
             <tbody>
             @foreach($time_table_info as $time_table)
               <tr id="{{$time_table->id}}">
-                <td><select  id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)">
+                <td class="text-center"><select  id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)">
                   @foreach($train_set_info as $train)
                   <option>{{$train->train_number}}</option>
                   
                   @endforeach
                 </select></td>
-                <td>{{$time_table->class}}</td>
-                <td>{{$time_table->source_station}}</td>
-                <td>{{$time_table->departure_time}}</td>
-                <td>{{$time_table->destination_station}}</td>
-                <td>{{$time_table->arrival_time}}</td>
-                <td id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
+                <td class="text-center">{{$time_table->class}}</td>
+                <td class="text-center">{{$time_table->source_station}}</td>
+                <td class="text-center">{{$time_table->departure_time}}</td>
+                <td class="text-center">{{$time_table->destination_station}}</td>
+                <td class="text-center">{{$time_table->arrival_time}}</td>
+                <td class="text-center" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
               </tr>
               <script type="text/javascript">
               
@@ -172,9 +172,11 @@
 
               </script>
               @endforeach
-             
 
-
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
 
