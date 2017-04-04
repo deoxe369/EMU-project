@@ -109,9 +109,11 @@
                 <td class="text-center">{{$time_table->arrival_time}}</td>
                 <td class="text-center" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
               </tr>
+
+              <!-- JavaScript Foreach -->
               <script type="text/javascript">
-              
                 
+                //rename
                 var type = document.getElementById('{{$time_table->id}}triptype').innerHTML
                 if(type == "outbound"){
                   document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวไป"
@@ -171,6 +173,7 @@
                 //               }
 
               </script>
+
               @endforeach
 
             </tbody>

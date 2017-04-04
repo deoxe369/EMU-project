@@ -152,23 +152,10 @@
                   var id = parseInt(document.getElementById("{{$info->id}}").id);
                 
                   if(id%2 == 1){
-                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff"; 
-                    document.getElementById("{{$info->id}}").style.color = "#FF3D00";
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
                     console.log(id);
                   }else{
                     document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
-                    document.getElementById("{{$info->id}}").style.color = "#5D4037";
-                    console.log(id);
-                  }
-
-                  //row color td-edit
-                  var id = parseInt(document.getElementById("{{$info->id}}editcar").id);
-                
-                  if(id%2 == 1){
-                    document.getElementById("{{$info->id}}editcar").style.backgroundColor = "#FAFAFA";
-                    console.log(id);
-                  }else{
-                    document.getElementById("{{$info->id}}editcar").style.backgroundColor = "#FFA726";
                     console.log(id);
                   }
 

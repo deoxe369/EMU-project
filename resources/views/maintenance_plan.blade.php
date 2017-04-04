@@ -128,6 +128,7 @@
                 <th class="text-center">ระยะทางสะสม</th>
                 <th class="text-center">ระยะเวลาสะสม</th>
                 <th class="text-center">สถานะ</th>
+                <th class="text-center">ระดับ</th>
               </tr>
             </thead>
 

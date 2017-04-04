@@ -146,28 +146,28 @@
                 <!-- JavaScript Foreach -->
                 <script type="text/javascript">
                   //row color
-                  var id = parseInt(document.getElementById("{{$info->train_number}}").id);
+                  // var id = parseInt(document.getElementById("{{$info->train_number}}").id);
                 
-                  if(id%2 == 1){
-                    document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ffffff"; 
-                    document.getElementById("{{$info->train_number}}").style.color = "#FF3D00";
-                    console.log(id);
-                  }else{
-                    document.getElementById("{{$info->train_number}}").style.backgroundColor = "#F5F5F5";
-                    document.getElementById("{{$info->train_number}}").style.color = "#5D4037";
-                    console.log(id);
-                  }
+                  // if(id%2 == 1){
+                  //   document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ffffff"; 
+                  //   document.getElementById("{{$info->train_number}}").style.color = "#FF3D00";
+                  //   console.log(id);
+                  // }else{
+                  //   document.getElementById("{{$info->train_number}}").style.backgroundColor = "#F5F5F5";
+                  //   document.getElementById("{{$info->train_number}}").style.color = "#5D4037";
+                  //   console.log(id);
+                  // }
 
                   //row color td-edit
-                  var id = parseInt(document.getElementById("{{$info->train_number}}edittrset").id);
+                  // var id = parseInt(document.getElementById("{{$info->train_number}}edittrset").id);
                 
-                  if(id%2 == 1){
-                    document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FAFAFA";
-                    console.log(id);
-                  }else{
-                    document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FFA726";
-                    console.log(id);
-                  }
+                  // if(id%2 == 1){
+                  //   document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FAFAFA";
+                  //   console.log(id);
+                  // }else{
+                  //   document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FFA726";
+                  //   console.log(id);
+                  // }
 
                   //rename
                   var trtype = document.getElementById("{{$info->train_number}}trsettype").innerHTML;

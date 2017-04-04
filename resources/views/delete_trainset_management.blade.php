@@ -73,31 +73,31 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div>
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search">
           <div class="form-group">
-            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp</h3></label>
+            <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp;</h3></label>
             <input type="text" name="trainsetno">
           </div>
 
           <div class="form-group">
-            <label for="trsettype"><h3 class="margin">&nbspชนิด&nbsp</h3></label>
-            <select id="trsettype" name="trsettype">
+            <label for="trsettype"><h3 class="margin">&nbsp;ชนิด&nbsp;</h3></label>
+            <select id="trsettype" name="trsettype" class="sel sel-3">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="trstatus"><h3 class="margin">&nbspสถานะ&nbsp</h3></label>
-            <select id="trstatus" name="trstatus">
+            <label for="trstatus"><h3 class="margin">&nbsp;สถานะ&nbsp;</h3></label>
+            <select id="trstatus" name="trstatus" class="sel sel-3">
               <option value="มกราคม">มกราคม</option>
               <option value="กุมภาพันธ์">กุมภาพันธ์</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin">&nbsp;</h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
            <!--  <label for="addtr"><h3 class="margin">&nbsp</h3></label>
@@ -108,61 +108,60 @@
             <button formaction="../add_trainset_management" class="btn-del" style="vertical-align: middle"><span>ลบชุดรถไฟ</span></button> -->
           </div>
         </form>
-          
       </div>
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
-         <form action="delete_trainset">
-        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
-            <thead>
-              <tr>
-              <th>เลือก</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ชนิด</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
-                <th>สถานะ</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-               @foreach ($trainset_info as $info)
-                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
-                <td>{{$info->train_number}}</td>
-                <td id="{{$info->train_number}}" >{{$info->type}}</td>        
-                <td>{{$info->total_distance}}</td>
-                <td>{{$info->total_time}}</td>                
-                <td>{{$info->status}}</td>
-              </tr>
+          <form action="delete_trainset">
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center th-edit">เลือก</th>
+                  <th class="text-center">รหัสชุดรถไฟ</th>
+                  <th class="text-center">ชนิด</th>
+                  <th class="text-center">ระยะทางสะสม</th>
+                  <th class="text-center">ระยะเวลาสะสม</th>
+                  <th class="text-center">สถานะ</th>
+                </tr>
+              </thead>
 
-               <script type="text/javascript">
+              <tbody>
+                  @foreach ($trainset_info as $info)
+                  <tr>
+                    <td class="text-center"><input type="checkbox" name='choose' value={{$info->id}}></td>
+                    <td class="text-center">{{$info->train_number}}</td>
+                    <td  class="text-center" id="{{$info->train_number}}" >{{$info->type}}</td>
+                    <td class="text-center">{{$info->total_distance}}</td>
+                    <td class="text-center">{{$info->total_time}}</td>
+                    <td class="text-center">{{$info->status}}</td>
+                  </tr>
+
+                <!-- JavaScript Foreach -->
+                <script type="text/javascript">
                
-                var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
+                  var trtype = document.getElementById("{{$info->train_number}}").innerHTML;
                 
                  
-                 switch(trtype){
-                  case "trcar3":  
-                  document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
-                  
-                    break;
-                   case "trcar4": 
-                   document.getElementById("{{$info->train_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
-                   
-                   break;
-                 }
-              
-              </script>
-              @endforeach
+                  switch(trtype){
+                    case "trcar3":  
+                    document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
+                      break;
 
+                    case "trcar4": 
+                    document.getElementById("{{$info->train_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
+                    break;
+                  }
               
-           
-            </tbody>
-          </table>
+                </script>
+                @endforeach
+              </tbody>
+            </table>
           </form>
-        </div>      
+        </div>
+      </div>      
     </div>
 
 

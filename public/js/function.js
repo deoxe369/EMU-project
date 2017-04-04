@@ -97,6 +97,9 @@
     if (trsetno == "") {
       document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
+    }else if (trsetno !== isNaN) {
+      document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
+      status = false;
     }else{
       document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/check.png'>";
       status = true;
