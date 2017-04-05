@@ -28,8 +28,10 @@
   }
 
   .th-edit{
-    background-color: #212121;
-    color: #ff6f00;
+    background-color: #4f4b4b;
+    color: #ffffff;
+    /*color: #ff6f00;*/
+    /*color: #ffab00;*/
   }
 
   .th-chklist{
