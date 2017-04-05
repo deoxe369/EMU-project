@@ -125,7 +125,7 @@
               <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button>
 
 
-              <a href="/check_3carparts"><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
+              <a href='/check_part/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
 
           <table class="table">
             <thead>

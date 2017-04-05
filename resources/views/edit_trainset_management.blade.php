@@ -78,7 +78,7 @@
 
         <br>
 
-         <form class="form-horizontal" action="add_trainset" name="chktrset"  >
+         <form class="form-horizontal" action='../edit_trainset_management/{{$origin_info[0]->train_number}}/save' name="chktrset"  >
             
           <table class="table-add" align="center">
             <tr class="tr-add">

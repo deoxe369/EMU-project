@@ -121,6 +121,26 @@
               </td>
             </tr>
 
+            <tr>
+              <td class="col-sm-1"><span></span></td>
+              <td class="col-sm-1"><span></span></td>
+              <td id="composition">
+                <!-- Call from Javascript Composition -->
+                    <div id="KK">
+                    <select name="cars_id" class="sel">
+                      @foreach($cars_loco_info as $loco)
+                      <option value={{$loco->id}}>{{$loco->id}}</option>
+                      @endforeach
+                    </select>
+                    <select name="cars_id" class="sel">
+                      @foreach($cars_bogie_info as $bogie)
+                      <option value={{$bogie->id}}>{{$bogie->id}}</option>
+                      @endforeach
+                    </select>
+                    </div>
+              </td>
+            </tr>
+
             <!-- Select-Options are added by Button Add Composition -->
             <tr>
               <td class="col-sm-1"><span></span></td>
@@ -185,7 +205,8 @@
                     console.log(opt.value);
                     switch(opt.value){
                       case "passenger": 
-                        document.getElementById("composition").style.display = "block";       
+                        document.getElementById("composition").style.display = "block"; 
+                           
                         break;
                       case " ": 
                         document.getElementById("composition").style.display = "none";       

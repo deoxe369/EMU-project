@@ -95,74 +95,33 @@ class TrainSetController extends Controller
     public function update(Request $info ,$id)
     {
 
-         $origin_info = DB::table('train_set')->where('train_number',$id)->whereNull('deleted_at')->get();
-
-         $origin_cars_info = DB::table('cars')->select('id')->where('train_number',$id)->get();
         
-
-        if($origin_info[0]->type == 'trcar3'){
-
+        $input  = explode('&', $info->server->get('QUERY_STRING'));
         
-        $origin_info_car1 = $origin_cars_info[0]->id;
-        $origin_info_car2 = $origin_cars_info[1]->id;
-        $origin_info_car3 = $origin_cars_info[2]->id;
+        $tain_set_type = substr($input[0],7);
 
-        DB::table('cars')->where('id',$origin_info_car1)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$origin_info_car2)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$origin_info_car3)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-
-
-        }
-        if($origin_info[0]->type == 'trcar4'){
-
+        $all_cars = array_splice($input,1);
        
-        $origin_info_car1 = $origin_info[0]->cars_id;
-        $origin_info_car2 = $origin_info[1]->cars_id;
-        $origin_info_car3 = $origin_info[2]->cars_id;
-        $origin_info_car4 = $origin_info[3]->cars_id;
-
-        DB::table('cars')->where('id',$origin_info_car1)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$origin_info_car2)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$origin_info_car3)->update(['status'=>'ว่าง','updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$origin_info_car4)->update(['status'=>'ว่าง','train_number'=>null,'updated_at'=>Carbon::now()]);
-        }
+        $number = count($all_cars);
         
-         // DB::table('train_set')->where('train_number',$id)->update(['deleted_at'=>Carbon::now()]);
 
-         if( $info->trtype == 'trcar3'){
+         DB::table('train_set')->where('train_number',$id)->update(['type'=>$tain_set_type,'updated_at'=>Carbon::now()]);
 
-        DB::table('train_set')->where('train_number',$id)->update(['type'=>$info->trtype,'updated_at'=>Carbon::now()]);
 
-        DB::table('cars')->where('id',$info->comtrcar3_1)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$info->comtrcar3_2)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$info->comtrcar3_3)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-       
+         DB::table('cars')->where('train_number',$id)->update(['status'=>'ว่าง','train_number'=>NULL,'updated_at'=>Carbon::now()]);
+         
 
-        return Redirect::action('TrainSetController@trainset_info');
+        for ($i=0; $i <  $number; $i++) { 
+             
+           $cars_id = substr($all_cars[$i],8);
+           
+            DB::table('cars')->where('id', $cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
+        
+            //    $all_cars = array_splice($all_cars,1);
 
         }
-
-        if( $info->trtype == 'trcar4'){
-
-        DB::table('train_set')->where('train_number',$id)->update(['type'=>$info->trtype,'updated_at'=>Carbon::now()]);
-
-        DB::table('cars')->where('id',$info->comtrcar4_1)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$info->comtrcar4_2)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-        DB::table('cars')->where('id',$info->comtrcar4_3)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-         DB::table('cars')->where('id',$info->comtrcar4_4)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
-
         return Redirect::action('TrainSetController@trainset_info');
-      
-        }
-        // // if( $info->trtype == 'trgoods'){
-
-        // return '3';
-        // }
-        // if( $info->trtype == 'trtrolley'){
-
-        // return '4';
-        // }
-         // return  $origin_cars_info[1]->id ;
+        
         
     }
 
