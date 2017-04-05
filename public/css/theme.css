@@ -230,7 +230,7 @@
     color: #ffffff;
     text-align: center;
     font-size: 20px;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -275,7 +275,7 @@
     color: #ffffff;
     text-align: center;
     font-size: 20px;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -310,8 +310,7 @@
     right: 0;
   }
 
-
-
+  
 
 /*ListPagination*/
 ul.pagination {

@@ -174,9 +174,9 @@
               </tbody>
             </table>
           </form>
-          {{$cars_info->links()}} 
         </div>
-      </div>  
+      </div>
+      {{$cars_info->links()}}  
     </div>
 
     

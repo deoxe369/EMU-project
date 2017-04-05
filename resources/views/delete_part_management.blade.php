@@ -170,8 +170,8 @@
               </tbody>
             </table>
           </form>
-        {{$part_info->links()}}
-      </div>      
+        </div>
+      {{$part_info->links()}}
     </div>
 
 </body>

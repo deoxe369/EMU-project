@@ -73,9 +73,10 @@
   <!--Content-->
     <!--First Container-->
     <div class="container-fluid text-left">
+
       <!--Date Current-->
 
-             <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
+      <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
 
       <!--Table Detail-->
       <div class="row col-md-12 margin">
@@ -96,12 +97,12 @@
             <tbody>
             @foreach($time_table_info as $time_table)
               <tr id="{{$time_table->id}}">
-                <td class="text-center"><select  id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)">
-                  @foreach($train_set_info as $train)
-                  <option>{{$train->train_number}}</option>
-                  
-                  @endforeach
-                </select></td>
+                <td class="text-center">
+                  <select id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)" class="sel-1">
+                    @foreach($train_set_info as $train)
+                    <option>{{$train->train_number}}</option>
+                    @endforeach
+                  </select></td>
                 <td class="text-center">{{$time_table->class}}</td>
                 <td class="text-center">{{$time_table->source_station}}</td>
                 <td class="text-center">{{$time_table->departure_time}}</td>

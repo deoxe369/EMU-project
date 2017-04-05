@@ -134,10 +134,10 @@
                 @endforeach
               </tbody>
             </table>
-          </form>
-          {{$depot_info->links()}}
+          </form>          
         </div> 
-      </div>     
+      </div>
+      {{$depot_info->links()}}     
     </div>
 
     

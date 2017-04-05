@@ -171,10 +171,10 @@
 
               @endforeach
             </tbody>
-          </table>
-          {{$cars_info->links()}} 
+          </table>          
         </div> 
       </div>
+      {{$cars_info->links()}} 
     </div>
     
   <!--Footer-->
