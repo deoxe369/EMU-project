@@ -135,7 +135,7 @@
             </thead>
             <tbody>
             @foreach ($part_info as $info)
-              <tr>
+              <tr id="{{$info->id}}">
                 <td class="text-center">{{$info->id}}</td>
                 <td class="text-center">{{$info->part_type}}</td>
                 <td class="text-center">{{$info->brand}}</td>                   
@@ -145,6 +145,22 @@
                 <td class="text-center">{{$info->status}}</td>         
                 <td class="text-center"><a href='../edit_part_management/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
+
+              <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
+
+                </script>
+
               @endforeach
 
             </tbody>

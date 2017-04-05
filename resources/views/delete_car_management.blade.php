@@ -69,13 +69,14 @@
     </nav>
 
   <!--Content-->
-  <div class="container-fluid">    
-    <!--First Container-->
-    <form class="form-inline" action="search_cars">
+    <div class="container-fluid">    
+      <!--First Container-->
+      <div class="row col-md-12 margin">
+        <form class="form-inline" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
-            <select id="cars_type" name="cars_type">
+            <select id="cars_type" name="cars_type" class="sel sel-3">
               <option value='not'>ประเภท</option> 
               <option value="locamotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
@@ -86,7 +87,7 @@
 
           <div class="form-group">
             <label for="cars_model"><h3 class="margin">โมเดล</h3></label>
-            <select id="cars_model" name="cars_model">
+            <select id="cars_model" name="cars_model" class="sel sel-3">
               <option value='not'>โมเดล</option>           
                  @foreach ($cars_model_info as $info)
               <option value={{$info->model}}>{{$info->model}}</option>
@@ -96,7 +97,7 @@
 
           <div class="form-group">
             <label for="status"><h3 class="margin">สถานะ</h3></label>
-            <select id="status" name="status">
+            <select id="status" name="status" class="sel sel-3">
               <option value='not'>สถานะ</option> 
                 @foreach ($cars_status_info as $info)
               <option value={{$info->status}}>{{$info->status}}</option>
@@ -105,9 +106,9 @@
           </div>
           
           <div class="form-group">
-            <label for="search"><h3 class="margin">&nbsp</h3></label>
+            <label for="search"><h3 class="margin">&nbsp;</h3></label>
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
-<!-- 
+          <!-- 
             <label for="addcar"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
 
@@ -115,42 +116,67 @@
             <label for="delcar"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../delete_car_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button> -->
           </div>
-    </form>
-  </div>  
+        </form>
+      </div>  
 
 
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
-         <form action="delete_cars">
-        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
-            <thead>
-              <tr>
-              <th>เลือก</th>
-                <th>รหัสตู้รถไฟ</th>
-                <th>โมเดล</th>
-                <th>ชนิด</th>
-                <th>สถานะ</th>
-               
-              </tr>
-            </thead>
-            <tbody>
-            @foreach ($cars_info as $info)
-              <tr>
-              <td><input type="checkbox" name='choose' value={{$info->id}}></td>
-                <td>{{$info->id}}</td>
-                <td>{{$info->model}}</td>                
-                <td>{{$info->cars_type}}</td>            
-                <td>{{$info->status}}</td>
+          <form action="delete_cars">
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center th-edit">เลือก</th>
+                  <th class="text-center">รหัสตู้รถไฟ</th>
+                  <th class="text-center">โมเดล</th>
+                  <th class="text-center">ชนิด</th>
+                  <th class="text-center">สถานะ</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach ($cars_info as $info)
+                <tr id="{{$info->id}}">
+                  <td class="text-center"><input type="checkbox" name='choose' value={{$info->id}}></td>
+                  <td class="text-center">{{$info->id}}</td>
+                  <td class="text-center">{{$info->model}}</td>                
+                  <td class="text-center" id="{{$info->id}}cartype">{{$info->cars_type}}</td>            
+                  <td class="text-center">{{$info->status}}</td>
+                </tr>
+
+                <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
                 
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
+
+                  //rename
+                  var type = document.getElementById('{{$info->id}}cartype').innerHTML
+                  if(type == "locomotive"){
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
+                  }else{
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
+                  }
+
+                </script>
+
+                @endforeach
+              </tbody>
+            </table>
           </form>
           {{$cars_info->links()}} 
-        </div>      
+        </div>
+      </div>  
     </div>
 
     

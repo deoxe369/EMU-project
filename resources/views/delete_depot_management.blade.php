@@ -71,54 +71,73 @@
 
   <!--Content-->
     <div class="container-fluid">    
-    <!--First Container-->
-      <div>
+      <!--First Container-->
+      <div class="row col-md-12 margin">
         <form class="form-inline" action="search_depot">
 
-          <div class="form-group">
-            <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
-            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
+         <!--  <div class="form-group">
+            <label for="search"><h3 class="margin">&nbsp;</h3></label>    
+            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button>
 
-            <!-- <label for="adddepot"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button> -->
+            <label for="adddepot"><h3 class="margin">&nbsp;</h3></label>
+            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
 
-            <!--add page: delete part_management-->
-            <!-- <label for="deldepot"><h3 class="margin">&nbsp</h3></label>
-            <button formaction="../add_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button> -->
-          </div>
+            add page: delete part_management
+            <label for="deldepot"><h3 class="margin">&nbsp;</h3></label>
+            <button formaction="../add_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
+          </div> -->
         </form>
       </div>
            
     <!--Second Container-->
       <!--Table Detail-->
+      <div class="row col-md-12 margin">
         <div class="table-responsive">
-        <form action="delete_depot">
-        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
-            <thead>
-              <tr>
-               <th>เลือก</th>
-                <th>รหัสศูนย์</th>
-                <th>จำนวนที่รับได้</th>
-                <th>ตำแหน่ง</th>
-                <th>ว่าง</th>
-              </tr>
-            </thead>
-            <tbody>
-            @foreach ($depot_info as $info)
-              <tr>
-                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
-                <td>{{$info->id}}</td>
-                <td>{{$info->capacity}}</td>                
-                <td>{{$info->location_name}}</td>            
-                <td>{{$info->free_slot}}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <form action="delete_depot">
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center th-edit">เลือก</th>
+                  <th class="text-center">รหัสศูนย์</th>
+                  <th class="text-center">จำนวนที่รับได้</th>
+                  <th class="text-center">ตำแหน่ง</th>
+                  <th class="text-center">ว่าง</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach ($depot_info as $info)
+                <tr id="{{$info->id}}">
+                  <td class="text-center"><input type="checkbox" name='choose' value={{$info->id}}></td>
+                  <td class="text-center">{{$info->id}}</td>
+                  <td class="text-center">{{$info->capacity}}</td>
+                  <td class="text-center">{{$info->location_name}}</td>
+                  <td class="text-center">{{$info->free_slot}}</td>
+                </tr>
+
+                <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
+
+                </script>
+
+                @endforeach
+              </tbody>
+            </table>
           </form>
           {{$depot_info->links()}}
-        </div>      
+        </div> 
+      </div>     
     </div>
 
     

@@ -77,9 +77,14 @@
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลชุดรถไฟ</h1>
 
         <br>
+
+        <!--Form Add-->
        <form class="form-horizontal" action="add_trainset" name="chktrset"  >
-            
+          
+          <!--New Structure: Table-->
           <table class="table-add" align="center">
+
+            <!-- No.Train Set -->
             <tr class="tr-add">
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
               <td class="col-sm-1"><span></span></td>
@@ -89,6 +94,8 @@
                 <span id="chktrset_no" class="checkform"></span>
               </td>
             </tr>
+
+            <!-- Trainset Type -->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ประเภท</label></td>
               <td class="col-sm-1"><span></span></td>
@@ -97,19 +104,20 @@
                 <select id="trtype" name="trtype" onchange=" getSelectedOptions(this)" class="sel">
                   <option value=" ">เลือกประเภทของชุดรถไฟ</option>
                   <option value="passenger">ชุดรถไฟโดยสาร</option>
-                  
             <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
                   <option value="trtrolley">รถรางโยก</option> -->
                 </select>
                 <span id="chktrset_type" class="checkform"></span>
               </td>
             </tr>
-            
+
+            <!-- Composition -->
             <tr class="tr-add" id="composition" >
-                
-                <td class="td-add"><p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>
+                <td class="td-add">
+                  <p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>
                 <td class="col-sm-1"><span></span></td>
-                <td><input onclick="addRow(this.form);" type="button" value="Add composition" />
+                <td>
+                  <input onclick="addRow(this.form);" type="button" value="Add composition" />
                     <select name="cars_id">
                       @foreach($cars_loco_info as $loco)
                       <option value={{$loco->id}}>{{$loco->id}}</option>
@@ -123,11 +131,14 @@
                    
                 <div id="itemRows">
                 </div></td>
-            </tr> 
-            </table>
+
+            </tr>
+
+          </table>
             
-            
+            <!-- Javascript Composition -->
             <script type="text/javascript">
+
               document.getElementById("composition").style.display = "none";
               var rowNum = 0;
               function addRow(frm) {
@@ -144,26 +155,23 @@
               }
 
               function getSelectedOptions(sel){
-                                var opts = [],
-                                  opt;
-                                var len = len = sel.options.length;
-                                for (var i = 0; i < len; i++) {
-                                  opt = sel.options[i];
-                                  // console.log("k");
-                                  if (opt.selected) {
-                                    opts.push(opt);
-                                    console.log(opt.value);
-                                      switch(opt.value){
-                                        case "passenger": 
-                                            document.getElementById("composition").style.display = "block";       
-                                        break;
-                                      }
-                                    }
-                                 }
-
-                                return opt.value;
-
-                              }
+                var opts = [], opt;
+                var len = len = sel.options.length;
+                for (var i = 0; i < len; i++) {
+                  opt = sel.options[i];
+                  // console.log("k");
+                  if (opt.selected) {
+                    opts.push(opt);
+                    console.log(opt.value);
+                    switch(opt.value){
+                      case "passenger": 
+                        document.getElementById("composition").style.display = "block";       
+                        break;
+                      }
+                    }
+                  }
+                 return opt.value;
+              }
               
             </script>
             

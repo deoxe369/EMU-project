@@ -70,7 +70,7 @@
 
   <!--Content-->
     <div class="container-fluid">    
-    <!--First Container-->
+      <!--First Container-->
       <div class="row col-md-12 margin">
         <form class="form-inline" action="search_maintenance">
 
@@ -97,6 +97,7 @@
           <div class="form-group">
             <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+          </div>
 
          <!--    <label for="addmaint"><h3 class="margin label-padding"></h3></label>
             <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
@@ -112,34 +113,49 @@
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
-        <form action="delete_maintenance1">
-        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>เลือก</th>
-                <th>เลขเข้าซ่อม</th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ศูนย์ซ่อม</th>
-                <th>ระดับ</th>
-                <th>วันเวลาเข้า</th>
-                <th>วันเวลาออก</th>
+          <form action="delete_maintenance1">
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center th-edit">เลือก</th>
+                  <th class="text-center">เลขเข้าซ่อม</th>
+                  <th class="text-center">รหัสชุดรถไฟ</th>
+                  <th class="text-center">ศูนย์ซ่อม</th>
+                  <th class="text-center">ระดับ</th>
+                  <th class="text-center">วันเวลาเข้า</th>
+                  <th class="text-center">วันเวลาออก</th>
                 
-              </tr>
-            </thead>
-            <tbody>
-            @foreach ($maintenance_info as $info)
-              <tr>
-                <td><input type="checkbox" name='choose' value={{$info->id}}></td>
-                <td>{{$info->id}}</td>
-                <td>{{$info->train_number}}</td>
-                <td>{{$info->depot}}</td>
-                <td>{{$info->level}}</td>
-                <td>{{$info->in_date}}</td>
-                <td>{{$info->out_date}}</td>
-            
-              </tr>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($maintenance_info as $info)
+                <tr id="{{$info->id}}">
+                  <td class="text-center"><input type="checkbox" name='choose' value={{$info->id}}></td>
+                  <td class="text-center">{{$info->id}}</td>
+                  <td class="text-center">{{$info->train_number}}</td>
+                  <td class="text-center">{{$info->depot}}</td>
+                  <td class="text-center">{{$info->level}}</td>
+                  <td class="text-center">{{$info->in_date}}</td>
+                  <td class="text-center">{{$info->out_date}}</td>
+                </tr>
+
+                <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
+
+                </script>
+
                @endforeach
             </tbody>
           </table>

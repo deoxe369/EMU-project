@@ -20,12 +20,6 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-  
-  <style type="text/css">
-    th,td{
-      padding: 8px;
-    }
-  </style>
 
 </head>
 
@@ -33,7 +27,7 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
         <div class="navbar-header">
@@ -49,18 +43,15 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-
-            
-
             <!-- <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li> -->
             <li class="dropdown active">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="active"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
               </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -151,16 +142,21 @@
                 <td class="text-center">{{$train->destination_station}}</td>
                 <td class="text-center">{{$train->arrival_time}}</td>
                 <td class="text-center" id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
-                <td><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td class="text-center"><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
+              <!-- JavaScript Foreach -->
               <script type="text/javascript">
                 //row color
-                var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
-                if(id%2 == 1){
-                  document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#f2f2f2";  
-                  console.log(id);
-                }
+                  var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
+                
+                  if(id%2 == 1){
+                    document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
 
                 //rename
                 var type = document.getElementById('{{$train->id}}triptype').innerHTML
@@ -172,10 +168,11 @@
               </script>
                 
               @endforeach
-             </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
 
 
 

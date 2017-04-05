@@ -2275,10 +2275,11 @@ th {
   line-height: 1.42857143;
   vertical-align: top;
   /*border-top: 1px solid #ddd;*/
+  border-top: 1px solid #ffffff;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  /*border-bottom: 2px solid #ddd;*/
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2449,7 +2450,7 @@ table th[class*="col-"] {
     margin-bottom: 15px;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
   }
   .table-responsive > .table {
     margin-bottom: 0;

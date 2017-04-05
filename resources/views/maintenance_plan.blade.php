@@ -130,23 +130,21 @@
                 <th class="text-center">ระยะทางสะสม</th>
                 <th class="text-center">ระยะเวลาสะสม</th>
                 <th class="text-center">สถานะ</th>
-               
               </tr>
             </thead>
 
             <tbody>
             @foreach ($trainset_info as $info)
-              
-             
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td class="text-center">{{$info->train_number}}</td>
                 <td class="text-center" id="{{$info->train_number}}1" >{{$info->type}}</td>        
                 <td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
-                <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>                
+                <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>
                 <td class="text-center">{{$info->status}}</td>
                 <a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a>
-                </tr>
+              </tr>
+
                  @foreach($level_info as $level)
                       
                        <p id="{{$info->train_number}}{{$level->level}}" style="margin:0px; padding: 0px">{{$level->level}}</p>
@@ -165,11 +163,11 @@
                             var time_result = level_time-train_time;
                             var dis_result = level_dis-train_dis;
                               if(time_result <= 0.08 || dis_result <= 1000){
-                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#fccb58";
+                                // document.getElementById("{{$info->train_number}}").style.backgroundColor = "#fccb58";
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
                               
                             }else if(time_result <= 0.20 || dis_result <= 3000){
                                 document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
-                              
                             }
                           }
 
@@ -179,8 +177,8 @@
                          document.getElementById("{{$info->train_number}}{{$level->level}}dis").style.display = "none";  
                           document.getElementById("level{{$info->train_number}}").style.display = "none";  
                        
-
                        </script> 
+
                  @endforeach 
               
                 

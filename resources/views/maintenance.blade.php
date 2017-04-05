@@ -122,7 +122,7 @@
                 <th class="text-center">วันเวลาเข้า</th>
                 <th class="text-center">วันเวลาออก</th>
                 <th class="text-center th-edit">แก้ไข</th>
-                <th class="text-center th-chklist">Checklists</th>
+                <th class="text-center th-edit">Checklists</th>
               </tr>
             </thead>
             <tbody>
@@ -137,15 +137,22 @@
                 <td class="text-center"><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
                 <td class="text-center"><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
               </tr>
-              <script type="text/javascript">
-                 var id = parseInt(document.getElementById("{{$info->id}}").id);
+              <!-- JavaScript Foreach -->
+                <script type="text/javascript">
+                  //row color
+                  var id = parseInt(document.getElementById("{{$info->id}}").id);
                 
-                if(id%2 == 1){
-                  document.getElementById("{{$info->id}}").style.backgroundColor = "#ffe7d1";  
-                  console.log(id);
-                }
-               </script>
-               @endforeach
+                  if(id%2 == 1){
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
+                    console.log(id);
+                  }else{
+                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
+                    console.log(id);
+                  }
+
+                </script>
+
+              @endforeach
                
             </tbody>
           </table>
