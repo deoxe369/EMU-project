@@ -191,9 +191,6 @@
                 }
                        
               </script>
-
-             
-              
               
               @endforeach
 

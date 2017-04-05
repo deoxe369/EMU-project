@@ -112,48 +112,68 @@
             </tr>
 
             <!-- Composition -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="trtype">เลือก COMPOSITION</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Button Add Composition -->
+              <td id="composition">
+                <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle"">Add composition</button>
+              </td>
+            </tr>
+
+            <!-- Select-Options are added by Button Add Composition -->
+            <tr>
+              <td class="col-sm-1"><span></span></td>
+              <td class="col-sm-1"><span></span></td>
+              <td>
+                <!-- Call from Javascript Composition -->
+                <div id="itemRows"></div>
+              </td>
+            </tr>
+
+            <!-- Composition original
             <tr class="tr-add" id="composition" >
-                <td class="td-add">
-                  <p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>
-                <td class="col-sm-1"><span></span></td>
-                <td>
-                  <input onclick="addRow(this.form);" type="button" value="Add composition" />
-                    <select name="cars_id">
+              <td class="td-add"><label for="trtype">เลือก COMPOSITION</label></td>
+              <td class="col-sm-1"><span></span></td>
+              Button Add Composition
+              <td>
+                <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle"">Add composition</button>
+                    <select name="cars_id" class="sel">
                       @foreach($cars_loco_info as $loco)
                       <option value={{$loco->id}}>{{$loco->id}}</option>
                       @endforeach
                     </select>
-                    <select name="cars_id">
+                    <select name="cars_id" class="sel">
                       @foreach($cars_bogie_info as $bogie)
                       <option value={{$bogie->id}}>{{$bogie->id}}</option>
                       @endforeach
                     </select>
-                   
-                <div id="itemRows">
-                </div></td>
-
-            </tr>
+                    <div id="itemRows"></div>
+                </td>
+            </tr> -->
 
           </table>
             
             <!-- Javascript Composition -->
             <script type="text/javascript">
-
+              // Create Select Composition
               document.getElementById("composition").style.display = "none";
               var rowNum = 0;
               function addRow(frm) {
                 rowNum ++;
-                var row = '<a id="rowNum'+rowNum+'">  <select name="cars_id">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="-" onclick="removeRow('+rowNum+');"></a>';
+                var row = '<a id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></a>';
                 jQuery('#itemRows').after(row);
                 frm.cars_id.value = '';
                 console.log( document.getElementById("composition"));
               }
               
+              // Remove Composition
               function removeRow(rnum) {
                 jQuery('#rowNum'+rnum).remove();
                 console.log( rowNum);
               }
 
+              // Select Trainsettype
               function getSelectedOptions(sel){
                 var opts = [], opt;
                 var len = len = sel.options.length;
@@ -167,15 +187,18 @@
                       case "passenger": 
                         document.getElementById("composition").style.display = "block";       
                         break;
+                      case " ": 
+                        document.getElementById("composition").style.display = "none";       
+                        break;
                       }
                     }
                   }
                  return opt.value;
               }
-              
+  
             </script>
             
-           
+           <br>
            
            <div  style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>

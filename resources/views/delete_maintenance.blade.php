@@ -160,9 +160,9 @@
             </tbody>
           </table>
           </form>
-          {{ $maintenance_info->links()}}
         </div> 
-      </div>     
+      </div>
+      {{ $maintenance_info->links()}}     
     </div>
 
     
