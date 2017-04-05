@@ -219,6 +219,7 @@ input[type=submit]:hover {
     font-weight: bold;
   }
 
+
   /*Button Delete Compositon*/
   .btn-del-comp{
     position: relative;
@@ -245,3 +246,4 @@ input[type=submit]:hover {
     margin-right: 0px !important;
     padding: 5px !important;
   }
+
