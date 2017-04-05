@@ -157,6 +157,8 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
 
  Route::get('/delete_maintenance1','MaintenanceController@delete');
 
+ Route::get('/check_part/{id}' ,'MaintenanceController@choose_car');
+
  Route::get('/check_3carparts',function(){
  	return view('check_3carparts');
  });

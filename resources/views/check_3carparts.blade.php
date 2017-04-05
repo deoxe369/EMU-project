@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Trirong:400" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/theme.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/form.css') }}">
+  
 
   <!-- Font -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/fonts/Quarklight/font.css') }}">
@@ -66,20 +67,50 @@
   <!--First Container-->
   
     <!-- Train Image -->
-    <div class="bg-6 contain-carpart">
+    <!-- <div class="bg-6 contain-carpart">
       <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
       <p id="desc" class="detail-carpart"></p>
-      <img src="image/pic/trset_3car1.png" usemap = "#tr3carparts" class="img-carpart">
-      <map name="tr3carparts">
-        <!-- tr3carparts coords -->
+      
+      <img src="/image/pic/2.png" usemap = "#tr3carparts" class="img-carpart" style="height: 100%;width: 100%;"> -->
+      <!-- <map name="tr3carparts">
         <area shape="rect" coords="12,170,398,330" href="/check_locoparts" onmouseover="writeText('- Locomative -')" onmouseout="writeText('')" alt="locomative">
         <area shape="rect" coords="399,170,700,330" href="/check_bogieparts" onmouseover="writeText('- 1st car -')" onmouseout="writeText('')" alt="1st car">
         <area shape="rect" coords="701,170,999,330" href="/check_bogieparts" onmouseover="writeText('- 2nd car -')" onmouseout="writeText('')" alt="2nd car">
         <area shape="rect" coords="1000,170,1301,330" href="/check_bogieparts" onmouseover="writeText('- 3rd car -')" onmouseout="writeText('')" alt="3rdcar">
-      </map>
+      </map> -->
+      
 
-    </div>
-    
+    <!-- </div> -->
+
+    <div class="w3-content w3-display-container">
+        <img src="/image/pic/4.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
+        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
+        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
+        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
+
+        <button onclick="plusDivs(-1)">&#10094;</button>
+        <button onclick="plusDivs(1)">&#10095;</button>
+      </div>
+
+      <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+      }
+      </script>
   <!--Footer-->
 </body>
 </html>

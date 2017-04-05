@@ -123,7 +123,7 @@ class MaintenanceController extends Controller
 
        return Redirect::action('MaintenanceController@maintenance_info');   
         
-
+        
     }
 
 
@@ -592,6 +592,20 @@ public function show_maintenance_plan(Request $info )
     
         
             return Redirect::action('MaintenanceController@maintenance_info');
+        
+    
+ 
+    }
+
+     public function choose_car(Request $info)
+    {
+            $train_number = DB::table('maintenance')->select('train_number')->where('id',$info->id)->get();
+            $train_car = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->get();
+
+        
+        
+            return  View::make('check_3carparts')->with('cars',$train_car);
+            
         
     
  

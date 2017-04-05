@@ -89,8 +89,9 @@ class CarsController extends Controller
     public function edit($id)
     {
     	$origin_info = DB::table('cars')->where('id',$id)->get();
-
-    	return View::make('edit_car_management', array('origin_info' => $origin_info));
+        $model = DB::table('part_model')->select('model')->whereNotIN('model',[$origin_info[0]->model])->distinct()->get();
+    	// return View::make('edit_car_management', array('origin_info' => $origin_info));
+         return View::make('edit_car_management')->with('origin_info',$origin_info)->with('model',$model);
     	
     }
 

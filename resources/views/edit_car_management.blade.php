@@ -89,7 +89,13 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Input Car Model -->
               <td>
-                <input type="text" name="cars_model" value={{$origin_info[0]->model}}>
+                
+                <select  name="cars_model" class="sel">
+                 <option value={{$origin_info[0]->model}}>{{$origin_info[0]->model}}</option>
+                 @foreach($model as $m)
+                  <option value={{$m->model}}>{{$m->model}}</option>
+                  @endforeach
+                </select>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>
