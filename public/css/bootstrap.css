@@ -529,7 +529,8 @@ th {
   content: "\e078";
 }
 .glyphicon-chevron-left:before {
-  content: "\e079";
+  /*content: "\e079";*/
+  content: "\25C0";
 }
 .glyphicon-chevron-right:before {
   content: "\e080";
@@ -6318,11 +6319,11 @@ button.close {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: 10%;
   font-size: 20px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
   background-color: rgba(0, 0, 0, 0);
   filter: alpha(opacity=50);
   opacity: .5;

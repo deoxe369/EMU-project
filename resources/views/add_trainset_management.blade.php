@@ -117,37 +117,34 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Button Add Composition -->
               <td id="composition">
-                <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle"">Add composition</button>
+                <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle">Add composition</button>
               </td>
             </tr>
 
-            <tr>
+            <!-- Display Select Composition -->
+            <tr class="tr-add">
+              <td class="td-add"><span></span></td>
               <td class="col-sm-1"><span></span></td>
-              <td class="col-sm-1"><span></span></td>
-              <td id="composition">
+              <td id="locobofirst">
                 <!-- Call from Javascript Composition -->
-                    <div id="KK">
-                    <select name="cars_id" class="sel">
-                      @foreach($cars_loco_info as $loco)
+                <div>
+                  <select name="cars_id" class="sel sel-comp">
+                    @foreach($cars_loco_info as $loco)
                       <option value={{$loco->id}}>{{$loco->id}}</option>
-                      @endforeach
-                    </select>
-                    <select name="cars_id" class="sel">
-                      @foreach($cars_bogie_info as $bogie)
+                    @endforeach
+                  </select>
+                </div>
+                <div>
+                  <select name="cars_id" class="sel sel-comp">
+                    @foreach($cars_bogie_info as $bogie)
                       <option value={{$bogie->id}}>{{$bogie->id}}</option>
-                      @endforeach
-                    </select>
-                    </div>
-              </td>
-            </tr>
+                    @endforeach
+                  </select>
+                </div>
 
-            <!-- Select-Options are added by Button Add Composition -->
-            <tr>
-              <td class="col-sm-1"><span></span></td>
-              <td class="col-sm-1"><span></span></td>
-              <td>
                 <!-- Call from Javascript Composition -->
                 <div id="itemRows"></div>
+
               </td>
             </tr>
 
@@ -176,13 +173,17 @@
             
             <!-- Javascript Composition -->
             <script type="text/javascript">
-              // Create Select Composition
+              
+              // Start Display Button Add Composition
               document.getElementById("composition").style.display = "none";
+              document.getElementById("locobofirst").style.display = "none";
+              
+              // Create Select Composition
               var rowNum = 0;
               function addRow(frm) {
                 rowNum ++;
-                var row = '<a id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></a>';
-                jQuery('#itemRows').after(row);
+                var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
+                jQuery('#itemRows').before(row);
                 frm.cars_id.value = '';
                 console.log( document.getElementById("composition"));
               }
@@ -206,10 +207,12 @@
                     switch(opt.value){
                       case "passenger": 
                         document.getElementById("composition").style.display = "block"; 
-                           
+                        document.getElementById("locobofirst").style.display = "block";
                         break;
                       case " ": 
-                        document.getElementById("composition").style.display = "none";       
+                        document.getElementById("composition").style.display = "none";
+                        document.getElementById("locobofirst").style.display = "none";
+                        document.getElementById("selcomp").style.display = "block";                     
                         break;
                       }
                     }

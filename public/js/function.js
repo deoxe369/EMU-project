@@ -1,4 +1,4 @@
-  /*********************** Relation Between Train Set Type and Composition ***********************/
+  /*********************** Relation Between Train Set Type and Composition1 ***********************/
     function comtrdisplay(){
       var option = document.getElementById("trtype").value;
 

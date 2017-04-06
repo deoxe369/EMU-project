@@ -105,9 +105,7 @@
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
 
             <label for="addtr"><h3 class="margin"><span></span></h3></label>
-            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>
-              สร้างแผนอัตโนมัติ</span></button>
-
+            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
           </div>
         </form> 
       </div>

@@ -7,6 +7,10 @@
       color: #333;
   }
 
+  a:hover{
+    text-decoration: none;
+  }
+
   h1{font-size: 50px;}
 
   h3{font-size: 30px;}
@@ -395,7 +399,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     background-color: rgba(0, 244, 255, 0.3);
     color: #ffffff;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
   }
 
   .detail-carpart{
@@ -414,6 +418,12 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     font-size: 24px !important;
   }
 
+  .detail-loco1{
+    margin-top: 20px;
+    color: #ff6f00;
+    font-size: 24px !important;
+  }
+
   .detail-bogie{
     margin-top: 20px;
     color: #ffd800;
@@ -422,4 +432,12 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
   .img-carpart{
     margin-top: 20px;
+  }
+
+  .icon-slide{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    margin-top: -10px;
   }
