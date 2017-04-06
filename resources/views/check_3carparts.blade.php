@@ -117,11 +117,11 @@
 
         <!-- Left and right controls -->
         <a href="#carCarousel" class="left carousel-control" role="button" data-slide="prev">
-          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-left-wht.png"></span>
+          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-left-wht.png" class="icon-car-left"></span>
           <span class="sr-only">Previous</span>
         </a>
         <a href="#carCarousel" class="right carousel-control" role="button" data-slide="next">
-          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-right-wht.png"></span>
+          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-right-wht.png" class="icon-car-right"></span>
           <span class="sr-only">Next</span>
         </a>
       </div>

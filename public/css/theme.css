@@ -441,3 +441,13 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd !important;}
     display: inline-block;
     margin-top: -10px;
   }
+
+  .icon-car-left{
+    left: 50%;
+    margin-left: -10px;
+  }
+
+  .icon-car-right{
+    right: 50%;
+    margin-right: -10px;
+  }
