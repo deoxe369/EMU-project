@@ -75,7 +75,7 @@
     <div class="container-fluid text-left">
 
       <!--Date Current-->
-
+      
       <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
 
       <!--Table Detail-->
