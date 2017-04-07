@@ -72,8 +72,8 @@
 
   <!--Content-->
     <div class="container-fluid">    
+    
     <!--First Container-->
-     <a href ="../add_model">เพิ่มโมเดล</a>
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลตู้รถไฟ</h1>
@@ -90,7 +90,7 @@
             <tr class="tr-add">
               <td class="td-add"><label for="cars_model">โมเดล</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Input Car Model -->
+              <!-- Select Car Model -->
               <td>
                  <select  name="cars_model" class="sel">
                  <option value=" ">เลือกโมเดลตู้รถไฟ</option>
@@ -98,6 +98,7 @@
                   <option value={{$m->model}}>{{$m->model}}</option>
                   @endforeach
                 </select>
+                <button formaction="../add_model" class="btn-add" style="height: 40px;">เพิ่มโมเดล</button>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>

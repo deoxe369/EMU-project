@@ -81,7 +81,6 @@
               <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
               <option value="logistic">ขนส่ง</option>
-                       
             </select>
           </div>
 
