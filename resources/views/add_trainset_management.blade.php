@@ -79,7 +79,7 @@
         <br>
 
         <!--Form Add-->
-       <form class="form-horizontal" action="add_trainset" name="chktrset"  >
+       <form class="form-horizontal" action="add_trainset" name="chktrset">
           
           <!--New Structure: Table-->
           <table class="table-add" align="center">
@@ -120,34 +120,49 @@
                 <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle">Add composition</button>
               </td>
             </tr>
+          </table>
 
-            <!-- Display Select Composition -->
-            <tr class="tr-add">
-              <td class="td-add"><span></span></td>
-              <td class="col-sm-1"><span></span></td>
-              <td id="locobofirst">
-                <!-- Call from Javascript Composition -->
-                <div>
-                  <select name="cars_id" class="sel sel-comp">
-                    @foreach($cars_loco_info as $loco)
-                      <option value={{$loco->id}}>{{$loco->id}}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <div>
-                  <select name="cars_id" class="sel sel-comp">
-                    @foreach($cars_bogie_info as $bogie)
-                      <option value={{$bogie->id}}>{{$bogie->id}}</option>
-                    @endforeach
-                  </select>
-                </div>
+          <!-- Display Select Composition -->
+          <div class="margin-top" id="locobofirst">
+            <div class="table-responsive">
+              <table class="table-add" align="center" style="border-collapse: collapse;">
+                <tbody>
+                  <tr style="border-top: 3px solid #ffffff !important;">
+                    <td class="text-center th-edit"><p class="td-carname">Locomative</p></td>
+                    <td class="col-sm-1 bg-7"><span></span></td>
+                    <td class="bg-7">
+                      <!-- Call from Javascript Composition: Locomative -->
+                      <select name="cars_id" class="sel sel-comp">
+                        @foreach($cars_loco_info as $loco)
+                          <option value={{$loco->id}}>{{$loco->id}}</option>
+                        @endforeach
+                      </select>
+                    </td>
+                  </tr>
 
-                <!-- Call from Javascript Composition -->
-                <div id="itemRows"></div>
+                  <tr style="border-top: 3px solid #ffffff !important;">
+                    <td class="text-center th-bo"><p class="td-carname">Bogie 1</p></td>
+                    <td class="col-sm-1 bg-7"><span></span></td>
+                    <td class="bg-7">
+                      <!-- Call from Javascript Composition: Bogie1 -->
+                      <select name="cars_id" class="sel sel-comp">
+                        @foreach($cars_bogie_info as $bogie)
+                          <option value={{$bogie->id}}>{{$bogie->id}}</option>
+                        @endforeach
+                      </select>                
+                    </td>
+                  </tr>                  
+                </tbody>
 
-              </td>
-            </tr>
+                <!-- Add Input Car Row -->
+                <tbody id="itemRows"></tbody>
 
+              </table>
+            </div>
+          </div>
+
+            
+            
             <!-- Composition original
             <tr class="tr-add" id="composition" >
               <td class="td-add"><label for="trtype">เลือก COMPOSITION</label></td>
@@ -182,7 +197,8 @@
               var rowNum = 0;
               function addRow(frm) {
                 rowNum ++;
-                var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
+                // var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie...</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
                 frm.cars_id.value = '';
                 console.log( document.getElementById("composition"));
@@ -212,14 +228,13 @@
                       case " ": 
                         document.getElementById("composition").style.display = "none";
                         document.getElementById("locobofirst").style.display = "none";
-                        document.getElementById("selcomp").style.display = "block";                     
+                        document.getElementById("selcomp").style.display = "block";          
                         break;
-                      }
                     }
                   }
-                 return opt.value;
+                }
+                return opt.value;
               }
-  
             </script>
             
            <br>
