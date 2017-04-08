@@ -130,7 +130,7 @@
 
                 <tbody>
                   @foreach($locomotive as $loco)
-                  <tr>
+                  <tr class="bg-7">
                     <td>
                       <input type="checkbox" name="part_type" value="{{$loco->part_type}}" id="{{$loco->part_type}}lo" checked>
                       <script type="text/javascript">
@@ -169,7 +169,7 @@
 
                 <tbody>
                   @foreach($bogie as $bg)
-                  <tr>
+                  <tr class="bg-7">
                     <td>
                       <input type="checkbox" name="part_type" value="{{$bg->part_type}}" id="{{$bg->part_type}}bg" checked>
                       <script type="text/javascript">
@@ -206,7 +206,7 @@
           var rowNum = 0;
           function addRow(frm) {
             rowNum ++;
-            var row = '<tr id="rowNum'+rowNum+'"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+            var row = '<tr id="rowNum'+rowNum+'" class="bg-7"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
             jQuery('#itemRows').append(row);
             frm.brand.value = '';
             frm.code.value = '';

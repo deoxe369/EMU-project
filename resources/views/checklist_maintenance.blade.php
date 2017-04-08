@@ -113,10 +113,7 @@
       </div>
 
     <!--Second Container-->
-      <!--Table Detail-->
-
-       
-
+      
       <div class="row col-md-12 margin">
         <div class="table-responsive">
            <form action="/checklist_maintenance/{{$id}}/save">
@@ -127,6 +124,7 @@
 
               <a href='/check_part/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
 
+          <!--Table: Checklist-->
           <table class="table">
             <thead>
               <tr>
