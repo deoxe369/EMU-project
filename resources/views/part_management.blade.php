@@ -87,6 +87,10 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
+    <h1 class="margin" style="text-align: center;">จัดการอะไหล่</h1>
+      
+      <br>
+
       <div class="row col-md-12 margin text-center">
         <form class="form-inline bg-5" action="search_part">
 
@@ -188,6 +192,11 @@
       <div class="text-center">{{$part_info->links()}}</div>
 
     </div>
+
+  <!-- Footer -->
+  <footer class="bg-2">
+    <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>

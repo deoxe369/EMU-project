@@ -91,6 +91,10 @@
   <!--Content-->
     <!--First Container-->
     <div class="container-fluid">
+      <h1 class="margin" style="text-align: center;">ระบบจัดการแผนใช้ชุดรถไฟ</h1>
+      
+      <br>
+
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <!--Date Current-->
@@ -203,6 +207,9 @@
 
 
   <!--Footer-->
+  <footer class="bg-2">
+    <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>

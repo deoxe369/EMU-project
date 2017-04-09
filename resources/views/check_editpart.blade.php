@@ -147,15 +147,14 @@
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
             </div>
-
         </form>
-        
       </div>
     </div>
-    
-  
-    
 
   <!--Footer-->
+  <footer class="bg-2">
+    <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
+  </footer>
+  
 </body>
 </html>

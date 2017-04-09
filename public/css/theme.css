@@ -7,6 +7,14 @@
       color: #333;
   }
 
+  footer{
+    /*position: fixed;*/
+    bottom: 0px !important;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+  }
+
   a:hover{
     text-decoration: none;
   }
@@ -16,6 +24,13 @@
   h3{font-size: 30px;}
 
   p { font-size: 18px;}
+
+  p.copy-footer{
+    margin: 0;
+    padding: 3px 30px 3px 30px;
+    font-size: 16px !important;
+    font-style: italic;
+  }
 
   area:hover{
     display: block; 
@@ -83,7 +98,7 @@
       background-color: #ffffff; /* White */
   }
   .bg-9{
-    background-color: #BDBDBD; /* Dark Blue */
+    background-color: #BDBDBD; /* Dark Gray */
   }
 
   .container-fluid {

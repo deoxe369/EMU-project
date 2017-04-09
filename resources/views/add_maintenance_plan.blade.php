@@ -235,20 +235,11 @@
                                 return opt.value;
 
                               }
-// ----------------------------------------
-                               
-
-                                         
-                                     
-                                
                     </script>
                 </select><td>
               </tr>
                 
               @endfor
-           
-              
-           
             </tbody>
           </table>
           </form>
@@ -256,8 +247,10 @@
       </div>      
     </div>
 
-
-   
   <!--Footer-->
+  <footer class="bg-2">
+    <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
+  </footer>
+  
 </body>
 </html>
