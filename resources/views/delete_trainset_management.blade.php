@@ -91,8 +91,12 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search">
+     <h1 class="margin" style="text-align: center;">ลบข้อมูลชุดรถไฟ</h1>
+
+      <br>
+
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search">
           <div class="form-group">
             <label for="trainsetno"><h3 class="margin">รหัสชุดรถไฟ&nbsp;</h3></label>
             <input type="text" name="trainsetno">
@@ -131,9 +135,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="delete_trainset">
+        <form action="delete_trainset">
+          <!-- Button -->
+          <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
+          
+          <div class="table-responsive">
             <table class="table" id="mytable">
               <thead>
                 <tr>
@@ -177,8 +186,8 @@
                 @endforeach
               </tbody>
             </table>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>      
     </div>
 

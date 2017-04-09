@@ -89,8 +89,8 @@
   <!--Content-->
     <div class="container-fluid">    
     <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_maintenance">
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_maintenance">
 
           <div class="form-group">
             <label for="trsettype"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
@@ -115,13 +115,6 @@
           <div class="form-group">
             <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-
-            <label for="addmaint"><h3 class="margin label-padding"></h3></label>
-            <button formaction="../add_maintenance_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button>
-
-            <!--add page: delete maintenance_management-->
-            <label for="delmaint"><h3 class="margin label-padding"></h3></label>
-            <button formaction="../delete_maintenance" class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button>
           </div>
         </form>
       </div>
@@ -129,6 +122,12 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!-- Button -->
+        <div class="text-right">
+          <a href="../add_maintenance_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
+          <a href="../delete_maintenance"><button class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button></a>
+        </div>
+
         <div class="table-responsive">
           <table class="table" id="mytable">
             <thead>

@@ -90,6 +90,10 @@
   <!--Content-->
     <div class="container-fluid">    
       <!--First Container-->
+      <h1 class="margin" style="text-align: center;">ลบข้อมูลศูนย์ซ่อม</h1>
+
+      <br>
+
       <div class="row col-md-12 margin">
         <form class="form-inline" action="search_depot">
 
@@ -110,9 +114,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="delete_depot">
+        <form action="delete_depot">
+          <!-- Button -->
+          <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
+            
+          <div class="table-responsive">
             <table class="table" id="mytable">
               <thead>
                 <tr>
@@ -152,8 +161,8 @@
                 @endforeach
               </tbody>
             </table>
-          </form>          
-        </div> 
+          </div> 
+        </form>          
       </div>
 
       <!-- Pagination -->

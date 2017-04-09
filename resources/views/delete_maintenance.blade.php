@@ -89,8 +89,12 @@
   <!--Content-->
     <div class="container-fluid">    
       <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_maintenance">
+      <h1 class="margin" style="text-align: center;">ลบข้อมูลใบเข้าซ่อม</h1>
+
+      <br>
+
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_maintenance">
 
           <div class="form-group">
             <label for="trsettype"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
@@ -130,10 +134,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="delete_maintenance1">
+        <form action="delete_maintenance1">
+          <!-- Button -->
+          <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
+            
+          <div class="table-responsive">
             <table class="table" id="mytable">
               <thead>
                 <tr>

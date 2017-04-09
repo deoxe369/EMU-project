@@ -89,8 +89,8 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_train_set1">
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_train_set1">
 
           <div class="form-group">
             <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
@@ -121,22 +121,22 @@
           <div class="form-group">
             <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-
-            <label for="addtr"><h3 class="margin"><span></span></h3></label>
-            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
           </div>
         </form> 
       </div>
     
                      
-      
          
     <!--Second Container-->
-      <!--Table Detail-->
-      <div class="row col-md-12 margin">
-        <div class="table-responsive">
-           <form action="/add_maintenance_plan">
-              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+    <!--Table Detail-->
+    <div class="row col-md-12 margin">
+      <form action="/add_maintenance_plan">
+        <!-- Button -->
+        <div class="text-right">
+          <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+          <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+        </div>
+        <div class="table-responsive">  
           <table class="table" id="mytable">
             <thead>
               <tr>
@@ -212,9 +212,9 @@
 
             </tbody>
           </table>
-          </form>
-        </div>      
-      </div>
+        </div>
+      </form>      
+    </div>
 
       <!-- Pagination -->
       <div class="text-center">{{$trainset_info->links()}}</div>

@@ -93,8 +93,8 @@
 
       <br>
 
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_cars">
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
@@ -145,11 +145,13 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="delete_cars">
-            <!-- Button -->
+        <form action="delete_cars">
+          <!-- Button -->
+          <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
+          <div class="table-responsive">
             <!-- Table: Choose to delete -->
             <table class="table" id="mytable">
               <thead>
@@ -192,14 +194,12 @@
                   }else{
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
                   }
-
                 </script>
-
                 @endforeach
               </tbody>
             </table>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
 
       <!-- Pagination -->

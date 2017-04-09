@@ -45,10 +45,10 @@
 
   <!--Header-->
     <!-- Navbar -->
-     <nav class="navbar navbar-default b">
+     <nav class="navbar navbar-default">
       <div class="container-fluid2">
         <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="navbar-header bg-5">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -73,8 +73,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
-                <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="active"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
+                <li class="normal"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -88,19 +88,23 @@
 
   <!--Content-->
     <div class="container-fluid">   
-
     <!--First Container-->
-      <a href='../add_maintenance_plan/save'>สร้างใบเข้าซ่อม</a>
-      <a href='../add_maintenance_plan/cancel'>ยกเลิก</a>
+    <h1 class="margin" style="text-align: center;">ยืนยันใบเข้าซ่อม</h1>
+      
+      <br>
 
-    <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!-- Button -->
+        <div class="text-right">
+          <a href='../add_maintenance_plan/save'><button class="btn-save" style="vertical-align: middle"><span>บันทึกใบเข้าซ่อม</span></button></a>
+          <a href='../add_maintenance_plan/cancel'><button class="btn-del" style="vertical-align: middle"><span>ยกเลิก</span></button></a>
+        </div>
         <div class="table-responsive">
           <table class="table" id="mytable">
             <thead>
               <tr>
-                <th class="text-center">เลขเข้าซ่อม</th>
+                <th class="text-center th-edit">เลขเข้าซ่อม</th>
                 <th class="text-center">รหัสชุดรถไฟ</th>
                 <th class="text-center">ศูนย์ซ่อม</th>
                 <th class="text-center">ระดับ</th>

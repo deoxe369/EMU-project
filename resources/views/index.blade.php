@@ -104,8 +104,8 @@
       </div>
 
       <!--Search Form-->
-      <div class="row col-md-12 margin">
-        <form>
+      <div class="row col-md-12 margin text-center">
+        <form class="bg-5">
           <!--Date-->
           <div class="form-group">
             <label for="date"><h3 class="margin label-padding1">วันที่</h3></label>
