@@ -20,6 +20,24 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
   
 </head>
 
@@ -71,6 +89,10 @@
   <!--Content-->
     <div class="container-fluid">    
       <!--First Container-->
+      <h1 class="margin" style="text-align: center;">ลบข้อมูลตู้รถไฟ</h1>
+
+      <br>
+
       <div class="row col-md-12 margin">
         <form class="form-inline" action="search_cars">
 
@@ -125,8 +147,11 @@
       <div class="row col-md-12 margin">
         <div class="table-responsive">
           <form action="delete_cars">
+            <!-- Button -->
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-            <table class="table">
+
+            <!-- Table: Choose to delete -->
+            <table class="table" id="mytable">
               <thead>
                 <tr>
                   <th class="text-center th-edit">เลือก</th>

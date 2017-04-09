@@ -20,6 +20,24 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
   
 </head>
 
@@ -124,7 +142,7 @@
         <div class="table-responsive">
           <form action="delete_part">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-            <table class="table">
+            <table class="table" id="mytable">
               <thead>
                 <tr>
                   <th class="text-center th-edit">เลือก</th>

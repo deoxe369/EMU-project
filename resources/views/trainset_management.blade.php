@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -120,7 +138,7 @@
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table" id="mytable">
             <thead>
               <tr>
                 <th class="text-center">รหัสชุดรถไฟ</th>
@@ -145,30 +163,6 @@
 
                 <!-- JavaScript Foreach -->
                 <script type="text/javascript">
-                  //row color
-                  // var id = parseInt(document.getElementById("{{$info->train_number}}").id);
-                
-                  // if(id%2 == 1){
-                  //   document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ffffff"; 
-                  //   document.getElementById("{{$info->train_number}}").style.color = "#FF3D00";
-                  //   console.log(id);
-                  // }else{
-                  //   document.getElementById("{{$info->train_number}}").style.backgroundColor = "#F5F5F5";
-                  //   document.getElementById("{{$info->train_number}}").style.color = "#5D4037";
-                  //   console.log(id);
-                  // }
-
-                  //row color td-edit
-                  // var id = parseInt(document.getElementById("{{$info->train_number}}edittrset").id);
-                
-                  // if(id%2 == 1){
-                  //   document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FAFAFA";
-                  //   console.log(id);
-                  // }else{
-                  //   document.getElementById("{{$info->train_number}}edittrset").style.backgroundColor = "#FFA726";
-                  //   console.log(id);
-                  // }
-
                   //rename
                   var trtype = document.getElementById("{{$info->train_number}}trsettype").innerHTML;
               
@@ -177,11 +171,8 @@
                       document.getElementById("{{$info->train_number}}trsettype").innerHTML= 'ชุดรถไฟโดยสาร';
                       break;
                   }
-
                 </script>
-
               @endforeach
-
             </tbody>
           </table>
         </div>   

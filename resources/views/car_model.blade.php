@@ -21,6 +21,37 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('locotable');
+      var b=document.getElementById('botable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{ 
+        // a.rows[i].className="tr_head"; 
+        }
+
+        for(j=0;j<b.rows.length;j++){
+        if(j>0){
+          if(j%2==1){
+            b.rows[j].className="bg-8";
+          }else{
+            b.rows[j].className="bg-7";
+          } 
+        }else{ 
+        // b.rows[j].className="tr_head"; 
+        } 
+      } 
+    }
+  }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -116,7 +147,7 @@
           <!-- Table: Add Locomotive Part Detail -->
           <div class="row col-md-12 margin" id="locomotive">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table" id="locotable">
                 <thead>
                   <tr>
                     <th class="text-center"><span></span></th>
@@ -130,7 +161,7 @@
 
                 <tbody>
                   @foreach($locomotive as $loco)
-                  <tr class="bg-7">
+                  <tr>
                     <td>
                       <input type="checkbox" name="part_type" value="{{$loco->part_type}}" id="{{$loco->part_type}}lo" checked>
                       <script type="text/javascript">
@@ -155,7 +186,7 @@
           <!-- Table: Add Bogie Part Detail -->
           <div class="row col-md-12 margin" id="bogie">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table" id="botable">
                 <thead>
                   <tr>
                     <th class="text-center"><span></span></th>
@@ -169,7 +200,7 @@
 
                 <tbody>
                   @foreach($bogie as $bg)
-                  <tr class="bg-7">
+                  <tr>
                     <td>
                       <input type="checkbox" name="part_type" value="{{$bg->part_type}}" id="{{$bg->part_type}}bg" checked>
                       <script type="text/javascript">
@@ -206,7 +237,7 @@
           var rowNum = 0;
           function addRow(frm) {
             rowNum ++;
-            var row = '<tr id="rowNum'+rowNum+'" class="bg-7"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+            var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
             jQuery('#itemRows').append(row);
             frm.brand.value = '';
             frm.code.value = '';
@@ -217,7 +248,7 @@
           // Create Input Bogie Part in Model
           function addRow1(frm) {
             rowNum ++;
-            var row1 = '<tr id="rowNum'+rowNum+'"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+            var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
             jQuery('#itemRows1').append(row1);
             frm.brand.value = '';
             frm.code.value = '';

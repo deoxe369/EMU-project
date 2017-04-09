@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -70,8 +88,12 @@
 
   <!--Content-->
     <div class="container-fluid">
-    <!--First Container-->
-     <!--  <div class="row col-md-12 margin">
+      <h1 class="margin" style="text-align: center;">ตรวจสอบสภาพชุดรถไฟ</h1>
+
+      <br>
+
+      <!--First Container-->
+      <!--<div class="row col-md-12 margin">
         <form class="form-inline" action="search_train_set1">
 
           <div class="form-group">
@@ -110,55 +132,51 @@
             
           </div>
         </form>  -->
-      </div>
 
     <!--Second Container-->
-      
       <div class="row col-md-12 margin">
         <div class="table-responsive">
-           <form action="/checklist_maintenance/{{$id}}/save">
+          <form action="/checklist_maintenance/{{$id}}/save">
 
-              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-              <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button>
-
-
+            <!-- Button -->
+            <div class="text-right">
+              <!-- <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button> -->
               <a href='/check_part/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
+              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            </div>
+            
 
-          <!--Table: Checklist-->
-          <table class="table">
-            <thead>
-              <tr>
-                <th></th>
-               
-                <th>รายการ</th>
-                <th>ผ่าน </th>
-                <th>ไม่ผ่าน</th>
-                 
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-               @foreach ($checklist_info as $info)
-                <td><input type="checkbox" id="{{$info->id}}" checked name="checklist" value={{$info->id}} ></td>
+            <!--Table: Checklist-->
+            <table class="table" id="mytable">
+              <thead>
+                <tr>
+                  <th class="text-center th-edit col-sm-1"><span></span></th>
+                  <th class="text-center th-edit">รายการ</th>
+                  <th class="text-center">ผ่าน </th>
+                  <th class="text-center">ไม่ผ่าน</th>
+                </tr>
+              </thead>
 
-                <script type="text/javascript">
-                document.getElementById("{{$info->id}}").style.display = "none";
-                </script> 
+              <tbody>
+                <tr>
+                @foreach ($checklist_info as $info)
+                  <td class="text-center col-sm-1"><input type="checkbox" id="{{$info->id}}" checked name="checklist" value={{$info->id}} ></td>
+                    <!-- Javascript: Not Display Checkbox which send value -->
+                    <script type="text/javascript">
+                      document.getElementById("{{$info->id}}").style.display = "none";
+                    </script> 
+                  <td class="text-left">{{$info->checklist}}</td>
+                  <td class="text-center"><input type="checkbox" name="checked" value=yes></td>
+                  <td class="text-center"><input type="checkbox" name="checked" value=no></td>
+                </tr>
 
-                <td>{{$info->checklist}}</td>
-                <td><input type="checkbox" name="checked" value=yes></td>
-                <td><input type="checkbox" name="checked" value=no></td>
-                
-              </tr>
-              @endforeach
-              <script>
-
-                document.getElementById("kri").innerHTML = "1";
-
-              </script>
-            </tbody>
-          </table>
-          
+                <!-- Javascript -->
+                <script>
+                  document.getElementById("kri").innerHTML = "1";
+                </script>
+                @endforeach
+              </tbody>
+            </table>
           </form>
         </div>      
       </div>

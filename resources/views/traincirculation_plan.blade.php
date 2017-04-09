@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -72,16 +90,15 @@
 
   <!--Content-->
     <!--First Container-->
-    <div class="container-fluid text-left">
-
-      <!--Date Current-->
-      
-      <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
-
+    <div class="container-fluid">
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!--Date Current-->
+        <div class="text-right">
+          <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
+        </div>
         <div class="table-responsive">          
-          <table class="table">
+          <table class="table" id="mytable">
             <thead>
               <tr>  
                 <th class="text-center th-edit">ชุดรถไฟ</th>
@@ -98,17 +115,17 @@
             @foreach($time_table_info as $time_table)
               <tr id="{{$time_table->id}}">
                 <td class="text-center">
-                  <select id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)" class="sel-1">
+                  <select id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)" class="sel sel-comp">
                     @foreach($train_set_info as $train)
                     <option>{{$train->train_number}}</option>
                     @endforeach
                   </select></td>
-                <td class="text-center">{{$time_table->class}}</td>
-                <td class="text-center">{{$time_table->source_station}}</td>
-                <td class="text-center">{{$time_table->departure_time}}</td>
-                <td class="text-center">{{$time_table->destination_station}}</td>
-                <td class="text-center">{{$time_table->arrival_time}}</td>
-                <td class="text-center" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->class}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->source_station}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->departure_time}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->destination_station}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->arrival_time}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
               </tr>
 
               <!-- JavaScript Foreach -->

@@ -79,6 +79,12 @@
   .bg-7{
     background-color: #F5F5F5;
   }
+  .bg-8 { 
+      background-color: #ffffff; /* White */
+  }
+  .bg-9{
+    background-color: #BDBDBD; /* Dark Blue */
+  }
 
   .container-fluid {
       padding-top: 70px;
