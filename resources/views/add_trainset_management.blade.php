@@ -195,18 +195,16 @@
               
               // Create Select Composition
               var rowNum = 0;
+              
               function addRow(frm) {
                 rowNum ++;
-<<<<<<< HEAD
-                var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
-                jQuery('#itemRows').after(row);
-=======
+                var bogieNum = rowNum+1;
                 // var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
-                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie...</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
->>>>>>> 280293074b500c84f1e6d4e0a0776869982eca26
                 frm.cars_id.value = '';
                 console.log( document.getElementById("composition"));
+                console.log( bogieNum);
               }
               
               // Remove Composition
