@@ -181,7 +181,7 @@ optgroup {
 }
 table {
   border-spacing: 0;
-  border-collapse: collapse;
+  /*border-collapse: collapse;*/
 }
 td,
 th {
@@ -529,7 +529,8 @@ th {
   content: "\e078";
 }
 .glyphicon-chevron-left:before {
-  content: "\e079";
+  /*content: "\e079";*/
+  content: "\25C0";
 }
 .glyphicon-chevron-right:before {
   content: "\e080";
@@ -4725,9 +4726,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   margin-left: -1px;
   line-height: 1.42857143;
   color: #337ab7;
+  /*color: #ff6f00;*/
   text-decorationÿ none;
   background-color: #fff;
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
@@ -4758,8 +4760,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
-  background-color: #337ab7;
+  background-color: #ff6f00;
   border-color: #337ab7;
+  border-radius: 100%;
+  padding: 8px 16px;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -6318,11 +6322,12 @@ button.close {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 15%;
+  
+  width: 10%;
   font-size: 20px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
   background-color: rgba(0, 0, 0, 0);
   filter: alpha(opacity=50);
   opacity: .5;

@@ -206,7 +206,10 @@ input[type=submit]:hover {
     text-align: right;
     width: 40%;
   }
-  
+
+  .td-carname {
+    font-size: 22px;
+  }  
 
   .tr-add{
     padding-top: 10px !important;
@@ -234,7 +237,8 @@ input[type=submit]:hover {
     cursor: pointer;
     width: 20px;
     height: 35px;
-    margin-right: 23px;  
+    margin-right: 23px; 
+    margin-left: 3px; 
   }
 
   .btn-del-comp:hover{
@@ -242,8 +246,9 @@ input[type=submit]:hover {
   }
 
   .sel-comp{
-    width: 130px !important;
-    margin-right: 0px !important;
+    width: 100px !important;
+    /*margin-right: 0px !important;*/
+    margin: 10px 0px !important;
     padding: 5px !important;
   }
 
