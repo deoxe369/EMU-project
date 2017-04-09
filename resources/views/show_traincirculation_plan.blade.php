@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -44,13 +62,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -70,21 +88,16 @@
 
   <!--Content-->
     <div class="container-fluid">    
-    <!--First Container-->
-    
-            
-            
-           <a href='../traincirculation_plan/save'>สร้างแผนการใช้ชุดรถไฟ</a>
-           <a href='../traincirculation_plan/cancel'>ยกเลิก</a>
 
-           
-       
+    <!--First Container-->
+      <a href='../traincirculation_plan/save'>สร้างแผนการใช้ชุดรถไฟ</a>
+      <a href='../traincirculation_plan/cancel'>ยกเลิก</a>
 
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table" id="mytable">
             <thead>
               <tr>
                 <th class="text-center">ทริป</th>
@@ -121,7 +134,6 @@
                @endforeach
             </tbody>
           </table>
-          
         </div> 
       </div>     
     </div>

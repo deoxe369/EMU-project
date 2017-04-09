@@ -65,52 +65,68 @@
   <!--Content-->
 
   <!--First Container-->
-  
-    <!-- Train Image -->
-    <!-- <div class="bg-6 contain-carpart">
-      <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
-      <p id="desc" class="detail-carpart"></p>
-      
-      <img src="/image/pic/2.png" usemap = "#tr3carparts" class="img-carpart" style="height: 100%;width: 100%;"> -->
-      <!-- <map name="tr3carparts">
-        <area shape="rect" coords="12,170,398,330" href="/check_locoparts" onmouseover="writeText('- Locomative -')" onmouseout="writeText('')" alt="locomative">
-        <area shape="rect" coords="399,170,700,330" href="/check_bogieparts" onmouseover="writeText('- 1st car -')" onmouseout="writeText('')" alt="1st car">
-        <area shape="rect" coords="701,170,999,330" href="/check_bogieparts" onmouseover="writeText('- 2nd car -')" onmouseout="writeText('')" alt="2nd car">
-        <area shape="rect" coords="1000,170,1301,330" href="/check_bogieparts" onmouseover="writeText('- 3rd car -')" onmouseout="writeText('')" alt="3rdcar">
-      </map> -->
-      
+  <div class="bg-6 contain-carpart">
+    <!-- Topic -->
+    <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
 
-    <!-- </div> -->
+    <!-- Carousel: Slider Car Image -->
+      <div id="carCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carCarousel" data-slide-to="0" class="active"></li>          
+          <li data-target="#carCarousel" data-slide-to="1"></li>
+          <li data-target="#carCarousel" data-slide-to="2"></li>
+          <li data-target="#carCarousel" data-slide-to="3"></li>
+        </ol>
 
-    <div class="w3-content w3-display-container">
-        <img src="/image/pic/4.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
-        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
-        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
-        <img src="/image/pic/2.png" usemap = "#tr3carparts" class="mySlides" style="height: 100%;width: 100%;">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          
+          <!-- Image: Locomative -->
+          <div class="item active">
+            <a href="/check_locoparts">
+              <p class="detail-loco1">Locomative</p>
+              <img src="/image/pic/4.png" alt="Locomative" width="80%" height="80%" style="margin: auto;">
+            </a>
+          </div>
 
-        <button onclick="plusDivs(-1)">&#10094;</button>
-        <button onclick="plusDivs(1)">&#10095;</button>
+          <!-- Image: Bogie1 -->
+          <div class="item">
+            <a href="/check_bogieparts">
+              <p class="detail-bogie">1st Bogie</p>
+              <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
+            </a>
+          </div>
+
+          <!-- Image: Bogie2 -->
+          <div class="item">
+            <a href="/check_bogieparts">
+              <p class="detail-bogie">2nd Bogie</p>
+              <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
+            </a>
+          </div>
+
+          <!-- Image: Bogie3 -->
+          <div class="item">
+            <a href="/check_bogieparts">
+              <p class="detail-bogie">3rd Bogie</p>
+              <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
+            </a>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a href="#carCarousel" class="left carousel-control" role="button" data-slide="prev">
+          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-left-wht.png" class="icon-car-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a href="#carCarousel" class="right carousel-control" role="button" data-slide="next">
+          <span class="glyphicon icon-slide" aria-hidden="true"><img src="/image/icon/arrow-right-wht.png" class="icon-car-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
+  </div>
 
-      <script>
-      var slideIndex = 1;
-      showDivs(slideIndex);
-
-      function plusDivs(n) {
-        showDivs(slideIndex += n);
-      }
-
-      function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-           x[i].style.display = "none";  
-        }
-        x[slideIndex-1].style.display = "block";  
-      }
-      </script>
   <!--Footer-->
 </body>
 </html>

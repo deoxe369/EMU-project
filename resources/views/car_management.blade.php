@@ -20,6 +20,24 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
   
 </head>
 
@@ -44,13 +62,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -71,8 +89,8 @@
   <!--Content-->
   <div class="container-fluid">    
     <!--First Container-->
-    <div class="row col-md-12 margin">
-      <form class="form-inline" action="search_cars">
+    <div class="row col-md-12 margin text-center">
+      <form class="form-inline bg-5" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin label-padding">ประเภท</h3></label>
@@ -81,7 +99,6 @@
               <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
               <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
               <option value="logistic">ขนส่ง</option>
-                       
             </select>
           </div>
 
@@ -108,13 +125,6 @@
           <div class="form-group">
             <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
-
-            <label for="addcar"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
-
-             <!--add page: delete trainset_management-->
-            <label for="delcar"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="delete_cars_management" class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button>
           </div>
       </form>
     </div>
@@ -123,8 +133,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!-- Button -->
+        <div class="text-right">
+          <a href="../add_car_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a>
+          <a href="../delete_cars_management"><button class="btn-del" style="vertical-align: middle"><span>ลบตู้รถไฟ</span></button></a>
+        </div>
+
         <div class="table-responsive">
-          <table class="table">
+          <table class="table" id="mytable">
             <thead>
               <tr>
                 <th class="text-center">รหัสตู้รถไฟ</th>
@@ -147,7 +163,7 @@
               </tr>
 
               <!-- JavaScript Foreach -->
-                <script type="text/javascript">
+                <!-- <script type="text/javascript">
                   //row color
                   var id = parseInt(document.getElementById("{{$info->id}}").id);
                 
@@ -167,14 +183,17 @@
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
                   }
 
-                </script>
+                </script> -->
 
               @endforeach
             </tbody>
           </table>          
         </div> 
       </div>
-      {{$cars_info->links()}} 
+
+      <!-- Pagination -->
+      <div class="text-center">{{$cars_info->links()}}</div> 
+
     </div>
     
   <!--Footer-->

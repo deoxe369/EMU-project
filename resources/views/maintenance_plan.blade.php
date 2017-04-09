@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -44,13 +62,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -71,8 +89,8 @@
   <!--Content-->
     <div class="container-fluid">
     <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_train_set1">
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_train_set1">
 
           <div class="form-group">
             <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
@@ -103,25 +121,23 @@
           <div class="form-group">
             <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-
-            <label for="addtr"><h3 class="margin"><span></span></h3></label>
-            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>
-              สร้างแผนอัตโนมัติ</span></button>
-
           </div>
         </form> 
       </div>
     
                      
-      
          
     <!--Second Container-->
-      <!--Table Detail-->
-      <div class="row col-md-12 margin">
-        <div class="table-responsive">
-           <form action="/add_maintenance_plan">
-              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
+    <!--Table Detail-->
+    <div class="row col-md-12 margin">
+      <form action="/add_maintenance_plan">
+        <!-- Button -->
+        <div class="text-right">
+          <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+          <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+        </div>
+        <div class="table-responsive">  
+          <table class="table" id="mytable">
             <thead>
               <tr>
                 <th class="text-center th-edit">เลือก</th>
@@ -196,10 +212,13 @@
 
             </tbody>
           </table>
-          {{$trainset_info->links()}}
-          </form>
-        </div>      
-      </div>
+        </div>
+      </form>      
+    </div>
+
+      <!-- Pagination -->
+      <div class="text-center">{{$trainset_info->links()}}</div>
+
     </div>
 
 

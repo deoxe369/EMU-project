@@ -21,6 +21,37 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('locotable');
+      var b=document.getElementById('botable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{ 
+        // a.rows[i].className="tr_head"; 
+        }
+
+        for(j=0;j<b.rows.length;j++){
+        if(j>0){
+          if(j%2==1){
+            b.rows[j].className="bg-8";
+          }else{
+            b.rows[j].className="bg-7";
+          } 
+        }else{ 
+        // b.rows[j].className="tr_head"; 
+        } 
+      } 
+    }
+  }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -44,13 +75,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -71,19 +102,210 @@
 
   <!--Content-->
     <div class="container-fluid">    
+    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มโมเดลตู้รถไฟ</h1>
 
-        <form action = "/add_model/save">
-        <div id="itemRows">
+        <br>
+
+        <!-- Form -->
+        <form class="form-horizatal" action = "/add_model/save">
+
+          <!-- New Structure: Table -->
+          <table class="table-add" align="center">
+
+            <!-- Car Model -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_model">โมเดล</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Car Model -->
+              <td>
+                <input type="text" name="cars_model">
+              </td>
+            </tr>
+
+            <!-- Car Type -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="cars_type">ชนิดของตู้รถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Select Car Type -->
+              <td>
+                <select id="cars_type" name="cars_type" class="sel" onchange=" getSelectedOptions(this)">
+                  <option value=" ">เลือกชนิดของตู้รถไฟ</option>
+                  <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
+                  <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
+                  <option value="logistic">ขนส่ง</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+
+          <br>
+
+          <!-- Table: Add Locomotive Part Detail -->
+          <div class="row col-md-12 margin" id="locomotive">
+            <div class="table-responsive">
+              <table class="table" id="locotable">
+                <thead>
+                  <tr>
+                    <th class="text-center"><span></span></th>
+                    <th class="text-center">อะไหล่</th>
+                    <th class="text-center th-edit">ยี่ห้อ</th>
+                    <th class="text-center th-edit">รุ่น</th>
+                    <th class="text-center th-edit">จำนวน</th>
+                    <th class="text-center th-edit"><span></span></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @foreach($locomotive as $loco)
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="part_type" value="{{$loco->part_type}}" id="{{$loco->part_type}}lo" checked>
+                      <script type="text/javascript">
+                        document.getElementById("{{$loco->part_type}}lo").style.display = "none";
+                        // console.log(document.getElementById("{{$loco->part_type}}"));
+                      </script>
+                    </td>
+                    <th style="padding-top: 25px; margin-left: 5px;">{{$loco->part_type}}</th>
+                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><span></span></td>
+                  </tr>
+                  @endforeach
+                </tbody>
+                <tbody id="itemRows"></tbody>
+              </table>              
+            </div>
+            <button onclick="addRow(this.form);" type="button" value="Add part type" class="btn-add" style="float: right;"><span>เพิ่มประเภทอะไหล่</span></button>
+          </div>
+
+          <!-- Table: Add Bogie Part Detail -->
+          <div class="row col-md-12 margin" id="bogie">
+            <div class="table-responsive">
+              <table class="table" id="botable">
+                <thead>
+                  <tr>
+                    <th class="text-center"><span></span></th>
+                    <th class="text-center">อะไหล่</th>
+                    <th class="text-center th-edit">ยี่ห้อ</th>
+                    <th class="text-center th-edit">รุ่น</th>
+                    <th class="text-center th-edit">จำนวน</th>
+                    <th class="text-center th-edit"><span></span></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @foreach($bogie as $bg)
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="part_type" value="{{$bg->part_type}}" id="{{$bg->part_type}}bg" checked>
+                      <script type="text/javascript">
+                        document.getElementById("{{$bg->part_type}}bg").style.display = "none";
+                        // console.log(document.getElementById("{{$bg->part_type}}"));
+                      </script>
+                    </td>
+                    <th style="padding-top: 25px; margin-left: 5px;">{{$bg->part_type}}</th>
+                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><span></span></td>
+                  </tr>
+                  @endforeach
+                </tbody>
+                <tbody id="itemRows1"></tbody>
+              </table>              
+            </div>
+            <button onclick="addRow1(this.form);" type="button" value="Add part type" class="btn-add" style="float: right;"><span>เพิ่มประเภทอะไหล่</span></button>
+          </div>         
+         
 
 
+        <!-- Javascript Add Model -->
+        <script type="text/javascript">
+
+          // Start Display Button Add Composition
+          document.getElementById("locomotive").style.display = "none";
+          document.getElementById("bogie").style.display = "none";
+          // document.getElementById("head").style.display = "none";
+          // document.getElementById("addpart").style.display = "none";
+          
+          // Create Input Locomative Part in Model
+          var rowNum = 0;
+          function addRow(frm) {
+            rowNum ++;
+            var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+            jQuery('#itemRows').append(row);
+            frm.brand.value = '';
+            frm.code.value = '';
+            frm.qty.value = '';
+            frm.part_type.value = '';
+          }
+
+          // Create Input Bogie Part in Model
+          function addRow1(frm) {
+            rowNum ++;
+            var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+            jQuery('#itemRows1').append(row1);
+            frm.brand.value = '';
+            frm.code.value = '';
+            frm.qty.value = '';
+            frm.part_type.value = '';
+          }
+          
+          // Remove Input Part in Model
+          function removeRow(rnum) {
+            jQuery('#rowNum'+rnum).remove();
+          }
+
+          // Select Car type
+          function getSelectedOptions(sel){
+            var opts = [], opt;
+            var len = len = sel.options.length;
+            for (var i = 0; i < len; i++) {
+              opt = sel.options[i];
+              // console.log("k");
+              if (opt.selected) {
+                opts.push(opt);
+                var type = opt.value;
+                // document.getElementById("head").style.display = "block";
+                // document.getElementById("addpart").style.display = "block";
+                
+                switch(type){
+                  case " ": 
+                    document.getElementById("locomotive").style.display = "none";
+                    document.getElementById("bogie").style.display = "none";
+                    break;
+
+                  case "locomotive": 
+                    document.getElementById("locomotive").style.display = "block";
+                    document.getElementById("bogie").style.display = "none";
+                    
+                    break;
+                  
+                  case "bogie":
+                    document.getElementById("locomotive").style.display = "none";
+                    document.getElementById("bogie").style.display = "block";
+                    break;
+                }
+              }
+            }
+            return opt.value;
+          }
+              
+        </script>
+
+
+        <!--         <div id="itemRows">
 
               <label for="cars_model">โมเดล</label>
              <input type="text" name="cars_model">
+             
              <br>
+             
              <label for="cars_type">ชนิดของตู้รถไฟ</label>
               <select id="cars_type" name="cars_type" class="sel" onchange=" getSelectedOptions(this)">
                   <option value=" ">เลือกชนิดของตู้รถไฟ</option>
@@ -91,14 +313,18 @@
                   <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
                   <option value="logistic">ขนส่ง</option>
                 </select>
+                
                 <br>
+                
                 <div id = "head">
                 <label for="cars_price">อะไหล่</label>
                 <label for="cars_price">ยี่ห้อ</label>
                 <label for="cars_price">รุ่น</label>
                 <label for="cars_price">จำนวน</label>
-                <br>
                 </div>
+
+                <br>
+                
                 <div id = "locomotive">
                  @foreach($locomotive as $loco)
                 <input type="checkbox" name="part_type" value="{{$loco->part_type}}" id="{{$loco->part_type}}lo" checked>
@@ -130,70 +356,18 @@
 
                  @endforeach
                 </div>
-        <div id = "addpart">
+        <div id = "addpart"> -->
        <!--  <input type="text" name="part_type"  />      
         <input type="text" name="brand"  /> 
         <input type="text" name="code" />
         <input type="number" name="qty" />   -->
-        <input onclick="addRow(this.form);" type="button" value="Add part type" />
-        </div>
-
-        <script type="text/javascript">
-
-            document.getElementById("locomotive").style.display = "none";
-            document.getElementById("bogie").style.display = "none";
-             document.getElementById("head").style.display = "none";
-             document.getElementById("addpart").style.display = "none";
-            var rowNum = 0;
-            function addRow(frm) {
-            rowNum ++;
-            var row = '<p id="rowNum'+rowNum+'"><input type="text" name="part_type" value="'+frm.part_type.value+'" /><input type="text" name="brand" value="'+frm.brand.value+'"><input type="text" name="code" value="'+frm.code.value+'"> <input type="number" name="qty" size="4" value="'+frm.qty.value+'" /> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"> </p>';
-            jQuery('#itemRows').append(row);
-            frm.brand.value = '';
-            frm.code.value = '';
-            frm.qty.value = '';
-            frm.part_type.value = '';
-          }
-            function removeRow(rnum) {
-
-              jQuery('#rowNum'+rnum).remove();
-
-              }
-
-              function getSelectedOptions(sel){
-                                var opts = [],
-                                  opt;
-                                var len = len = sel.options.length;
-                                for (var i = 0; i < len; i++) {
-                                  opt = sel.options[i];
-                                  // console.log("k");
-                                  if (opt.selected) {
-                                    opts.push(opt);
-                                    var type = opt.value;
-                                    document.getElementById("head").style.display = "block";
-                                    document.getElementById("addpart").style.display = "block";
-                                  switch(type){
-                                      case "locomotive": 
-                                          document.getElementById("locomotive").style.display = "block";
-                                          document.getElementById("bogie").style.display = "none";
-                                          
-                                      break;
-                                      case "bogie": 
-                                        document.getElementById("bogie").style.display = "block";
-                                        document.getElementById("locomotive").style.display = "none";
-
-                                      break;
-                                         }
-                                    }
-                                 }
-
-                                return opt.value;
-
-                              }
-              
-        </script>
+        <!-- <input onclick="addRow(this.form);" type="button" value="Add part type" />
+        </div> -->
   
         </div>
+
+        <br>
+
         <div  style="text-align: center;">
               <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
               <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>

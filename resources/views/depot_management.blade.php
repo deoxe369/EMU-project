@@ -44,13 +44,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -74,24 +74,17 @@
     <!--First Container-->
       <div class="row col-md-12 margin">
         <form class="form-inline" action="search_depot">
-
-          <div class="form-group">
-            <!-- <label for="search"><h3 class="margin">&nbsp</h3></label>    
-            <button class="btn-search" style="vertical-align: middle"><span>Search</span></button> -->
-
-            <label for="adddepot"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="../add_depot_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button>
-
-            <!--add page: delete part_management-->
-            <label for="deldepot"><h3 class="margin label-padding"><span></span></h3></label>
-            <button formaction="../delete_depot_management" class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button>
-          </div>
         </form>
       </div>
            
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!-- Button -->
+        <div class="text-right">
+          <a href="../add_depot_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มศูนย์ซ่อม</span></button></a>
+          <a href="../delete_depot_management"><button class="btn-del" style="vertical-align: middle"><span>ลบศูนย์ซ่อม</span></button></a>   
+        </div>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -134,9 +127,12 @@
               @endforeach
             </tbody>
           </table>
-          {{$depot_info->links()}}
         </div> 
-      </div>     
+      </div>
+
+      <!-- Pagination -->
+      <div class="text-center">{{$depot_info->links()}}</div>
+      
     </div>
 
     

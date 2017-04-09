@@ -43,18 +43,15 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-
-            
-
             <!-- <li class="active"><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li> -->
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
               </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -75,8 +72,8 @@
 
   <!--Content-->
     <div class="container-fluid">    
+    
     <!--First Container-->
-     <a href ="../add_model">เพิ่มโมเดล</a>
       <!--Select Edit-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลตู้รถไฟ</h1>
@@ -93,7 +90,7 @@
             <tr class="tr-add">
               <td class="td-add"><label for="cars_model">โมเดล</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Input Car Model -->
+              <!-- Select Car Model -->
               <td>
                  <select  name="cars_model" class="sel">
                  <option value=" ">เลือกโมเดลตู้รถไฟ</option>
@@ -101,6 +98,7 @@
                   <option value={{$m->model}}>{{$m->model}}</option>
                   @endforeach
                 </select>
+                <button formaction="../add_model" class="btn-add" style="height: 40px;">เพิ่มโมเดล</button>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>

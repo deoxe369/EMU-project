@@ -20,6 +20,24 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
   
 </head>
 
@@ -44,13 +62,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown normal">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
                 <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
-                </ul>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -71,8 +89,12 @@
   <!--Content-->
     <div class="container-fluid">    
       <!--First Container-->
-      <div class="row col-md-12 margin">
-        <form class="form-inline" action="search_cars">
+      <h1 class="margin" style="text-align: center;">ลบข้อมูลตู้รถไฟ</h1>
+
+      <br>
+
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin">ประเภท</h3></label>
@@ -123,10 +145,15 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="delete_cars">
+        <form action="delete_cars">
+          <!-- Button -->
+          <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-            <table class="table">
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
+          <div class="table-responsive">
+            <!-- Table: Choose to delete -->
+            <table class="table" id="mytable">
               <thead>
                 <tr>
                   <th class="text-center th-edit">เลือก</th>
@@ -167,16 +194,17 @@
                   }else{
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
                   }
-
                 </script>
-
                 @endforeach
               </tbody>
             </table>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-      {{$cars_info->links()}}  
+
+      <!-- Pagination -->
+      <div class="text-center">{{$cars_info->links()}}</div>
+       
     </div>
 
     
