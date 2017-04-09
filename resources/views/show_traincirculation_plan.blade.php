@@ -88,14 +88,20 @@
 
   <!--Content-->
     <div class="container-fluid">    
-
     <!--First Container-->
-      <a href='../traincirculation_plan/save'>สร้างแผนการใช้ชุดรถไฟ</a>
-      <a href='../traincirculation_plan/cancel'>ยกเลิก</a>
-
+    <h1 class="margin" style="text-align: center;">ยืนยันแผนการใช้ชุดรถไฟ</h1>
+      
+      <br>
+      
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+        <!-- Button -->
+        <div class="text-right">
+          <a href='../traincirculation_plan/save'><button class="btn-save" style="vertical-align: middle"><span>บันทึกแผนการใช้ชุดรถไฟ</span></button></a>
+          <a href='../traincirculation_plan/cancel'><button class="btn-del" style="vertical-align: middle"><span>ยกเลิก</span></button></a>
+        </div>
+
         <div class="table-responsive">
           <table class="table" id="mytable">
             <thead>

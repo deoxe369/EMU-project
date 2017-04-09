@@ -95,7 +95,7 @@
       <div class="row col-md-12 margin">
         <!--Date Current-->
         <div class="text-right">
-          <a href="../create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
+          <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
         </div>
         <div class="table-responsive">          
           <table class="table" id="mytable">
