@@ -151,6 +151,7 @@ class TrainCirculationController extends Controller
     	// --------------------------------------------------------------------------------
 
     	$result = DB::table('train_schedule')->where('mark',"yes")->get();
+        return $result;
           return View::make('show_traincirculation_plan')->with('plan',$result);
     }
    	                                                       																																																											
