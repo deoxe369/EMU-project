@@ -136,9 +136,9 @@
     <div class="row col-md-12 margin">
       <form action="/add_maintenance_plan">
         <!-- Button -->
-        <div class="text-right">
-          <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+        <div>
           <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+          <button formaction="../create_maintenance_plan" class="btn-add" style="float: right; vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
         </div>
         <div class="table-responsive">  
           <table class="table" id="mytable">
