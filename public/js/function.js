@@ -44,7 +44,7 @@
     window.history.back();
   }
 
-  /************************************* Add Trainset Management **************************************/
+  /************************************* Add Maintenance Management **************************************/
   function maint(){
     var mainttrno = document.chkmaint.trainsetno.value;
     var maintdepno = document.chkmaint.depotno.value;

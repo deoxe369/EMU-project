@@ -77,7 +77,7 @@
         
         <br>
 
-        <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save">
+        <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save" name="chkmaint" onsubmit="return maint()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
@@ -88,7 +88,7 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Generate No.Maintenance -->
               <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->id}}</p>
               </td>
             </tr>
             
@@ -100,10 +100,12 @@
               <td>
                 <select id="trainsetno" name="trainsetno" class="sel">
                   <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
+                  <option value=" "></option>
                   @foreach ($trian_set_info as $info)
                   <option value={{$info->train_number}} >{{$info->train_number}}</option>
                   @endforeach 
-            </select>
+                </select>
+                <span id="chkmaint_trsetno" class="checkform"></span>
               </td>
             </tr>
 
@@ -115,10 +117,12 @@
               <td>
                 <select id="depotno" name="depotno" class="sel">
                   <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
+                  <option value=" "></option>
                   @foreach ($depot_info as $info)
                   <option value={{$info->location_name}}>{{$info->location_name}}</option>
                   @endforeach
                 </select>
+                <span id="chkmaint_depotno" class="checkform"></span>
               </td>
             </tr>
 
@@ -140,7 +144,8 @@
             <td class="col-sm-1"><span></span></td>
             <!-- Input Enter Datetime -->
             <td>
-              <input type="date"  name="endate" value={{$origin_info[0]->in_date}}>
+              <input type="date" name="endate" value={{$origin_info[0]->in_date}}>
+              <span id="chkmaint_endate" class="checkform"></span>
             </td>
           </tr>
 
