@@ -148,18 +148,13 @@
               <!-- Chooose No.Trainset -->
               <td>
                 <select id="trainsetno" name="trainsetno" class=>
-                <option value={{$origin_info[0]->train_number}} >{{$origin_info[0]->train_number}}</option>
-                  @foreach ($trian_set_info as $info)
-                  <option value={{$info->train_number}} >{{$info->train_number}}</option>
-                  @endforeach 
-            </select>
+                  <option value={{$origin_info[0]->train_number}} >{{$origin_info[0]->train_number}}</option>
+                    @foreach($trian_set_info as $train)
+                   <option value={{$train}} >{{$train}}</option>
+                    @endforeach 
+                </select>
               </td>
             </tr>
-
-            
-  
-
-
 
           </table>
 
@@ -180,4 +175,4 @@
   </footer>
 
 </body>
-</html>s
+</html>
