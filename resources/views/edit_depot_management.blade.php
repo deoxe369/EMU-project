@@ -88,25 +88,18 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Generate No.Depot -->
               <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->id}}</p>
               </td>
             </tr>
 
-            <!-- location -->
+            <!-- Location Name -->
             <tr class="tr-add">
-              <td class="td-add"><label for="location">ตำแหน่งระยะทาง</label></td>
+              <td class="td-add"><label for="location_name">ชื่อตำแหน่ง</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Choose location -->
               <td>
-                <select id="location" name="location" class="sel">
-                  <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
-                  <!-- <option value=" ">เลือกตำแหน่งระยะทาง</option> -->
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+                <!-- Input Location Name -->
+                <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
+                <span id="chkdepot_locname" class="checkform"></span>
               </td>
             </tr>
 
@@ -118,27 +111,47 @@
               <td>
                 <select id="capacity" name="capacity" class="sel">
                   <option value={{$origin_info[0]->capacity}} selected="selected">{{$origin_info[0]->capacity}}</option>
-                  <!-- <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option> -->
+                  <option value=" ">-- เลือกจำนวนที่รับชุดรถไฟได้ --</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-                <!-- <span id="chkdepot_capacity" class="checkform"></span> -->
+                <span id="chkdepot_capacity" class="checkform"></span>
               </td>
             </tr>
 
             <!-- Position -->
             <tr class="tr-add">
-              <td class="td-add"><label for="depotno">ชื่อตำแหน่ง</label></td>
+              <td class="td-add"><label for="depotno">ตำแหน่ง</label></td>
               <td class="col-sm-1"><span></span></td>
+              <!-- Input Position -->
               <td>
-                <!-- Input Position -->
-                <input type="text" name="location_name" value={{$origin_info[0]->location_name}}>
-                <span id="chkdepot_locname" class="checkform"></span>
+                <input type="text" id="depotno" name="depotno">
+                <span id="chkdepot_position" class="checkform"></span>
               </td>
             </tr>
+
+            <!-- location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่งระยะทาง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose location -->
+              <td>
+                <select id="location" name="location" class="sel">
+                  <option value={{$origin_info[0]->location}} selected="selected">{{$origin_info[0]->location}}</option>
+                  <option value=" ">-- เลือกตำแหน่งระยะทาง --</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <span id="chkdepot_loc" class="checkform"></span>
+              </td>
+            </tr>
+            
             <!-- <div class="form-group margin">
             <label class="control-label col-sm-5" for="depotno">ตำแหน่ง</label>
             <select class="col-sm-offset-2 col-sm-3" id="depotno" name="depotno">
@@ -159,7 +172,7 @@
               <td>
                 <select id="depotlevel" name="depotlevel" class="sel">
                   <option value={{$origin_info[0]->level}} selected="selected">{{$origin_info[0]->level}}</option>
-                  <!-- <option value=" ">เลือกตำแหน่งศูนย์ซ่อม</option> -->
+                  <option value=" ">-- เลือกตำแหน่งศูนย์ซ่อม --</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -167,7 +180,7 @@
                   <option value="5">5</option>
                   <option value="6">6</option>
                 </select>
-                <!-- <span id="chkdepot_level" class="checkform"></span> -->
+                <span id="chkdepot_level" class="checkform"></span>
               </td>
             </tr>
 

@@ -103,24 +103,30 @@
     var status;
 
     if (trsetno == "") {
-      document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      document.getElementById("chktrset_no").style.color = "#FF6F00";
+      document.getElementById("chktrset_no").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
     }else if (trsetno !== isNaN) {
-      document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
+      document.getElementById("chktrset_no").style.color = "#FF6F00";
+      document.getElementById("chktrset_no").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
       status = false;
     }else{
-      document.getElementById("chktrset_no").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chktrset_no").style.color = "#006064";
+      document.getElementById("chktrset_no").innerHTML = "&#x2714;";
       status = true;
     }
 
 
     if (trsettype == " ") {
+      document.getElementById("chktrset_type").style.color = "#FF6F00";
       document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลประเภทชุดรถไฟ";
       status = false;
-    } else if (trsettype == "trcar3") {
+    } else if (trsettype == "trcar3") { //***************change not yet*****************
       if (comtrcar3_1 == " " || comtrcar3_2 == " " || comtrcar3_3 == " ") {
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
+        document.getElementById("chktrset_type").style.color = "#006064";
+        document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+        document.getElementById("chkcomtrcar").style.color = "#FF6F00";
+        document.getElementById("chkcomtrcar").innerHTML = "&#x2716; &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
         status = false;
       } else if (comtrcar3_2 == comtrcar3_3) {
         document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
@@ -228,7 +234,6 @@
       status = false;
     }else{
       document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/check.png'>";
-      status = true;
     }
 
     if (eday == "") {
@@ -236,7 +241,6 @@
       status = false;
     }else{
       document.getElementById("chkpart_eday").innerHTML = "<img src= 'image/icon/check.png'>";
-      status = true;
     }
 
     if (partprice == "") {
@@ -277,39 +281,55 @@
     var depotlocname = document.chkdepot.location_name.value;
     var depotposition = document.chkdepot.depotno.value;
     var depotlv = document.chkdepot.depotlevel.value;
+    var depotloc = document.chkdepot.location.value;
     var status;
 
 
     if (depotlocname == "") {
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      document.getElementById("chkdepot_locname").style.color = "#FF6F00";
+      document.getElementById("chkdepot_locname").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
       status = false;
     }else{
-      document.getElementById("chkdepot_locname").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkdepot_locname").style.color = "#006064";
+      document.getElementById("chkdepot_locname").innerHTML = "&#x2714;";
       status = true;
     }
 
     if (depotcapacity == " ") {
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกจำนวนที่ศูนย์ซ่อมรับได้";
+      document.getElementById("chkdepot_capacity").style.color = "#FF6F00";
+      document.getElementById("chkdepot_capacity").innerHTML = "&#x2716; &nbsp; โปรดเลือกจำนวนที่ศูนย์ซ่อมรับได้";
       status = false;
     }else{
-      document.getElementById("chkdepot_capacity").innerHTML = "<img src= 'image/icon/check.png'>";
-     
+      document.getElementById("chkdepot_capacity").style.color = "#006064";
+      document.getElementById("chkdepot_capacity").innerHTML = "&#x2714;";
     }
 
     if (depotposition == "") {
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
+      document.getElementById("chkdepot_position").style.color = "#FF6F00";
+      document.getElementById("chkdepot_position").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
       status = false;
     }else{
-      document.getElementById("chkdepot_position").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkdepot_position").style.color = "#006064";
+      document.getElementById("chkdepot_position").innerHTML = "&#x2714;";
       
     }
 
-    if (depotlv == "") {
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกระดับการเข้าซ่อมบำรุง"; 
+    if (depotlv == " ") {
+      document.getElementById("chkdepot_level").style.color = "#FF6F00";
+      document.getElementById("chkdepot_level").innerHTML = "&#x2716; &nbsp; โปรดเลือกระดับการเข้าซ่อมบำรุง"; 
       status = false;
     }else{
-      document.getElementById("chkdepot_level").innerHTML = "<img src= 'image/icon/check.png'>";
-      
+      document.getElementById("chkdepot_level").style.color = "#006064";
+      document.getElementById("chkdepot_level").innerHTML = "&#x2714;";      
+    }
+
+    if (depotloc == " ") {
+      document.getElementById("chkdepot_loc").style.color = "#FF6F00";
+      document.getElementById("chkdepot_loc").innerHTML = "&#x2716; &nbsp; โปรดเลือกตำแหน่งระยะทาง"; 
+      status = false;
+    }else{
+      document.getElementById("chkdepot_loc").style.color = "#006064";
+      document.getElementById("chkdepot_loc").innerHTML = "&#x2714;";      
     }
     
     return status;
