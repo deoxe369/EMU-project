@@ -160,11 +160,11 @@
                 <td class="text-center">{{$train->destination_station}}</td>
                 <td class="text-center">{{$train->arrival_time}}</td>
                 <td class="text-center" id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
-                <td class="text-center"><a href="#"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
+                <td class="text-center"><a href="/edit_traincirculation/{{$train->train_trip}}"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
               <!-- JavaScript Foreach -->
-              <!-- <script type="text/javascript">
+              <script type="text/javascript">
                 //row color
                   var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
                 
@@ -183,7 +183,7 @@
                 }else{
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวกลับ"
                 }
-              </script> -->
+              </script>
                 
               @endforeach
             </tbody>

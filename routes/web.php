@@ -157,27 +157,34 @@ Route::get('/create_maintenance_plan','MaintenanceController@create_maintenance_
 
  Route::get('/delete_maintenance1','MaintenanceController@delete');
 
- Route::get('/check_part/{id}' ,'MaintenanceController@choose_car');
+ Route::get('/choose_cars/{id}' ,'MaintenanceController@choose_car');//id = maintenance id
 
- Route::get('/check_3carparts',function(){
- 	return view('check_3carparts');
- });
+ Route::get('/check_parts/{mid}/{id}','MaintenanceController@check_parts');
+
+ Route::get('/check_parts/{mid}/{id}/{part}','MaintenanceController@check_editpart');
+
+ Route::get('/check_parts/{mid}/{id}/{part}/save','MaintenanceController@change_part');
+
+
+ // Route::get('/check_3carparts',function(){
+ // 	return view('check_3carparts');
+ // });
 
  // Route::get('/check_4carparts',function(){
  // 	return view('check_4carparts');
  // });
  
- Route::get('/check_locoparts',function(){
- 	return view('check_locoparts');
- });
+ // Route::get('/check_locoparts',function(){
+ // 	return view('check_locoparts');
+ // });
 
- Route::get('/check_bogieparts',function(){
- 	return view('check_bogieparts');
- });
+ // Route::get('/check_bogieparts',function(){
+ // 	return view('check_bogieparts');
+ // });
 
- Route::get('/check_editpart', function(){
- 	return view('check_editpart');
- });
+ // Route::get('/check_editpart', function(){
+ // 	return view('check_editpart');
+ // });
 
 // 
 // ---------------------------------->เพิ่มข้อมูล level
@@ -205,6 +212,11 @@ Route::get('/traincirculation_plan', 'TrainCirculationController@train_schedule_
 Route::get('/traincirculation_plan/save','TrainCirculationController@add_plan');
 
 Route::get('/traincirculation_plan/cancel','TrainCirculationController@add_plan_cancel');
+
+Route::get('/edit_traincirculation/{id}','TrainCirculationController@edit');
+
+Route::get('/edit_traincirculation/{id}/save','TrainCirculationController@update');
+
 
 // -------------------------------------------Model
 

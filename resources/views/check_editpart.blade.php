@@ -44,7 +44,7 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+            <li><a href='/'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -53,10 +53,10 @@
                 <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
-            <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
-            <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
-            <li><a href='../part_management'>จัดการอะไหล่</a></li>            
-            <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
+            <li><a href='/trainset_management'>จัดการชุดรถไฟ</a></li>
+            <li><a href='/car_management'>จัดการตู้รถไฟ</a></li>
+            <li><a href='/part_management'>จัดการอะไหล่</a></li>            
+            <li><a href='/depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
       </div>
@@ -71,10 +71,21 @@
 
         <br>
 
-        <form class="form-horizontal" action="#" name="chkedpart" onsubmit="return edpart()">
+        <form class="form-horizontal" action="/check_parts/{{$id}}/{{$origin_part_info[0]->part_type}}/save" name="chkedpart" onsubmit="return edpart()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
+
+            <!-- Car number -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="car_number">รหัสตู้รถไฟ</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Generate Part Type -->
+              <td>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold;">{{$id}}</p>
+            </td>
+              
+            </tr>
 
             <!-- Part Type -->
             <tr class="tr-add">
@@ -82,60 +93,59 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Generate Part Type -->
               <td>
-              <p class="form-control-static" style="color: #13a381; font-weight: bold;">Wheels</p>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold;">{{$origin_part_info[0]->part_type}}</p>
             </td>
               
             </tr>
-
             <!-- No. Part -->
             <tr class="tr-add">
-              <td class="td-add"><label for="partno">รหัสอะไหล่</label></td>
+              <td class="td-add"><label for="partno"></label></td>
               <td class="col-sm-1"><span></span></td>
               <!-- Select No. Part -->
+             
               <td>
-                <select id="partno" name="partno" class="sel">
-                  <option value=" ">เลือกรหัสอะไหล่</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                </select>
-                <span id="chkedp_partno" class="checkform"></span>
+                 <div style="text-align:center;"><label for="brand">ยี่ห้อ</label></div> 
+              </td>
+              <td>
+                <div style="text-align:center;"><label for="code">รุ่น</label></div> 
+              </td>
+              
+            </tr>
+            <!-- No. Part -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="partno">อะไหล่เดิม</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Select No. Part -->
+               <td>
+                 <div style="text-align:center;"><label for="brand">{{$origin_part_info[0]->brand}}</label></div> 
+              </td>
+              <td>
+                <div style="text-align:center;"><label for="code">{{$origin_part_info[0]->code}}</label></div> 
               </td>
             </tr>
 
             <!-- Car ID -->
             <tr class="tr-add">
-              <td class="td-add"><label for="carid">รหัสตู้รถไฟ</label></td>
+              <td class="td-add"><label for="carid">อะไหล่ที่เปลี่ยน</label></td>
               <td class="col-sm-1"><span></span></td>
               <!-- Select Car ID -->
               <td>
-                <select id="carid" name="carid" class="sel">
-                  <option value=" ">เลือกรหัสตู้รถไฟ</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
+                <select id="brand" name="brand" class="sel" onchange=" getSelectedOptions(this)"">
+                  <option value=''>เลือกยี่ห้อ</option>
+                @foreach($brand_info as $brand)
+                  <option value={{$brand->brand}}>{{$brand->brand}}</option>
+                @endforeach
                 </select>
                 <span id="chkedp_carid" class="checkform"></span>
               </td>
-            </tr>
-
-            <!-- Total Distance -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="totle_dist">ระยะทางสะสม</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Input Total Distance -->
               <td>
-                <input type="number" name="totle_dist">
-                <span id="chkedp_dist" class="checkform"></span>
-              </td>
-            </tr>
-
-            <!-- Total Time -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="totle_time">ระยะเวลาสะสม</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Input Total Time -->
-              <td>
-                <input type="time" name="totle_time">
-                <span id="chkedp_time" class="checkform"></span>
+                <select id="code" name="code" class="sel">
+                <option value=''>เลือกรุ่น</option>
+                @foreach($code_info as $code)
+                  <option id={{$code->brand}} value={{$code->code}}>{{$code->code}}</option>
+                @endforeach
+                </select>
+                <span id="chkedp_carid" class="checkform"></span>
               </td>
             </tr>
           </table>
@@ -150,6 +160,40 @@
         </form>
       </div>
     </div>
+    <script type="text/javascript">
+      function getSelectedOptions(sel){
+                                var opts = [],opt;
+                                var len = sel.options.length;
+                                var len1 =  document.getElementById('code').options.length;
+
+                                for (var i = 0; i < len; i++) {
+                                  opt = sel.options[i];
+                                  // console.log("k");
+                                  if (opt.selected) {
+                                    opts.push(opt);
+                                    // console.log(opt.value);
+                                        for (var i = 0; i < len1; i++) {
+                                          var code = document.getElementById('code').options[i];
+                                          console.log(code.id);
+                                          if(opt.value == code.id){
+                                            code.style.display = 'block';
+                                          }else{
+                                            code.style.display = 'none';
+                                          }
+                                        }
+                                //       
+                                //          }
+                                         
+                                     
+                                }
+
+              
+                                 }
+
+                                return opt.value;
+
+                              }
+    </script>
 
   <!--Footer-->
   <footer class="bg-2">

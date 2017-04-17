@@ -15,7 +15,7 @@ class PartController extends Controller
         for ($x = 1; $x <= $info1->qauntity ; $x++) {
 
 
-    	DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,price,created_at) values (?, ?, ?, ?, ? ,? )', [ $info1->part_type, $info1->m_day,$info1->e_day,$info1->brand,$info1->price,Carbon::now()]);
+    	DB::insert('insert into part (part_type, manufactured_date,expired_date,brand,code,price,created_at) values (?, ?, ?, ?, ? ,? ,?)', [ $info1->part_type, $info1->m_day,$info1->e_day,$info1->brand,$info1->code,$info1->price,Carbon::now()]);
         }
     	return Redirect::action('PartController@part_info');	
 

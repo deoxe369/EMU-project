@@ -264,12 +264,12 @@ class MaintenanceController extends Controller
                 $limit = floor(300/$range);
                 if($limit<1){
                 $balance_day = floor($balance/$range)-1;
-                $balance_day1= ($balance_day)*$range;
-                $balance_day3= $balance - $balance_day1;
+                // $balance_day1= ($balance_day)*$range;
+                // $balance_day3= $balance - $balance_day1;
                 }else {
                 $balance_day = floor($balance/$range);
-                $balance_day1= ($balance_day)*$range;
-                $balance_day3= $balance - $balance_day1;
+                // $balance_day1= ($balance_day)*$range;
+                // $balance_day3= $balance - $balance_day1;
                 }
                 $maintenance_date = Carbon::now()->addDays($balance_day)->format('Y-m-d');
 
@@ -413,33 +413,33 @@ public function show_maintenance_plan(Request $info )
         $all_train = array_values(array_diff( $train_free,$train_main));
         $number1 = count($all_train); 
        
-            for($i = 0 ; $i < $number1 ; $i++){
+            for($i = 0 ; $i < $number1 ; $i++){// ทำที่ละคัน
                 $train_level1 = DB::table('train_set')->select('level','total_distance')->where('train_number', $all_train[$i] )->get();
                 // return $train_level1;
                 $depot_info = DB::table('depot')->select('location_name')->where('level','>=',  $train_level1[0]->level )->get();
                 $trainschedule = DB::table('train_schedule')->where('train_number',$all_train[$i])->get();
                 $level_info = DB::table('level')->where('level', $train_level1[0]->level )->get();
-                $gap = $level_info[0]->total_distance - $train_level1[0]->total_distance;
-              
+                $gap = $level_info[0]->total_distance - $train_level1[0]->total_distance;//ระนะทางเหลือที่วิ่งได้
+                
                 if($gap < 1000){
                     
                   $balance =  $level_info[0]->total_distance - $train_level1[0]->total_distance;
-               
+                return $balance ;
                 $source_station_distance =  DB::table('route')->select('distance')->where('name',$trainschedule[0]->source_station)->get();
                 $destination_station_distance = DB::table('route')->select('distance')->where('name',$trainschedule[0]->destination_station)->get();
-                $range = $destination_station_distance[0]->distance - $source_station_distance[0]->distance;
+                $range = abs($destination_station_distance[0]->distance - $source_station_distance[0]->distance);
                
 
                  $limit = floor(300/$range);
 
                         if($limit<1){
-                    $balance_day = floor($balance/$range)-1;
-                    $balance_day1= ($balance_day)*$range;
-                    $balance_day3= $balance - $balance_day1;
+                    $balance_day = floor($balance/$range)-1; //ลบ 1 วันให้ที่ทางเหลือไปซ่อม
+                    // $balance_day1= ($balance_day)*$range;
+                    // $balance_day3= $balance - $balance_day1;
                     }else {
                     $balance_day = floor($balance/$range)-$limit;
-                    $balance_day1= ($balance_day)*$range;
-                    $balance_day3= $balance - $balance_day1;
+                    // $balance_day1= ($balance_day)*$range;
+                    // $balance_day3= $balance - $balance_day1;
                         }
 
 
@@ -481,14 +481,15 @@ public function show_maintenance_plan(Request $info )
 
                     $train_in_maintenance = count($depot_info1);
                      $free_slot_endate = $depot_capa[0]->capacity - $train_in_maintenance;
-                            
-                     if($free_slot_endate  > 0){
-                          DB::insert('insert into maintenance (train_number, depot,level,in_date,created_at,mark) values (?, ?, ?, ?, ? ,? )', [ $all_train[$i],$depot_name,$train_level1[0]->level,$maintenance_date,Carbon::now(),"yes"]);
-                      }else{
-                          DB::table('maintenance')->where('mark',"yes")->delete();
-                          $name = $depot_name;
-                        return "รถไฟ $train->train_number ไม่สามารถเข้าซ่อมได้ เนื่องจากศุนย์ซ่อม  $name  วันที่ $maintenance_date" ;
-                      }
+  // ----------------------------------------------------------------------->
+                     
+                     // if($free_slot_endate  > 0){
+                     //      DB::insert('insert into maintenance (train_number, depot,level,in_date,created_at,mark) values (?, ?, ?, ?, ? ,? )', [ $all_train[$i],$depot_name,$train_level1[0]->level,$maintenance_date,Carbon::now(),"yes"]);
+                     //  }else{
+                     //      DB::table('maintenance')->where('mark',"yes")->delete();
+                     //      $name = $depot_name;
+                     //    return "รถไฟ $train->train_number ไม่สามารถเข้าซ่อมได้ เนื่องจากศุนย์ซ่อม  $name  วันที่ $maintenance_date" ;
+                     //  }
 
 
 
@@ -597,17 +598,85 @@ public function show_maintenance_plan(Request $info )
  
     }
 
-     public function choose_car(Request $info)
+     public function choose_car(Request $info ,$id)
     {
             $train_number = DB::table('maintenance')->select('train_number')->where('id',$info->id)->get();
-            $train_car = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->get();
+            $train_car_loco = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->where('cars_type','locomotive')->get();
+            $train_car_bogie = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->where('cars_type','bogie')->get();
 
-        
-        
-            return  View::make('check_3carparts')->with('cars',$train_car);
+
             
+           
+            return  View::make('check_3carparts')->with('cars_loco',$train_car_loco)->with('cars_bogie',$train_car_bogie)->with('id',$id);
+    
+    }
+    public function check_parts($mid ,$id)
+    {
+            $cars_type =  DB::table('cars')->select('cars_type')->where('id',$id)->get();
+            $parts_cars = DB::table('part')->where('cars_id',$id)->get();
+            $part_alert = array();//red
+            $part_alert1 = array();// yellow
+            // return $cars_type;
+            
+             foreach ( $parts_cars as $pc) {//วนตาม part ของ cars
+                $date_to_expired = (strtotime($pc->expired_date) - strtotime('now'))/86400;
+                $part_type = DB::table('part_type')->select('lifetime_distance','lifetime_time')->where('part_type',$pc->part_type)->get();
+                $result_dis = $part_type[0]->lifetime_distance - $pc->total_distance;
+                $result_time =  $part_type[0]->lifetime_time - $pc->total_time;
+                
+
+                  if($date_to_expired <= 50 or $result_dis <= 500 or $result_time <= 0.08 ){
+                  
+                         array_push($part_alert,$pc->part_type);
+                  
+                  }else  if($date_to_expired <= 100 or $result_dis <= 1000 or $result_time <= 0.20){
+
+                        array_push($part_alert1,$pc->part_type);
+
+                  }
+                
+
+             }
+             
+            
+            if($cars_type[0]->cars_type == "locomotive"){
+
+                 return view('check_locoparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid);  
+
+            }else if($cars_type[0]->cars_type == "bogie"){
+
+                 return view('check_bogieparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid);   
+
+            }
+          
         
     
+ 
+    }
+
+     public function check_editpart( $mid,$id,$part)
+    {
+            $origin_part_info = DB::table('part')->where('part_type',$part)->where('cars_id',$id)->get();
+            $brand_info = DB::table('part')->select('brand')->where('part_type',$part)->where('cars_id',NULL)->where('status','ใช้ได้')->distinct()->get();
+            $code_info =  DB::table('part')->select('brand','code')->where('part_type',$part)->where('cars_id',NULL)->where('status','ใช้ได้')->distinct()->get();
+            
+           // return $origin_part_info;
+           return view('check_editpart')->with('origin_part_info',$origin_part_info)->with('brand_info',$brand_info)->with('code_info',$code_info)->with('id',$id);
+ 
+    }
+
+     public function change_part(Request $info,$id,$part)
+    {
+            DB::table('part')->where('part_type',$part)->where('cars_id',$id)->update(['updated_at'=>Carbon::now(),'cars_id'=>NULL,'status'=>'ใช้ไม่ได้']);//อะไหล่เก่า
+            
+            $min_expired = DB::table('part')->where('part_type',$part)->where('brand',$info->brand)->where('code',$info->code)->where('status',"ใช้ได้")->min('expired_date');
+
+            $changed_part = DB::table('part')->where('part_type',$part)->where('brand',$info->brand)->where('code',$info->code)->where('status',"ใช้ได้")->where('expired_date',$min_expired)->get();
+
+            DB::table('part')->where('id',$changed_part[0]->id)->update(['updated_at'=>Carbon::now(),'cars_id'=>$id]);//อะไหล่ใหม่
+
+           return Redirect::action('MaintenanceController@check_parts',['id'=>$id]);
+        
  
     }
     

@@ -92,47 +92,6 @@
 
       <br>
 
-      <!--First Container-->
-      <!--<div class="row col-md-12 margin">
-        <form class="form-inline" action="search_train_set1">
-
-          <div class="form-group">
-            <label for="trainsetno"><h3 class="margin label-padding">รหัสชุดรถไฟ</h3></label>
-            <input type="text" name="trainsetno" class="sel-3">
-          </div>
-
-          <div class="form-group">
-            <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
-            <select id="trsettype" name="trsettype" class="sel sel-3">
-              <option value='not'>เลือกประเภทชุดรถไฟ</option>
-              <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
-              <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
-           <option value="trgoods">ชุดรถไฟขนส่ง</option>
-                <option value="trtrolley">รถรางโยก</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="trstatus"><h3 class="margin label-padding">สถานะ</h3></label>
-            <select id="trstatus" name="trstatus" class="sel sel-3">
-              <option value='not'>เลือกสถานะชุดรถไฟ</option>
-              <option value="ไม่ว่าง">ไม่ว่าง</option>
-              <option value="ว่าง">ว่าง</option>
-              <option value="ซ่อม">ซ่อม</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="search"><h3 class="margin"><span></span></h3></label>
-            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
-
-            <label for="addtr"><h3 class="margin"><span></span></h3></label>
-            <button formaction="../create_maintenance_plan" class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
-
-            
-          </div>
-        </form>  -->
-
     <!--Second Container-->
       <div class="row col-md-12 margin">
         <div class="table-responsive">
@@ -141,7 +100,7 @@
             <!-- Button -->
             <div class="text-right">
               <!-- <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button> -->
-              <a href='/check_part/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
+              <a href='/choose_cars/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
               <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             </div>
             

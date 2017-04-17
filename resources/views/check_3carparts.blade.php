@@ -84,35 +84,24 @@
           
           <!-- Image: Locomative -->
           <div class="item active">
-            <a href="/check_locoparts">
-              <p class="detail-loco1">Locomative</p>
+            <a href="/check_parts/{{$id}}/{{$cars_loco[0]->id}}">
+              <p class="detail-loco1">Locomative </p>
+               <p class="detail-loco1"> Cars number {{$cars_loco[0]->id}}</p>
               <img src="/image/pic/4.png" alt="Locomative" width="80%" height="80%" style="margin: auto;">
             </a>
           </div>
 
-          <!-- Image: Bogie1 -->
+          <!-- Image: Bogie -->
+          @foreach($cars_bogie as $index => $bogie)
           <div class="item">
-            <a href="/check_bogieparts">
-              <p class="detail-bogie">1st Bogie</p>
+            <a href="/check_parts/{{$id}}/{{$bogie->id}}">
+              <p class="detail-bogie"> Bogie{{$index+1}}</p>
+              <p class="detail-loco1"> Cars number {{$bogie->id}}</p>
               <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
             </a>
           </div>
+          @endforeach
 
-          <!-- Image: Bogie2 -->
-          <div class="item">
-            <a href="/check_bogieparts">
-              <p class="detail-bogie">2nd Bogie</p>
-              <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
-            </a>
-          </div>
-
-          <!-- Image: Bogie3 -->
-          <div class="item">
-            <a href="/check_bogieparts">
-              <p class="detail-bogie">3rd Bogie</p>
-              <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
-            </a>
-          </div>
         </div>
 
         <!-- Left and right controls -->

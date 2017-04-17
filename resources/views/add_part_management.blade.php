@@ -127,7 +127,18 @@
               <!-- Input Part Brand -->
               <td>
                 <input type="text" name="brand">
-                <span id="chkpart_brand" class="checkform"></span>
+                <span id="chkpart_code" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!--รุ่น -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="code">รุ่น</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Input Part Brand -->
+              <td>
+                <input type="text" name="code">
+                <span id="chkpart_code" class="checkform"></span>
               </td>
             </tr>
 
