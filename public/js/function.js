@@ -52,25 +52,33 @@
     var status;
 
     if (maintendate == "") {
-      document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
+      // document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
+      document.getElementById("chkmaint_endate").style.color = "#FF6F00";
+      document.getElementById("chkmaint_endate").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
       status = false;
     }else{
-      document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/check.png'>";
+      //document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkmaint_endate").style.color = "#006064";
+      document.getElementById("chkmaint_endate").innerHTML = "&#x2714;";
       status = true;
     }
 
     if (mainttrno == " ") {
-      document.getElementById("chkmaint_trsetno").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      document.getElementById("chkmaint_trsetno").style.color = "#FF6F00";
+      document.getElementById("chkmaint_trsetno").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
     }else{
-      document.getElementById("chkmaint_trsetno").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkmaint_trsetno").style.color = "#006064";
+      document.getElementById("chkmaint_trsetno").innerHTML = "&#x2714;";
     }
 
     if (maintdepno == " ") {
-      document.getElementById("chkmaint_depotno").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      document.getElementById("chkmaint_depotno").style.color = "#FF6F00";
+      document.getElementById("chkmaint_depotno").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสศูนย์ซ่อม";
       status = false;
     }else{
-      document.getElementById("chkmaint_depotno").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkmaint_depotno").style.color = "#006064";
+      document.getElementById("chkmaint_depotno").innerHTML = "&#x2714;";
     }
 
     return status;

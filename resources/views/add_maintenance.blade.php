@@ -90,7 +90,7 @@
               <!-- Choose No. Train Set -->
               <td>
                 <select class="sel" id="trainsetno" name="trainsetno">
-                  <option value=" ">เลือกรหัสชุดรถไฟ</option>
+                  <option value=" ">-- เลือกรหัสชุดรถไฟ --</option>
                   @foreach ($trian_set_info as $info)
                   <option value={{$info->train_number}} >{{$info->train_number}}</option>
                   @endforeach
@@ -106,7 +106,7 @@
               <!-- Choose Depot Location -->
               <td>
                 <select class="sel" id="depot" name="depotno">
-                  <option value=" ">เลือกรหัสศูนย์ซ่อม</option>
+                  <option value=" ">-- เลือกรหัสศูนย์ซ่อม --</option>
                   @foreach ($depot_info as $info)
                   <option value={{$info->location_name}}>{{$info->location_name}}</option>
                   @endforeach
