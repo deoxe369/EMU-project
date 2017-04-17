@@ -43,20 +43,20 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown normal">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การใช้ชุดรถไฟ<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='../traincirculation_plan'>ระบบจัดการแผนใช้ชุดรถไฟ</a></li>
-                <li class="normal"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
+                <li class="active"><a href='../'>ระบบจัดการการใช้ชุดรถไฟ</a></li>
               </ul>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown normal">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
               <ul class="dropdown-menu">
                 <li class="normal"><a href='/maintenance_plan'>ระบบจัดการแผนเข้าซ่อม</a></li>
-                <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
+                <li class="normal"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
             <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
@@ -73,89 +73,93 @@
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
-        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลใบเข้าซ่อม</h1>
+        <h1 class="margin" style="text-align: center;">แก้ไขข้อมูลการใช้ชุดรถไฟ</h1>
         
         <br>
 
-        <form class="form-horizontal" action="/edit_maintenance/{{$origin_info[0]->id}}/save" name="chkmaint" onsubmit="return maint()">
+        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->id}}/save">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
 
             <!-- No.Maintenance -->
             <tr class="tr-add">
-              <td class="td-add"><label for="maintainno">เลขเข้าซ่อม</label></td>
+              <td class="td-add"><label for="maintainno">ทริป</label></td>
               <td class="col-sm-1"><span></span></td>
               <!-- Generate No.Maintenance -->
               <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->id}}</p>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
               </td>
+               <input type="hidden" name="origin_train_number" value={{$origin_info[0]->train_number}}>
             </tr>
+
+
+               <!-- Enter Datetime -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="endate">ชนิด</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->class}}</p>
+            </td>
+             <td class="td-add"><label for="endate">เที่ยว</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->trip_type}}</p>
+            </td>
+            </tr>
+            <tr>
+            <td class="td-add"><label for="endate">สถานีต้นทาง</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->source_station}}</p>
+            </td>
+             <td class="td-add"><label for="endate">เวลาออก</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->departure_time}}</p>
+            </td>
+            </tr>
+            <tr>
+             <td class="td-add"><label for="endate">สถานีปลายทาง</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->destination_station}}</p>
+            </td>
+             <td class="td-add"><label for="endate">เวลาถึง</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Enter Datetime -->
+            <td>
+             <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->arrival_time}}</p>
+            </td>
             
+          </tr>
+
+
             <!-- No.Trainset -->
             <tr class="tr-add">
+              
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
               <td class="col-sm-1"><span></span></td>
               <!-- Chooose No.Trainset -->
               <td>
-                <select id="trainsetno" name="trainsetno" class="sel">
-                  <option value={{$origin_info[0]->train_number}}>{{$origin_info[0]->train_number}}</option>
-                  
+                <select id="trainsetno" name="trainsetno" class=>
+                <option value={{$origin_info[0]->train_number}} >{{$origin_info[0]->train_number}}</option>
                   @foreach ($trian_set_info as $info)
                   <option value={{$info->train_number}} >{{$info->train_number}}</option>
                   @endforeach 
-                </select>
-                <span id="chkmaint_trsetno" class="checkform"></span>
+            </select>
               </td>
             </tr>
 
-            <!-- No.Depot -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="depotno">ศูนย์ซ่อม</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Choose No.Depot -->
-              <td>
-                <select id="depotno" name="depotno" class="sel">
-                  <option value={{$origin_info[0]->depot}}>{{$origin_info[0]->depot}}</option>
-                 
-                  @foreach ($depot_info as $info)
-                  <option value={{$info->location_name}}>{{$info->location_name}}</option>
-                  @endforeach
-                </select>
-                <span id="chkmaint_depotno" class="checkform"></span>
-              </td>
-            </tr>
+            
+  
 
-            <!--Level-->
-            <!--<div class="form-group">
-            <label class="control-label col-sm-5" for="level">ระดับ</label>
-            <select class="col-sm-offset-2 col-sm-3" id="level" name="level">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div> -->
 
-          <!-- Enter Datetime -->
-          <tr class="tr-add">
-            <td class="td-add"><label for="endate">วันเวลาเข้า</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <input type="date" name="endate" value={{$origin_info[0]->in_date}}>
-              <span id="chkmaint_endate" class="checkform"></span>
-            </td>
-          </tr>
-
-          <!--Leave DateTime-->
-          <!-- <div class="form-group margin">
-            <label class="control-label col-sm-5" for="lvdate">วันเวลาออก</label>
-            <select class="col-sm-offset-2 col-sm-3" id="lvdate" name="lvdate">
-              <option value="YY.MM.DD HH.mm.ss">YY.MM.DD HH.mm.ss</option>
-            </select>
-          </div> -->
 
           </table>
 
@@ -176,4 +180,4 @@
   </footer>
 
 </body>
-</html>
+</html>s

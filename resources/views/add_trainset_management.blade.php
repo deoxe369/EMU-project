@@ -199,18 +199,18 @@
               function addRow(frm) {
                 rowNum ++;
                 var bogieNum = rowNum+1;
-                // var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
                 var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
                 frm.cars_id.value = '';
-                console.log( document.getElementById("composition"));
-                console.log( bogieNum);
+                // console.log( document.getElementById("composition"));
+                // console.log( bogieNum);
               }
               
               // Remove Composition
               function removeRow(rnum) {
+                rowNum --;
                 jQuery('#rowNum'+rnum).remove();
-                console.log( rowNum);
+                
               }
 
               // Select Trainsettype

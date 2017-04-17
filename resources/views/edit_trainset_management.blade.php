@@ -136,9 +136,9 @@
                     </td>
                   </tr>
 
-                  @foreach($origin_bogie as $bogie)
+                  @foreach($origin_bogie as $index => $bogie)
                   <tr style="border-top: 3px solid #ffffff !important;">
-                    <td class="text-center th-bo"><p class="td-carname">Bogie...</p></td>
+                    <td class="text-center th-bo"><p class="td-carname">Bogie{{$index+1}}</p></td>
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Bogie1 -->
@@ -204,22 +204,26 @@
             }
             // console.log(x);
               
-            // Create Select Composition
-            var rowNum = 0;
-            function addRow(frm) {
-              rowNum ++;
-              // var row = '<a id="rowNum'+rowNum+'">  <select name="cars_id">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="-" onclick="removeRow('+rowNum+');"></a>';
-              var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie...</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
-              jQuery('#itemRows').after(row);
+            /// Create Select Composition
+              var rowNum = {{$number}};
+              
+              function addRow(frm) {
+                rowNum ++;
+               
+                // var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+rowNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+                jQuery('#itemRows').before(row);
                 frm.cars_id.value = '';
-              console.log( document.getElementById("composition"));
-            }
-            
-            // Remove Composition
-            function removeRow(rnum) {
-              jQuery('#rowNum'+rnum).remove();
-              console.log( rowNum);
-            }
+                console.log( document.getElementById("composition"));
+                
+              }
+              
+              // Remove Composition
+              function removeRow(rnum) {
+                rowNum --;
+                jQuery('#rowNum'+rnum).remove();
+                console.log( rowNum);
+              }
 
             // Select Trainsettype
             function getSelectedOptions(sel){

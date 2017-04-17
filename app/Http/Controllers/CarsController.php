@@ -12,6 +12,8 @@ class CarsController extends Controller
 {
    public function add(Request $info)
     {   
+        
+        ini_set('max_execution_time', 300);
         $test = array();
         $round = $info->cars_qty;
         // return $round;
