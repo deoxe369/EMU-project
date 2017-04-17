@@ -219,55 +219,151 @@
     var partbrand = document.chkpart.brand.value;
     var partprice = document.chkpart.price.value;
     var partqty = document.chkpart.qauntity.value;
+    var partcode = document.chkpart.code.value;
     var status;
 
     if (partbrand == "") {
-      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      document.getElementById("chkpart_brand").style.color = "#FF6F00";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
       status = false;
     }else{
-      document.getElementById("chkpart_brand").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_brand").style.color = "#006064";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2714;";
       status = true;
     }
 
-    if (mday == NULL) {
-      document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+    if (partcode == "") {
+      document.getElementById("chkpart_code").style.color = "#FF6F00";
+      document.getElementById("chkpart_code").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรุ่นของอะไหล่";
       status = false;
     }else{
-      document.getElementById("chkpart_mday").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_code").style.color = "#006064";
+      document.getElementById("chkpart_code").innerHTML = "&#x2714;";
+    }
+
+    if (mday == "") {
+      document.getElementById("chkpart_mday").style.color = "#FF6F00";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_mday").style.color = "#006064";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2714;";
     }
 
     if (eday == "") {
-      document.getElementById("chkpart_eday").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
+      document.getElementById("chkpart_eday").style.color = "#FF6F00";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
       status = false;
     }else{
-      document.getElementById("chkpart_eday").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_eday").style.color = "#006064";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2714;";
     }
 
     if (partprice == "") {
-      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      document.getElementById("chkpart_price").style.color = "#FF6F00";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
       status = false;
     }else if (partprice < 0) {
-      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkpart_price").style.color = "#FF6F00";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkpart_price").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_price").style.color = "#006064";
+      document.getElementById("chkpart_price").innerHTML = "&#x2714;";
     }
 
     if (partqty == "") {
-      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของอะไหล่";
+      document.getElementById("chkpart_qty").style.color = "#FF6F00";
+      document.getElementById("chkpart_qty").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลจำนวนของอะไหล่";
       status = false;
     }else if (partqty < 0) {
-      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkpart_qty").style.color = "#FF6F00";
+      document.getElementById("chkpart_qty").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkpart_qty").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_qty").style.color = "#006064";
+      document.getElementById("chkpart_qty").innerHTML = "&#x2714;";
     }
 
     if (parttype == " ") {
-      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกประเภทของอะไหล่";
+      document.getElementById("chkpart_type").style.color = "#FF6F00";
+      document.getElementById("chkpart_type").innerHTML = "&#x2716; &nbsp; โปรดเลือกประเภทของอะไหล่";
       return false;
     }else{
-      document.getElementById("chkpart_type").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkpart_type").style.color = "#006064";
+      document.getElementById("chkpart_type").innerHTML = "&#x2714;";
+    }
+
+      return status;
+  }
+
+  /************************************* Edit Part Management **************************************/
+   function epart(){
+    var parttype = document.chkepart.part_type.value;
+    var mday = document.chkepart.m_day.value;
+    var eday = document.chkepart.e_day.value;
+    var partbrand = document.chkepart.brand.value;
+    var partprice = document.chkepart.price.value;
+    var partcode = document.chkepart.code.value;
+    var status;
+
+    if (partbrand == "") {
+      document.getElementById("chkpart_brand").style.color = "#FF6F00";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_brand").style.color = "#006064";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2714;";
+      status = true;
+    }
+
+    if (partcode == "") {
+      document.getElementById("chkpart_code").style.color = "#FF6F00";
+      document.getElementById("chkpart_code").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรุ่นของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_code").style.color = "#006064";
+      document.getElementById("chkpart_code").innerHTML = "&#x2714;";
+    }
+
+    if (mday == "") {
+      document.getElementById("chkpart_mday").style.color = "#FF6F00";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_mday").style.color = "#006064";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2714;";
+    }
+
+    if (eday == "") {
+      document.getElementById("chkpart_eday").style.color = "#FF6F00";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
+      status = false;
+    }else{
+      document.getElementById("chkpart_eday").style.color = "#006064";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2714;";
+    }
+
+    if (partprice == "") {
+      document.getElementById("chkpart_price").style.color = "#FF6F00";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      status = false;
+    }else if (partprice < 0) {
+      document.getElementById("chkpart_price").style.color = "#FF6F00";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      status = false;
+    }else{
+      document.getElementById("chkpart_price").style.color = "#006064";
+      document.getElementById("chkpart_price").innerHTML = "&#x2714;";
+    }
+
+    if (parttype == " ") {
+      document.getElementById("chkpart_type").style.color = "#FF6F00";
+      document.getElementById("chkpart_type").innerHTML = "&#x2716; &nbsp; โปรดเลือกประเภทของอะไหล่";
+      return false;
+    }else{
+      document.getElementById("chkpart_type").style.color = "#006064";
+      document.getElementById("chkpart_type").innerHTML = "&#x2714;";
     }
 
       return status;
