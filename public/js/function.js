@@ -54,7 +54,7 @@
     if (maintendate == "") {
       // document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
       document.getElementById("chkmaint_endate").style.color = "#FF6F00";
-      document.getElementById("chkmaint_endate").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันเข้าซ่อมบำรุง";
+      document.getElementById("chkmaint_endate").innerHTML = "&#x2716; โปรดเลือกวันเข้าซ่อมบำรุง";
       status = false;
     }else{
       //document.getElementById("chkmaint_endate").innerHTML = "<img src= 'image/icon/check.png'>";
@@ -65,7 +65,7 @@
 
     if (mainttrno == " ") {
       document.getElementById("chkmaint_trsetno").style.color = "#FF6F00";
-      document.getElementById("chkmaint_trsetno").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      document.getElementById("chkmaint_trsetno").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
     }else{
       document.getElementById("chkmaint_trsetno").style.color = "#006064";
@@ -74,7 +74,7 @@
 
     if (maintdepno == " ") {
       document.getElementById("chkmaint_depotno").style.color = "#FF6F00";
-      document.getElementById("chkmaint_depotno").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสศูนย์ซ่อม";
+      document.getElementById("chkmaint_depotno").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสศูนย์ซ่อม";
       status = false;
     }else{
       document.getElementById("chkmaint_depotno").style.color = "#006064";
@@ -108,7 +108,7 @@
       status = false;
     }else if (trsetno !== isNaN) {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
-      document.getElementById("chktrset_no").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
+      document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
       status = false;
     }else{
       document.getElementById("chktrset_no").style.color = "#006064";
@@ -167,44 +167,84 @@
   /************************************* Add Car Management **************************************/
   function cars(){
     var carsmodel = document.chkcar.cars_model.value;
-    var carstype = document.chkcar.cars_type.value;
+    // var carstype = document.chkcar.cars_type.value;
     var carsprice = document.chkcar.cars_price.value;
     var carsqty = document.chkcar.cars_qty.value;
     var status;
 
-    if (carsmodel == "") {
-      document.getElementById("chkcars_model").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
+    if (carsmodel == " ") {
+      document.getElementById("chkcars_model").style.color = "#FF6F00";
+      document.getElementById("chkcars_model").innerHTML = "&#x2716; โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
       status = false;
     }else{
-      document.getElementById("chkcars_model").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkcars_model").style.color = "#006064";
+      document.getElementById("chkcars_model").innerHTML = "&#x2714;";
       status = true;
     }
 
-    if (carstype == " ") {
+    /*if (carstype == " ") {
       document.getElementById("chkcars_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกชนิดของตู้รถไฟ";
       status = false;
     }else{
       document.getElementById("chkcars_type").innerHTML = "<img src= 'image/icon/check.png'>";
-    }
+    }*/
 
     if (carsprice == "") {
-      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
+      document.getElementById("chkcars_price").style.color = "#FF6F00";
+      document.getElementById("chkcars_price").innerHTML = "&#x2716; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
       status = false;
     }else if (carsprice < 0) {
-      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
+      document.getElementById("chkcars_price").style.color = "#FF6F00";
+      document.getElementById("chkcars_price").innerHTML = "&#x2716; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkcars_price").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkcars_price").style.color = "#006064";
+      document.getElementById("chkcars_price").innerHTML = "&#x2714;";
     }
 
     if (carsqty == "") {
-      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
+      document.getElementById("chkcars_qty").style.color = "#FF6F00";
+      document.getElementById("chkcars_qty").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนของตู้รถไฟ";
       status = false;
     }else if (carsqty < 0) {
-      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkcars_qty").style.color = "#FF6F00";
+      document.getElementById("chkcars_qty").innerHTML = "&#x2716; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
-      document.getElementById("chkcars_qty").innerHTML = "<img src= 'image/icon/check.png'>";
+      document.getElementById("chkcars_qty").style.color = "#006064";
+      document.getElementById("chkcars_qty").innerHTML = "&#x2714;";
+    }
+
+    return status;
+  }
+
+  /************************************* Edit Car Management **************************************/
+  function ecars(){
+    var carsmodel = document.chkecar.cars_model.value;
+    var carsprice = document.chkecar.cars_price.value;
+    var status;
+
+    if (carsmodel == " ") {
+      document.getElementById("chkcars_model").style.color = "#FF6F00";
+      document.getElementById("chkcars_model").innerHTML = "&#x2716; โปรดกรอกข้อมูลโมเดลของตู้รถไฟ";
+      status = false;
+    }else{
+      document.getElementById("chkcars_model").style.color = "#006064";
+      document.getElementById("chkcars_model").innerHTML = "&#x2714;";
+      status = true;
+    }
+
+    if (carsprice == "") {
+      document.getElementById("chkcars_price").style.color = "#FF6F00";
+      document.getElementById("chkcars_price").innerHTML = "&#x2716; โปรดกรอกข้อมูลราคาของตู้รถไฟ";
+      status = false;
+    }else if (carsprice < 0) {
+      document.getElementById("chkcars_price").style.color = "#FF6F00";
+      document.getElementById("chkcars_price").innerHTML = "&#x2716; โปรดกรอกราคาเป็นจำนวนเต็มบวก";
+      status = false;
+    }else{
+      document.getElementById("chkcars_price").style.color = "#006064";
+      document.getElementById("chkcars_price").innerHTML = "&#x2714;";
     }
 
     return status;
@@ -224,7 +264,7 @@
 
     if (partbrand == "") {
       document.getElementById("chkpart_brand").style.color = "#FF6F00";
-      document.getElementById("chkpart_brand").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2716; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_brand").style.color = "#006064";
@@ -234,7 +274,7 @@
 
     if (partcode == "") {
       document.getElementById("chkpart_code").style.color = "#FF6F00";
-      document.getElementById("chkpart_code").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรุ่นของอะไหล่";
+      document.getElementById("chkpart_code").innerHTML = "&#x2716; โปรดกรอกข้อมูลรุ่นของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_code").style.color = "#006064";
@@ -243,7 +283,7 @@
 
     if (mday == "") {
       document.getElementById("chkpart_mday").style.color = "#FF6F00";
-      document.getElementById("chkpart_mday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2716; โปรดเลือกวันผลิตของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_mday").style.color = "#006064";
@@ -252,7 +292,7 @@
 
     if (eday == "") {
       document.getElementById("chkpart_eday").style.color = "#FF6F00";
-      document.getElementById("chkpart_eday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2716; โปรดเลือกวันหมดอายุของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_eday").style.color = "#006064";
@@ -261,11 +301,11 @@
 
     if (partprice == "") {
       document.getElementById("chkpart_price").style.color = "#FF6F00";
-      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; โปรดกรอกข้อมูลราคาของอะไหล่";
       status = false;
     }else if (partprice < 0) {
       document.getElementById("chkpart_price").style.color = "#FF6F00";
-      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
       document.getElementById("chkpart_price").style.color = "#006064";
@@ -274,11 +314,11 @@
 
     if (partqty == "") {
       document.getElementById("chkpart_qty").style.color = "#FF6F00";
-      document.getElementById("chkpart_qty").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลจำนวนของอะไหล่";
+      document.getElementById("chkpart_qty").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนของอะไหล่";
       status = false;
     }else if (partqty < 0) {
       document.getElementById("chkpart_qty").style.color = "#FF6F00";
-      document.getElementById("chkpart_qty").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkpart_qty").innerHTML = "&#x2716; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
       document.getElementById("chkpart_qty").style.color = "#006064";
@@ -287,7 +327,7 @@
 
     if (parttype == " ") {
       document.getElementById("chkpart_type").style.color = "#FF6F00";
-      document.getElementById("chkpart_type").innerHTML = "&#x2716; &nbsp; โปรดเลือกประเภทของอะไหล่";
+      document.getElementById("chkpart_type").innerHTML = "&#x2716; โปรดเลือกประเภทของอะไหล่";
       return false;
     }else{
       document.getElementById("chkpart_type").style.color = "#006064";
@@ -309,7 +349,7 @@
 
     if (partbrand == "") {
       document.getElementById("chkpart_brand").style.color = "#FF6F00";
-      document.getElementById("chkpart_brand").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
+      document.getElementById("chkpart_brand").innerHTML = "&#x2716; โปรดกรอกข้อมูลยี่ห้อของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_brand").style.color = "#006064";
@@ -319,7 +359,7 @@
 
     if (partcode == "") {
       document.getElementById("chkpart_code").style.color = "#FF6F00";
-      document.getElementById("chkpart_code").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรุ่นของอะไหล่";
+      document.getElementById("chkpart_code").innerHTML = "&#x2716; โปรดกรอกข้อมูลรุ่นของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_code").style.color = "#006064";
@@ -328,7 +368,7 @@
 
     if (mday == "") {
       document.getElementById("chkpart_mday").style.color = "#FF6F00";
-      document.getElementById("chkpart_mday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันผลิตของอะไหล่";
+      document.getElementById("chkpart_mday").innerHTML = "&#x2716; โปรดเลือกวันผลิตของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_mday").style.color = "#006064";
@@ -337,7 +377,7 @@
 
     if (eday == "") {
       document.getElementById("chkpart_eday").style.color = "#FF6F00";
-      document.getElementById("chkpart_eday").innerHTML = "&#x2716; &nbsp; โปรดเลือกวันหมดอายุของอะไหล่";
+      document.getElementById("chkpart_eday").innerHTML = "&#x2716; โปรดเลือกวันหมดอายุของอะไหล่";
       status = false;
     }else{
       document.getElementById("chkpart_eday").style.color = "#006064";
@@ -346,11 +386,11 @@
 
     if (partprice == "") {
       document.getElementById("chkpart_price").style.color = "#FF6F00";
-      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลราคาของอะไหล่";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; โปรดกรอกข้อมูลราคาของอะไหล่";
       status = false;
     }else if (partprice < 0) {
       document.getElementById("chkpart_price").style.color = "#FF6F00";
-      document.getElementById("chkpart_price").innerHTML = "&#x2716; &nbsp; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
+      document.getElementById("chkpart_price").innerHTML = "&#x2716; โปรดกรอกจำนวนเป็นจำนวนเต็มบวก";
       status = false;
     }else{
       document.getElementById("chkpart_price").style.color = "#006064";
@@ -359,7 +399,7 @@
 
     if (parttype == " ") {
       document.getElementById("chkpart_type").style.color = "#FF6F00";
-      document.getElementById("chkpart_type").innerHTML = "&#x2716; &nbsp; โปรดเลือกประเภทของอะไหล่";
+      document.getElementById("chkpart_type").innerHTML = "&#x2716; โปรดเลือกประเภทของอะไหล่";
       return false;
     }else{
       document.getElementById("chkpart_type").style.color = "#006064";
@@ -383,7 +423,7 @@
 
     if (depotlocname == "") {
       document.getElementById("chkdepot_locname").style.color = "#FF6F00";
-      document.getElementById("chkdepot_locname").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
+      document.getElementById("chkdepot_locname").innerHTML = "&#x2716; โปรดกรอกข้อมูลชื่อตำแหน่งศูนย์ซ่อม";
       status = false;
     }else{
       document.getElementById("chkdepot_locname").style.color = "#006064";
@@ -393,7 +433,7 @@
 
     if (depotcapacity == " ") {
       document.getElementById("chkdepot_capacity").style.color = "#FF6F00";
-      document.getElementById("chkdepot_capacity").innerHTML = "&#x2716; &nbsp; โปรดเลือกจำนวนที่ศูนย์ซ่อมรับได้";
+      document.getElementById("chkdepot_capacity").innerHTML = "&#x2716; โปรดเลือกจำนวนที่ศูนย์ซ่อมรับได้";
       status = false;
     }else{
       document.getElementById("chkdepot_capacity").style.color = "#006064";
@@ -402,7 +442,7 @@
 
     if (depotposition == "") {
       document.getElementById("chkdepot_position").style.color = "#FF6F00";
-      document.getElementById("chkdepot_position").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
+      document.getElementById("chkdepot_position").innerHTML = "&#x2716; โปรดกรอกข้อมูลตำแหน่งศูนย์ซ่อม";
       status = false;
     }else{
       document.getElementById("chkdepot_position").style.color = "#006064";
@@ -412,7 +452,7 @@
 
     if (depotlv == " ") {
       document.getElementById("chkdepot_level").style.color = "#FF6F00";
-      document.getElementById("chkdepot_level").innerHTML = "&#x2716; &nbsp; โปรดเลือกระดับการเข้าซ่อมบำรุง"; 
+      document.getElementById("chkdepot_level").innerHTML = "&#x2716; โปรดเลือกระดับการเข้าซ่อมบำรุง"; 
       status = false;
     }else{
       document.getElementById("chkdepot_level").style.color = "#006064";
@@ -421,7 +461,7 @@
 
     if (depotloc == " ") {
       document.getElementById("chkdepot_loc").style.color = "#FF6F00";
-      document.getElementById("chkdepot_loc").innerHTML = "&#x2716; &nbsp; โปรดเลือกตำแหน่งระยะทาง"; 
+      document.getElementById("chkdepot_loc").innerHTML = "&#x2716; โปรดเลือกตำแหน่งระยะทาง"; 
       status = false;
     }else{
       document.getElementById("chkdepot_loc").style.color = "#006064";

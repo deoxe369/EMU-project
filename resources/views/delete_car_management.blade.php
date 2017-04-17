@@ -191,8 +191,10 @@
                   var type = document.getElementById('{{$info->id}}cartype').innerHTML
                   if(type == "locomotive"){
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
-                  }else{
+                  }else if (type == "bogie"){
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
+                  }else{
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "ขนส่ง"
                   }
                 </script>
                 @endforeach

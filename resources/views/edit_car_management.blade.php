@@ -78,7 +78,7 @@
         <br>
 
         <!--Form Edit-->
-        <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save" name="chkcar" onsubmit="return cars()">
+        <form class="form-horizontal" action="/edit_cars_management/{{$origin_info[0]->id}}/save" name="chkecar" onsubmit="return ecars()">
         
           <!--New Structure: Table-->
           <table class="table-add" align="center">
@@ -89,9 +89,9 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Input Car Model -->
               <td>
-                
                 <select  name="cars_model" class="sel">
                  <option value={{$origin_info[0]->model}}>{{$origin_info[0]->model}}</option>
+                 <option value=" ">-- เลือกโมเดลตู้รถไฟ --</option>
                  @foreach($model as $m)
                   <option value={{$m->model}}>{{$m->model}}</option>
                   @endforeach
@@ -106,8 +106,8 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Choose Car Type -->
               <td>                
-                <p>{{$origin_info[0]->cars_type}}</p>
-                <span id="chkcars_type" class="checkform"></span>
+                <p style="color: #13a381; font-size: 24px; margin-left: 20px; font-weight: bold;" id="{{$origin_info[0]->cars_type}}cartype">{{$origin_info[0]->cars_type}}</p>
+                <input type="hidden" name="cars_type" value={{$origin_info[0]->cars_type}} checked>
               </td>
             </tr>
 
@@ -117,14 +117,23 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Input Price -->
               <td>
-                <input type="text" name="cars_price"  value={{$origin_info[0]->price}}>
+                <input type="number" name="cars_price"  value={{$origin_info[0]->price}}>
                 <span id="chkcars_price" class="checkform"></span>
               </td>
             </tr>
 
               <!-- JS translation -->
-              <script type="text/javascript">               
-                var carstype = document.getElementById("carstype").value;
+              <script type="text/javascript">
+                var type = document.getElementById('{{$origin_info[0]->cars_type}}cartype').innerHTML
+                  if(type == "locomotive"){
+                    document.getElementById('{{$origin_info[0]->cars_type}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
+                  }else if(type == "bogie"){
+                    document.getElementById('{{$origin_info[0]->cars_type}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
+                  }else{
+                    document.getElementById('{{$origin_info[0]->cars_type}}cartype').innerHTML='ขนส่ง';
+                  } 
+
+                /*var carstype = document.getElementById("{{$origin_info[0]->cars_type}}cartype").value;
               
                   switch(carstype){
                     case "locomotive":  
@@ -138,7 +147,7 @@
                     case "logistic":
                       document.getElementById("{{$origin_info[0]->cars_type}}").innerHTML='ขนส่ง';
                     break;
-                 }
+                 }*/
               </script>
 
           </table>
@@ -155,6 +164,7 @@
       </div>
     </div>
 
+    <br>
     
   <!--Footer-->
   <footer class="bg-2">

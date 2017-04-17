@@ -92,19 +92,19 @@
               <td class="col-sm-1"><span></span></td>
               <!-- Select Car Model -->
               <td>
-                 <select  name="cars_model" class="sel">
-                 <option value=" ">เลือกโมเดลตู้รถไฟ</option>
+                 <select name="cars_model" class="sel">
+                 <option value=" ">-- เลือกโมเดลตู้รถไฟ --</option>
                  @foreach($model as $m)
                   <option value={{$m->model}}>{{$m->model}}</option>
                   @endforeach
                 </select>
-                <button formaction="../add_model" class="btn-add" style="height: 40px;">เพิ่มโมเดล</button>
+                <a href="../add_model"><button type="button" class="btn-madd" style="height: 40px;">&#10010;</button></a>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>
 
             <!-- Type -->
-      <!--       <tr class="tr-add">
+            <!-- <tr class="tr-add">
               <td class="td-add"><label for="cars_type">ชนิดของตู้รถไฟ</td>
               <td class="col-sm-1"><span></span></td>
               

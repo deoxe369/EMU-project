@@ -260,7 +260,7 @@
     color: #ffffff;
     text-align: center;
     font-size: 20px;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -287,7 +287,7 @@
   }
 
   .btn-add:hover span{
-    padding-right: 22px;
+    padding-right: 25px;
   }
 
   .btn-add:hover span:after{
@@ -305,7 +305,7 @@
     color: #ffffff;
     text-align: center;
     font-size: 20px;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -332,12 +332,32 @@
   }
 
   .btn-del:hover span{
-    padding-right: 22px;
+    padding-right: 25px;
   }
 
   .btn-del:hover span:after{
     opacity: 1;
     right: 0;
+  }
+
+  .btn-madd{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #006064;/*#bf360c*/
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-madd:hover{
+    background-color: #e0e0e0;
+    color: #006064;
+    border-radius: 100px;
   }
 
   

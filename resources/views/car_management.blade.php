@@ -167,9 +167,9 @@
               </tr>
 
               <!-- JavaScript Foreach -->
-                <!-- <script type="text/javascript">
+                <script type="text/javascript">
                   //row color
-                  var id = parseInt(document.getElementById("{{$info->id}}").id);
+                  /*var id = parseInt(document.getElementById("{{$info->id}}").id);
                 
                   if(id%2 == 1){
                     document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
@@ -177,17 +177,19 @@
                   }else{
                     document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
                     console.log(id);
-                  }
+                  }*/
 
                   //rename
                   var type = document.getElementById('{{$info->id}}cartype').innerHTML
                   if(type == "locomotive"){
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนได้"
-                  }else{
+                  }else if (type == "bogie"){
                     document.getElementById('{{$info->id}}cartype').innerHTML = "โดยสารประเภทขับเคลื่อนไม่ได้"
+                  }else{
+                    document.getElementById('{{$info->id}}cartype').innerHTML = "ขนส่ง"
                   }
 
-                </script> -->
+                </script>
 
               @endforeach
             </tbody>
