@@ -217,6 +217,8 @@ Route::get('/edit_traincirculation/{id}','TrainCirculationController@edit');
 
 Route::get('/edit_traincirculation/{id}/save','TrainCirculationController@update');
 
+Route::get('/traincirculation_plan/{id}', 'TrainCirculationController@add_plan1');
+
 
 // -------------------------------------------Model
 

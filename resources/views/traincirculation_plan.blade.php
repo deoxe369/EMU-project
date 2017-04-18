@@ -105,33 +105,31 @@
           <table class="table" id="mytable">
             <thead>
               <tr>  
-                <th class="text-center th-edit">ชุดรถไฟ</th>
+                <th class="text-center">ทริป</th>
                 <th class="text-center">ชนิด</th>
-                <th class="text-center">สถานีต้นทาง</th>
+                <th class="text-center">เส้นทาง</th>
                 <th class="text-center">เวลาออก</th>
-                <th class="text-center">สถานีปลายทาง</th>
+                <!-- <th class="text-center">สถานีปลายทาง</th> -->
                 <th class="text-center">เวลาถึง</th>
                 <th class="text-center">เที่ยว</th>
+                <th class="text-center th-edit">เลือกชุดรถไฟ</th>
                 
                </tr>
             </thead>
             <tbody>
             @foreach($time_table_info as $time_table)
               <tr id="{{$time_table->id}}">
-                <td class="text-center">
-                  <select id='train_number' name='train_number' onchange ="getSelectedOptions(this,this.id)" class="sel sel-comp">
-                    @foreach($train_set_info as $train)
-                    <option>{{$train->train_number}}</option>
-                    @endforeach
-                  </select></td>
+               
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->id}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->class}}</td>
-                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->source_station}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->source_station}} - {{$time_table->destination_station}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->departure_time}}</td>
-                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->destination_station}}</td>
+                <!-- <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->destination_station}}</td> -->
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->arrival_time}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
-              </tr>
-
+                
+                <td class="text-center" style="padding-top: 15px; margin-left: 5px;"><a href="../traincirculation_plan/{{$time_table->id}}"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a></td>
+               </tr>
               <!-- JavaScript Foreach -->
               <script type="text/javascript">
                 

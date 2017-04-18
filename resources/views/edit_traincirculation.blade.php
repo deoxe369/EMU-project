@@ -140,22 +140,43 @@
           </tr>
 
 
-            <!-- No.Trainset -->
-            <tr class="tr-add">
+           
+          </table>
+         <!--Table Detail-->
+      <div class="row col-md-12 margin">
+        <div class="table-responsive">          
+          <table class="table" id="mytable">
+            <thead style="background-color: #ff6f00; color: #ffffff;">
+              <tr>  
+                <th class="text-center">เลือก</th>
+                <th class="text-center">รหัสชุดรถไฟ</th>
+                <th class="text-center">ระยะทางสะสม</th>
+                <th class="text-center">ระยะเวลาสะสม</th>
+                <th class="text-center">ตำแหน่ง</th>
+                
+                
+              </tr>
+            </thead>
+            
+            <tbody>
+               <!-- <tr>
+                <td class="text-center"><input type="radio" name="choose"></td>
+               </tr> -->
+                 
+                 @foreach($train_set_info as $train)
+                   <tr>
+                    <td class="text-center"><input type="radio" name="trainsetno" value={{$train->train_number}}></td>
+                    <td class="text-center">{{$train->train_number}}</td>
+                    <td class="text-center">{{$train->total_distance}}</td>
+                    <td class="text-center">{{$train->total_time}}</td>
+                    <td class="text-center">{{$train->location_name}}</td>
+                    </tr>
+                 @endforeach   
+                
+                
               
-              <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Chooose No.Trainset -->
-              <td>
-                <select id="trainsetno" name="trainsetno" class=>
-                  <option value={{$origin_info[0]->train_number}} >{{$origin_info[0]->train_number}}</option>
-                    @foreach($trian_set_info as $train)
-                   <option value={{$train}} >{{$train}}</option>
-                    @endforeach 
-                </select>
-              </td>
-            </tr>
-
+            
+            </tbody>
           </table>
 
           <br>
@@ -170,9 +191,9 @@
 
     
   <!--Footer-->
-  <footer class="bg-2">
+  <!-- <footer class="bg-2">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
-  </footer>
+  </footer> -->
 
 </body>
 </html>

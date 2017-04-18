@@ -20,10 +20,9 @@ class TrainCirculationController extends Controller
      public function train_schedule_info1()
     {
     	$time_table_info = DB::table('time_table')->get();
-    	$number =  count($time_table_info);
-    	$train_set_info = DB::table('train_set')->get();
-    	$train_set_location = DB::table('route')->get();
-        return View::make('traincirculation_plan')->with('time_table_info',$time_table_info)->with('number',$number)->with('train_set_info',$train_set_info);
+    	
+    	
+        return View::make('traincirculation_plan')->with('time_table_info',$time_table_info);
        
     }
 
@@ -176,6 +175,68 @@ class TrainCirculationController extends Controller
         return View::make('index')->with('train_schedule_info',$train_schedule_info);  
     }
 
+    public function add_plan1($id)
+    {
+      $all_distance = array();
+        $train_number = array();
+        $train_set_number1 = array();
+        $train_info1 = array();
+
+        $origin_info = DB::table('train_schedule')->where('id',$id)->get();
+
+        $source_distance = DB::table('route')->where('name',$origin_info[0]->source_station)->get();
+        $destination_distance = DB::table('route')->where('name',$origin_info[0]->destination_station)->get();
+        
+        $range = abs($destination_distance[0]->distance - $source_distance[0]->distance);
+       
+
+        $trian_set_info = DB::table('train_set')->where('status','วิ่ง')->orwhere('status','ว่าง')->distinct()->get();//เพิ่มเอารถที่ใกล้กับ source station  
+        // return count($trian_set_info);
+
+        foreach($trian_set_info as $train) {
+
+            $shortest_index = array();
+
+            $level_distance = DB::table('level')->select('total_distance')->where('level',$train->level)->get();
+            $gap =  abs($train->total_distance - $level_distance[0]->total_distance);
+            if($gap > $range*10){
+                $train_location = DB::table('train_set')->select('location_name')->where('train_number',$train->train_number)->get();
+
+                $train_distance =  DB::table('route')->select('distance')->where('name',$train_location[0]->location_name)->get();
+                $distance = abs($source_distance[0]->distance - $train_distance[0]->distance);
+                array_push($all_distance,$distance);
+                array_push($train_number,$train->train_number);
+           }
+
+          
+
+        }
+
+        $min_distance = min($all_distance);
+        
+            for($z = 0 ; $z < count($all_distance) ; $z++){ //เอารถไฟที่เท่ากับ min distance
+                 if($all_distance[$z] == $min_distance){
+                    array_push($shortest_index,$z);
+                 }
+            }
+
+            for($y = 0 ; $y < count($shortest_index) ; $y++){ //เอา index    มาหารถ.
+                    $index1 = $shortest_index[$y];
+                    array_push($train_set_number1,$train_number[$index1]);
+            }
+            foreach ($train_set_number1 as $key => $train) {
+               $train_info = DB::table('train_set')->where('train_number',$train)->get();
+                array_push($train_info1,$train_info[0]);
+            }
+           
+            
+            $number = count($train_set_number1);
+            
+
+       return View::make('edit_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
+        
+    }
+
     public function add_plan_cancel()
     {
         DB::table('train_schedule')->where('mark','yes')->delete();
@@ -192,6 +253,7 @@ class TrainCirculationController extends Controller
         $all_distance = array();
         $train_number = array();
         $train_set_number1 = array();
+        $train_info1 = array();
 
         $origin_info = DB::table('train_schedule')->where('id',$id)->get();
 
@@ -203,18 +265,19 @@ class TrainCirculationController extends Controller
 
         $trian_set_info = DB::table('train_set')->where('status','ว่าง')->distinct()->get();//เพิ่มเอารถที่ใกล้กับ source station  
 
+
         foreach($trian_set_info as $train) {
 
             $shortest_index = array();
 
             $level_distance = DB::table('level')->select('total_distance')->where('level',$train->level)->get();
             $gap =  abs($train->total_distance - $level_distance[0]->total_distance);
-
+            
             if($gap > $range*10){
                 $train_location = DB::table('train_set')->select('location_name')->where('train_number',$train->train_number)->get();
 
                 $train_distance =  DB::table('route')->select('distance')->where('name',$train_location[0]->location_name)->get();
-                $distance = $source_distance[0]->distance - $train_distance[0]->distance;
+                $distance = abs($source_distance[0]->distance - $train_distance[0]->distance);
                 array_push($all_distance,$distance);
                 array_push($train_number,$train->train_number);
            }
@@ -236,9 +299,15 @@ class TrainCirculationController extends Controller
                     $index1 = $shortest_index[$y];
                     array_push($train_set_number1,$train_number[$index1]);
             }
+            foreach ($train_set_number1 as $key => $train) {
+               $train_info = DB::table('train_set')->where('train_number',$train)->get();
+                array_push($train_info1,$train_info[0]);
+            }
+            
+            ;
             $number = count($train_set_number1);
 
-       return View::make('edit_traincirculation')->with('trian_set_info',$train_set_number1)->with('origin_info',$origin_info)->with('number',$number);
+       return View::make('edit_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
        
 
     }
@@ -251,7 +320,7 @@ class TrainCirculationController extends Controller
         DB::table('train_set')->where('train_number',$info->trainsetno)->update(['status'=>'วิ่ง','updated_at'=>Carbon::now()]);//update location
 
         DB::table('train_set')->where('train_number',$info->origin_train_number)->update(['status'=>'ว่าง','updated_at'=>Carbon::now()]);
- 
+        // return $info;
       
 
         return Redirect::action('TrainCirculationController@train_schedule_info');
