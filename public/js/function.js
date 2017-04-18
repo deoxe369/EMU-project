@@ -88,29 +88,22 @@
   function trset(){
     var trsetno = document.chktrset.trainsetno.value;
     var trsettype = document.chktrset.trtype.value;
-
-    // Cars3
-    var comtrcar3_1 = document.chktrset.comtrcar3_1.value;
-    var comtrcar3_2 = document.chktrset.comtrcar3_2.value;
-    var comtrcar3_3 = document.chktrset.comtrcar3_3.value;
-
-    // Cars4
-    var comtrcar4_1 = document.chktrset.comtrcar4_1.value;
-    var comtrcar4_2 = document.chktrset.comtrcar4_2.value;
-    var comtrcar4_3 = document.chktrset.comtrcar4_3.value;
-    var comtrcar4_4 = document.chktrset.comtrcar4_4.value;
-
+    var carid = document.chktrset.cars_id.value;
     var status;
 
     if (trsetno == "") {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
-      document.getElementById("chktrset_no").innerHTML = "&#x2716; &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+      document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
     }else if (trsetno !== isNaN) {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
       document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
       status = false;
-    }else{
+    }/*else if (trsetno < 0) {
+      document.getElementById("chktrset_no").style.color = "#FF6F00";
+      document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นจำนวนเต็มบวก";
+      status = false;
+    }*/else{
       document.getElementById("chktrset_no").style.color = "#006064";
       document.getElementById("chktrset_no").innerHTML = "&#x2714;";
       status = true;
@@ -119,46 +112,12 @@
 
     if (trsettype == " ") {
       document.getElementById("chktrset_type").style.color = "#FF6F00";
-      document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลประเภทชุดรถไฟ";
+      document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกข้อมูลประเภทชุดรถไฟ";
       status = false;
-    } else if (trsettype == "trcar3") { //***************change not yet*****************
-      if (comtrcar3_1 == " " || comtrcar3_2 == " " || comtrcar3_3 == " ") {
+    }else{
         document.getElementById("chktrset_type").style.color = "#006064";
         document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-        document.getElementById("chkcomtrcar").style.color = "#FF6F00";
-        document.getElementById("chkcomtrcar").innerHTML = "&#x2716; &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
-        status = false;
-      } else if (comtrcar3_2 == comtrcar3_3) {
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟไม่ซ้ำกัน";
-        status = false;
-      } else{
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/check.png'>";
-      }
-    } else if (trsettype == "trcar4") {
-      if (comtrcar4_1 == " " || comtrcar4_2 == " " || comtrcar4_3 == " " || comtrcar4_4 == " ") {
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟให้ครบ";
-        status = false;
-      } else if (comtrcar4_2 == comtrcar4_3 || comtrcar4_3 == comtrcar4_4 || comtrcar4_2 == comtrcar4_4) {
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดเลือกตู้รถไฟไม่ซ้ำกัน";
-        status = false;
-      } else{
-        document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-        document.getElementById("chkcomtrcar").innerHTML = "<img src= 'image/icon/check.png'>";
-      }
-    } else{
-      document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
     }
-
-    // if (trsettype == " ") {
-    //   document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/cancel-music.png'> &nbsp; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
-    //   status = false;
-    // }else{
-    //   document.getElementById("chktrset_type").innerHTML = "<img src= 'image/icon/check.png'>";
-    // }
 
     return status;
   }

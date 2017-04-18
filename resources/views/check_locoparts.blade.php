@@ -62,9 +62,8 @@
     </nav>
 
   <!--Content-->
-
-  <!--First Container-->
-  
+  <div class="content">
+    <!--First Container-->
     <!-- Train Image -->
     <div class="bg-6 contain-carpart">
       <p class="title-carpart">เลือกตรวจสภาพอะไหล่</p>
@@ -118,8 +117,9 @@
         <area shape="rect" coords="118,309,253,337" href="/check_parts/{{$mid}}/{{$id}}/water_treatment" onmouseover="writeText('Water Treatment')" onmouseout="writeText('&nbsp;')" alt="Water Treatment">
       </map>
     </div>
+  </div>
  
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
   

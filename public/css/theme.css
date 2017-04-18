@@ -1,7 +1,9 @@
   html{
+    height: 100%;
     margin: 0;
   }
   body {
+      height: 100%;
       font: 22px 'quarklight','Trirong', serif;
       line-height: 1.8;
       color: #333;
@@ -9,7 +11,9 @@
 
   footer{
     /*position: fixed;*/
-    bottom: 0px !important;
+    /*position: absolute;*/
+    /*margin-top: -50px;*/
+    /*bottom: 0px !important;*/
     margin-right: auto;
     margin-left: auto;
     width: 100%;
@@ -28,8 +32,10 @@
   p.copy-footer{
     margin: 0;
     padding: 3px 30px 3px 30px;
-    font-size: 16px !important;
+    font-size: 12px !important;
     font-style: italic;
+    font-weight: bold;
+    /*color: #ff6f00;*/
   }
 
   area:hover{
@@ -100,6 +106,10 @@
   .bg-9{
     background-color: #BDBDBD; /* Dark Gray */
   }
+  .bg-10{
+
+    background-color: #e0e0e0; /*Gray*/
+  }
 
   .container-fluid {
       padding-top: 70px;
@@ -110,6 +120,10 @@
   .container-fluid2 {
       padding-right: 15px;
       padding-left: 15px;
+  }
+
+  .content{
+    min-height: 100%;
   }
 
   /*Navbar ul li*/

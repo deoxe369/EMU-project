@@ -69,6 +69,7 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
@@ -196,9 +197,10 @@
         </form>
       </div>
     </div>
+  </div>
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
   

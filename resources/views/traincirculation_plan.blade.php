@@ -89,6 +89,7 @@
 
 
   <!--Content-->
+  <div class="content">
     <!--First Container-->
     <div class="container-fluid">
       <h1 class="margin" style="text-align: center;">ระบบจัดการแผนใช้ชุดรถไฟ</h1>
@@ -142,57 +143,43 @@
                 }else{
                   document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวกลับ"
                 }
-                
 
-                // function getSelectedOptions(sel,train_number){
-                //                 var opts = [],
-                //                   opt;
-                //                 var len = len = sel.options.length;
-                //                 var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                //                 var secondDate = new Date(2016,01,1);
-                //                 // var number = train_number.substr(0,train_number.length-5);
-                //                 // var s = `${number}location`;
-                //                 // var s1 = `${number}location1`;
-                //                 // var source = document.getElementById(s).title;
-                //                 // var destination = document.getElementById(s1).title;
-                //                 // console.log(source);
-                //                 // console.log(destination);
-
-                                
-                //                 var dateObj = new Date();
-                //                 var month = dateObj.getMonth() ; //months from 1-12
-                //                 var day = dateObj.getDate();
-                //                 var year = dateObj.getFullYear();
-                //                 var todayDate = year + "-" + month + "-" + day;
-                //                 var firstDate = new Date(todayDate);
-                            
-                //                 for (var i = 0; i < len; i++) {
-                //                   opt = sel.options[i];
-                //                   // console.log("k");
-                //                   if (opt.selected) {
-                //                     opts.push(opt);
-                //                     // opt.value
-                //                     // console.log(opt.value);
-                //                       // 
-                //                       var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-                //                       // console.log(diffDays);
-                //                       var mod = diffDays%2;
-                //                       // switch(mod){
-                //                       case 0: document.getElementById(s).innerHTML=source;
-                //                       // break;
-                //                       case 1: document.getElementById(s).innerHTML=destination;
-                //                       // break;
-                //                       //    }
-                                         
-                                     
-                //                 }
-
-              
-                //                  }
-
-                //                 return opt.value;
-
-                //               }
+                /*function getSelectedOptions(sel,train_number){
+                  var opts = [],opt;
+                  var len = len = sel.options.length;
+                  var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                  var secondDate = new Date(2016,01,1);
+                  // var number = train_number.substr(0,train_number.length-5);
+                  // var s = `${number}location`;
+                  // var s1 = `${number}location1`;
+                  // var source = document.getElementById(s).title;
+                  // var destination = document.getElementById(s1).title;
+                  // console.log(source);
+                  // console.log(destination);
+                  var dateObj = new Date();
+                  var month = dateObj.getMonth() ; //months from 1-12
+                  var day = dateObj.getDate();
+                  var year = dateObj.getFullYear();
+                  var todayDate = year + "-" + month + "-" + day;
+                  var firstDate = new Date(todayDate);
+                  for (var i = 0; i < len; i++) {
+                    opt = sel.options[i];
+                    // console.log("k");
+                    if (opt.selected) {
+                      opts.push(opt);
+                      // opt.value
+                      // console.log(opt.value);
+                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                      // console.log(diffDays);
+                      var mod = diffDays%2;
+                      // switch(mod){
+                        case 0: document.getElementById(s).innerHTML=source; break;
+                        case 1: document.getElementById(s).innerHTML=destination; break;
+                      }
+                    }
+                  }
+                  return opt.value;
+                }*/
 
               </script>
 
@@ -203,11 +190,12 @@
         </div>
       </div>
     </div>
+  </div>
 
 
 
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

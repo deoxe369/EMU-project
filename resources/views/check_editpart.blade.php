@@ -63,7 +63,7 @@
     </nav>
 
   <!--Content-->
-    <div class="container-fluid">
+  <div class="container-fluid">
     <!--First Container-->
       <!-- Select Edit -->
       <div class="container">
@@ -159,44 +159,39 @@
             </div>
         </form>
       </div>
-    </div>
-    <script type="text/javascript">
-      function getSelectedOptions(sel){
-                                var opts = [],opt;
-                                var len = sel.options.length;
-                                var len1 =  document.getElementById('code').options.length;
 
-                                for (var i = 0; i < len; i++) {
-                                  opt = sel.options[i];
-                                  // console.log("k");
-                                  if (opt.selected) {
-                                    opts.push(opt);
-                                    // console.log(opt.value);
-                                        for (var i = 0; i < len1; i++) {
-                                          var code = document.getElementById('code').options[i];
-                                          console.log(code.id);
-                                          if(opt.value == code.id){
-                                            code.style.display = 'block';
-                                          }else{
-                                            code.style.display = 'none';
-                                          }
-                                        }
-                                //       
-                                //          }
-                                         
-                                     
-                                }
+      <!-- Javascript -->
+      <script type="text/javascript">
+        function getSelectedOptions(sel){
+          var opts = [],opt;
+          var len = sel.options.length;
+          var len1 =  document.getElementById('code').options.length;
 
-              
-                                 }
-
-                                return opt.value;
-
-                              }
+          for (var i = 0; i < len; i++) {
+            opt = sel.options[i];
+            // console.log("k");
+            if (opt.selected) {
+              opts.push(opt);
+              // console.log(opt.value);
+              for (var i = 0; i < len1; i++) {
+                var code = document.getElementById('code').options[i];
+                console.log(code.id);
+                if(opt.value == code.id){
+                  code.style.display = 'block';
+                }else{
+                  code.style.display = 'none';
+                }
+              }
+            }
+          }
+          return opt.value;
+        }
     </script>
 
+  </div>
+
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
   

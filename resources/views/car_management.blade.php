@@ -87,14 +87,15 @@
     </nav>
 
   <!--Content-->
-  <div class="container-fluid">    
-    <!--First Container-->
-    <h1 class="margin" style="text-align: center;">จัดการตู้รถไฟ</h1>
+  <div class="content">
+    <div class="container-fluid">    
+      <!--First Container-->
+      <h1 class="margin" style="text-align: center;">จัดการตู้รถไฟ</h1>
       
-    <br>
+      <br>
 
-    <div class="row col-md-12 margin text-center">
-      <form class="form-inline bg-5" action="search_cars">
+      <div class="row col-md-12 margin text-center">
+        <form class="form-inline bg-5" action="search_cars">
 
           <div class="form-group">
             <label for="cars_type"><h3 class="margin label-padding">ประเภท</h3></label>
@@ -130,11 +131,11 @@
             <label for="search"><h3 class="margin label-padding"><span></span></h3></label>
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
           </div>
-      </form>
-    </div>
+        </form>
+      </div>
 
 
-    <!--Second Container-->
+      <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <!-- Button -->
@@ -201,9 +202,10 @@
       <div class="text-center">{{$cars_info->links()}}</div> 
 
     </div>
+  </div>
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 
