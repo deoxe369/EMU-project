@@ -101,6 +101,7 @@
 
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">    
     
     <!--First Container-->
@@ -364,21 +365,22 @@
         <!-- <input onclick="addRow(this.form);" type="button" value="Add part type" />
         </div> -->
   
-        </div>
+          </div>
 
-        <br>
+          <br>
 
-        <div  style="text-align: center;">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+          <div style="text-align: center;">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>        
       </div>
     </div>
+  </div>
 
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

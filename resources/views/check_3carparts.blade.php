@@ -63,13 +63,13 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
+    <!--First Container-->
+    <div class="bg-6 contain-carpart">
+      <!-- Topic -->
+      <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
 
-  <!--First Container-->
-  <div class="bg-6 contain-carpart">
-    <!-- Topic -->
-    <p class="title-carpart">เลือกตรวจสภาพตู้รถไฟ</p>
-
-    <!-- Carousel: Slider Car Image -->
+      <!-- Carousel: Slider Car Image -->
       <div id="carCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -85,8 +85,8 @@
           <!-- Image: Locomative -->
           <div class="item active">
             <a href="/check_parts/{{$id}}/{{$cars_loco[0]->id}}">
-              <p class="detail-loco1">Locomative </p>
-               <p class="detail-loco1"> Cars number {{$cars_loco[0]->id}}</p>
+              <p class="detail-loco1"> Locomative </p>
+              <p class="detail-loco1">-- Cars number {{$cars_loco[0]->id}} --</p>
               <img src="/image/pic/4.png" alt="Locomative" width="80%" height="80%" style="margin: auto;">
             </a>
           </div>
@@ -96,7 +96,7 @@
           <div class="item">
             <a href="/check_parts/{{$id}}/{{$bogie->id}}">
               <p class="detail-bogie"> Bogie{{$index+1}}</p>
-              <p class="detail-loco1"> Cars number {{$bogie->id}}</p>
+              <p class="detail-bogie">-- Cars number {{$bogie->id}} --</p>
               <img src="/image/pic/2.png" alt="Bogie" width="80%" height="80%" style="margin: auto;">
             </a>
           </div>
@@ -114,10 +114,11 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+    </div>
   </div>
 
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
   

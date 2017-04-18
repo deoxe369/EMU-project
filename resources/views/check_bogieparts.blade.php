@@ -62,9 +62,9 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
 
   <!--First Container-->
-  
     <!-- Train Image -->
     <div class="bg-6 contain-carpart">
       <p class="title-carpart">เลือกตรวจสภาพอะไหล่</p>
@@ -86,9 +86,10 @@
         <area shape="rect" coords="142,133,260,162" href="/check_parts/{{$id}}/doors" onmouseover="writeText('Doors')" onmouseout="writeText('&nbsp;')" alt="Doors">
       </map>
     </div>
+  </div>
 
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
   

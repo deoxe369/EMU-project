@@ -77,7 +77,7 @@ class PartController extends Controller
     public function update(Request $info ,$id)
     {
     	
-    	DB::table('part')->where('id',$id)->update(['part_type'=>$info->part_type,'manufactured_date'=>$info->m_day,'expired_date'=>$info->e_day,'brand'=>$info->brand,'price'=>$info->price,'updated_at'=>Carbon::now()]);
+    	DB::table('part')->where('id',$id)->update(['part_type'=>$info->part_type,'manufactured_date'=>$info->m_day,'expired_date'=>$info->e_day,'brand'=>$info->brand,'code'=>$info->code,'price'=>$info->price,'updated_at'=>Carbon::now()]);
 
     	 return Redirect::action('PartController@part_info');	
             // return $info;    	     

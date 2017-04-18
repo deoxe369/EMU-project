@@ -87,9 +87,10 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">
-    <!--First Container-->
-    <h1 class="margin" style="text-align: center;">ระบบจัดการแผนเข้าซ่อม</h1>
+      <!--First Container-->
+      <h1 class="margin" style="text-align: center;">ระบบจัดการแผนเข้าซ่อม</h1>
       
       <br>
 
@@ -131,9 +132,9 @@
     
                      
          
-    <!--Second Container-->
-    <!--Table Detail-->
-    <div class="row col-md-12 margin">
+      <!--Second Container-->
+      <!--Table Detail-->
+      <div class="row col-md-12 margin">
       <form action="/add_maintenance_plan">
         <!-- Button -->
         <div>
@@ -154,7 +155,7 @@
             </thead>
 
             <tbody>
-            @foreach ($trainset_info as $info)
+              @foreach ($trainset_info as $info)
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td class="text-center">{{$info->train_number}}</td>
@@ -195,12 +196,10 @@
                          document.getElementById("{{$info->train_number}}{{$level->level}}").style.display = "none";
                          document.getElementById("{{$info->train_number}}{{$level->level}}time").style.display = "none";
                          document.getElementById("{{$info->train_number}}{{$level->level}}dis").style.display = "none";  
-                          document.getElementById("level{{$info->train_number}}").style.display = "none";  
+                        document.getElementById("level{{$info->train_number}}").style.display = "none";  
                        
-                       </script> 
-
+                      </script> 
                  @endforeach 
-              
                 
               <!-- JS change name cartype -->
               <script type="text/javascript">
@@ -209,24 +208,23 @@
                   case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
                   case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
-                       
               </script>
-              
               @endforeach
 
             </tbody>
           </table>
         </div>
       </form>      
-    </div>
+      </div>
 
       <!-- Pagination -->
       <div class="text-center">{{$trainset_info->links()}}</div>
 
     </div>
+  </div>
 
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

@@ -69,6 +69,7 @@
 
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">
     <!--First Container-->
       <!--Select Edit-->
@@ -89,10 +90,10 @@
               <!-- Choose Part Type -->
               <td>
                 <select id="part_type" name="part_type" class="sel">
-                  <option value=" ">เลือกประเภทของอะไหล่</option>
-                @foreach ($part_type_info as $info)
+                  <option value=" ">-- เลือกประเภทของอะไหล่ --</option>
+                  @foreach ($part_type_info as $info)
                   <option value={{$info->part_type}} >{{$info->part_type}}</option>
-                @endforeach  
+                  @endforeach  
                 </select>
                 <span id="chkpart_type" class="checkform"></span>
               </td>
@@ -127,7 +128,7 @@
               <!-- Input Part Brand -->
               <td>
                 <input type="text" name="brand">
-                <span id="chkpart_code" class="checkform"></span>
+                <span id="chkpart_brand" class="checkform"></span>
               </td>
             </tr>
 
@@ -135,7 +136,7 @@
             <tr class="tr-add">
               <td class="td-add"><label for="code">รุ่น</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Input Part Brand -->
+              <!-- Input Part Code -->
               <td>
                 <input type="text" name="code">
                 <span id="chkpart_code" class="checkform"></span>
@@ -175,10 +176,11 @@
         </form>
       </div>
     </div>
+  </div>
 
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

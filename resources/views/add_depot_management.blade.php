@@ -69,6 +69,7 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
@@ -101,7 +102,7 @@
               <!-- Choose Capacity -->
               <td>
                 <select id="capacity" name="capacity" class="sel">
-                  <option value=" ">เลือกจำนวนที่รับชุดรถไฟได้</option>
+                  <option value=" ">-- เลือกจำนวนที่รับชุดรถไฟได้ --</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -116,12 +117,28 @@
             <tr class="tr-add">
               <td class="td-add"><label for="depotno">ตำแหน่ง</label></td>
               <td class="col-sm-1"><span></span></td>
-              <!-- Choose Position -->
+              <!-- Input Position -->
               <td>
-
                 <input type="text" id="depotno" name="depotno">
-
                 <span id="chkdepot_position" class="checkform"></span>
+              </td>
+            </tr>
+
+            <!-- location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่งระยะทาง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!-- Choose location -->
+              <td>
+                <select id="location" name="location" class="sel">
+                  <option value=" ">-- เลือกตำแหน่งระยะทาง --</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <span id="chkdepot_loc" class="checkform"></span>
               </td>
             </tr>
 
@@ -132,7 +149,7 @@
               <!-- Choose Level -->
               <td>
                 <select id="depotlevel" name="depotlevel" class="sel">
-                  <option value="">เลือกระดับการเข้าซ่อมบำรุง</option>
+                  <option value=" ">-- เลือกระดับการเข้าซ่อมบำรุง --</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -175,10 +192,11 @@
         </form>
       </div>
     </div>
+  </div>
 
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

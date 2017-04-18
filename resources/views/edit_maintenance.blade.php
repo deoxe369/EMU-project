@@ -69,6 +69,7 @@
     </nav>
 
   <!--Content-->
+  <div class="content">
     <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
@@ -108,7 +109,7 @@
                 <span id="chkmaint_trsetno" class="checkform"></span>
               </td>
             </tr>
-
+            
             <!-- No.Depot -->
             <tr class="tr-add">
               <td class="td-add"><label for="depotno">ศูนย์ซ่อม</label></td>
@@ -168,10 +169,11 @@
         </form>
       </div>
     </div>
+  </div>
 
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

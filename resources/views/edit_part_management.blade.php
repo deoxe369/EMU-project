@@ -70,7 +70,8 @@
     
 
   <!--Content-->
-     <div class="container-fluid">    
+  <div class="content">
+    <div class="container-fluid">    
     <!--First Container-->
       <!--Select Edit-->
       <div class="container">
@@ -78,7 +79,7 @@
 
         <br>
 
-        <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save">
+        <form class="form-horizontal" action="/edit_part_management/{{$origin_info[0]->id}}/save" name="chkepart" onsubmit="return epart()">
 
         <!-- New Structure: Table -->
         <table class="table-add" align="center">
@@ -89,7 +90,7 @@
             <td class="col-sm-1"><span></span></td>
             <!-- Generate No.Part -->
             <td>
-              <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
+              <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->id}}</p>
             </td>
           </tr>
 
@@ -100,10 +101,13 @@
             <!-- Choose Part Type -->
             <td>
               <select id="part_type" name="part_type" class="sel">
+                <option value={{$origin_info[0]->part_type}}>{{$origin_info[0]->part_type}}</option>
+                <option value=" ">-- เลือกประเภทของอะไหล่ --</option>
                 @foreach ($part_type_info as $info)
                 <option value={{$info->part_type}}>{{$info->part_type}}</option>
                 @endforeach  
               </select>
+              <span id="chkpart_type" class="checkform"></span>
             </td>
           </tr>
 
@@ -125,6 +129,7 @@
             <!-- Input วันหมดอายุ -->
             <td>
               <input type="date" name="e_day" value={{$origin_info[0]->expired_date}}>
+              <span id="chkpart_eday" class="checkform"></span>
             </td>
           </tr>
 
@@ -135,9 +140,20 @@
             <!-- Input Part Brand -->
             <td>
               <input type="text" name="brand" value={{$origin_info[0]->brand}}>
+              <span id="chkpart_brand" class="checkform"></span>
             </td>
           </tr>
 
+          <!--รุ่น -->
+          <tr class="tr-add">
+            <td class="td-add"><label for="code">รุ่น</label></td>
+            <td class="col-sm-1"><span></span></td>
+            <!-- Input Part Code -->
+            <td>
+              <input type="text" name="code" value={{$origin_info[0]->code}}>
+              <span id="chkpart_code" class="checkform"></span>
+            </td>
+          </tr>
 
           <!-- Part Price -->
           <tr class="tr-add">
@@ -146,6 +162,8 @@
             <!-- Input Part Price -->
             <td>
               <input type="text" name="price" value={{$origin_info[0]->price}}>
+              <span id="chkpart_price" class="checkform"></span>
+              </td>
             </td>
           </tr>
 
@@ -161,10 +179,10 @@
         </form>
       </div>
     </div>
-
+  </div>
     
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 

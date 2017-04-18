@@ -89,8 +89,9 @@
 
 
   <!--Content-->
+  <div class="content">
     <!--First Container-->
-    <div class="container-fluid text-left">
+    <div class="container-fluid text-left" style="min-height: 100%;">
       <!--Date Current-->
       <div class="row col-md-12 margin">
         <h1 id="datenow" class="margin"></h1>
@@ -156,7 +157,8 @@
                 <td class="text-center">{{$train->train_number}}</td>
                 <td class="text-center">{{$train->class}}</td>
                 <td class="text-center">{{$train->source_station}}</td>
-                <td class="text-center">{{$train->departure_time}}</td>
+                <td class="text-center" id='{{$train->departure_time}}time'>{{$train->departure_time}}</td>
+                <!-- <td class="text-center" id="{{$train->departure_time}}time"></td> -->
                 <td class="text-center">{{$train->destination_station}}</td>
                 <td class="text-center">{{$train->arrival_time}}</td>
                 <td class="text-center" id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
@@ -165,19 +167,12 @@
 
               <!-- JavaScript Foreach -->
               <script type="text/javascript">
-                //row color
-                  var id = parseInt(document.getElementById("{{$train->train_trip}}").id);
                 
-                  if(id%2 == 1){
-                    document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#ffffff";
-                    console.log(id);
-                  }else{
-                    document.getElementById("{{$train->train_trip}}").style.backgroundColor = "#F5F5F5";
-                    console.log(id);
-                  }
+                //Time Form --:--
+
 
                 //rename
-                var type = document.getElementById('{{$train->id}}triptype').innerHTML
+                var type = document.getElementById('{{$train->id}}triptype').innerHTML;
                 if(type == "outbound"){
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวไป"
                 }else{
@@ -191,11 +186,12 @@
         </div>
       </div>
     </div>
+  </div>
 
 
 
   <!--Footer-->
-  <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
   </footer>
 
