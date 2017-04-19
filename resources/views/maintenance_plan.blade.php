@@ -159,7 +159,7 @@
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td class="text-center">{{$info->train_number}}</td>
-                <td class="text-center" id="{{$info->train_number}}1" >{{$info->type}}</td>        
+                <td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td>        
                 <td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
                 <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>
                 <td class="text-center">{{$info->status}}</td>
@@ -203,10 +203,11 @@
                 
               <!-- JS change name cartype -->
               <script type="text/javascript">
-                var trtype = document.getElementById("{{$info->train_number}}1").innerHTML;
+                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
+                console.log(trtype);
                 switch(trtype){
-                  case "trcar3": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
-                  case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
+                  // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
               </script>
               @endforeach

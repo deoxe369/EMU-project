@@ -231,9 +231,9 @@ class TrainCirculationController extends Controller
            
             
             $number = count($train_set_number1);
-            
 
-       return View::make('edit_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
+
+       return View::make('add_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
         
     }
 

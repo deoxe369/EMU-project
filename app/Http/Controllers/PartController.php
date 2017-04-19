@@ -150,8 +150,13 @@ class PartController extends Controller
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
-            DB::table('part')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
-           
+            $part_cars = DB::table('part')->select('cars_id')->where('id',$id1)->get();
+           if($part_cars[0]->cars_id == NULL){
+            return 1;
+            // DB::table('part')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+           }else{
+                return "อะไหล่ ".$id1."ถูกติดตั้งอยู่ที่ตู้รถไฟ ".$part_cars[0]->cars_id."ไม่สามารถลบได้";
+           }
         }
         
               return Redirect::action('PartController@part_info');

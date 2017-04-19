@@ -154,7 +154,14 @@ class CarsController extends Controller
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
-            DB::table('cars')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+            $status = DB::table('cars')->select('train_number')->where('id',$id1)->get();
+            
+            if($status[0]->train_number == NULL){
+                 DB::table('cars')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+
+            }else{
+                return "ตู้รถไฟ". $id1."ถูกติดตั้งที่ชุดรถไฟ ".$status[0]->train_number." ไม่สามารถลบตู้รถไฟนี้ได้";
+            }
            
         }
         

@@ -124,9 +124,9 @@
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->id}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->class}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->source_station}} - {{$time_table->destination_station}}</td>
-                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->departure_time}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}d'>{{$time_table->departure_time}}</td>
                 <!-- <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->destination_station}}</td> -->
-                <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->arrival_time}}</td>
+                <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}a'>{{$time_table->arrival_time}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
                 
                 <td class="text-center" style="padding-top: 15px; margin-left: 5px;"><a href="../traincirculation_plan/{{$time_table->id}}"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a></td>
@@ -141,7 +141,11 @@
                 }else{
                   document.getElementById('{{$time_table->id}}triptype').innerHTML = "เที่ยวกลับ"
                 }
-
+                var departure = document.getElementById('{{$time_table->id}}d').innerHTML.substring(0,5)
+                var arrival = document.getElementById('{{$time_table->id}}a').innerHTML.substring(0,5)
+                document.getElementById('{{$time_table->id}}d').innerHTML = departure;
+                document.getElementById('{{$time_table->id}}a').innerHTML = arrival;
+                
                 /*function getSelectedOptions(sel,train_number){
                   var opts = [],opt;
                   var len = len = sel.options.length;

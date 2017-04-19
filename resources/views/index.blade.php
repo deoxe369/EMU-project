@@ -157,27 +157,27 @@
                 <td class="text-center">{{$train->train_number}}</td>
                 <td class="text-center">{{$train->class}}</td>
                 <td class="text-center">{{$train->source_station}}</td>
-                <td class="text-center" id='{{$train->departure_time}}time'>{{$train->departure_time}}</td>
+                <td class="text-center" id='{{$train->train_trip}}d'>{{$train->departure_time}}</td>
                 <!-- <td class="text-center" id="{{$train->departure_time}}time"></td> -->
                 <td class="text-center">{{$train->destination_station}}</td>
-                <td class="text-center">{{$train->arrival_time}}</td>
+                <td class="text-center" id='{{$train->train_trip}}a'>{{$train->arrival_time}}</td>
                 <td class="text-center" id='{{$train->id}}triptype'>{{$train->trip_type}}</td>
                 <td class="text-center"><a href="/edit_traincirculation/{{$train->train_trip}}"><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
 
               <!-- JavaScript Foreach -->
               <script type="text/javascript">
-                
-                //Time Form --:--
-
-
-                //rename
                 var type = document.getElementById('{{$train->id}}triptype').innerHTML;
                 if(type == "outbound"){
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวไป"
                 }else{
                   document.getElementById('{{$train->id}}triptype').innerHTML = "เที่ยวกลับ"
                 }
+
+                var departure = document.getElementById('{{$train->train_trip}}d').innerHTML.substring(0,5)
+                var arrival = document.getElementById('{{$train->train_trip}}a').innerHTML.substring(0,5)
+                document.getElementById('{{$train->train_trip}}d').innerHTML = departure;
+                document.getElementById('{{$train->train_trip}}a').innerHTML = arrival;
               </script>
                 
               @endforeach

@@ -54,13 +54,18 @@ class DepotController extends Controller
     {
     
         $input  = explode('&', $info->server->get('QUERY_STRING'));
-        $all_id = array();
-
+       
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
+            $depot_info = DB::table('depot')->where('id',$id1)->get();
+            
+            if($depot_info[0]->capacity == $depot_info[0]->free_slot){
             DB::table('depot')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
-           
+            }else{
+                $in_car = $depot_info[0]->capacity - $depot_info[0]->free_slot;
+                return "ยังมีชุดรถไฟค้างอยู่ที่ศูนย์ซ่อม ".$depot_info[0]->location_name." ทั้งหมด ".$in_car." ไม่สามารถลบศูนย์ซ่อมได้";
+            }
         }
         
               return Redirect::action('DepotController@depot_info');

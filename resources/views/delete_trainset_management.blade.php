@@ -174,13 +174,11 @@
                 
                  
                   switch(trtype){
-                    case "trcar3":  
-                    document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร 3';
+                    case "passenger":  
+                    document.getElementById("{{$info->train_number}}").innerHTML= 'ชุดรถไฟโดยสาร';
                       break;
 
-                    case "trcar4": 
-                    document.getElementById("{{$info->train_number}}").innerHTML='ชุดรถไฟโดยสาร 4'; 
-                    break;
+                    ;
                   }
               
                 </script>

@@ -131,17 +131,31 @@ class TrainSetController extends Controller
     
         $input  = explode('&', $info->server->get('QUERY_STRING'));
         $all_id = array();
-
+        
         foreach ($input as $id) { //วนรถ
-
+            
             $id1 = substr($id,7);
-            DB::table('train_set')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
-            $train_number = DB::table('train_set')->select('train_number')->where('id',$id1)->get();
-            $cars_id = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->get();
+            $train_number = DB::table('train_set')->where('id',$id1)->get();
+            $maintenance = DB::table('maintenance')->where('train_number',$train_number[0]->train_number)->get();
+            
+              if($train_number[0]->status == 'ว่าง'){
 
-            foreach ($cars_id as $cid) {
-                DB::table('cars')->where('id',$cid->id)->update(['status'=>"ว่าง",'train_number'=>NULL,'updated_at'=>Carbon::now()]);    
-                
+                if(count($maintenance) == 0){//ไม่ได้อยู่ในmaintenance
+                    DB::table('train_set')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+              $cars_id = DB::table('cars')->select('id')->where('train_number',$train_number[0]->train_number)->get();
+
+                  foreach ($cars_id as $cid) {
+                      DB::table('cars')->where('id',$cid->id)->update(['status'=>"ว่าง",'train_number'=>NULL,'updated_at'=>Carbon::now()]);    
+                   }  
+                   
+                }else{
+                  
+                  return  "ชุดรถไฟ".$train_number[0]->train_number."มีการสร้างใบเข้าซ่อม กรุณาลบใบเข้าซ่อม";
+                }
+              }else{
+
+                return "ชุดรถไฟ".$train_number[0]->train_number."ยังมีสถานะ วิ่งอยู่ไม่สามารถลบได้";
+               
             }
             
         }

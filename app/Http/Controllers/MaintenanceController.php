@@ -56,7 +56,7 @@ class MaintenanceController extends Controller
 	}
 	public function maintenance_info()
     {
-    	$maintenance_info = DB::table('maintenance')->whereNull('deleted_at')->paginate(15);
+    	$maintenance_info = DB::table('maintenance')->where('out_date',NULL)->whereNull('deleted_at')->paginate(15);
 
         $today = Carbon::now();
         
@@ -174,11 +174,17 @@ class MaintenanceController extends Controller
             }
 
         $today = Carbon::now(); 
-        $train_number =  DB::table('maintenance')->select('train_number')->where('in_date',$today->toDateString())->whereNull('deleted_at')->get();
+        $train_number =  DB::table('maintenance')->where('in_date',$today->toDateString())->whereNull('deleted_at')->get();
         
 
         foreach ($train_number as $value) {
-            DB::table('train_set')->where('train_number',$value->train_number)->update(['status'=>'ซ่อม','updated_at'=>Carbon::now()]);   
+            DB::table('train_set')->where('train_number',$value->train_number)->update(['status'=>'ซ่อม','updated_at'=>Carbon::now()]);
+            $depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$value->depot)->get();
+
+            $depot_slot1 = $depot_slot[0]->free_slot -1;
+
+             DB::table('depot')->where('location_name',$info->depotno)->update(['free_slot'=>$depot_slot1,'updated_at'=>Carbon::now()]);
+   
             
         }
 
@@ -207,20 +213,22 @@ class MaintenanceController extends Controller
         $destination_station = array();
         $maintenance_date1 = array();
 
-       
-
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
-           $trainset_info2 = DB::table('train_set')->select('train_number','total_distance','total_time')->where('train_number',$id1)->distinct()->get();
-         $trainschedule = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->whereNull('deleted_at')->get();
+
+            $trainset_info2 = DB::table('train_set')->select('train_number','total_distance','total_time')->where('train_number',$id1)->distinct()->get();
+            $trainschedule = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->whereNull('deleted_at')->get();
             $location_name = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->get();
-            array_push($trainset_number1,$id1);
-            array_push($trainset_level_info,$trainset_info2[0]);
-            array_push($trainset_distance,$trainset_info2[0]->total_distance);
-            array_push($train_schedule,$trainschedule[0]);
+                    
+                    array_push($trainset_number1,$id1);
+                    array_push($trainset_level_info,$trainset_info2[0]);
+                    array_push($trainset_distance,$trainset_info2[0]->total_distance);
+                    array_push($train_schedule,$trainschedule[0]);
+                    
 
         }
+        
         $train_schedule1 = $train_schedule;
         foreach ($train_schedule as $station) {
              array_push($source_station,$station->source_station);
@@ -282,6 +290,7 @@ class MaintenanceController extends Controller
                  
              }
 
+            
 
 
          $depot_info = DB::table('depot')->select('id','level','location_name')->where('free_slot','>',0)->get();   
@@ -347,6 +356,7 @@ public function show_maintenance_plan(Request $info )
      public function add_plan1()
     {
         DB::table('maintenance')->where('mark','yes')->update(['mark'=>NULL]);
+
 
          return Redirect::action('MaintenanceController@maintenance_info');   
     }
@@ -582,13 +592,35 @@ public function show_maintenance_plan(Request $info )
     {
 
         $input  = explode('&', $info->server->get('QUERY_STRING'));
-        
+        $now = Carbon::now();
+
 
         foreach ($input as $id) {
 
             $id1 = substr($id,7);
-            DB::table('maintenance')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
-           
+            $maintenance_info = DB::table('maintenance')->where('id',$id1)->get();
+            
+            if(strtotime($maintenance_info[0]->in_date) < strtotime($now)){
+
+                DB::table('maintenance')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+
+                DB::table('train_set')->where('train_number',$maintenance_info[0]->train_number)->update(['status'=>"ว่าง"]);
+
+                $depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$maintenance_info[0]->depot)->get();
+                
+
+                $depot_slot1 = $depot_slot[0]->free_slot +1;
+                
+                 DB::table('depot')->where('location_name',$maintenance_info[0]->depot)->update(['free_slot'=>$depot_slot1,'updated_at'=>Carbon::now()]);
+
+                 
+                
+            }else{
+                DB::table('maintenance')->where('id',$id1)->update(['deleted_at'=>Carbon::now()]);
+
+        
+            }
+               
         }
     
         
