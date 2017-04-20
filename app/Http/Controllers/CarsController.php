@@ -28,9 +28,7 @@ class CarsController extends Controller
           
  
                 $part_model = DB::table('part_model')->select('part_type','brand','code','quantity')->where('model',$info->cars_model)->get();
-                 
-                // return count($part_model);
-
+               
                 foreach($part_model as $pm){
                  
                  $part_expired = DB::table('part_type')->select('lifetime_time')->where('part_type', $pm->part_type)->get();
@@ -38,7 +36,7 @@ class CarsController extends Controller
                  $month = Carbon::now()->month;
                  $day = Carbon::now()->day;
                  $expired_date = ($expired_year."-".$month."-".$day);
-                 // return$pm->quantity;
+                
                  if($pm->quantity == 1){
                     DB::insert('insert into part (part_type,brand,code, manufactured_date,expired_date,total_distance,total_time,cars_id,price,status,created_at) values (?, ?, ?, ?, ? ,? , ? , ? , ? , ? , ?)', [$pm->part_type,$pm->brand,$pm->code,Carbon::now(),$expired_date,0,0,$cars_id,$info->cars_price,"ใช้ได้",Carbon::now()]);
                      

@@ -165,7 +165,7 @@ class TrainCirculationController extends Controller
     public function add_plan()
     {
         DB::table('train_schedule')->where('mark',NULL)->update(['deleted_at'=>Carbon::now()]);
-        DB::table('train_schedule')->where('mark','yes')->update(['mark'=>'yes']);
+        DB::table('train_schedule')->where('mark','yes')->update(['mark'=>NULL]);
 
         DB::table('train_set')->where('mark',NULL)->where('status','ว่าง')->orwhere('status','วิ่ง')->update(['status'=>'ว่าง']);
         DB::table('train_set')->where('mark','yes')->update(['status'=>'วิ่ง','mark'=>NULL]);
@@ -182,7 +182,7 @@ class TrainCirculationController extends Controller
         $train_set_number1 = array();
         $train_info1 = array();
 
-        $origin_info = DB::table('train_schedule')->where('id',$id)->get();
+        $origin_info = DB::table('time_table')->where('id',$id)->get();
 
         $source_distance = DB::table('route')->where('name',$origin_info[0]->source_station)->get();
         $destination_distance = DB::table('route')->where('name',$origin_info[0]->destination_station)->get();
@@ -236,6 +236,16 @@ class TrainCirculationController extends Controller
        return View::make('add_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
         
     }
+
+        public function add_plan2(Request $info)
+    {
+     
+
+        return $info;
+       // return View::make('add_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
+        
+    }
+
 
     public function add_plan_cancel()
     {

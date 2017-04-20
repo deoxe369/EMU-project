@@ -72,7 +72,7 @@
       <map name="locodetail">
         <!-- loco coords -->
         <area  shape="rect" coords="83,437,248,464" href="/check_parts/{{$mid}}/{{$id}}/steam_end_connection" onmouseover="writeText('Steam End Connection')" onmouseout="writeText('&nbsp;')" alt="SteamEndConnection">
-        <area shape="rect" coords="210,510,346,537" href="/check_parts/{{$mid}}/{{$id}}/batteries" onmouseover="writeText('Batteries')" onmouseout="writeText('&nbsp;')" alt="Batteries">
+        <area shape="rect" coords="210,510,346,537" href="/check_parts/{{$mid}}/{{$id}}/battery" onmouseover="writeText('Battery')" onmouseout="writeText('&nbsp;')" alt="Battery">
         <area shape="rect" coords="286,420,398,448" href="/check_parts/{{$mid}}/{{$id}}/wheels" onmouseover="writeText('Wheels')" onmouseout="writeText('&nbsp;')" alt="Wheels">
         <area shape="rect" coords="346,463,481,490" href="/check_parts/{{$mid}}/{{$id}}/trucks" onmouseover="writeText('Trucks')" onmouseout="writeText('&nbsp;')" alt="Trucks">
         <area shape="rect" coords="350,509,486,537" href="/check_parts/{{$mid}}/{{$id}}/ground_light" onmouseover="writeText('Ground Light')" onmouseout="writeText('&nbsp;')" alt="Ground Light">

@@ -78,7 +78,7 @@
         
         <br>
 
-        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->id}}/save">
+        <form class="form-horizontal" action="/traincirculation_plan_manual/save">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
@@ -91,7 +91,7 @@
               <td>
                 <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
               </td>
-               <input type="hidden" name="origin_train_number" value={{$origin_info[0]->train_number}}>
+      
             </tr>
 
 
@@ -137,7 +137,7 @@
             <td>
              <p id="arrival" style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->arrival_time}}</p>
             </td>
-            
+           
           </tr>
 
 
@@ -175,7 +175,7 @@
                  @endforeach   
                 
                 
-              
+               <input type="hidden" name="trip" value={{$origin_info[0]->id}}>
             
             </tbody>
           </table>
