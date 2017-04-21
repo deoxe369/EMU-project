@@ -97,7 +97,7 @@
         <br>
 
         <!--First Container-->
-        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->id}}/save">
+        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->id}}/save" name="chktrcir" onsubmit="return trcir()">
 
         <div class="bg-5 row col-md-12 margin">
 
@@ -203,6 +203,11 @@
                 document.getElementById('departure').innerHTML = departure;
                 document.getElementById('arrival').innerHTML = arrival;
               </script>
+
+              <br>
+
+              <!-- Alert: Check Form -->
+              <span id="chktrcir_trsetno" class="checkform"></span>
 
               <br>
 

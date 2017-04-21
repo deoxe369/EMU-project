@@ -44,6 +44,35 @@
     window.history.back();
   }
 
+
+  /************************************* Add Traincirculation **************************************/
+  function trcir(){
+    //var trcirtrno = document.chktrcir.trainsetno.value;
+    var status;
+
+    if($('[name=trainsetno]:checked').length){
+      document.getElementById("chktrcir_trsetno").style.color = "#006064";
+      document.getElementById("chktrcir_trsetno").innerHTML = "&#x2714; เลือกชุดรถไฟที่เหมาะสมกับเส้นทางนี้เรียบร้อย";
+      status = true;
+    }else{
+      document.getElementById("chktrcir_trsetno").style.color = "#FF6F00";
+      document.getElementById("chktrcir_trsetno").innerHTML = "&#x2716; โปรดเลือกชุดรถไฟที่เหมาะสมกับเส้นทางนี้";
+      status = false;
+    }
+
+  //   if (trcirtrno.checked) {
+  //     document.getElementById("chktrcir_trsetno").style.color = "#006064";
+  //     document.getElementById("chktrcir_trsetno").innerHTML = "&#x2714; เลือกชุดรถไฟที่เหมาะสมกับเส้นทางนี้เรียบร้อย";
+  //     status = true;
+  //   }else{
+  //     document.getElementById("chktrcir_trsetno").style.color = "#FF6F00";
+  //     document.getElementById("chktrcir_trsetno").innerHTML = "&#x2716; โปรดเลือกชุดรถไฟที่เหมาะสมกับเส้นทางนี้";
+  //     status = false;
+  //   }
+    return status;
+  }
+
+
   /************************************* Add Maintenance Management **************************************/
   function maint(){
     var mainttrno = document.chkmaint.trainsetno.value;

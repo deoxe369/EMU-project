@@ -20,6 +20,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
+
   <!-- Javascript Table: Row Color -->
   <script language="javascript">
     window.onload = function () {    
@@ -95,7 +96,7 @@
         <br>
 
         <!--First Container-->
-        <form class="form-horizontal" action="/traincirculation_plan_manual/save">
+        <form class="form-horizontal" action="/traincirculation_plan_manual/save" name="chktrcir" onsubmit="return trcir()">
           <div class="bg-5 row col-md-12 margin">
 
             <!-- Trip No. Title-->
@@ -201,6 +202,11 @@
                 document.getElementById('departure').innerHTML = departure;
                 document.getElementById('arrival').innerHTML = arrival;
               </script>
+
+              <br>
+
+              <!-- Alert: Check Form -->
+              <span id="chktrcir_trsetno" class="checkform"></span>
 
               <br>
 

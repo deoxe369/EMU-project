@@ -96,38 +96,34 @@
               </tr>
             </thead>
             <tbody>
-            
            
-          @for ($i = 0; $i < $number ; $i++)
-  
+            @for ($i = 0; $i < $number ; $i++)
             <tr>
-              
-                <td><input type="checkbox" id="{{$trainset_info[$i]->train_number}}2" checked name="trainsetno" value={{$trainset_info[$i]->train_number}} ></td>
+              <td><input type="checkbox" id="{{$trainset_info[$i]->train_number}}2" checked name="trainsetno" value={{$trainset_info[$i]->train_number}} ></td>
+              <td><input type="checkbox" id="{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}" checked name="level" value={{$trainset_info[$i]->level}} ></td>
+              <td>{{$trainset_info[$i]->train_number}}</td>
+              <td id="{{$trainset_info[$i]->train_number}}1" >{{$trainset_info[$i]->type}}</td>
 
-                <td><input type="checkbox" id="{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}" checked name="level" value={{$trainset_info[$i]->level}} ></td>
-
-               
-               
-                <td>{{$trainset_info[$i]->train_number}}</td>
-                <td id="{{$trainset_info[$i]->train_number}}1" >{{$trainset_info[$i]->type}}</td>
+              <!-- Javascript -->
               <script type="text/javascript">
                 document.getElementById("{{$trainset_info[$i]->train_number}}2").style.display = "none";
                 document.getElementById("{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}").style.display = "none";
                 
                 var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;
-               
-               switch(trtype){
+                switch(trtype){
                   case "trcar3": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
                   case "trcar4": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
                 
-              </script>        
-                <td>{{$trainset_info[$i]->total_distance}}</td>
-                <td>{{$trainset_info[$i]->total_time}}</td>                
-                <td>{{$trainset_info[$i]->status}}</td>
-                <td id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}">
-                </td>
-                 <a id="{{$i}}location1" title="{{$train_schedule[$i]->destination_station}}"></a>  
+              </script>   
+
+              <td>{{$trainset_info[$i]->total_distance}}</td>
+              <td>{{$trainset_info[$i]->total_time}}</td>                
+              <td>{{$trainset_info[$i]->status}}</td>
+              <td id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}">
+              </td>
+              
+              <a id="{{$i}}location1" title="{{$train_schedule[$i]->destination_station}}"></a>  
                 
 
                 <td><select class="sel" name="depotno">
