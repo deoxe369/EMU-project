@@ -105,7 +105,7 @@
                 <select id="trtype" name="trtype" onchange=" getSelectedOptions(this)" class="sel">
                   <option value=" ">-- เลือกประเภทของชุดรถไฟ --</option>
                   <option value="passenger">ชุดรถไฟโดยสาร</option>
-            <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
+                  <!-- <option value="trgoods">ชุดรถไฟขนส่ง</option>
                   <option value="trtrolley">รถรางโยก</option> -->
                 </select>
                 <span id="chktrset_type" class="checkform"></span>
@@ -126,20 +126,23 @@
           <!-- Display Select Composition -->
           <div class="margin-top" id="locobofirst">
             <div class="table-responsive">
-              <table class="table-add" align="center" style="border-collapse: collapse;">
+              <table class="table-add1" align="center" style="border-collapse: collapse;">
                 <tbody>
+                  <tr class="bg-7">
+                    <td colspan="3" class="text-center"><span id="chktrset_carid" class="checkform" style="color: #333;">เลือกรหัสตู้รถไฟ</span></td>
+                  </tr>
                   <tr style="border-top: 3px solid #ffffff !important;">
                     <td class="text-center th-edit"><p class="td-carname">Locomative</p></td>
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Locomative -->
-                      <select name="cars_idloco" class="sel sel-comp">
+                      <select name="cars_id" class="sel sel-comp">
                         <option value=" ">-- เลือก --</option>
                         @foreach($cars_loco_info as $loco)
                           <option value={{$loco->id}}>{{$loco->id}}</option>
                         @endforeach
                       </select>
-                      <span id="chktrset_type" class="checkform"></span>
+                      <!-- <span id="chktrset_carid" class="checkform"></span> -->
                     </td>
                   </tr>
 
@@ -154,7 +157,7 @@
                           <option value={{$bogie->id}}>{{$bogie->id}}</option>
                         @endforeach
                       </select>
-                      <span id="chktrset_type" class="checkform"></span>                
+                      <!-- <span id="chktrset_carid" class="checkform"></span> -->                
                     </td>
                   </tr>
 
@@ -218,9 +221,9 @@
               function addRow(frm) {
                 rowNum ++;
                 var bogieNum = rowNum+1;
-                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
-                frm.cars_id.value = '';
+                //frm.cars_id.value = ' ';
                 // console.log( document.getElementById("composition"));
                 // console.log( bogieNum);
               }
