@@ -118,7 +118,7 @@
                 <!-- <th class="text-center">สถานีปลายทาง</th> -->
                 <th class="text-center">เวลาถึง</th>
                 <th class="text-center">เที่ยว</th>
-                <th class="text-center th-edit">เลือกชุดรถไฟ</th>
+                <th class="text-center th-edit">เพิ่มชุดรถไฟ</th>
                 
                </tr>
             </thead>
@@ -134,7 +134,9 @@
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}a'>{{$time_table->arrival_time}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
                 
+
                 <td class="text-center" style="padding-top: 15px; margin-left: 5px;" id="{{$time_table->id}}add" title={{$time_table->id}}><a href="../traincirculation_plan/{{$time_table->id}}"  ><button class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button></a></td>
+
                </tr>
               <!-- JavaScript Foreach -->
               <script type="text/javascript">

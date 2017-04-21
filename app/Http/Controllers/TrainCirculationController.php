@@ -294,10 +294,12 @@ class TrainCirculationController extends Controller
        
 
         $trian_set_info = DB::table('train_set')->where('status','ว่าง')->distinct()->get();//เพิ่มเอารถที่ใกล้กับ source station  
+
         if(count($trian_set_info) == 0){
             return "ไม่สามารถเปลี่ยนชุดรถไฟได้ เนื่องจากไม่มีชุดรถไฟว่าง";
         }else{
         
+
 
         foreach($trian_set_info as $train) {
 
@@ -305,7 +307,6 @@ class TrainCirculationController extends Controller
 
             $level_distance = DB::table('level')->select('total_distance')->where('level',$train->level)->get();
             $gap =  abs($train->total_distance - $level_distance[0]->total_distance);
-            
             if($gap > $range*10){
                 $train_location = DB::table('train_set')->select('location_name')->where('train_number',$train->train_number)->get();
 

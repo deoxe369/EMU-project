@@ -20,7 +20,24 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-  
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -71,127 +88,131 @@
   <!--Content-->
   <div class="content">
     <div class="container-fluid">    
-    <!--First Container-->
-      <!--Select Edit-->
+    
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มข้อมูลการใช้ชุดรถไฟ</h1>
         
         <br>
 
+
         <form class="form-horizontal" action="/traincirculation_plan_manual">
+        <!--First Container-->
+    
+          <div class="bg-5 row col-md-12 margin">
 
-          <!-- New Structure: Table -->
-          <table class="table-add" align="center">
+            <!-- Trip No. Title-->
+            <h2 class="text-center">
+              <span>รายละเอียดของ</span>
+              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->id}}</span>
+            </h2>
 
-            <!-- No.Maintenance -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="maintainno">ทริป</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!-- Generate No.Maintenance -->
-              <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; text-align: center;">{{$origin_info[0]->id}}</p>
-              </td>
-      
-            </tr>
+            <br>
 
+            <!-- Table Detail -->
+            <div class="table-responsive">  
+              <table class="table" align="center">
+                <!-- row1 -->
+                <tr>
+                  <td class="col-sm-2 bg-11">ชนิด</td>
+                  <td class="bg-8 col-sm-3 text-center">{{$origin_info[0]->class}}</td>
 
-               <!-- Enter Datetime -->
-          <tr class="tr-add">
-            <td class="td-add"><label for="endate">ชนิด</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->class}}</p>
-            </td>
-             <td class="td-add"><label for="endate">เที่ยว</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->trip_type}}</p>
-            </td>
-            </tr>
-            <tr>
-            <td class="td-add"><label for="endate">สถานีต้นทาง</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->source_station}}</p>
-            </td>
-             <td class="td-add"><label for="endate">เวลาออก</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <p id="departure" style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->departure_time}}</p>
-            </td>
-            </tr>
-            <tr>
-             <td class="td-add"><label for="endate">สถานีปลายทาง</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-              <p style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->destination_station}}</p>
-            </td>
-             <td class="td-add"><label for="endate">เวลาถึง</label></td>
-            <td class="col-sm-1"><span></span></td>
-            <!-- Input Enter Datetime -->
-            <td>
-             <p id="arrival" style="color: #000000; font-weight: bold; text-align: center;">{{$origin_info[0]->arrival_time}}</p>
-            </td>
-           
-          </tr>
+                  <td class="col-md-1"><span></span></td>
+
+                  <td class="col-sm-2 bg-11">เที่ยว</td>
+                  <td class="bg-8 col-sm-3 text-center" id="{{$origin_info[0]->id}}triptype">{{$origin_info[0]->trip_type}}</td>
+                </tr>
+
+                <!-- row2 -->
+                <tr>
+                  <td class="col-sm-2 bg-11">สถานีต้นทาง</td>
+                  <td class="bg-8 col-sm-3 text-center">{{$origin_info[0]->source_station}}</td>
+
+                  <td class="col-md-1"><span></span></td>
+
+                  <td class="col-sm-2 bg-11">สถานีปลายทาง</td>
+                  <td class="bg-8 col-sm-3 text-center">{{$origin_info[0]->destination_station}}</td>
+                </tr>
+
+                <!-- row3 -->
+                <tr>
+                  <td class="col-sm-2 bg-11">เวลาออก</td>
+                  <td class="bg-8 col-sm-3 text-center" id="departure">{{$origin_info[0]->departure_time}}</td>
+
+                  <td class="col-md-1"><span></span></td>
+
+                  <td class="col-sm-2 bg-11">เวลาถึง</td>
+                  <td class="bg-8 col-sm-3 text-center" id="arrival">{{$origin_info[0]->arrival_time}}</td>
+                </tr>
+             </table>
+            </div>
+          </div>
 
 
-           
-          </table>
-         <!--Table Detail-->
-      <div class="row col-md-12 margin">
-        <div class="table-responsive">          
-          <table class="table" id="mytable">
-            <thead style="background-color: #ff6f00; color: #ffffff;">
-              <tr>  
-                <th class="text-center">เลือก</th>
-                <th class="text-center">รหัสชุดรถไฟ</th>
-                <th class="text-center">ระยะทางสะสม</th>
-                <th class="text-center">ระยะเวลาสะสม</th>
-                <th class="text-center">ตำแหน่ง</th>
-                
-                
-              </tr>
-            </thead>
-            
-            <tbody>
-               <!-- <tr>
-                <td class="text-center"><input type="radio" name="choose"></td>
-               </tr> -->
-                 
-                 @foreach($train_set_info as $train)
-                   <tr>
+          <!-- Second Contrainer -->
+          <div class="row col-md-12 margin">
+
+            <br><br>
+
+            <!-- Choose Trainset No. Title-->
+            <h2 class="text-center">
+              <span>เลือกชุดรถไฟของ</span>
+              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->id}}</span>
+            </h2>
+
+            <!-- New Structure: Table -->
+            <div class="table-responsive">          
+              <table class="table" id="mytable">
+                <thead>
+                  <tr>  
+                    <th class="text-center th-edit">เลือก</th>
+                    <th class="text-center">รหัสชุดรถไฟ</th>
+                    <th class="text-center">ระยะทางสะสม</th>
+                    <th class="text-center">ระยะเวลาสะสม</th>
+                    <th class="text-center">ตำแหน่ง</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- <tr>
+                    <td class="text-center"><input type="radio" name="choose"></td>
+                  </tr> -->
+                  @foreach($train_set_info as $train)
+                  <tr>
                     <td class="text-center"><input type="radio" name="trainsetno" value={{$train->train_number}}></td>
                     <td class="text-center">{{$train->train_number}}</td>
                     <td class="text-center">{{$train->total_distance}}</td>
                     <td class="text-center">{{$train->total_time}}</td>
                     <td class="text-center">{{$train->location_name}}</td>
-                    </tr>
-                 @endforeach   
-                
-                
-               <input type="hidden" name="trip" value={{$origin_info[0]->id}}>
-            
-            </tbody>
-          </table>
-          <script type="text/javascript">
+                  </tr>
+                  @endforeach  
+                  <input type="hidden" name="trip" value={{$origin_info[0]->id}}>
+                </tbody>
+              </table>
+
+              <!-- Javascript -->
+              <script type="text/javascript">
+                var type = document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML;
+                if(type == "outbound"){
+                  document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML = "เที่ยวไป"
+                }else{
+                  document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML = "เที่ยวกลับ"
+                }
+
                 var departure = document.getElementById('departure').innerHTML.substring(0,5)
                 var arrival = document.getElementById('arrival').innerHTML.substring(0,5)
                 document.getElementById('departure').innerHTML = departure;
                 document.getElementById('arrival').innerHTML = arrival;
-          </script>
+              </script>
 
-          <br>
-          <!--Button Save & Cancel-->
-            <div style="text-align: center;">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+              <br>
+
+              <!--Button Save & Cancel-->
+              <div style="text-align: center;">
+                <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+                <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+              </div>
             </div>
+          </div>
         </form>
       </div>
     </div>
@@ -199,10 +220,9 @@
 
     
   <!--Footer-->
-
-  <!-- <footer class="bg-2">
+  <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
-  </footer> -->
+  </footer>
 
 </body>
 </html>
