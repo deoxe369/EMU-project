@@ -117,7 +117,7 @@
                   <td class="col-md-1"><span></span></td>
 
                   <td class="col-sm-2 bg-11">เที่ยว</td>
-                  <td class="bg-8 col-sm-3 text-center">{{$origin_info[0]->trip_type}}</td>
+                  <td class="bg-8 col-sm-3 text-center" id="{{$origin_info[0]->id}}triptype">{{$origin_info[0]->trip_type}}</td>
                 </tr>
 
                 <!-- row2 -->
@@ -187,8 +187,15 @@
                 </tbody>
               </table>
 
-              <!-- Javascript Transform DateTime -->
+              <!-- Javascript -->
               <script type="text/javascript">
+                var type = document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML;
+                if(type == "outbound"){
+                  document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML = "เที่ยวไป"
+                }else{
+                  document.getElementById('{{$origin_info[0]->id}}triptype').innerHTML = "เที่ยวกลับ"
+                }
+
                 var departure = document.getElementById('departure').innerHTML.substring(0,5)
                 var arrival = document.getElementById('arrival').innerHTML.substring(0,5)
                 document.getElementById('departure').innerHTML = departure;
