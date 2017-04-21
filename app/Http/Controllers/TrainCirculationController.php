@@ -239,10 +239,16 @@ class TrainCirculationController extends Controller
 
         public function add_plan2(Request $info)
     {
-     
+        $train_info = DB::table('time_table')->where('id',$info->trip)->get();
 
-        return $info;
-       // return View::make('add_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
+        DB::insert('insert into train_schedule (train_trip, train_number,class,source_station,departure_time,destination_station,arrival_time,trip_type,reverse_trip,mark,created_at) values (?, ?, ?, ?, ? ,?,?, ?, ?, ?, ? )', [$info->trip,$info->trainsetno,$train_info[0]->class,$train_info[0]->source_station,$train_info[0]->departure_time,$train_info[0]->destination_station,$train_info[0]->arrival_time,$train_info[0]->trip_type,1,"yes",Carbon::now()]);
+
+        DB::table('train_set')->where('train_number',$info->trainsetno)->update(['mark'=>"yes"]);
+
+        DB::table('time_table')->where('id',$info->trip)->update(['mark'=>"yes"]);
+
+        
+       return View::make('add_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
         
     }
 
@@ -274,7 +280,10 @@ class TrainCirculationController extends Controller
        
 
         $trian_set_info = DB::table('train_set')->where('status','ว่าง')->distinct()->get();//เพิ่มเอารถที่ใกล้กับ source station  
-
+        if(count($trian_set_info) == 0){
+            return "ไม่สามารถเปลี่ยนชุดรถไฟได้ เนื่องจากไม่มีชุดรถไฟว่าง";
+        }else{
+        
 
         foreach($trian_set_info as $train) {
 
@@ -316,7 +325,7 @@ class TrainCirculationController extends Controller
             
             ;
             $number = count($train_set_number1);
-
+            }
        return View::make('edit_traincirculation')->with('train_set_info',$train_info1)->with('origin_info',$origin_info)->with('number',$number);
        
 
