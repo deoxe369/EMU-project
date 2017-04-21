@@ -78,7 +78,7 @@
         
         <br>
 
-        <form class="form-horizontal" action="/traincirculation_plan_manual/save">
+        <form class="form-horizontal" action="/traincirculation_plan_manual">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">

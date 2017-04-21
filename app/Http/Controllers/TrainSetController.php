@@ -12,24 +12,22 @@ class TrainSetController extends Controller
 {
     public function add(Request $info)
     {
-        // $input  = explode('&', $info->server->get('QUERY_STRING'));
-        // $tain_set_number = substr($input[0],11);
-        // $tain_set_type = substr($input[1],7);
-        // $all_cars = array_splice($input,2);
-        // $number = count($all_cars);
+        $input  = explode('&', $info->server->get('QUERY_STRING'));
+        $all_cars = array_splice($input,2);
+        $number = count($all_cars);
+         array_splice($all_cars,$number-1);
+        // return $all_cars;
+
+        $location = DB::table('route')->select('point')->where('name',$info->location)->get();
+         DB::insert('insert into train_set(type, train_number,location_name,location,level,created_at) value(?, ?,?,?,?,?)', [$info->trtype,$info->trainsetno,$info->location,$location[0]->point,1,Carbon::now()]);
+
+        for ($i=0; $i <  $number-1; $i++) { 
+           $cars_id = substr($all_cars[$i],8);
+           DB::table('cars')->where('id',$cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$info->trainsetno,'updated_at'=>Carbon::now()]);
+
+        }
+        return Redirect::action('TrainSetController@trainset_info');
         
-
-
-        //  DB::insert('insert into train_set(type, train_number,location_name,location,level,created_at) value(?, ?,?)', [$tain_set_type, $tain_set_number,,,1,Carbon::now()]);
-
-        // for ($i=0; $i <  $number; $i++) { 
-        //    $cars_id = substr($all_cars[0],8);
-        //    $all_cars = array_splice($all_cars,1);
-        //    DB::table('cars')->where('id',$cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$tain_set_number,'updated_at'=>Carbon::now()]);
-
-        // }
-        // return Redirect::action('TrainSetController@trainset_info');
-        return $info;
         
     }
 
