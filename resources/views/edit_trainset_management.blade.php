@@ -88,7 +88,8 @@
               <td class="td-add"><label for="trainsetno">รหัสชุดรถไฟ</label></td>
               <td class="col-sm-1"><span></span></td>
               <!--Input No.Train Set-->
-              <td>{{$origin_info[0]->train_number}}              
+              <td>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->train_number}}</p>             
                 <span id="chktrset_no" class="checkform"></span>
               </td>
             </tr>
