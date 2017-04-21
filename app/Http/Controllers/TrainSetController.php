@@ -13,19 +13,17 @@ class TrainSetController extends Controller
     public function add(Request $info)
     {
         $input  = explode('&', $info->server->get('QUERY_STRING'));
-        $tain_set_number = substr($input[0],11);
-        $tain_set_type = substr($input[1],7);
         $all_cars = array_splice($input,2);
         $number = count($all_cars);
-        
+         array_splice($all_cars,$number-1);
+        // return $all_cars;
 
+        $location = DB::table('route')->select('point')->where('name',$info->location)->get();
+         DB::insert('insert into train_set(type, train_number,location_name,location,level,created_at) value(?, ?,?,?,?,?)', [$info->trtype,$info->trainsetno,$info->location,$location[0]->point,1,Carbon::now()]);
 
-         DB::insert('insert into train_set(type, train_number,created_at) value(?, ?,?)', [$tain_set_type, $tain_set_number,Carbon::now()]);
-
-        for ($i=0; $i <  $number; $i++) { 
-           $cars_id = substr($all_cars[0],8);
-           $all_cars = array_splice($all_cars,1);
-           DB::table('cars')->where('id',$cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$tain_set_number,'updated_at'=>Carbon::now()]);
+        for ($i=0; $i <  $number-1; $i++) { 
+           $cars_id = substr($all_cars[$i],8);
+           DB::table('cars')->where('id',$cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$info->trainsetno,'updated_at'=>Carbon::now()]);
 
         }
         return Redirect::action('TrainSetController@trainset_info');
@@ -64,10 +62,11 @@ class TrainSetController extends Controller
     {
         $cars_loco_info = DB::table('cars')->where('cars_type','locomotive')->where('status','ว่าง')->get();
         $cars_bogie_info = DB::table('cars')->where('cars_type','bogie')->where('status','ว่าง')->get();
+        $route = DB::table('route')->select('name')->get();
 
        
        // return ($cars_bogie_info.'and'. $cars_loco_info);
-        return View::make('add_trainset_management')->with('cars_loco_info' ,$cars_loco_info)->with('cars_bogie_info' ,$cars_bogie_info);
+        return View::make('add_trainset_management')->with('cars_loco_info' ,$cars_loco_info)->with('cars_bogie_info' ,$cars_bogie_info)->with('route',$route);
     }
 
      public function edit($id)

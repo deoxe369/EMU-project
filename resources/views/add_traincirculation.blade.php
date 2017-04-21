@@ -96,7 +96,9 @@
         <br>
 
         <!--First Container-->
-        <form class="form-horizontal" action="/traincirculation_plan_manual/save" name="chktrcir" onsubmit="return trcir()">
+        <form class="form-horizontal" action="/traincirculation_plan_manual" name="chktrcir" onsubmit="return trcir()">
+        <!-- <form class="form-horizontal" action="/traincirculation_plan_manual/save" name="chktrcir" onsubmit="return trcir()"> -->
+        
           <div class="bg-5 row col-md-12 margin">
 
             <!-- Trip No. Title-->

@@ -100,8 +100,13 @@
       <div class="row col-md-12 margin">
         <!--Date Current-->
         <div class="text-right">
+          <a href="../traincirculation_plan/save"><button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button></a>
+          <a href="../traincirculation_plan_manual/cancel"><button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button></a></a>
           <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
         </div>
+        
+            
+          
         <div class="table-responsive">          
           <table class="table" id="mytable">
             <thead>
@@ -120,7 +125,6 @@
             <tbody>
             @foreach($time_table_info as $time_table)
               <tr id="{{$time_table->id}}">
-               
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->id}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->class}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->source_station}} - {{$time_table->destination_station}}</td>
@@ -128,8 +132,7 @@
                 <!-- <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$time_table->destination_station}}</td> -->
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}a'>{{$time_table->arrival_time}}</td>
                 <td class="text-center" style="padding-top: 25px; margin-left: 5px;" id='{{$time_table->id}}triptype'>{{$time_table->trip_type}}</td>
-                
-                <td class="text-center" style="padding-top: 15px; margin-left: 5px;"><a href="../traincirculation_plan/{{$time_table->id}}"><button class="btn-add" style="vertical-align: middle">เพิ่มชุดรถไฟ</button></a></td>
+                <td class="text-center" style="padding-top: 15px; margin-left: 5px;" id="{{$time_table->id}}add" title={{$time_table->id}}><a href="../traincirculation_plan/{{$time_table->id}}"  ><button class="btn-madd" style="vertical-align: middle">เพิ่มตู้รถไฟ &#10010;</button></a></td>
                </tr>
               <!-- JavaScript Foreach -->
               <script type="text/javascript">
@@ -145,46 +148,18 @@
                 var arrival = document.getElementById('{{$time_table->id}}a').innerHTML.substring(0,5)
                 document.getElementById('{{$time_table->id}}d').innerHTML = departure;
                 document.getElementById('{{$time_table->id}}a').innerHTML = arrival;
-                
-                /*function getSelectedOptions(sel,train_number){
-                  var opts = [],opt;
-                  var len = len = sel.options.length;
-                  var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                  var secondDate = new Date(2016,01,1);
-                  // var number = train_number.substr(0,train_number.length-5);
-                  // var s = `${number}location`;
-                  // var s1 = `${number}location1`;
-                  // var source = document.getElementById(s).title;
-                  // var destination = document.getElementById(s1).title;
-                  // console.log(source);
-                  // console.log(destination);
-                  var dateObj = new Date();
-                  var month = dateObj.getMonth() ; //months from 1-12
-                  var day = dateObj.getDate();
-                  var year = dateObj.getFullYear();
-                  var todayDate = year + "-" + month + "-" + day;
-                  var firstDate = new Date(todayDate);
-                  for (var i = 0; i < len; i++) {
-                    opt = sel.options[i];
-                    // console.log("k");
-                    if (opt.selected) {
-                      opts.push(opt);
-                      // opt.value
-                      // console.log(opt.value);
-                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-                      // console.log(diffDays);
-                      var mod = diffDays%2;
-                      // switch(mod){
-                        case 0: document.getElementById(s).innerHTML=source; break;
-                        case 1: document.getElementById(s).innerHTML=destination; break;
-                      }
-                    }
-                  }
-                  return opt.value;
-                }*/
-
-              </script>
-
+                  </script>
+                   @foreach($train_schedule_info as $ts)
+                   <script type="text/javascript">
+                      var trip1 = {{$time_table->id}};
+                      var trip2 = {{$ts->train_trip}};
+                      var train_number = {{$ts->train_number}};
+                     if(trip1 == trip2){
+                      document.getElementById('{{$time_table->id}}add').innerHTML =train_number;
+;                     }
+                      console.log(trip2);
+                   </script>
+                   @endforeach
               @endforeach
 
             </tbody>
@@ -195,7 +170,7 @@
   </div>
 
 
-
+   
   <!--Footer-->
   <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>

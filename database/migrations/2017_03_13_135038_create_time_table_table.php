@@ -21,6 +21,7 @@ class CreateTimeTableTable extends Migration
             $table->string('destination_station');
             $table->time('arrival_time');
             $table->string('trip_type');
+            $table->string('mark')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

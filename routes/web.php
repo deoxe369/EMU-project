@@ -219,7 +219,13 @@ Route::get('/edit_traincirculation/{id}/save','TrainCirculationController@update
 
 Route::get('/traincirculation_plan/{id}', 'TrainCirculationController@add_plan1');
 
-Route::get('/traincirculation_plan_manual/save', 'TrainCirculationController@add_plan2');
+Route::get('/traincirculation_plan_manual', 'TrainCirculationController@add_plan2');
+
+// Route::get('/traincirculation_plan_manual', 'TrainCirculationController@add_plan3');
+
+Route::get('/traincirculation_plan_manual/cancel', 'TrainCirculationController@add_plan_cancel1');
+
+// Route::get('/create_traincirculation_plan_manual', 'TrainCirculationController@');
 
 
 // -------------------------------------------Model
