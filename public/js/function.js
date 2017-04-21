@@ -95,15 +95,15 @@
       document.getElementById("chktrset_no").style.color = "#FF6F00";
       document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
       status = false;
-    }else if (trsetno !== isNaN) {
+    }else if (isNaN(trsetno)) {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
       document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
       status = false;
-    }/*else if (trsetno < 0) {
+    }else if (trsetno < 0) {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
       document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นจำนวนเต็มบวก";
       status = false;
-    }*/else{
+    }else{
       document.getElementById("chktrset_no").style.color = "#006064";
       document.getElementById("chktrset_no").innerHTML = "&#x2714;";
       status = true;
@@ -114,9 +114,19 @@
       document.getElementById("chktrset_type").style.color = "#FF6F00";
       document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกข้อมูลประเภทชุดรถไฟ";
       status = false;
-    }else{
+    }else if (trsettype == "passenger") {
+      if (carid == " "){
         document.getElementById("chktrset_type").style.color = "#006064";
         document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+        document.getElementById("chktrset_carid").style.color = "#FF6F00";
+        document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟให้ครบ";
+        status = false;
+      }else{
+        document.getElementById("chktrset_type").style.color = "#006064";
+        document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+        document.getElementById("chktrset_carid").style.color = "#006064";
+        document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
+      } 
     }
 
     return status;
