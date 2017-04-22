@@ -103,16 +103,14 @@
   <!--Content-->
   <div class="content">
     <div class="container-fluid">    
-    
-    <!--First Container-->
-      <!--Select Edit-->
+      <!--First Container-->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เพิ่มโมเดลตู้รถไฟ</h1>
 
         <br>
 
         <!-- Form -->
-        <form class="form-horizatal" action = "/add_model/save">
+        <form class="form-horizatal" action = "/add_model/save" name="chkcarmd" onsubmit="return carmd()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
@@ -124,6 +122,7 @@
               <!-- Input Car Model -->
               <td>
                 <input type="text" name="cars_model">
+                <span id="chkcarmd_carmodel" class="checkform"></span>
               </td>
             </tr>
 
@@ -137,8 +136,9 @@
                   <option value=" ">เลือกชนิดของตู้รถไฟ</option>
                   <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
                   <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
-                  <option value="logistic">ขนส่ง</option>
+                  <!-- <option value="logistic">ขนส่ง</option> -->
                 </select>
+                <span id="chkcarmd_cartype" class="checkform"></span>
               </td>
             </tr>
           </table>
@@ -171,9 +171,9 @@
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$loco->part_type}}</th>
-                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="{{$loco->part_type}}brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="{{$loco->part_type}}code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="{{$loco->part_type}}qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach
@@ -210,9 +210,9 @@
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$bg->part_type}}</th>
-                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="{{$bg->part_type}}brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="{{$bg->part_type}}code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="{{$bg->part_type}}qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach
@@ -224,148 +224,148 @@
           </div>         
          
 
-
-        <!-- Javascript Add Model -->
-        <script type="text/javascript">
-
-          // Start Display Button Add Composition
-          document.getElementById("locomotive").style.display = "none";
-          document.getElementById("bogie").style.display = "none";
-          // document.getElementById("head").style.display = "none";
-          // document.getElementById("addpart").style.display = "none";
+          <!-- Javascript Add Model -->
+          <script type="text/javascript">
+            // Start Display Button Add Composition
+            document.getElementById("locomotive").style.display = "none";
+            document.getElementById("bogie").style.display = "none";
+            // document.getElementById("head").style.display = "none";
+            // document.getElementById("addpart").style.display = "none";
           
-          // Create Input Locomative Part in Model
-          var rowNum = 0;
-          function addRow(frm) {
-            rowNum ++;
-            var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
-            jQuery('#itemRows').append(row);
-            frm.brand.value = '';
-            frm.code.value = '';
-            frm.qty.value = '';
-            frm.part_type.value = '';
-          }
+            /* Create Input Locomative Part in Model */
+            var rowNum = 0;
+            function addRow(frm) {
+              rowNum ++;
+              var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+              jQuery('#itemRows').append(row);
+              frm.brand.value = '';
+              frm.code.value = '';
+              frm.qty.value = '';
+              frm.part_type.value = '';
+            }
 
-          // Create Input Bogie Part in Model
-          function addRow1(frm) {
-            rowNum ++;
-            var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
-            jQuery('#itemRows1').append(row1);
-            frm.brand.value = '';
-            frm.code.value = '';
-            frm.qty.value = '';
-            frm.part_type.value = '';
-          }
+            /* Create Input Bogie Part in Model */
+            function addRow1(frm) {
+              rowNum ++;
+              var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+              jQuery('#itemRows1').append(row1);
+              frm.brand.value = '';
+              frm.code.value = '';
+              frm.qty.value = '';
+              frm.part_type.value = '';
+            }
           
-          // Remove Input Part in Model
-          function removeRow(rnum) {
-            jQuery('#rowNum'+rnum).remove();
-          }
+            /* Remove Input Part in Model */
+            function removeRow(rnum) {
+              jQuery('#rowNum'+rnum).remove();
+            }
 
-          // Select Car type
-          function getSelectedOptions(sel){
-            var opts = [], opt;
-            var len = len = sel.options.length;
-            for (var i = 0; i < len; i++) {
-              opt = sel.options[i];
-              // console.log("k");
-              if (opt.selected) {
-                opts.push(opt);
-                var type = opt.value;
-                // document.getElementById("head").style.display = "block";
-                // document.getElementById("addpart").style.display = "block";
-                
-                switch(type){
-                  case " ": 
-                    document.getElementById("locomotive").style.display = "none";
-                    document.getElementById("bogie").style.display = "none";
-                    break;
-
-                  case "locomotive": 
-                    document.getElementById("locomotive").style.display = "block";
-                    document.getElementById("bogie").style.display = "none";
-                    
-                    break;
-                  
-                  case "bogie":
-                    document.getElementById("locomotive").style.display = "none";
-                    document.getElementById("bogie").style.display = "block";
-                    break;
+            /* Select Car type */
+            function getSelectedOptions(sel){
+              var opts = [], opt;
+              var len = len = sel.options.length;
+              for (var i = 0; i < len; i++) {
+                opt = sel.options[i];
+                // console.log("k");
+                if (opt.selected) {
+                  opts.push(opt);
+                  var type = opt.value;
+                  // document.getElementById("head").style.display = "block";
+                  // document.getElementById("addpart").style.display = "block";
+                  switch(type){
+                    case " ": 
+                      document.getElementById("locomotive").style.display = "none";
+                      document.getElementById("bogie").style.display = "none";
+                      break;
+                    case "locomotive": 
+                      document.getElementById("locomotive").style.display = "block";
+                      document.getElementById("bogie").style.display = "none";
+                      break;
+                    case "bogie":
+                      document.getElementById("locomotive").style.display = "none";
+                      document.getElementById("bogie").style.display = "block";
+                      break;
+                  }
                 }
               }
+              return opt.value;
             }
-            return opt.value;
-          }
-              
-        </script>
 
+            /* Check Form: Part In Car Model */
+            function carmd(){
+              var carmdcarmodel = document.chkcarmd.cars_model.value;
+              var carmdcartype = document.chkcarmd.cars_type.value;
+              var locpartbrand = document.chkcarmd.{{$loco->part_type}}brand.value;
+              var locpartcode = document.chkcarmd.{{$loco->part_type}}code.value;
+              var locpartqty = document.chkcarmd.{{$loco->part_type}}qty.value;
 
-        <!--         <div id="itemRows">
+              // var bgpartbrand = document.chkcarmd.{{$bg->part_type}}brand.value;
+              // var bgpartcode = document.chkcarmd.{{$bg->part_type}}code.value;
+              // var bgpartqty = document.chkcarmd.{{$bg->part_type}}qty.value;
+              var status;
 
-              <label for="cars_model">โมเดล</label>
-             <input type="text" name="cars_model">
-             
-             <br>
-             
-             <label for="cars_type">ชนิดของตู้รถไฟ</label>
-              <select id="cars_type" name="cars_type" class="sel" onchange=" getSelectedOptions(this)">
-                  <option value=" ">เลือกชนิดของตู้รถไฟ</option>
-                  <option value="locomotive">โดยสารประเภทขับเคลื่อนได้</option>
-                  <option value="bogie">โดยสารประเภทขับเคลือนไม่ได้</option>
-                  <option value="logistic">ขนส่ง</option>
-                </select>
-                
-                <br>
-                
-                <div id = "head">
-                <label for="cars_price">อะไหล่</label>
-                <label for="cars_price">ยี่ห้อ</label>
-                <label for="cars_price">รุ่น</label>
-                <label for="cars_price">จำนวน</label>
-                </div>
+              if (carmdcarmodel == "") {
+                document.getElementById("chkcarmd_carmodel").style.color = "#FF6F00";
+                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2716; โปรดกรอกข้อมูลชื่อโมเดลของตู้รถไฟ";
+                status = false;
+              }else{
+                document.getElementById("chkcarmd_carmodel").style.color = "#006064";
+                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2714;";
+                status = true;
+              }
 
-                <br>
-                
-                <div id = "locomotive">
-                 @foreach($locomotive as $loco)
-                <input type="checkbox" name="part_type" value="{{$loco->part_type}}" id="{{$loco->part_type}}lo" checked>
-                <script type="text/javascript">
-                   document.getElementById("{{$loco->part_type}}lo").style.display = "none";
-                   // console.log(document.getElementById("{{$loco->part_type}}"));
-                </script>
-                 <label for="part_type">{{$loco->part_type}}</label>
-                 <input type="text" name="brand" style="margin-right: 10px;width: 200px">
-                <input type="text" name="code" style="margin-right: 10px;width: 200px">
-                <input type="number" name="qty" style="width: 200px">
-                <br>
-
-                 @endforeach
-                </div>
-
-
-                <div id = "bogie">
-                 @foreach($bogie as $bg)
-                 <input type="checkbox" name="part_type" value="{{$bg->part_type}}" id="{{$bg->part_type}}bg" checked>
-                <script type="text/javascript">
-                   document.getElementById("{{$bg->part_type}}bg").style.display ="none";
-                </script>
-                 <label for="part_type">{{$bg->part_type}}</label>
-                 <input type="text" name="brand" style="margin-right: 10px;width: 200px">
-                <input type="text" name="code" style="margin-right: 10px;width: 200px">
-                <input type="number" name="qty" style="width: 80px">
-                <br>
-
-                 @endforeach
-                </div>
-        <div id = "addpart"> -->
-       <!--  <input type="text" name="part_type"  />      
-        <input type="text" name="brand"  /> 
-        <input type="text" name="code" />
-        <input type="number" name="qty" />   -->
-        <!-- <input onclick="addRow(this.form);" type="button" value="Add part type" />
-        </div> -->
+            //   if (carmdcartype == " ") {
+            //     document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
+            //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
+            //     status = false;
+            //   }else if (carmdcartype == "locomotive") {
+            //     if (locpartbrand == "" || locpartcode == "" || locpartqty == "") {
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ให้ครบ";
+            //       status = false;
+            //     }else if (locpartqty < 0) {
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ต้องเป็นจำนวนเต็มบวก";
+            //     }else{
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#006064";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
+            //       status = true;
+            //     }
+            //   }else if (carmdcartype == "locomotive") {
+            //     if (locpartbrand == "" || locpartcode == "" || locpartqty == "") {
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ให้ครบ";
+            //       status = false;
+            //     }else if (locpartqty < 0) {
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ต้องเป็นจำนวนเต็มบวก";
+            //     }else{
+            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
+            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+            //       document.getElementById("chkcarmd_locpart").style.color = "#006064";
+            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
+            //       status = true;
+            //     }
+            //   return status;
+            // }
+          </script>
   
           </div>
+
+          <!-- Alert Add Part Detail -->
+          <!-- <span id="chkcarmd_locpart" class="checkform"></span> -->
+          <!-- <span id="chkcarmd_locpart" class="checkform"></span>
+          <span id="chkcarmd_locpart" class="checkform"></span> -->
 
           <br>
 

@@ -481,7 +481,7 @@
   }
 
 
-  /****************************************** Check Part **********************************/
+  /****************************************** Check Part In Image **********************************/
   function writeText(txt) {
     document.getElementById("desc").innerHTML = txt;
   }
@@ -525,7 +525,6 @@
       document.getElementById("chkedp_partno").innerHTML = "<img src= 'image/icon/check.png'>";
 
     }
-    
     return status;
   }
   

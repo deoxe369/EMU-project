@@ -113,7 +113,7 @@
                   <th></th>
                   <th></th>
                   <th class="text-center">รหัสชุดรถไฟ</th>
-                  <th class="text-center">ชนิด</th>
+                  <th class="text-center">ประเภท</th>
                   <th class="text-center">ระยะทางสะสม</th>
                   <th class="text-center">ระยะเวลาสะสม</th>
                   <th class="text-center">สถานะ</th>
@@ -241,6 +241,14 @@
                           }
                         }
                         return opt.value;
+                      }
+
+                      /* Rename */
+                      var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;
+              
+                      switch(trtype){
+                        case "passenger":  
+                          document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร'; break;
                       }        
                     </script>
                   </td>
