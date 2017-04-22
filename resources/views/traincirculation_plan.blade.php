@@ -99,10 +99,12 @@
       <!--Table Detail-->
       <div class="row col-md-12 margin">
         <!--Date Current-->
-        <div class="text-right">
-          <a href="../traincirculation_plan/save"><button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button></a>
-          <a href="../traincirculation_plan_manual/cancel"><button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button></a></a>
-          <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button></a>
+        <div>
+          <a href="/create_traincirculation_plan"><button class="btn-add" style="vertical-align: middle"><span>สร้างแผนการใช้ชุดรถไฟอัตโนมัติ</span></button></a>
+          <span style="float: right;">
+            <a href="../traincirculation_plan/save"><button type="submit" value="Save" class="btn-save"><span>ยืนยันแผนการใช้ชุดรถไฟเอง</span></button></a>
+            <a href="../traincirculation_plan_manual/cancel"><button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button></a>
+          </span>
         </div>
         
             

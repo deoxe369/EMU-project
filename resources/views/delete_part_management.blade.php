@@ -142,15 +142,16 @@
       </div>
 
     <!--Second Container-->
-      <!--Table Detail-->
       <div class="row col-md-12 margin">
         <form action="delete_part">
+
           <!-- Button -->
           <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
           
+          <!--Table: Part Detail-->
           <div class="table-responsive">
             <table class="table" id="mytable">
               <thead>

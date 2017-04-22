@@ -21,6 +21,24 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
+  <!-- Javascript Table: Row Color -->
+  <script language="javascript">
+    window.onload = function () {    
+      var a=document.getElementById('mytable');
+      for(i=0;i<a.rows.length;i++){
+        if(i>0){
+          if(i%2==1){
+            a.rows[i].className="bg-8";
+          }else{
+            a.rows[i].className="bg-7";
+          } 
+        }else{
+        // a.rows[i].className="tr_head"; 
+        } 
+      }
+    }
+  </script>
+
 </head>
 
 <body data-spy="scroll">
@@ -71,178 +89,182 @@
   <!--Content-->
   <div class="content">
     <div class="container-fluid">
+      <h1 class="margin" style="text-align: center;">แผนเข้าซ่อมของชุดรถไฟ</h1>
 
-    <!--Second Container-->
-      <!--Table Detail-->
+      <br>
+
+      <!--First Container-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-        <form action="/add_maintenance_plan/show">
-        <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <table class="table">
-            <thead>
-              <tr>
-               <th></th>
-               <th></th>
-                <th>รหัสชุดรถไฟ</th>
-                <th>ชนิด</th>
-                <th>ระยะทางสะสม</th>
-                <th>ระยะเวลาสะสม</th>
-                <th>สถานะ</th>
-                <th>ตำแหน่งงปัจุบัน</th>
-                <th>ศูนย์ซ่อม</th>
-                <th>วันเข้าซ่อม</th>
+        <form action="/add_maintenance_plan/show" name="chkaddmaint" onsubmit="return addmaint()">
+          
+          <!-- Button -->
+          <div class="text-right">
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
 
-                <!-- <th style="color: #f4511e;">แก้ไข</th> -->
-              </tr>
-            </thead>
-            <tbody>
-           
-            @for ($i = 0; $i < $number ; $i++)
-            <tr>
-              <td><input type="checkbox" id="{{$trainset_info[$i]->train_number}}2" checked name="trainsetno" value={{$trainset_info[$i]->train_number}} ></td>
-              <td><input type="checkbox" id="{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}" checked name="level" value={{$trainset_info[$i]->level}} ></td>
-              <td>{{$trainset_info[$i]->train_number}}</td>
-              <td id="{{$trainset_info[$i]->train_number}}1" >{{$trainset_info[$i]->type}}</td>
+          <span id="chkaddmaint_depotno" class="checkform"></span>
 
-              <!-- Javascript -->
-              <script type="text/javascript">
-                document.getElementById("{{$trainset_info[$i]->train_number}}2").style.display = "none";
-                document.getElementById("{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}").style.display = "none";
+          <!--Table: Maintenance Plan-->
+          <div class="table-responsive">
+            <table class="table" id="mytable">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th class="text-center">รหัสชุดรถไฟ</th>
+                  <th class="text-center">ชนิด</th>
+                  <th class="text-center">ระยะทางสะสม</th>
+                  <th class="text-center">ระยะเวลาสะสม</th>
+                  <th class="text-center">สถานะ</th>
+                  <th class="text-center">ตำแหน่งงปัจุบัน</th>
+                  <th class="text-center th-edit">ศูนย์ซ่อม</th>
+                  <th class="text-center th-edit">วันเข้าซ่อม</th>
+                  <!-- <th style="color: #f4511e;">แก้ไข</th> -->
+                </tr>
+              </thead>
+
+              <tbody>
+                @for ($i = 0; $i < $number ; $i++)
+                <tr>
+                  <td><input type="hidden" id="{{$trainset_info[$i]->train_number}}2" name="trainsetno" value={{$trainset_info[$i]->train_number}} ></td>
+                  <td><input type="hidden" id="{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}" name="level" value={{$trainset_info[$i]->level}} ></td>
+                  <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->train_number}}</td>
+                  <td class="text-center" id="{{$trainset_info[$i]->train_number}}1" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->type}}</td>
+                  <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->total_distance}}</td>
+                  <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->total_time}}</td>                
+                  <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->status}}</td>
+                  <td class="text-center" id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}" style="padding-top: 25px; margin-left: 5px;"></td>
+
+                  <a id="{{$i}}location1" title="{{$train_schedule[$i]->destination_station}}"></a>  
                 
-                var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;
-                switch(trtype){
-                  case "trcar3": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
-                  case "trcar4": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
-                }
-                
-              </script>   
-
-              <td>{{$trainset_info[$i]->total_distance}}</td>
-              <td>{{$trainset_info[$i]->total_time}}</td>                
-              <td>{{$trainset_info[$i]->status}}</td>
-              <td id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}">
-              </td>
-              
-              <a id="{{$i}}location1" title="{{$train_schedule[$i]->destination_station}}"></a>  
-                
-
-                <td><select class="sel" name="depotno">
-                  <option value="">เลือกศูนย์ซ่อม</option>
-                    @foreach ($depot_info as $info1)
+                  <td class="text-center">
+                    <select class="sel sel-6" name="depotno" id="{{$trainset_info[$i]->train_number}}depotno">
+                      <option value=" ">-- เลือกศูนย์ซ่อม --</option>
+                      @foreach ($depot_info as $info1)
                       <option id="{{$info1->id}}{{$trainset_info[$i]->train_number}}" value="{{$info1->id}}" label={{$info1->location_name}}>{{$info1->level}}</option>
 
-                          <script type="text/javascript">
-                          var a = {{$info1->level}};
-                          
-                          // console.log(a);
-                          var b = {{$trainset_info[$i]->level}};
-                           // console.log(b); 
+                      <!-- Javascript Depot -->
+                      <script type="text/javascript">
+                        var a = {{$info1->level}}; // console.log(a);
+                        var b = {{$trainset_info[$i]->level}}; // console.log(b); 
+                        if(a >= b){
+                          // console.log('ใด้');
+                        }else{
+                          document.getElementById("{{$info1->id}}{{$trainset_info[$i]->train_number}}").style.display ="none";
+                          // console.log('ไม่ได้');
+                        }
 
-                           if(a >= b){
-                              
-                              // console.log('ใด้');
-                           }else{
-                              document.getElementById("{{$info1->id}}{{$trainset_info[$i]->train_number}}").style.display ="none";
-                              // console.log('ไม่ได้');
-                           }
+                        /* Check Form: Select Depot */
+                        function addmaint(){
+                          //var addmaintdepotno1 = document.chkaddmaint.depotno.value;
+                          var addmaintdepotno = document.getElementById("{{$trainset_info[$i]->train_number}}depotno").value;
+                          var status;
+                          //console.log(addmaintdepotno);
 
+                          if (addmaintdepotno == " ") {
+                            document.getElementById("chkaddmaint_depotno").style.color = "#FF6F00";
+                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2716; โปรดเลือกศูนย์ซ่อมของชุดรถไฟให้ครบ";
+                            status = false;                            
+                          }else {
+                            document.getElementById("chkaddmaint_depotno").style.color = "#006064";
+                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2714; เลือกศูนย์ซ่อมของชุดรถไฟเรียบร้อย";
+                            status = true;
+                          }
+                          return status;
+                        }
+                      </script>
+                      @endforeach 
+                    </select>
+                  </td>
+                  <td class="text-center">
+                    <select class="sel sel-5" name="endate" id="{{$i}}train" onchange="getSelectedOptions(this,this.id)">
+                      <option id="{{$maintenance_date[$i]}}1"  ></option>
+                      <option id="{{$maintenance_date[$i]}}"" value="{{$maintenance_date[$i]}}" label={{$maintenance_date[$i]}} selected=""></option>
+                      <option id="{{$maintenance_date[$i]}}2"  ></option>
+                    </select>
 
-                          </script>
-                        
-                    @endforeach 
-                    </select></td>
+                    <!-- Javascript Date -->
+                    <script type="text/javascript">
+                      var maintenance_d = "{{$maintenance_date[$i]}}";
+                      var yesterday = new Date(maintenance_d);
+                      yesterday.setDate(yesterday.getDate() - 1);
+                      var yesterday1 = yesterday.toISOString().substring(0, 10)
 
-            
-                <td><select class="sel" name="endate" id="{{$i}}train" onchange=" getSelectedOptions(this,this.id)">
-                <option id="{{$maintenance_date[$i]}}1"  ></option>
-                <option id="{{$maintenance_date[$i]}}"" value="{{$maintenance_date[$i]}}" label={{$maintenance_date[$i]}} selected=""></option>
-                <option id="{{$maintenance_date[$i]}}2"  ></option>
-                   <script type="text/javascript">
-                          var maintenance_d = "{{$maintenance_date[$i]}}";
+                      var tomorrow = new Date(maintenance_d);
+                      tomorrow.setDate(tomorrow.getDate() + 1);
+                    var tomorrow1 = tomorrow.toISOString().substring(0, 10);
 
-                          var yesterday = new Date(maintenance_d);
-                          yesterday.setDate(yesterday.getDate() - 1);
-                          var yesterday1 = yesterday.toISOString().substring(0, 10)
+                      document.getElementById("{{$maintenance_date[$i]}}1").label = yesterday1;
+                      document.getElementById("{{$maintenance_date[$i]}}2").label = tomorrow1;
+                      document.getElementById("{{$maintenance_date[$i]}}1").value = yesterday1;
+                      document.getElementById("{{$maintenance_date[$i]}}2").value = tomorrow1;
+                      // console.log(source);
+                                      
+                      var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                      var secondDate = new Date(2016,01,1);
+                      var firstDate = new Date(maintenance_d);
+                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                      var mod = diffDays%2;
+                      switch(mod){
+                        case 0: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location").title; break;
+                        case 1: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location1").title; break;
+                      }
 
-                          var tomorrow = new Date(maintenance_d);
-                          tomorrow.setDate(tomorrow.getDate() + 1);
-                          var tomorrow1 = tomorrow.toISOString().substring(0, 10);
-
-                          document.getElementById("{{$maintenance_date[$i]}}1").label = yesterday1;
-                          document.getElementById("{{$maintenance_date[$i]}}2").label = tomorrow1;
-                          document.getElementById("{{$maintenance_date[$i]}}1").value = yesterday1;
-                          document.getElementById("{{$maintenance_date[$i]}}2").value = tomorrow1;
-                                // console.log(source);
-                                      var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                                       var secondDate = new Date(2016,01,1);
-
-                                      var firstDate = new Date(maintenance_d);
-                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-                                      var mod = diffDays%2;
-                                      switch(mod){
-                                      case 0: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location").title;
-                                      break;
-                                      case 1: document.getElementById("{{$i}}location").innerHTML=document.getElementById("{{$i}}location1").title;
-                                      break;
-                                         }
-                          
-
-
-                          function getSelectedOptions(sel,train_number){
-                                var opts = [],
-                                  opt;
-                                var len = len = sel.options.length;
-                                var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                                var secondDate = new Date(2016,01,1);
-                                var number = train_number.substr(0,train_number.length-5);
-                                var s = `${number}location`;
-                                var s1 = `${number}location1`;
-                                var source = document.getElementById(s).title;
-                                var destination = document.getElementById(s1).title;
-                                // console.log(source);
-                                // console.log(destination);
-                              
-
-                              // console.log(source8);
+                      function getSelectedOptions(sel,train_number){
+                        var opts = [],opt;
+                        var len = len = sel.options.length;
+                        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                        var secondDate = new Date(2016,01,1);
+                        var number = train_number.substr(0,train_number.length-5);
+                        var s = `${number}location`;
+                        var s1 = `${number}location1`;
+                        var source = document.getElementById(s).title;
+                        var destination = document.getElementById(s1).title;
+                        // console.log(source);
+                        // console.log(destination);
+                        // console.log(source8);
                             
-                                for (var i = 0; i < len; i++) {
-                                  opt = sel.options[i];
-                                  // console.log("k");
-                                  if (opt.selected) {
-                                    opts.push(opt);
-                                    opt.value
-
-                                      var firstDate = new Date(opt.value);
-                                      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-                                      var mod = diffDays%2;
-                                      switch(mod){
-                                      case 0: document.getElementById(s).innerHTML=source;
-                                      break;
-                                      case 1: document.getElementById(s).innerHTML=destination;
-                                      break;
-                                         }
-                                         
-                                     
-                                }
-
-              
-                                 }
-
-                                return opt.value;
-
-                              }
+                        for (var i = 0; i < len; i++) {
+                          opt = sel.options[i];
+                          // console.log("k");
+                          if (opt.selected) {
+                            opts.push(opt);
+                            opt.value
+                            var firstDate = new Date(opt.value);
+                            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                            var mod = diffDays%2;
+                            switch(mod){
+                              case 0: document.getElementById(s).innerHTML=source; break;
+                              case 1: document.getElementById(s).innerHTML=destination; break;
+                            }
+                          }
+                        }
+                        return opt.value;
+                      }        
                     </script>
-                </select><td>
-              </tr>
+                  </td>
+                </tr>
+              
+                <!-- Javascript: Old Pattern -->
+                <!-- <script type="text/javascript">
+                  document.getElementById("{{$trainset_info[$i]->train_number}}2").style.display = "none";
+                  document.getElementById("{{$trainset_info[$i]->level}}{{$trainset_info[$i]->train_number}}").style.display = "none";
                 
-              @endfor
-            </tbody>
-          </table>
-          </form>
-        </div>
-      </div>      
+                  var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;
+                  switch(trtype){
+                    case "trcar3": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 3';break;
+                    case "trcar4": document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                </script> -->
+                @endfor
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+         
 
   <!--Footer-->
   <footer class="bg-10">

@@ -93,20 +93,20 @@
 
       <br>
 
-    <!--Second Container-->
+      <!--First Container-->
       <div class="row col-md-12 margin">
-        <div class="table-responsive">
-          <form action="/checklist_maintenance/{{$id}}/save">
+        <form action="/checklist_maintenance/{{$id}}/save">
 
-            <!-- Button -->
-            <div class="text-right">
-              <!-- <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button> -->
-              <a href='/choose_cars/{{$id}}'><button type="button" class="btn-add" onclick="">สภาพอะไหล่</button></a>
-              <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-            </div>
-            
+          <!-- Button -->
+          <div class="text-right">
+            <!-- <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button> -->
+            <a href='/choose_cars/{{$id}}'><button type="button" class="btn-madd" onclick="">สภาพอะไหล่ &#128736;</button></a>
+            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          </div>
 
-            <!--Table: Checklist-->
+          <!--Table: Checklist-->
+          <div class="table-responsive">
             <table class="table" id="mytable">
               <thead>
                 <tr>
@@ -137,8 +137,8 @@
                 @endforeach
               </tbody>
             </table>
-          </form>
-        </div>      
+          </div>
+        </form>
       </div>
 
       <!-- Pagination -->

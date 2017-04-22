@@ -135,12 +135,16 @@
       <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-      <form action="/add_maintenance_plan">
+      <form action="/add_maintenance_plan" name="chkmaintpl" onsubmit="return maintpl()">
         <!-- Button -->
         <div>
-          <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
-          <button formaction="../create_maintenance_plan" class="btn-add" style="float: right; vertical-align: middle"><span>สร้างแผนอัตโนมัติ</span></button>
+          <button type="submit" value="Save" class="btn-save"><span>สร้างแผนเข้าซ่อมเอง</span></button>
+          <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
+          <button formaction="../create_maintenance_plan" class="btn-add" style="float: right; vertical-align: middle"><span>สร้างแผนเข้าซ่อมอัตโนมัติ</span></button>
         </div>
+
+        <span id="chkmaintpl_choose" class="checkform"></span>
+
         <div class="table-responsive">  
           <table class="table" id="mytable">
             <thead>

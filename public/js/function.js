@@ -102,6 +102,24 @@
     return status;
   }
 
+
+  /************************************* Maintenance Plan **************************************/
+  function maintpl(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkmaintpl_choose").style.color = "#006064";
+      document.getElementById("chkmaintpl_choose").innerHTML = "&#x2714; เลือกชุดรถไฟที่ต้องการเข้าซ่อมเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkmaintpl_choose").style.color = "#FF6F00";
+      document.getElementById("chkmaintpl_choose").innerHTML = "&#x2716; โปรดเลือกชุดรถไฟที่ต้องการเข้าซ่อมก่อน";
+      status = false;
+    }
+    return status;
+  }
+
+
   /************************************* Add Trainset Management **************************************/
   function trset(){
     var trsetno = document.chktrset.trainsetno.value;

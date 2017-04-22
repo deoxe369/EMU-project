@@ -38,6 +38,16 @@ label{font-size: 24px;}
   margin-right: 5px !important;
 }
 
+.sel-5{
+  width: 180px !important;
+  margin-right: 5px !important;
+}
+
+.sel-6{
+  width: 220px !important;
+  margin-right: 5px !important;
+}
+
 .label-padding{
   padding: 5px 5px 0px 0px;
 }

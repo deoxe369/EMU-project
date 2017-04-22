@@ -99,7 +99,7 @@
         <!-- Button -->
         <div class="text-right">
           <a href='../add_maintenance_plan/save'><button class="btn-save" style="vertical-align: middle"><span>บันทึกใบเข้าซ่อม</span></button></a>
-          <a href='../add_maintenance_plan/cancel'><button class="btn-del" style="vertical-align: middle"><span>ยกเลิก</span></button></a>
+          <a href='../add_maintenance_plan/cancel'><button class="btn-cancel" style="vertical-align: middle"><span>ยกเลิก</span></button></a>
         </div>
         <div class="table-responsive">
           <table class="table" id="mytable">
