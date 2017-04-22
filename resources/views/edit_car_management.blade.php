@@ -97,6 +97,7 @@
                   <option value={{$m->model}}>{{$m->model}}</option>
                   @endforeach
                 </select>
+                <a href="../add_model"><button type="button" class="btn-madd" style="height: 40px;">&#10010;</button></a>
                 <span id="chkcars_model" class="checkform"></span>
               </td>
             </tr>

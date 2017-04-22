@@ -95,15 +95,17 @@
 
       <!--First Container-->
       <div class="row col-md-12 margin">
-        <form action="/checklist_maintenance/{{$id}}/save">
+        <form action="/checklist_maintenance/{{$id}}/save" name="chkli" onsubmit="return chklist()">
 
           <!-- Button -->
           <div class="text-right">
             <!-- <button type="submit" value="" class="btn-save"><span>เปลี่ยนอ่ะไหล่</span></button> -->
-            <a href='/choose_cars/{{$id}}'><button type="button" class="btn-madd" onclick="">สภาพอะไหล่ &#128736;</button></a>
-            <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
+            <a href='/choose_cars/{{$id}}'><button type="button" class="btn-chkpart" onclick=""><span>สภาพอะไหล่</span></button></a>
+            <button type="submit" value="Save" class="btn-save"><span>ยืนยันผลตรวจสอบ</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
+
+          <span id="chkli_checked" class="checkform"></span>
 
           <!--Table: Checklist-->
           <div class="table-responsive">
@@ -112,27 +114,42 @@
                 <tr>
                   <th class="text-center th-edit col-sm-1"><span></span></th>
                   <th class="text-center th-edit">รายการ</th>
-                  <th class="text-center">ผ่าน </th>
+                  <th class="text-center">ผ่าน</th>
                   <th class="text-center">ไม่ผ่าน</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
                 @foreach ($checklist_info as $info)
+                <tr>
                   <td class="text-center col-sm-1"><input type="checkbox" id="{{$info->id}}" checked name="checklist" value={{$info->id}} ></td>
                     <!-- Javascript: Not Display Checkbox which send value -->
                     <script type="text/javascript">
                       document.getElementById("{{$info->id}}").style.display = "none";
                     </script> 
                   <td class="text-left">{{$info->checklist}}</td>
-                  <td class="text-center"><input type="checkbox" name="checked" value=yes></td>
-                  <td class="text-center"><input type="checkbox" name="checked" value=no></td>
+                  <td class="text-center"><input type="radio" name="{{$info->id}}checked" value="yes"></td>
+                  <td class="text-center"><input type="radio" name="{{$info->id}}checked" value="no"></td>
                 </tr>
 
                 <!-- Javascript -->
                 <script>
                   document.getElementById("kri").innerHTML = "1";
+
+                  function chklist(){
+                    var status;
+
+                    if ($('[name={{$info->id}}checked]:checked').length) {
+                      document.getElementById("chkli_checked").style.color = "#006064";
+                      document.getElementById("chkli_checked").innerHTML = "&#x2714; เลือกผลตรวจสอบสภาพอะไหล่ของชุดรถไฟเรียบร้อย";
+                      status = true;
+                    } else {
+                      document.getElementById("chkli_checked").style.color = "#FF6F00";
+                      document.getElementById("chkli_checked").innerHTML = "&#x2716; โปรดเลือกผลตรวจสอบสภาพอะไหล่ของชุดรถไฟให้ครบก่อน";
+                      status = false;
+                    }
+                    return status;
+                  }
                 </script>
                 @endforeach
               </tbody>

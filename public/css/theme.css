@@ -386,6 +386,51 @@
     color: #006064;
     border-radius: 100px;
   }
+
+  /*Button Add*/
+  .btn-chkpart{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #006064;/*#bf360c*/
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btn-chkpart:hover{
+    background-color: #e0e0e0;
+    color: #006064;
+  }
+
+  .btn-chkpart span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btn-chkpart span:after{
+    content: '\1F6E0'; /* &#128736; */
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.3s;
+  }
+
+  .btn-chkpart:hover span{
+    padding-right: 25px;
+  }
+
+  .btn-chkpart:hover span:after{
+    opacity: 1;
+    right: 0;
+  }
   
 
 /*ListPagination*/
