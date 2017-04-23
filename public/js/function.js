@@ -120,12 +120,8 @@
   }
 
 
-  /************************************* Maintenance Plan **************************************/
-  
-
-
   /************************************* Add Trainset Management **************************************/
-  function trset(){
+  /*function trset(){
     var trsetno = document.chktrset.trainsetno.value;
     var trsettype = document.chktrset.trtype.value;
     var trsetlocation = document.chktrset.location.value;
@@ -181,7 +177,80 @@
     }
 
     return status;
-  }
+  }*/
+  /* Check Form: Part In Car Model */
+            function carmd(){
+              var carmdcarmodel = document.chkcarmd.cars_model.value;
+              var carmdcartype = document.chkcarmd.cars_type.value;
+              var partbrand = document.chkcarmd.brand.value;
+              var partcode = document.chkcarmd.code.value;
+              var partqty = document.chkcarmd.qty.value;
+              var status;
+
+              if (carmdcarmodel == "") {
+                document.getElementById("chkcarmd_carmodel").style.color = "#FF6F00";
+                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสโมเดลตู้รถไฟ";
+                status = false;
+              }else{
+                document.getElementById("chkcarmd_carmodel").style.color = "#006064";
+                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2714;";
+                status = true;
+              }
+
+              switch(carmdcartype){
+                case " ":
+                  document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
+                  document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
+                  status = false;
+                  break;
+                case "locomotive":
+                  if (partbrand == "" || partcode == "" || partqty == "") {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนได้ให้ครบ";
+                    status = false;
+                  }else if (partqty < 0) {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของโมเดลตู้โดยสารประเภทขับเคลื่อนได้เป็นจำนวนเต็มบวก";
+                    status = false;
+                  }else{
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#006064";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนได้เรียบร้อย";
+                    status = true;
+                  }
+                  // return status;
+                  break;
+                case "bogie":
+                  if (partbrand == "" || partcode == "" || partqty == "") {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้ให้ครบ";
+                    status = false;
+                  }else if (partqty < 0) {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้เป็นจำนวนเต็มบวก";
+                    status = false;
+                  }
+                  else{
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#006064";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้เรียบร้อย";
+                    status = true;
+                  }
+                  // return status;
+                  break;
+              }
+              return status;
+            }
 
 
   /************************************* Add Car Management **************************************/

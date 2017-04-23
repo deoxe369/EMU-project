@@ -259,6 +259,63 @@
                 }
                 return opt.value;
               }
+
+              /* Check Form: Composition & Trainset */
+              function trset(){
+                var trsetno = document.chktrset.trainsetno.value;
+                var trsettype = document.chktrset.trtype.value;
+                var trsetlocation = document.chktrset.location.value;
+                var carid = document.chktrset.cars_id.value;
+                var status;
+
+                if (trsetno == "") {
+                  document.getElementById("chktrset_no").style.color = "#FF6F00";
+                  document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟ";
+                  status = false;
+                }else if (isNaN(trsetno)) {
+                  document.getElementById("chktrset_no").style.color = "#FF6F00";
+                  document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นตัวเลข";
+                  status = false;
+                }else if (trsetno < 0) {
+                  document.getElementById("chktrset_no").style.color = "#FF6F00";
+                  document.getElementById("chktrset_no").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสชุดรถไฟเป็นจำนวนเต็มบวก";
+                  status = false;
+                }else{
+                  document.getElementById("chktrset_no").style.color = "#006064";
+                  document.getElementById("chktrset_no").innerHTML = "&#x2714;";
+                  status = true;
+                }
+
+                if (trsetlocation == " ") {
+                  document.getElementById("chktrset_location").style.color = "#FF6F00";
+                  document.getElementById("chktrset_location").innerHTML = "&#x2716; โปรดเลือกตำแหน่งของชุดรถไฟ";
+                  status = false;
+                }else{
+                  document.getElementById("chktrset_location").style.color = "#006064";
+                  document.getElementById("chktrset_location").innerHTML = "&#x2714;";
+                }
+
+                // switch(trsettype)
+
+              }
+    //           if (trsettype == " ") {
+    //   document.getElementById("chktrset_type").style.color = "#FF6F00";
+    //   document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกข้อมูลประเภทชุดรถไฟ";
+    //   status = false;
+    // }else if (trsettype == "passenger") {
+    //   if (carid == " "){
+    //     document.getElementById("chktrset_type").style.color = "#006064";
+    //     document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+    //     document.getElementById("chktrset_carid").style.color = "#006064";
+    //     document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
+    //   }else{
+        
+    //     document.getElementById("chktrset_type").style.color = "#006064";
+    //     document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+    //     document.getElementById("chktrset_carid").style.color = "#FF6F00";
+    //     document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟให้ครบ";
+    //     status = false;
+    //   } 
             </script>
             
            <br>
