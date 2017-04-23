@@ -361,32 +361,6 @@
                   return status;
                   break;
               }
-
-
-              // if (carmdcartype == " ") {
-              //   document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
-              //   document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
-              //   status = false;
-              // }else if (carmdcartype == "locomotive" || carmdcartype == "bogie") {
-              //   if (partbrand == "" || partcode == "" || partqty == "") {
-              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
-              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-              //     document.getElementById("chkcarmd_part").style.color = "#FF6F00";
-              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ให้ครบ";
-              //     status = false;
-              //   }else if (partqty < 0) {
-              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
-              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-              //     document.getElementById("chkcarmd_part").style.color = "#FF6F00";
-              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่เป็นจำนวนเต็มบวก";
-              //   }else{
-              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
-              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-              //     document.getElementById("chkcarmd_part").style.color = "#006064";
-              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
-              //     status = true;
-              //   }
-              return status;
             }
           </script>
             
