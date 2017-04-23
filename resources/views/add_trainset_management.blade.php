@@ -152,7 +152,7 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Locomative -->
-                      <select name="cars_id" class="sel sel-comp">
+                      <select id="cars_id_bo0" name="cars_id_lo" class="sel sel-comp">
                         <option value=" ">-- เลือก --</option>
                         @foreach($cars_loco_info as $loco)
                           <option value={{$loco->id}}>{{$loco->id}}</option>
@@ -167,13 +167,13 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Bogie1 -->
-                      <select name="cars_id" class="sel sel-comp">
+                      <select id="cars_id_bo1" name="cars_id_bo1" class="sel sel-comp">
                         <option value=" ">-- เลือก --</option>
                         @foreach($cars_bogie_info as $bogie)
                           <option value={{$bogie->id}}>{{$bogie->id}}</option>
                         @endforeach
                       </select>
-                      <!-- <span id="chktrset_carid" class="checkform"></span> -->                
+                      <!-- <span id="chktrset_carid" class="checkform"></span>                 -->
                     </td>
                   </tr>
 
@@ -216,20 +216,22 @@
               
               // Create Select Composition
               var rowNum = 0;
-              
+              var rowNum1 = rowNum+1;
               function addRow(frm) {
                 rowNum ++;
+                rowNum1 ++;
                 var bogieNum = rowNum+1;
-                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select id="cars_id_bo'+rowNum1+'" name="cars_id_bo'+rowNum1+'" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
-                frm.cars_id.value = ' ';
+                // frm.cars_id.value = ' ';
                 // console.log( document.getElementById("composition"));
-                // console.log( bogieNum);
+                // console.log("1");
               }
               
               // Remove Composition
               function removeRow(rnum) {
                 rowNum --;
+                rowNum1 --;
                 jQuery('#rowNum'+rnum).remove();
                 
               }
@@ -243,7 +245,7 @@
                   // console.log("k");
                   if (opt.selected) {
                     opts.push(opt);
-                    console.log(opt.value);
+                    // console.log(opt.value);
                     switch(opt.value){
                       case "passenger": 
                         document.getElementById("composition").style.display = "block"; 
@@ -259,6 +261,7 @@
                 }
                 return opt.value;
               }
+
             </script>
             
            <br>

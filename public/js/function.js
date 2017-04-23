@@ -125,12 +125,13 @@
 
 
   /************************************* Add Trainset Management **************************************/
-  function trset(){
+function trset(){
+
     var trsetno = document.chktrset.trainsetno.value;
     var trsettype = document.chktrset.trtype.value;
     var trsetlocation = document.chktrset.location.value;
-    var carid = document.chktrset.cars_id.value;
     var status;
+    
 
     if (trsetno == "") {
       document.getElementById("chktrset_no").style.color = "#FF6F00";
@@ -165,19 +166,30 @@
       document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกข้อมูลประเภทชุดรถไฟ";
       status = false;
     }else if (trsettype == "passenger") {
-      if (carid == " "){
-        document.getElementById("chktrset_type").style.color = "#006064";
-        document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-        document.getElementById("chktrset_carid").style.color = "#006064";
-        document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
-      }else{
-        
-        document.getElementById("chktrset_type").style.color = "#006064";
-        document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-        document.getElementById("chktrset_carid").style.color = "#FF6F00";
-        document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟให้ครบ";
-        status = false;
-      } 
+       
+        console.log(rowNum);
+         for (var i =  0; i < rowNum+2; i++){
+                    // var k = 2+i;
+                    var b = 'cars_id_bo'+i;
+                    console.log(b);
+                    console.log(document.getElementById(b).value); 
+                    if(document.getElementById(b).value == " "){
+                        document.getElementById("chktrset_type").style.color = "#006064";
+                        document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+                        document.getElementById("chktrset_carid").style.color = "#FF6F00";
+                        document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟให้ครบ";
+                      }
+                      
+                    else {
+                      
+                      document.getElementById("chktrset_type").style.color = "#006064";
+                      document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+                      document.getElementById("chktrset_carid").style.color = "#006064";
+                      document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
+                      status = false;
+                    }    
+          }
+      
     }
 
     return status;
