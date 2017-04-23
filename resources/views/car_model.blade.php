@@ -104,7 +104,7 @@
   <div class="content">
     <div class="container-fluid">    
       <!--First Container-->
-      <div class="container">
+      <!-- <div class="container"> -->
         <h1 class="margin" style="text-align: center;">เพิ่มโมเดลตู้รถไฟ</h1>
 
         <br>
@@ -171,9 +171,9 @@
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$loco->part_type}}</th>
-                    <td class="text-center"><input type="text" name="{{$loco->part_type}}brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="{{$loco->part_type}}code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="{{$loco->part_type}}qty" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach
@@ -210,9 +210,9 @@
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$bg->part_type}}</th>
-                    <td class="text-center"><input type="text" name="{{$bg->part_type}}brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="{{$bg->part_type}}code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="{{$bg->part_type}}qty" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach
@@ -236,7 +236,7 @@
             var rowNum = 0;
             function addRow(frm) {
               rowNum ++;
-              var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+              var row = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="ลบออก &#9866;" class="btn-del-part" onclick="removeRow('+rowNum+');"></td></tr>';
               jQuery('#itemRows').append(row);
               frm.brand.value = '';
               frm.code.value = '';
@@ -247,7 +247,7 @@
             /* Create Input Bogie Part in Model */
             function addRow1(frm) {
               rowNum ++;
-              var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="Remove" class="btn-del" onclick="removeRow('+rowNum+');"></td></tr>';
+              var row1 = '<tr id="rowNum'+rowNum+'" class="bg-9"><td><span></span></td><td><input type="text" name="part_type" class="sel sel-3"  value="'+frm.part_type.value+'"></td><td class="text-center"><input type="text" name="brand" class="sel sel-3"  value="'+frm.brand.value+'"></td><td class="text-center"><input type="text" name="code" class="sel sel-3"  value="'+frm.code.value+'"></td><td class="text-center"><input type="number" name="qty" class="sel sel-3" value="'+frm.qty.value+'" /></td><td class="text-center" style="padding-top: 20px;"><input type="button" value="ลบออก &#9866;" class="btn-del-part" onclick="removeRow('+rowNum+');"></td></tr>';
               jQuery('#itemRows1').append(row1);
               frm.brand.value = '';
               frm.code.value = '';
@@ -280,6 +280,7 @@
                     case "locomotive": 
                       document.getElementById("locomotive").style.display = "block";
                       document.getElementById("bogie").style.display = "none";
+
                       break;
                     case "bogie":
                       document.getElementById("locomotive").style.display = "none";
@@ -295,18 +296,14 @@
             function carmd(){
               var carmdcarmodel = document.chkcarmd.cars_model.value;
               var carmdcartype = document.chkcarmd.cars_type.value;
-              var locpartbrand = document.chkcarmd.{{$loco->part_type}}brand.value;
-              var locpartcode = document.chkcarmd.{{$loco->part_type}}code.value;
-              var locpartqty = document.chkcarmd.{{$loco->part_type}}qty.value;
-
-              // var bgpartbrand = document.chkcarmd.{{$bg->part_type}}brand.value;
-              // var bgpartcode = document.chkcarmd.{{$bg->part_type}}code.value;
-              // var bgpartqty = document.chkcarmd.{{$bg->part_type}}qty.value;
+              var partbrand = document.chkcarmd.brand.value;
+              var partcode = document.chkcarmd.code.value;
+              var partqty = document.chkcarmd.qty.value;
               var status;
 
               if (carmdcarmodel == "") {
                 document.getElementById("chkcarmd_carmodel").style.color = "#FF6F00";
-                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2716; โปรดกรอกข้อมูลชื่อโมเดลของตู้รถไฟ";
+                document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสโมเดลตู้รถไฟ";
                 status = false;
               }else{
                 document.getElementById("chkcarmd_carmodel").style.color = "#006064";
@@ -314,68 +311,97 @@
                 status = true;
               }
 
-            //   if (carmdcartype == " ") {
-            //     document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
-            //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
-            //     status = false;
-            //   }else if (carmdcartype == "locomotive") {
-            //     if (locpartbrand == "" || locpartcode == "" || locpartqty == "") {
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ให้ครบ";
-            //       status = false;
-            //     }else if (locpartqty < 0) {
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ต้องเป็นจำนวนเต็มบวก";
-            //     }else{
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#006064";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
-            //       status = true;
-            //     }
-            //   }else if (carmdcartype == "locomotive") {
-            //     if (locpartbrand == "" || locpartcode == "" || locpartqty == "") {
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ให้ครบ";
-            //       status = false;
-            //     }else if (locpartqty < 0) {
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#FF6F00";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้ต้องเป็นจำนวนเต็มบวก";
-            //     }else{
-            //       document.getElementById("chkcarmd_cartype").style.color = "#006064";
-            //       document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
-            //       document.getElementById("chkcarmd_locpart").style.color = "#006064";
-            //       document.getElementById("chkcarmd_locpart").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
-            //       status = true;
-            //     }
-            //   return status;
-            // }
+              switch(carmdcartype){
+                case " ":
+                  document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
+                  document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
+                  status = false;
+                  break;
+                case "locomotive":
+                  if (partbrand == "" || partcode == "" || partqty == "") {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนได้ให้ครบ";
+                    status = false;
+                  }else if (partqty < 0) {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของโมเดลตู้โดยสารประเภทขับเคลื่อนได้เป็นจำนวนเต็มบวก";
+                  }else{
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#006064";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนได้เรียบร้อย";
+                    status = true;
+                  }
+                  return status;
+                  break;
+                case "bogie":
+                  if (partbrand == "" || partcode == "" || partqty == "") {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้ให้ครบ";
+                    status = false;
+                  }else if (partqty < 0) {
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้เป็นจำนวนเต็มบวก";
+                  }
+                  else{
+                    document.getElementById("chkcarmd_cartype").style.color = "#006064";
+                    document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+                    document.getElementById("chkcarmd_part").style.color = "#006064";
+                    document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้เรียบร้อย";
+                    status = true;
+                  }
+                  return status;
+                  break;
+              }
+
+
+              // if (carmdcartype == " ") {
+              //   document.getElementById("chkcarmd_cartype").style.color = "#FF6F00";
+              //   document.getElementById("chkcarmd_cartype").innerHTML = "&#x2716; โปรดเลือกชนิดของตู้รถไฟ";
+              //   status = false;
+              // }else if (carmdcartype == "locomotive" || carmdcartype == "bogie") {
+              //   if (partbrand == "" || partcode == "" || partqty == "") {
+              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
+              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+              //     document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ให้ครบ";
+              //     status = false;
+              //   }else if (partqty < 0) {
+              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
+              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+              //     document.getElementById("chkcarmd_part").style.color = "#FF6F00";
+              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลจำนวนอะไหล่เป็นจำนวนเต็มบวก";
+              //   }else{
+              //     document.getElementById("chkcarmd_cartype").style.color = "#006064";
+              //     document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
+              //     document.getElementById("chkcarmd_part").style.color = "#006064";
+              //     document.getElementById("chkcarmd_part").innerHTML = "&#x2714; กรอกข้อมูลอะไหล่ของตู้โดยสารประเภทขับเคลื่อนได้";
+              //     status = true;
+              //   }
+              return status;
+            }
           </script>
-  
-          </div>
+            
+            <!-- Alert Add Part Detail -->
+            <span id="chkcarmd_part" class="checkform"></span>
 
-          <!-- Alert Add Part Detail -->
-          <!-- <span id="chkcarmd_locpart" class="checkform"></span> -->
-          <!-- <span id="chkcarmd_locpart" class="checkform"></span>
-          <span id="chkcarmd_locpart" class="checkform"></span> -->
-
-          <br>
-
-          <div style="text-align: center;">
-            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+            <div style="text-align: center;">
+              <br>
+              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+            </div>
           </div>
         </form>        
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 
     
