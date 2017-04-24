@@ -16,7 +16,7 @@ class TrainSetController extends Controller
         $all_cars = array_splice($input,2);
         $number = count($all_cars);
          array_splice($all_cars,$number-1);
-        // return $all_cars;
+        return $input;
 
         $location = DB::table('route')->select('point')->where('name',$info->location)->get();
          DB::insert('insert into train_set(type, train_number,location_name,location,level,created_at) value(?, ?,?,?,?,?)', [$info->trtype,$info->trainsetno,$info->location,$location[0]->point,1,Carbon::now()]);

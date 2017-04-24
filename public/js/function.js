@@ -179,27 +179,7 @@
           document.getElementById("chktrset_type").innerHTML = "&#x2714;";
           document.getElementById("chktrset_carid").style.color = "#006064";
           document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
-          status = true;
         }
-
-        if(document.getElementById(b).value == document.getElementById(b).value){
-          document.getElementById("chktrset_type").style.color = "#006064";
-          document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-          document.getElementById("chktrset_carid").style.color = "#FF6F00";
-          document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟไม่ซ้ำกัน";
-          status = false;
-        }
-        else {
-          document.getElementById("chktrset_type").style.color = "#006064";
-          document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-          document.getElementById("chktrset_carid").style.color = "#006064";
-          document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
-          status = true;
-        }
-
-
-
-
       }
     }
     return status;

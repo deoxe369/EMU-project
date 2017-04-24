@@ -79,7 +79,7 @@
 
         <br>
 
-         <form class="form-horizontal" action='../edit_trainset_management/{{$origin_info[0]->train_number}}/save' name="chktrset">
+         <form class="form-horizontal" action='../edit_trainset_management/{{$origin_info[0]->train_number}}/save' name="chketrset" onsubmit="return etrset()">
             
           <table class="table-add" align="center">
 
@@ -89,8 +89,7 @@
               <td class="col-sm-1"><span></span></td>
               <!--Input No.Train Set-->
               <td>
-                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->train_number}}</p>             
-                <span id="chktrset_no" class="checkform"></span>
+                <p class="form-control-static" style="color: #13a381; font-weight: bold; margin-left: 100px;">{{$origin_info[0]->train_number}}</p>
               </td>
             </tr>
 
@@ -101,10 +100,10 @@
               <!--Choose Trainset Type-->
               <td>
                 <select id="trtype" name="trtype" onchange=" getSelectedOptions(this)" class="sel">
-                  <option value=" ">เลือกประเภทของชุดรถไฟ</option>
+                  <option value=" ">-- เลือกประเภทของชุดรถไฟ --</option>
                   <option value="passenger" id='passenger'>ชุดรถไฟโดยสาร</option>
                 </select>
-                <span id="chktrset_type" class="checkform"></span>
+                <span id="chketrset_type" class="checkform"></span>
               </td>
             </tr>
 
@@ -124,12 +123,15 @@
             <div class="table-responsive">
               <table class="table-add" align="center" style="border-collapse: collapse;">
                 <tbody>
+                  <tr class="bg-7">
+                    <td colspan="3" class="text-center"><span id="chketrset_carid" class="checkform" style="color: #333;">เลือกรหัสตู้รถไฟ</span></td>
+                  </tr>
                   <tr style="border-top: 3px solid #ffffff !important;">
                     <td class="text-center th-edit"><p class="td-carname">Locomative</p></td>
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Locomative -->
-                      <select name="cars_id" class="sel sel-comp"> 
+                      <select id="cars_id_bo0" name="cars_id_lo" class="sel sel-comp"> 
                         <option value={{$origin_loco[0]->id}}>{{$origin_loco[0]->id}}</option>
                         @foreach($cars_loco_info as $loco)
                         <option value={{$loco->id}}>{{$loco->id}}</option>
@@ -144,7 +146,7 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Bogie1 -->
-                      <select name="cars_id" class="sel sel-comp">
+                      <select id="cars_id_bo1" name="cars_id_bo1" class="sel sel-comp">
                          <option value={{$bogie->id}}>{{$bogie->id}}</option>
                           @foreach($cars_bogie_info as $bogie)
                           <option value={{$bogie->id}}>{{$bogie->id}}</option>
@@ -189,14 +191,14 @@
             </table> -->
 
 
-           <!-- Javascript Composition -->
-           <script type="text/javascript">
+          <!-- Javascript Composition -->
+          <script type="text/javascript">
 
-            // Start Display Button Add Composition
+            /* Start Display Button Add Composition*/
             document.getElementById("composition").style.display = "none";
             document.getElementById("locobofirst").style.display = "none";
 
-            // Display Original Trainset Type Value & Call Button Add Composition
+            /* Display Original Trainset Type Value & Call Button Add Composition */
             var train_type = "{{$origin_info[0]->type}}";
             if(train_type == "passenger"){
               document.getElementById("trtype").value = 'passenger';
@@ -206,28 +208,31 @@
             }
             // console.log(x);
               
-            /// Create Select Composition
-              var rowNum = {{$number}};
-              
-              function addRow(frm) {
-                rowNum ++;
-               
-                // var row = '<div id="rowNum'+rowNum+'"> <select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select> <input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></div>';
-                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+rowNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select name="cars_id" class="sel sel-comp">@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#8722;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+            /* Create Select Composition */
+            var rowNum = {{$number}};
+            // var rowNum = 0;
+            // var rowNum1 = rowNum+1;
+            function addRow(frm) {
+              rowNum ++;
+              // rowNum1 ++;
+              // var bogieNum = rowNum+1;
+              var bogieNum = rowNum;
+              var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select id="cars_id_bo'+rowNum+'" name="cars_id_bo'+rowNum+'" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
-                frm.cars_id.value = '';
-                console.log( document.getElementById("composition"));
+                /* frm.cars_id.value = '';
+                 console.log( document.getElementById("composition")); */
                 
               }
               
-              // Remove Composition
+              /* Remove Composition */
               function removeRow(rnum) {
                 rowNum --;
+                // rowNum1 --;
                 jQuery('#rowNum'+rnum).remove();
-                console.log( rowNum);
+                // console.log( rowNum);
               }
 
-            // Select Trainsettype
+            /* Select Trainsettype */
             function getSelectedOptions(sel){
               var opts = [], opt;
               var len = len = sel.options.length;
@@ -236,12 +241,12 @@
                  // console.log("k");
                 if (opt.selected) {
                   opts.push(opt);
-                  console.log(opt.value);
-                  // switch(opt.value){
-                  //   case "passenger": 
-                  //     document.getElementById("composition").style.display = "block";       
-                  //     break;
-                  // }
+                  /* console.log(opt.value);
+                    switch(opt.value){
+                     case "passenger": 
+                       document.getElementById("composition").style.display = "block";       
+                       break;
+                  } */
                   switch(opt.value){
                     case "passenger": 
                       document.getElementById("composition").style.display = "block"; 
@@ -249,23 +254,23 @@
                       break;
                     case " ": 
                       document.getElementById("composition").style.display = "none";
-                      document.getElementById("locobofirst").style.display = "none";     
+                      document.getElementById("locobofirst").style.display = "none";
+                      document.getElementById("selcomp").style.display = "block";     
                       break;
-                   }
+                  }
                 }
               }
               return opt.value;
             }
-            </script>
+          </script>
 
-            <br>
+          <br>
 
-            <div  style="text-align: center;">
-              <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
-              <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
-            </div>
+          <div  style="text-align: center;">
+            <button type="submit" value="Save" class="btn-save"><span>Save</span></button>
+            <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
+          </div>
         </form>
-          
       </div>
     </div>
   </div>

@@ -96,22 +96,6 @@
               </td>
             </tr>
 
-            <!-- Location -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!--Choose Location-->
-              <td>
-                <select name="location" class="sel ">
-                  <option value=" ">-- เลือกตำแหน่ง --</option>
-                  @foreach($route as $route)
-                  <option value={{$route->name}}>{{$route->name}}</option>
-                  @endforeach
-                </select>              
-                <span id="chktrset_location" class="checkform"></span>
-              </td>
-            </tr>
-
             <!-- Trainset Type -->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ประเภท</label></td>
@@ -176,15 +160,31 @@
                       <!-- <span id="chktrset_carid" class="checkform"></span>                 -->
                     </td>
                   </tr>
-
                 </tbody>
 
                 <!-- Add Input Car Row -->
                 <tbody id="itemRows"></tbody>
-
               </table>
             </div>
           </div>
+
+          <table class="table-add" align="center">
+            <!-- Location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!--Choose Location-->
+              <td>
+                <select name="location" class="sel ">
+                  <option value=" ">-- เลือกตำแหน่ง --</option>
+                  @foreach($route as $route)
+                  <option value={{$route->name}}>{{$route->name}}</option>
+                  @endforeach
+                </select>              
+                <span id="chktrset_location" class="checkform"></span>
+              </td>
+            </tr>
+          </table>
 
             <!-- Composition original
             <tr class="tr-add" id="composition" >
@@ -210,11 +210,11 @@
             <!-- Javascript Composition -->
             <script type="text/javascript">
               
-              // Start Display Button Add Composition
+              /* Start Display Button Add Composition */
               document.getElementById("composition").style.display = "none";
               document.getElementById("locobofirst").style.display = "none";
               
-              // Create Select Composition
+              /* Create Select Composition */
               var rowNum = 0;
               var rowNum1 = rowNum+1;
               function addRow(frm) {
@@ -228,7 +228,7 @@
                 // console.log("1");
               }
               
-              // Remove Composition
+              /* Remove Composition */
               function removeRow(rnum) {
                 rowNum --;
                 rowNum1 --;
@@ -236,7 +236,7 @@
                 
               }
 
-              // Select Trainsettype
+              /* Select Trainsettype */
               function getSelectedOptions(sel){
                 var opts = [], opt;
                 var len = len = sel.options.length;
@@ -254,7 +254,6 @@
                       case " ": 
                         document.getElementById("composition").style.display = "none";
                         document.getElementById("locobofirst").style.display = "none";
-                        document.getElementById("selcomp").style.display = "block";          
                         break;
                     }
                   }
@@ -270,7 +269,6 @@
               <button type="button" value="Cancel" class="btn-cancel" onclick="goBack()"><span>Cancel</span></button>
           </div>
         </form>
-        
       </div>
     </div>
   </div>
