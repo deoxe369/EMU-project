@@ -164,6 +164,24 @@
             </div>
           </div>
 
+          <table class="table-add" align="center">
+            <!-- Location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
+              <td class="col-sm-1"><span></span></td>
+              <!--Choose Location-->
+              <td>
+                <select name="location" class="sel ">
+                  <option value=" ">-- เลือกตำแหน่ง --</option>
+                  @foreach($route as $route)
+                  <option value={{$route->name}}>{{$route->name}}</option>
+                  @endforeach
+                </select>              
+                <span id="chktrset_location" class="checkform"></span>
+              </td>
+            </tr>
+          </table>
+
             <!-- <tr id="composition" align="right">
                 
                 <td class="td-add"><p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>
