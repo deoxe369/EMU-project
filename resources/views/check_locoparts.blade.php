@@ -68,6 +68,7 @@
     <div class="bg-6 contain-carpart">
       <p class="title-carpart">เลือกตรวจสภาพอะไหล่</p>
       <p id="desc" class="detail-loco">&nbsp;</p>
+      <p id="chklocpart" class="detail-loco">&nbsp;</p>
 
       <!-- Display Locomative Part -->
       <div style="overflow-x: scroll;">

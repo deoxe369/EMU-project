@@ -69,22 +69,29 @@
     <div class="bg-6 contain-carpart">
       <p class="title-carpart">เลือกตรวจสภาพอะไหล่</p>
       <p id="desc" class="detail-bogie">&nbsp;</p>
-      <img src="/image/pic/bo_detail2.png" usemap = "#bogiedetail">
-      <map name="bogiedetail">
+      <p id="chkbopart" class="detail-loco">&nbsp;</p>
+
+      <!-- Display Locomative Part -->
+      <div style="overflow-x: scroll;">
+        <!-- Image Locomative -->
+        <img src="/image/pic/bo_detail2.png" usemap = "#bogiedetail">
+
         <!-- bogie coords -->
-        <area shape="rect" coords="233,425,352,455" href="/check_parts/{{$id}}/bogies" onmouseover="writeText('Bogies')" onmouseout="writeText('&nbsp;')" alt="Bogies">
-        <area shape="rect" coords="273,479,392,509" href="/check_parts/{{$id}}/battery" onmouseover="writeText('Battery')" onmouseout="writeText('&nbsp;')" alt="Battery">
-        <area shape="rect" coords="405,523,552,552" href="/check_parts/{{$id}}/steam_vapor_traps" onmouseover="writeText('Steam Vapor Traps')" onmouseout="writeText('&nbsp;')" alt="Steam Vapor Traps">
-        <area shape="rect" coords="540,460,658,489" href="/check_parts/{{$id}}/brake_set" onmouseover="writeText('Brake Set')" onmouseout="writeText('&nbsp;')" alt="Brake Set">
-        <area shape="rect" coords="685,461,803,490" href="/check_parts/{{$id}}/wheels" onmouseover="writeText('Wheels')" onmouseout="writeText('&nbsp;')" alt="Wheels">
-        <area shape="rect" coords="756,410,874,439" href="/check_parts/{{$id}}/steel_step" onmouseover="writeText('Steel Step')" onmouseout="writeText('&nbsp;')" alt="Steel Step">
-        <area shape="rect" coords="685,511,873,540" href="/check_parts/{{$id}}/steam_end_connection" onmouseover="writeText('Steam End Connection')" onmouseout="writeText('&nbsp;')" alt="Steam End Connection">
-        <area shape="rect" coords="656,107,845,136" href="/check_parts/{{$id}}/safty_tail_gates" onmouseover="writeText('Safty Tail Gates')" onmouseout="writeText('&nbsp;')" alt="Safty Tail Gates">
-        <area shape="rect" coords="580,50,698,79" href="/check_parts/{{$id}}/roof" onmouseover="writeText('Roof')" onmouseout="writeText('&nbsp;')" alt="Roof">
-        <area shape="rect" coords="481,100,599,130" href="/check_parts/{{$id}}/windows" onmouseover="writeText('Windows')" onmouseout="writeText('&nbsp;')" alt="Windows">
-        <area shape="rect" coords="303,67,421,96" href="/check_parts/{{$id}}/tumblehome" onmouseover="writeText('Tumblehome')" onmouseout="writeText('&nbsp;')" alt="Tumblehome">
-        <area shape="rect" coords="142,133,260,162" href="/check_parts/{{$id}}/doors" onmouseover="writeText('Doors')" onmouseout="writeText('&nbsp;')" alt="Doors">
-      </map>
+        <map name="bogiedetail">
+          <area shape="rect" coords="233,425,352,455" href="/check_parts/{{$id}}/bogies" onmouseover="writeText('Bogies')" onmouseout="writeText('&nbsp;')" alt="Bogies">
+          <area shape="rect" coords="273,479,392,509" href="/check_parts/{{$id}}/battery" onmouseover="writeText('Battery')" onmouseout="writeText('&nbsp;')" alt="Battery">
+          <area shape="rect" coords="405,523,552,552" href="/check_parts/{{$id}}/steam_vapor_traps" onmouseover="writeText('Steam Vapor Traps')" onmouseout="writeText('&nbsp;')" alt="Steam Vapor Traps">
+          <area shape="rect" coords="540,460,658,489" href="/check_parts/{{$id}}/brake_set" onmouseover="writeText('Brake Set')" onmouseout="writeText('&nbsp;')" alt="Brake Set">
+          <area shape="rect" coords="685,461,803,490" href="/check_parts/{{$id}}/wheels" onmouseover="writeText('Wheels')" onmouseout="writeText('&nbsp;')" alt="Wheels">
+          <area shape="rect" coords="756,410,874,439" href="/check_parts/{{$id}}/steel_step" onmouseover="writeText('Steel Step')" onmouseout="writeText('&nbsp;')" alt="Steel Step">
+          <area shape="rect" coords="685,511,873,540" href="/check_parts/{{$id}}/steam_end_connection" onmouseover="writeText('Steam End Connection')" onmouseout="writeText('&nbsp;')" alt="Steam End Connection">
+          <area shape="rect" coords="656,107,845,136" href="/check_parts/{{$id}}/safty_tail_gates" onmouseover="writeText('Safty Tail Gates')" onmouseout="writeText('&nbsp;')" alt="Safty Tail Gates">
+          <area shape="rect" coords="580,50,698,79" href="/check_parts/{{$id}}/roof" onmouseover="writeText('Roof')" onmouseout="writeText('&nbsp;')" alt="Roof">
+          <area shape="rect" coords="481,100,599,130" href="/check_parts/{{$id}}/windows" onmouseover="writeText('Windows')" onmouseout="writeText('&nbsp;')" alt="Windows">
+          <area shape="rect" coords="303,67,421,96" href="/check_parts/{{$id}}/tumblehome" onmouseover="writeText('Tumblehome')" onmouseout="writeText('&nbsp;')" alt="Tumblehome">
+          <area shape="rect" coords="142,133,260,162" href="/check_parts/{{$id}}/doors" onmouseover="writeText('Doors')" onmouseout="writeText('&nbsp;')" alt="Doors">
+        </map>
+      </div>
     </div>
   </div>
 
