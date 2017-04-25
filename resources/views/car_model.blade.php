@@ -50,6 +50,7 @@
       } 
     }
   }
+
   </script>
 
 </head>
@@ -171,9 +172,9 @@
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$loco->part_type}}</th>
-                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$loco->part_type}}b" type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$loco->part_type}}b" type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$loco->part_type}}b" type="number" name="qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach
@@ -201,18 +202,20 @@
 
                 <tbody>
                   @foreach($bogie as $bg)
-                  <tr>
+                  <tr id ="{{$bg->part_type}}">
+                   
                     <td>
                       <input type="checkbox" name="part_type" value="{{$bg->part_type}}" id="{{$bg->part_type}}bg" checked>
                       <script type="text/javascript">
                         document.getElementById("{{$bg->part_type}}bg").style.display = "none";
-                        // console.log(document.getElementById("{{$bg->part_type}}"));
+                        
+                        
                       </script>
                     </td>
                     <th style="padding-top: 25px; margin-left: 5px;">{{$bg->part_type}}</th>
-                    <td class="text-center"><input type="text" name="brand" class="sel sel-3"></td>
-                    <td class="text-center"><input type="text" name="code" class="sel sel-3"></td>
-                    <td class="text-center"><input type="number" name="qty" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$bg->part_type}}b" type="text" name="brand" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$bg->part_type}}c" type="text" name="code" class="sel sel-3"></td>
+                    <td class="text-center"><input id="{{$bg->part_type}}q" type="number" name="qty" class="sel sel-3"></td>
                     <td class="text-center"><span></span></td>
                   </tr>
                   @endforeach

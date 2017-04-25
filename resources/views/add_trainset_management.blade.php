@@ -96,22 +96,6 @@
               </td>
             </tr>
 
-            <!-- Location -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!--Choose Location-->
-              <td>
-                <select name="location" class="sel ">
-                  <option value=" ">-- เลือกตำแหน่ง --</option>
-                  @foreach($route as $route)
-                  <option value={{$route->name}}>{{$route->name}}</option>
-                  @endforeach
-                </select>              
-                <span id="chktrset_location" class="checkform"></span>
-              </td>
-            </tr>
-
             <!-- Trainset Type -->
             <tr class="tr-add">
               <td class="td-add"><label for="trtype">ประเภท</label></td>
@@ -152,7 +136,7 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Locomative -->
-                      <select id="cars_id_bo0" name="cars_id_lo" class="sel sel-comp">
+                      <select id="cars_id_bo0" name="cars_id" class="sel sel-comp">
                         <option value=" ">-- เลือก --</option>
                         @foreach($cars_loco_info as $loco)
                           <option value={{$loco->id}}>{{$loco->id}}</option>
@@ -167,7 +151,7 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Bogie1 -->
-                      <select id="cars_id_bo1" name="cars_id_bo1" class="sel sel-comp">
+                      <select id="cars_id_bo1" name="cars_id" class="sel sel-comp">
                         <option value=" ">-- เลือก --</option>
                         @foreach($cars_bogie_info as $bogie)
                           <option value={{$bogie->id}}>{{$bogie->id}}</option>
@@ -185,28 +169,23 @@
               </table>
             </div>
           </div>
-
-            <!-- Composition original
-            <tr class="tr-add" id="composition" >
-              <td class="td-add"><label for="trtype">เลือก COMPOSITION</label></td>
+          <table class="table-add" align="center">
+            <!-- Location -->
+            <tr class="tr-add">
+              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
               <td class="col-sm-1"><span></span></td>
-              Button Add Composition
+              <!--Choose Location-->
               <td>
-                <button onclick="addRow(this.form);" type="button" value="Add composition" class="btn-add" style="vertical-align: middle"">Add composition</button>
-                    <select name="cars_id" class="sel">
-                      @foreach($cars_loco_info as $loco)
-                      <option value={{$loco->id}}>{{$loco->id}}</option>
-                      @endforeach
-                    </select>
-                    <select name="cars_id" class="sel">
-                      @foreach($cars_bogie_info as $bogie)
-                      <option value={{$bogie->id}}>{{$bogie->id}}</option>
-                      @endforeach
-                    </select>
-                    <div id="itemRows"></div>
-                </td>
-            </tr> -->
-           
+                <select name="location" class="sel ">
+                  <option value=" ">-- เลือกตำแหน่ง --</option>
+                  @foreach($route as $route)
+                  <option value={{$route->name}}>{{$route->name}}</option>
+                  @endforeach
+                </select>              
+                <span id="chktrset_location" class="checkform"></span>
+              </td>
+            </tr>
+            </table>
             <!-- Javascript Composition -->
             <script type="text/javascript">
               
@@ -221,7 +200,7 @@
                 rowNum ++;
                 rowNum1 ++;
                 var bogieNum = rowNum+1;
-                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select id="cars_id_bo'+rowNum1+'" name="cars_id_bo'+rowNum1+'" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
+                var row = '<tr id="rowNum'+rowNum+'" style="border-top: 3px solid #ffffff !important;"><td class="text-center th-bo"><p class="td-carname">Bogie '+bogieNum+'</p></td><td class="col-sm-1 bg-7"><span></span></td><td class="bg-7"><select id="cars_id_bo'+rowNum1+'" name="cars_id" class="sel sel-comp"><option value=" ">-- เลือก --</option>@foreach($cars_bogie_info as $bogie)<option value={{$bogie->id}}>{{$bogie->id}}</option>@endforeach</select><input type="button" value="&#9866;" class="btn-del-comp" onclick="removeRow('+rowNum+');"></td></tr>';
                 jQuery('#itemRows').before(row);
                 // frm.cars_id.value = ' ';
                 // console.log( document.getElementById("composition"));

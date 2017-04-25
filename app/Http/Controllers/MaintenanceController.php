@@ -324,6 +324,7 @@ class MaintenanceController extends Controller
 
 public function show_maintenance_plan(Request $info )
     {
+      
         $input  = explode('&', $info->server->get('QUERY_STRING'));
         $input1 = explode('&', $info->server->get('QUERY_STRING'));//choose
         $trainset_info = array();

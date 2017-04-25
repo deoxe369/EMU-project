@@ -147,7 +147,8 @@
                       <!-- Javascript Depot -->
                       <script type="text/javascript">
                         var a = {{$info1->level}}; // console.log(a);
-                        var b = {{$trainset_info[$i]->level}}; // console.log(b); 
+                        var b = {{$trainset_info[$i]->level}}; 
+                        
                         if(a >= b){
                           // console.log('ใด้');
                         }else{
@@ -155,24 +156,6 @@
                           // console.log('ไม่ได้');
                         }
 
-                        /* Check Form: Select Depot */
-                        function addmaint(){
-                          //var addmaintdepotno1 = document.chkaddmaint.depotno.value;
-                          var addmaintdepotno = document.getElementById("{{$trainset_info[$i]->train_number}}depotno").value;
-                          var status;
-                          //console.log(addmaintdepotno);
-
-                          if (addmaintdepotno == " ") {
-                            document.getElementById("chkaddmaint_depotno").style.color = "#FF6F00";
-                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2716; โปรดเลือกศูนย์ซ่อมของชุดรถไฟให้ครบ";
-                            status = false;                            
-                          }else {
-                            document.getElementById("chkaddmaint_depotno").style.color = "#006064";
-                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2714; เลือกศูนย์ซ่อมของชุดรถไฟเรียบร้อย";
-                            status = true;
-                          }
-                          return status;
-                        }
                       </script>
                       @endforeach 
                     </select>
@@ -190,10 +173,12 @@
                       var yesterday = new Date(maintenance_d);
                       yesterday.setDate(yesterday.getDate() - 1);
                       var yesterday1 = yesterday.toISOString().substring(0, 10)
-
                       var tomorrow = new Date(maintenance_d);
                       tomorrow.setDate(tomorrow.getDate() + 1);
-                    var tomorrow1 = tomorrow.toISOString().substring(0, 10);
+                      var tomorrow1 = tomorrow.toISOString().substring(0, 10);
+                     
+
+
 
                       document.getElementById("{{$maintenance_date[$i]}}1").label = yesterday1;
                       document.getElementById("{{$maintenance_date[$i]}}2").label = tomorrow1;
@@ -242,6 +227,26 @@
                         }
                         return opt.value;
                       }
+
+                      /* Check Form: Select Depot */
+                        function addmaint(){
+                     
+                          var addmaintdepotno = document.getElementById("{{$trainset_info[$i]->train_number}}depotno").value;
+                          var status;
+                        
+                     
+
+                          if (addmaintdepotno == " ") {
+                            document.getElementById("chkaddmaint_depotno").style.color = "#FF6F00";
+                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2716; โปรดเลือกศูนย์ซ่อมของชุดรถไฟให้ครบ";
+                            status = false;                            
+                          }else {
+                            document.getElementById("chkaddmaint_depotno").style.color = "#006064";
+                            document.getElementById("chkaddmaint_depotno").innerHTML = "&#x2714; เลือกศูนย์ซ่อมของชุดรถไฟเรียบร้อย";
+                            status = true;
+                          }
+                          return status;
+                        }
 
                       /* Rename */
                       var trtype = document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML;

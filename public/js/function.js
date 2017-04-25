@@ -179,27 +179,7 @@
           document.getElementById("chktrset_type").innerHTML = "&#x2714;";
           document.getElementById("chktrset_carid").style.color = "#006064";
           document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
-          status = true;
         }
-
-        if(document.getElementById(b).value == document.getElementById(b).value){
-          document.getElementById("chktrset_type").style.color = "#006064";
-          document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-          document.getElementById("chktrset_carid").style.color = "#FF6F00";
-          document.getElementById("chktrset_carid").innerHTML = "&#x2716; โปรดเลือกรหัสชุดรถไฟไม่ซ้ำกัน";
-          status = false;
-        }
-        else {
-          document.getElementById("chktrset_type").style.color = "#006064";
-          document.getElementById("chktrset_type").innerHTML = "&#x2714;";
-          document.getElementById("chktrset_carid").style.color = "#006064";
-          document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
-          status = true;
-        }
-
-
-
-
       }
     }
     return status;
@@ -210,11 +190,17 @@
   function carmd(){
     var carmdcarmodel = document.chkcarmd.cars_model.value;
     var carmdcartype = document.chkcarmd.cars_type.value;
-    var partbrand = document.chkcarmd.brand.value;
-    var partcode = document.chkcarmd.code.value;
-    var partqty = document.chkcarmd.qty.value;
+    // var partbrand = document.chkcarmd.brand.value;
+    // var partcode = document.chkcarmd.code.value;
+    // var partqty = document.chkcarmd.qty.value;
     var status;
-
+    
+    console.log(carmdcarmodel);
+    console.log(carmdcartype);
+    console.log(partbrand);
+    console.log(partcode);
+    console.log(partqty);
+   
     if (carmdcarmodel == "") {
       document.getElementById("chkcarmd_carmodel").style.color = "#FF6F00";
       document.getElementById("chkcarmd_carmodel").innerHTML = "&#x2716; โปรดกรอกข้อมูลรหัสโมเดลตู้รถไฟ";
@@ -232,6 +218,9 @@
         status = false;
         break;
       case "locomotive":
+        var partbrand = document.getElementById("water_treatmentb").value;
+        var partcode = document.getElementById("water_treatmentc").value;
+        var partqty = document.getElementById("water_treatmentq").value;
         if (partbrand == "" || partcode == "" || partqty == "") {
           document.getElementById("chkcarmd_cartype").style.color = "#006064";
           document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
@@ -254,13 +243,16 @@
         // return status;
         break;
       case "bogie":
+        var partbrand = document.getElementById("doorsb").value;
+        var partcode = document.getElementById("doorsc").value;
+        var partqty = document.getElementById("doorsq").value;
         if (partbrand == "" || partcode == "" || partqty == "") {
           document.getElementById("chkcarmd_cartype").style.color = "#006064";
           document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
           document.getElementById("chkcarmd_part").style.color = "#FF6F00";
           document.getElementById("chkcarmd_part").innerHTML = "&#x2716; โปรดกรอกข้อมูลอะไหล่ของโมเดลตู้รถไฟโดยสารประเภทขับเคลื่อนไม่ได้ให้ครบ";
           status = false;
-        }else if (partqty < 0) {
+        }else if (partqty = 0) {
           document.getElementById("chkcarmd_cartype").style.color = "#006064";
           document.getElementById("chkcarmd_cartype").innerHTML = "&#x2714;";
           document.getElementById("chkcarmd_part").style.color = "#FF6F00";

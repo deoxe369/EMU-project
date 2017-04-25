@@ -72,8 +72,8 @@ class TrainSetController extends Controller
      public function edit($id)
     {
         $origin_info = DB::table('train_set')->where('train_number',$id)->whereNull('deleted_at')->get();
-
         $origin_loco = DB::table('cars')->select('id')->where('cars_type','locomotive')->where('train_number',$id)->whereNull('deleted_at')->get();
+        // return   $origin_loco ;
         $origin_bogie = DB::table('cars')->select('id')->where('cars_type','bogie')->where('train_number',$id)->whereNull('deleted_at')->get();
         $number = count($origin_bogie);
         
