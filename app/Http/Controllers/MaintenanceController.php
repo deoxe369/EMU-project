@@ -156,7 +156,8 @@ class MaintenanceController extends Controller
        
         $trainset_maintenance = DB::table('maintenance')->select('train_number')->distinct()->get();
         $number = count($trainset_maintenance);
-        $trainset_level_info = DB::table('train_set')->select('train_number','total_distance','total_time')->distinct()->get();
+        $trainset_level_info = DB::table('train_set')->select('train_number','total_distance','total_time')->where('status','วิ่ง')->orwhere('status','ว่าง')->distinct()->get();
+        // return $trainset_level_info;
         $level_info = DB::table('level')->select('level','total_time','total_distance')->orderBy('level', 'asc')->get();
 
             foreach ($trainset_level_info as $x) {
@@ -176,16 +177,17 @@ class MaintenanceController extends Controller
             }
 
         $today = Carbon::now(); 
-        $train_number =  DB::table('maintenance')->where('in_date',$today->toDateString())->whereNull('deleted_at')->get();
+        $train_number =  DB::table('maintenance')->where('in_date',$today->toDateString())->whereNull('deleted_at')->whereNull('stay')->get();
         
 
         foreach ($train_number as $value) {
+            DB::table('maintenance')->where('id',$value->id)->update(['stay'=>'yes']);
             DB::table('train_set')->where('train_number',$value->train_number)->update(['status'=>'ซ่อม','updated_at'=>Carbon::now()]);
             $depot_slot = DB::table('depot')->select('free_slot')->where('location_name',$value->depot)->get();
 
             $depot_slot1 = $depot_slot[0]->free_slot -1;
 
-             DB::table('depot')->where('location_name',$info->depotno)->update(['free_slot'=>$depot_slot1,'updated_at'=>Carbon::now()]);
+            DB::table('depot')->where('location_name', $value->depot)->update(['free_slot'=>$depot_slot1,'updated_at'=>Carbon::now()]);
    
             
         }
@@ -417,9 +419,9 @@ public function show_maintenance_plan(Request $info )
         }
         
 
-
+        $level_info = DB::table('level')->select('level','total_time','total_distance')->orderBy('level', 'asc')->get();
         
-         return View::make('maintenance_plan', array('trainset_info' => $trainset_info));
+         return View::make('maintenance_plan')->with('trainset_info',$trainset_info)->with('level_info',$level_info);;
         
     }
 
@@ -442,6 +444,7 @@ public function show_maintenance_plan(Request $info )
         }
         $all_train = array_values(array_diff( $train_free,$train_main));
         $number1 = count($all_train); 
+
        
             for($i = 0 ; $i < $number1 ; $i++){// ทำที่ละคัน
                 $train_level1 = DB::table('train_set')->select('level','total_distance')->where('train_number', $all_train[$i] )->get();
@@ -454,7 +457,7 @@ public function show_maintenance_plan(Request $info )
                 if($gap < 1000){
                     
                   $balance =  $level_info[0]->total_distance - $train_level1[0]->total_distance;
-                return $balance ;
+                // return $balance ;
                 $source_station_distance =  DB::table('route')->select('distance')->where('name',$trainschedule[0]->source_station)->get();
                 $destination_station_distance = DB::table('route')->select('distance')->where('name',$trainschedule[0]->destination_station)->get();
                 $range = abs($destination_station_distance[0]->distance - $source_station_distance[0]->distance);
@@ -513,13 +516,13 @@ public function show_maintenance_plan(Request $info )
                      $free_slot_endate = $depot_capa[0]->capacity - $train_in_maintenance;
   // ----------------------------------------------------------------------->
                      
-                     // if($free_slot_endate  > 0){
-                     //      DB::insert('insert into maintenance (train_number, depot,level,in_date,created_at,mark) values (?, ?, ?, ?, ? ,? )', [ $all_train[$i],$depot_name,$train_level1[0]->level,$maintenance_date,Carbon::now(),"yes"]);
-                     //  }else{
-                     //      DB::table('maintenance')->where('mark',"yes")->delete();
-                     //      $name = $depot_name;
-                     //    return "รถไฟ $train->train_number ไม่สามารถเข้าซ่อมได้ เนื่องจากศุนย์ซ่อม  $name  วันที่ $maintenance_date" ;
-                     //  }
+                     if($free_slot_endate  > 0){
+                          DB::insert('insert into maintenance (train_number, depot,level,in_date,created_at,mark) values (?, ?, ?, ?, ? ,? )', [ $all_train[$i],$depot_name,$train_level1[0]->level,$maintenance_date,Carbon::now(),"yes"]);
+                      }else{
+                          DB::table('maintenance')->where('mark',"yes")->delete();
+                          $name = $depot_name;
+                        return "รถไฟ $train->train_number ไม่สามารถเข้าซ่อมได้ เนื่องจากศุนย์ซ่อม  $name  วันที่ $maintenance_date" ;
+                      }
 
 
 
@@ -693,11 +696,14 @@ public function show_maintenance_plan(Request $info )
             
             if($cars_type[0]->cars_type == "locomotive"){
 
-                 return view('check_locoparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid);  
+                 $part_type_lo = DB::table('part_cars')->where('cars_type',"locomotive")->get();
+                 
+                 return view('check_locoparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid)->with('part_lo',$part_type_lo);  
 
             }else if($cars_type[0]->cars_type == "bogie"){
-
-                 return view('check_bogieparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid);   
+                 $part_type_bo = DB::table('part_cars')->where('cars_type',"bogie")->get();
+                 
+                 return view('check_bogieparts')->with('id',$id)->with('part_alert',$part_alert)->with('part_alert1',$part_alert1)->with('mid',$mid)->with('part_bo',$part_type_bo);    
 
             }
           

@@ -106,8 +106,8 @@
             <label for="trsettype"><h3 class="margin label-padding">ประเภท</h3></label>
             <select id="trsettype" name="trsettype" class="sel sel-3">
               <option value='not'>เลือกประเภทชุดรถไฟ</option>
-              <option value="trcar3">ชุดรถไฟโดยสาร 3</option>
-              <option value="trcar4">ชุดรถไฟโดยสาร 4</option>
+              <option value="passenger">ชุดรถไฟโดยสาร</option>
+              <!-- <option value="trcar4">ชุดรถไฟโดยสาร 4</option> -->
           <!--  <option value="trgoods">ชุดรถไฟขนส่ง</option>
                 <option value="trtrolley">รถรางโยก</option> -->
             </select>
@@ -119,7 +119,7 @@
               <option value='not'>เลือกสถานะชุดรถไฟ</option>
               <option value="ไม่ว่าง">ไม่ว่าง</option>
               <option value="ว่าง">ว่าง</option>
-              <option value="ซ่อม">ซ่อม</option>
+              <!-- <option value="ซ่อม">ซ่อม</option> -->
             </select>
           </div>
 
@@ -138,9 +138,10 @@
       <form action="/add_maintenance_plan" name="chkmaintpl" onsubmit="return maintpl()">
         <!-- Button -->
         <div>
-          <button type="submit" value="Save" class="btn-save"><span>สร้างแผนเข้าซ่อมเอง</span></button>
-          <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
-          <button formaction="../create_maintenance_plan" class="btn-add" style="float: right; vertical-align: middle"><span>สร้างแผนเข้าซ่อมอัตโนมัติ</span></button>
+          <button type="reset" value="reset" class="btn-cancel" style="float: right; vertical-align: middle"><span>รีเซต</span></button>
+          <button type="submit" value="Save" class="btn-save" style="float: right; vertical-align: middle" ><span>สร้างแผนเข้าซ่อมเอง</span></button>
+          
+          <button herf="../create_maintenance_plan" class="btn-add" ><span>สร้างแผนเข้าซ่อมอัตโนมัติ</span></button>
         </div>
 
         <span id="chkmaintpl_choose" class="checkform"></span>
@@ -152,8 +153,8 @@
                 <th class="text-center th-edit">เลือก</th>
                 <th class="text-center">รหัสชุดรถไฟ</th>
                 <th class="text-center">ประเภท</th>
-                <th class="text-center">ระยะทางสะสม</th>
-                <th class="text-center">ระยะเวลาสะสม</th>
+                <th class="text-center">ระยะทางสะสม (km)</th>
+                <th class="text-center">ระยะเวลาสะสม </th>
                 <th class="text-center">สถานะ</th>
               </tr>
             </thead>
@@ -189,10 +190,10 @@
                             var dis_result = level_dis-train_dis;
                               if(time_result <= 0.08 || dis_result <= 1000){
                                 // document.getElementById("{{$info->train_number}}").style.backgroundColor = "#fccb58";
-                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
                               
                             }else if(time_result <= 0.20 || dis_result <= 3000){
-                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
                             }
                           }
 
@@ -201,18 +202,29 @@
                          document.getElementById("{{$info->train_number}}{{$level->level}}time").style.display = "none";
                          document.getElementById("{{$info->train_number}}{{$level->level}}dis").style.display = "none";  
                         document.getElementById("level{{$info->train_number}}").style.display = "none";  
-                       
+
+                        // var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
+                       // document.getElementById("total_time{{$info->train_number}}").innerHTML = time*356; 
                       </script> 
                  @endforeach 
                 
               <!-- JS change name cartype -->
               <script type="text/javascript">
                 var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
-                console.log(trtype);
+                // console.log(trtype);
                 switch(trtype){
                   case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
                   // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
                 }
+                var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
+                var year = time-(time%1);
+                      var month =  Math.floor((time%1)*365);
+                       var month1 = (time%1)*365;
+                      var month2 =  Math.floor(month/30);
+                      var day = Math.round(month1-month);
+                      var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
+                document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
+                
               </script>
               @endforeach
 

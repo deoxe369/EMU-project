@@ -20,7 +20,7 @@
   <script src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 
 <body data-spy="scroll">
@@ -72,6 +72,10 @@
 
       <!-- Display Locomative Part -->
       <div style="overflow-x: scroll;">
+      <ol id='a0' style="color:red">
+      </ol>
+      <ol id='a1' style="color:orange">
+      </ol>
         <!-- Image Locomative -->
         <img id="theImg" src="/image/pic/loco_detail2.png" usemap = "#locodetail">
 
@@ -107,7 +111,7 @@
           <area shape="rect" coords="895,127,1044,155" href="/check_parts/{{$mid}}/{{$id}}/cooling_hatch" onmouseover="writeText('Cooling Hatch')" onmouseout="writeText('&nbsp;')" alt="Cooling Hatch">
           <area shape="rect" coords="895,89,1044,117" href="/check_parts/{{$mid}}/{{$id}}/engine_water_tank" onmouseover="writeText('Engine Water Tank')" onmouseout="writeText('&nbsp;')" alt="Engine Water Tank">
           <area shape="rect" coords="895,52,1044,80" href="/check_parts/{{$mid}}/{{$id}}/lube_oil_cooler" onmouseover="writeText('Lube Oil Cooler')" onmouseout="writeText('&nbsp;')" alt="Lube Oil Cooler">
-          <area shape="rect" coords="619,28,767,56" href="/check_parts/{{$mid}}/{{$id}}/fan_moter1" onmouseover="writeText('36&quot; Fan &amp; Moter')" onmouseout="writeText('&nbsp;')" alt="36&quot; Fan &amp; Moter">
+          <area id="fan_moter1" shape="rect" coords="619,28,767,56" href="/check_parts/{{$mid}}/{{$id}}/fan_moter1" onmouseover="writeText('36&quot; Fan &amp; Moter')" onmouseout="writeText('&nbsp;')" alt="36&quot; Fan &amp; Moter">
           <area shape="rect" coords="621,147,769,175" href="/check_parts/{{$mid}}/{{$id}}/engine_turbo_charger" onmouseover="writeText('Engine Turbocharger')" onmouseout="writeText('&nbsp;')" alt="Engine Turbo charger">
           <area shape="rect" coords="621,111,769,139" href="/check_parts/{{$mid}}/{{$id}}/turbo_intercooler" onmouseover="writeText('Turbo Intercooler')" onmouseout="writeText('&nbsp;')" alt="Turbo Intercooler">
           <area shape="rect" coords="621,69,769,97" href="/check_parts/{{$mid}}/{{$id}}/turbo_air_intel" onmouseover="writeText('Turbo Air Intel &amp; Silencer')" onmouseout="writeText('&nbsp;')" alt="Turbo Air Intel &amp; Silencer">
@@ -122,8 +126,7 @@
           <area shape="rect" coords="32,240,168,268" href="/check_parts/{{$mid}}/{{$id}}/steam_generator" onmouseover="writeText('Steam Generator')" onmouseout="writeText('&nbsp;')" alt="Steam Generator">
           <area shape="rect" coords="118,309,253,337" href="/check_parts/{{$mid}}/{{$id}}/water_treatment" onmouseover="writeText('Water Treatment')" onmouseout="writeText('&nbsp;')" alt="Water Treatment">
         </map>
-        </canvas>
-
+ 
         <!-- Alert Part -->
         <!-- 1Part: Steam End Connection -->
         <!-- <div style="position: absolute; left: 122px; top: 710px;" id="Steam End Connection">
@@ -144,32 +147,40 @@
       </div>
     </div>
   </div>
+  
+ @foreach($part_lo as $lo)
+   @foreach($part_alert as $a0)
+  
+   <script type="text/javascript">
+   var part = "{{$lo->part_type}}";
+   var part_id = "{{$lo->id}}";
+   var part_alert = "{{$a0}}";
+   console.log(part);
+   // console.log(part_id);
+   if(part == part_alert){
+     document.getElementById("a0").append(part_id+"."+" "+part+"  !!!");
+   }
+   
+  </script> 
+   @endforeach
 
-  <!-- <canvas id='myCanvas' width='1269px' height='617px'>
+   @foreach($part_alert1 as $a1)
+   <script type="text/javascript">
+   var part = "{{$lo->part_type}}";
+   var part_id = "{{$lo->id}}";
+   var part_alert1 = "{{$a1}}";
+   // console.log(part_id);
+   if(part == part_alert1){
+    
+    document.getElementById("a1").append(part_id+"."+" "+part+"  !!");
+   }
+   
+  </script> 
+   @endforeach  
+  @endforeach
 
-  <script>
-    var img = document.getElementById("theImg");
-    var cnvs = document.getElementById("myCanvas");
-  
-    cnvs.style.position = "absolute";
-    cnvs.style.left = img.offsetLeft + "px";
-    cnvs.style.top = img.offsetTop + "px";
-  
-  
-    //Steam End Connection
-    var ctx = cnvs.getContext("2d");
-    ctx.beginPath();
-    ctx.arc(93, 450, 12, 0, 2 * Math.PI, false);
-    ctx.lineWidth = 4;
-    ctx.fillStyle = "#131617";
-    ctx.strokeStyle = 'red';
-    ctx.stroke();
-    ctx.fill();
-    ctx.fillStyle = "red";
-    ctx.textAlign = "center";
-    ctx.font = "20px Arial";
-    ctx.fillText("!",93, 457);
-  </script> -->
+ 
+
  
   <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>

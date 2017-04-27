@@ -114,7 +114,7 @@
                   <th></th>
                   <th class="text-center">รหัสชุดรถไฟ</th>
                   <th class="text-center">ประเภท</th>
-                  <th class="text-center">ระยะทางสะสม</th>
+                  <th class="text-center">ระยะทางสะสม (km)</th>
                   <th class="text-center">ระยะเวลาสะสม</th>
                   <th class="text-center">สถานะ</th>
                   <th class="text-center">ตำแหน่งงปัจุบัน</th>
@@ -132,7 +132,7 @@
                   <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->train_number}}</td>
                   <td class="text-center" id="{{$trainset_info[$i]->train_number}}1" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->type}}</td>
                   <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->total_distance}}</td>
-                  <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->total_time}}</td>                
+                  <td class="text-center" id="{{$trainset_info[$i]->train_number}}time" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->total_time}}</td>                
                   <td class="text-center" style="padding-top: 25px; margin-left: 5px;">{{$trainset_info[$i]->status}}</td>
                   <td class="text-center" id="{{$i}}location" title="{{$train_schedule[$i]->source_station}}" style="padding-top: 25px; margin-left: 5px;"></td>
 
@@ -254,7 +254,16 @@
                       switch(trtype){
                         case "passenger":  
                           document.getElementById("{{$trainset_info[$i]->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร'; break;
-                      }        
+                      }    
+                      var time = document.getElementById("{{$trainset_info[$i]->train_number}}time").innerHTML
+                      var year = time-(time%1);
+                      var month =  Math.floor((time%1)*365);
+                       var month1 = (time%1)*365;
+                      var month2 =  Math.floor(month/30);
+                      var day = Math.round(month1-month);
+                      var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
+
+                      document.getElementById("{{$trainset_info[$i]->train_number}}time").innerHTML = total_time;  
                     </script>
                   </td>
                 </tr>

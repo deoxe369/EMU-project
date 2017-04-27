@@ -146,7 +146,7 @@
               <tr>
                 <th class="text-center">รหัสชุดรถไฟ</th>
                 <th class="text-center">ประเภท</th>
-                <th class="text-center">ระยะทางสะสม</th>
+                <th class="text-center">ระยะทางสะสม (km)</th>
                 <th class="text-center">ระยะเวลาสะสม</th>
                 <th class="text-center">สถานะ</th>
                 <th class="text-center th-edit">แก้ไข</th>
@@ -159,7 +159,7 @@
                 <td class="text-center">{{$info->train_number}}</td>
                 <td class="text-center" id="{{$info->train_number}}trsettype">{{$info->type}}</td>        
                 <td class="text-center">{{$info->total_distance}}</td>
-                <td class="text-center">{{$info->total_time}}</td>                
+                <td class="text-center" id="{{$info->train_number}}time">{{$info->total_time}}</td>                
                 <td class="text-center">{{$info->status}}</td>
                 <td class="text-center"><a href='../edit_trainset_management/{{$info->train_number}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
               </tr>
@@ -174,6 +174,15 @@
                       document.getElementById("{{$info->train_number}}trsettype").innerHTML= 'ชุดรถไฟโดยสาร';
                       break;
                   }
+                  var time = document.getElementById("{{$info->train_number}}time").innerHTML
+                      var year = time-(time%1);
+                      var mount =  Math.floor((time%1)*365);
+                       var mount1 = (time%1)*365;
+                      var mount2 =  Math.floor(mount/30);
+                      var day = Math.round(mount1-mount);
+                      var total_time = year+" ปี "+mount2+" เดือน "+day+" วัน"
+
+                      document.getElementById("{{$info->train_number}}time").innerHTML = total_time; 
                 </script>
               @endforeach
             </tbody>

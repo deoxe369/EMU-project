@@ -167,16 +167,12 @@
               </table>
             </div>
           </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 010b9f087d07ab0c3fef820f1051f57a5c2ab49d
           <table class="table-add" align="center">
             <!-- Location -->
             <tr class="tr-add">
               <td class="td-add"><label for="location">ตำแหน่ง</label></td>
-<<<<<<< HEAD
-=======
+
               <td class="col-sm-1"><span></span></td>
               <!--Choose Location-->
               <td>
@@ -191,42 +187,7 @@
             </tr>
           </table>
 
-          <table class="table-add" align="center">
-            <!-- Location -->
-            <tr class="tr-add">
-              <td class="td-add"><label for="location">ตำแหน่ง</label></td>
-              <td class="col-sm-1"><span></span></td>
-              <!--Choose Location-->
-              <td>
-                <select name="location" class="sel ">
-                  <option value=" ">-- เลือกตำแหน่ง --</option>
-                  @foreach($route as $route)
-                  <option value={{$route->name}}>{{$route->name}}</option>
-                  @endforeach
-                </select>              
-                <span id="chktrset_location" class="checkform"></span>
-              </td>
-            </tr>
-          </table>
-
-            <!-- Composition original
-            <tr class="tr-add" id="composition" >
-              <td class="td-add"><label for="trtype">เลือก COMPOSITION</label></td>
->>>>>>> 010b9f087d07ab0c3fef820f1051f57a5c2ab49d
-              <td class="col-sm-1"><span></span></td>
-              <!--Choose Location-->
-              <td>
-                <select name="location" class="sel ">
-                  <option value=" ">-- เลือกตำแหน่ง --</option>
-                  @foreach($route as $route)
-                  <option value={{$route->name}}>{{$route->name}}</option>
-                  @endforeach
-                </select>              
-                <span id="chktrset_location" class="checkform"></span>
-              </td>
-            </tr>
-            </table>
-            <!-- Javascript Composition -->
+         
             <script type="text/javascript">
               
               /* Start Display Button Add Composition */
