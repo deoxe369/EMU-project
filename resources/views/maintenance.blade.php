@@ -141,8 +141,9 @@
                 <th class="text-center">รหัสชุดรถไฟ</th>
                 <th class="text-center">ศูนย์ซ่อม</th>
                 <th class="text-center">ระดับ</th>
-                <th class="text-center">วันเวลาเข้า</th>
-                <th class="text-center">วันเวลาออก</th>
+                <th class="text-center">วันสร้างใบซ่อม</th>
+                <th class="text-center">วันเข้าซ่อม</th>
+                <th class="text-center">วันออก</th>
                 <th class="text-center th-edit">แก้ไข</th>
                 <th class="text-center th-edit">Checklists</th>
               </tr>
@@ -154,25 +155,28 @@
                 <td class="text-center">{{$info->train_number}}</td>
                 <td class="text-center">{{$info->depot}}</td>
                 <td class="text-center">{{$info->level}}</td>
-                <td class="text-center">{{$info->in_date}}</td>
+                <td class="text-center" id="{{$info->id}}create">{{$info->created_at}}</td>
+                <td class="text-center" id="{{$info->id}}indate">{{$info->in_date}}</td>
                 <td class="text-center">{{$info->out_date}}</td>
                 <td class="text-center"><a href='../edit_maintenance/{{$info->id}}'><img src="image/icon/edit_orange.png" onmouseover="this.src='image/icon/edit_yellow.png'" onmouseout="this.src='image/icon/edit_orange.png'"></a></td>
                 <td class="text-center"><a href='../checklist_maintenance/{{$info->id}}'><img src="image/icon/checklist_green.png" onmouseover="this.src='image/icon/checklist_yellow.png'" onmouseout="this.src='image/icon/checklist_green.png'"></a></td>
               </tr>
               <!-- JavaScript Foreach -->
-                <!-- <script type="text/javascript">
-                  //row color
-                  var id = parseInt(document.getElementById("{{$info->id}}").id);
-                
-                  if(id%2 == 1){
-                    document.getElementById("{{$info->id}}").style.backgroundColor = "#ffffff";
-                    console.log(id);
-                  }else{
-                    document.getElementById("{{$info->id}}").style.backgroundColor = "#F5F5F5";
-                    console.log(id);
-                  }
+                <script type="text/javascript">
+                 
+                   var date1 = document.getElementById("{{$info->id}}create").innerHTML;
+                   var date =  new Date(date1);
+                   var month = date.getMonth()+1;
+                   if (month <=9){
+                     document.getElementById("{{$info->id}}create").innerHTML = date.getFullYear()+"-"+"0"+month+"-"+date.getDate();
+                   }else{
+                      document.getElementById("{{$info->id}}create").innerHTML = date.getFullYear()+"-"+month+"-"+date.getDate();
+                   }
+                    
+                    var indate = document.getElementById("{{$info->id}}indate").innerHTML;
+                    console.log(indate);
 
-                </script> -->
+                </script>
 
               @endforeach
                

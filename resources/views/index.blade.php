@@ -109,7 +109,7 @@
         <form class="bg-5">
           <!--Date-->
           <div class="form-group">
-            <label for="date"><h3 class="margin label-padding1">วันที่</h3></label>
+           <!--  <label for="date"><h3 class="margin label-padding1">วันที่</h3></label>
             <input type="date" id="date" name="date"  class="td-add">
                  
 
@@ -123,7 +123,7 @@
               
             </select>
 
-            <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+            <button type="submit" value="Search" class="btn-search"><span>Search</span></button> -->
           
             
           </div>

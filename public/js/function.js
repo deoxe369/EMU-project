@@ -203,6 +203,28 @@
   }
 
 
+  /************************************* Edit Trainset Management **************************************/
+
+  function etrset(){
+    var trsettype = document.chketrset.trtype.value;
+    var status;
+
+
+    if (trsettype == " ") {
+      document.getElementById("chktrset_type").style.color = "#FF6F00";
+      document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกประเภทของชุดรถไฟ";
+      status = false;
+    }else{
+      document.getElementById("chktrset_type").style.color = "#006064";
+      document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+      status = true;
+    }  
+
+    return status;
+  }
+
+
+
   /************************************* Delete Trainset **************************************/
   function dtrset(){
     var status;

@@ -60,6 +60,7 @@ class TrainSetController extends Controller
 
      public function add_trainset_info()
     {
+      
         $cars_loco_info = DB::table('cars')->where('cars_type','locomotive')->where('status','ว่าง')->get();
         $cars_bogie_info = DB::table('cars')->where('cars_type','bogie')->where('status','ว่าง')->get();
         $route = DB::table('route')->select('name')->get();

@@ -184,8 +184,8 @@
                 <span id="chktrset_location" class="checkform"></span>
               </td>
             </tr>
-            </table>
-          
+          </table>
+
 
             <!-- Javascript Composition -->
             <script type="text/javascript">
