@@ -97,14 +97,14 @@
         <br>
 
         <!--First Container-->
-        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->id}}/save" name="chktrcir" onsubmit="return trcir()">
+        <form class="form-horizontal" action="/edit_traincirculation/{{$origin_info[0]->train_trip}}/save" name="chktrcir" onsubmit="return trcir()">
 
         <div class="bg-5 row col-md-12 margin">
 
             <!-- Trip No. Title-->
             <h2 class="text-center">
               <span>รายละเอียดของ</span>
-              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->id}}</span>
+              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->train_trip}}</span>
             </h2>
 
             <br>
@@ -156,7 +156,7 @@
             <!-- Choose Trainset No. Title-->
             <h2 class="text-center">
               <span>เลือกชุดรถไฟของ</span>
-              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->id}}</span>
+              <span style="color: #ffab00; font-weight: bold;">ทริป {{$origin_info[0]->train_trip}}</span>
             </h2>
 
 
