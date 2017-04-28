@@ -44,7 +44,7 @@
         <!-- Collect the nav links,forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='../'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
+            <li><a href='/'>ระบบจัดการใช้ชุดรถไฟ<span class="sr-only">(current)</span></a></li>
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">การเข้าซ่อม<span class="caret"></span></a>
               <!-- Drop Maintenance Plan -->
@@ -53,10 +53,10 @@
                 <li class="active"><a href='../maintenance'>ระบบจัดการการเข้าซ่อม</a></li>
               </ul>
             </li>
-            <li><a href='../trainset_management'>จัดการชุดรถไฟ</a></li>
-            <li><a href='../car_management'>จัดการตู้รถไฟ</a></li>
-            <li><a href='../part_management'>จัดการอะไหล่</a></li>            
-            <li><a href='../depot_management'>จัดการศูนย์ซ่อม</a></li>
+            <li><a href='/trainset_management'>จัดการชุดรถไฟ</a></li>
+            <li><a href='/car_management'>จัดการตู้รถไฟ</a></li>
+            <li><a href='/part_management'>จัดการอะไหล่</a></li>            
+            <li><a href='/depot_management'>จัดการศูนย์ซ่อม</a></li>
           </ul>
         </div>
       </div>

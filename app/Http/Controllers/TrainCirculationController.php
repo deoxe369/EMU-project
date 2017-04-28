@@ -173,9 +173,10 @@ class TrainCirculationController extends Controller
         DB::table('train_set')->where('mark',NULL)->where('status','ว่าง')->orwhere('status','วิ่ง')->update(['status'=>'ว่าง']);
         DB::table('train_set')->where('mark','yes')->update(['status'=>'วิ่ง','mark'=>NULL]);
 
-         $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
+         // $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
 
-        return View::make('index')->with('train_schedule_info',$train_schedule_info);  
+        // return View::make('index')->with('train_schedule_info',$train_schedule_info);
+        return Redirect::action('TrainCirculationController@train_schedule_info'); 
     }
 
     public function add_plan1($id)
@@ -262,10 +263,10 @@ class TrainCirculationController extends Controller
         DB::table('train_schedule')->where('mark','yes')->delete();
          DB::table('train_set')->where('mark',"yes")->update(['mark'=>NULL]);
 
-        $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
+        // $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
 
-        return View::make('index')->with('train_schedule_info',$train_schedule_info);
-
+        // return View::make('index')->with('train_schedule_info',$train_schedule_info);
+        return Redirect::action('TrainCirculationController@train_schedule_info');
     }
 
     public function add_plan_cancel1()
@@ -284,7 +285,7 @@ class TrainCirculationController extends Controller
         $train_set_number1 = array();
         $train_info1 = array();
 
-        $origin_info = DB::table('train_schedule')->where('id',$id)->get();
+        $origin_info = DB::table('train_schedule')->where('train_trip',$id)->get();
 
         $source_distance = DB::table('route')->where('name',$origin_info[0]->source_station)->get();
         $destination_distance = DB::table('route')->where('name',$origin_info[0]->destination_station)->get();

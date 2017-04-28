@@ -126,6 +126,7 @@
           <div class="form-group">
             <label for="search"><h3 class="margin"><span></span></h3></label>
             <button type="submit" value="Search" class="btn-search"><span>Search</span></button>
+            <button formaction="../create_maintenance_plan" class="btn-add" ><span>สร้างแผนเข้าซ่อมอัตโนมัติ</span></button>
           </div>
         </form> 
       </div>
@@ -135,15 +136,14 @@
       <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
+     
       <form action="/add_maintenance_plan" name="chkmaintpl" onsubmit="return maintpl()">
         <!-- Button -->
-        <div>
-          <button type="reset" value="reset" class="btn-cancel" style="float: right; vertical-align: middle"><span>รีเซต</span></button>
-          <button type="submit" value="Save" class="btn-save" style="float: right; vertical-align: middle" ><span>สร้างแผนเข้าซ่อมเอง</span></button>
-          
-          <button herf="../create_maintenance_plan" class="btn-add" ><span>สร้างแผนเข้าซ่อมอัตโนมัติ</span></button>
+        <div class = "text-right">
+          <button type="reset" value="reset" class="btn-cancel" style="vertical-align: middle" ><span>รีเซต</span></button>
+          <button type="submit" value="Save" class="btn-save" style="vertical-align: middle" ><span>สร้างแผนเข้าซ่อมเอง</span></button>
         </div>
-
+       
         <span id="chkmaintpl_choose" class="checkform"></span>
 
         <div class="table-responsive">  

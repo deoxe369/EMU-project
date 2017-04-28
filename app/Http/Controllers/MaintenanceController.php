@@ -222,6 +222,7 @@ class MaintenanceController extends Controller
             $id1 = substr($id,7);
 
             $trainset_info2 = DB::table('train_set')->select('train_number','total_distance','total_time','location_name')->where('train_number',$id1)->distinct()->get();
+            // return $trainset_info2;
             $trainschedule = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->whereNull('deleted_at')->get();
             $location_name = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->get();
 
@@ -693,7 +694,7 @@ public function show_maintenance_plan(Request $info )
 
              }
              
-            
+                // return $part_alert;
             if($cars_type[0]->cars_type == "locomotive"){
 
                  $part_type_lo = DB::table('part_cars')->where('cars_type',"locomotive")->get();

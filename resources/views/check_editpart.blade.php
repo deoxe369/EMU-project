@@ -63,8 +63,9 @@
     </nav>
 
   <!--Content-->
-  <div class="container-fluid">
-    <!--First Container-->
+  <div class="content">
+    <div class="container-fluid">
+      <!--First Container-->
       <!-- Select Edit -->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เปลี่ยนอะไหล่ของตู้รถไฟ</h1>
@@ -187,7 +188,7 @@
           return opt.value;
         }
     </script>
-
+    </div>
   </div>
 
   <!--Footer-->
