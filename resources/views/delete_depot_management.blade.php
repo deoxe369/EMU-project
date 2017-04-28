@@ -115,12 +115,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <form action="delete_depot">
+        <form action="delete_depot" name="chkddepot" onsubmit="return ddepot()">
           <!-- Button -->
           <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
+
+          <span id="chkddepot_choose" class="checkform"></span>
             
           <div class="table-responsive">
             <table class="table" id="mytable">

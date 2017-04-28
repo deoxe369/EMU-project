@@ -143,13 +143,15 @@
 
     <!--Second Container-->
       <div class="row col-md-12 margin">
-        <form action="delete_part">
+        <form action="delete_part" name="chkdparts" onsubmit="return dparts()">
 
           <!-- Button -->
           <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
+
+          <span id="chkdparts_choose" class="checkform"></span>
           
           <!--Table: Part Detail-->
           <div class="table-responsive">

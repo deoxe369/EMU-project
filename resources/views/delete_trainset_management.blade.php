@@ -136,12 +136,14 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <form action="delete_trainset">
+        <form action="delete_trainset" name="chkdtrset" onsubmit="return dtrset()">
           <!-- Button -->
           <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
+
+          <span id="chkdtrset_choose" class="checkform"></span>
           
           <div class="table-responsive">
             <table class="table" id="mytable">
