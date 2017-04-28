@@ -131,8 +131,7 @@
           <div class="form-group">
             <label for="search"><h3 class="margin">&nbsp;</h3></label>
             <button class="btn-search" style="vertical-align: middle"><span>Search</span></button></a>
-          <!-- 
-            <label for="addcar"><h3 class="margin">&nbsp</h3></label>
+          <!-- <label for="addcar"><h3 class="margin">&nbsp</h3></label>
             <button formaction="../add_car_management" class="btn-add" style="vertical-align: middle"><span>เพิ่มตู้รถไฟ</span></button>
 
              add page: delete trainset_management
@@ -146,12 +145,15 @@
     <!--Second Container-->
       <!--Table Detail-->
       <div class="row col-md-12 margin">
-        <form action="delete_cars">
+        <form action="delete_cars" name="chkdcars" onsubmit="return dcars()">
           <!-- Button -->
           <div class="text-right">
             <button type="submit" value="Save" class="btn-save"><span>ตกลง</span></button>
             <button type="reset" value="reset" class="btn-cancel"><span>รีเซต</span></button>
           </div>
+
+          <span id="chkdcars_choose" class="checkform"></span>
+
           <div class="table-responsive">
             <!-- Table: Choose to delete -->
             <table class="table" id="mytable">

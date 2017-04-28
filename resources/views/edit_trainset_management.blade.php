@@ -103,7 +103,7 @@
                   <option value=" ">-- เลือกประเภทของชุดรถไฟ --</option>
                   <option value="passenger" id='passenger'>ชุดรถไฟโดยสาร</option>
                 </select>
-                <span id="chketrset_type" class="checkform"></span>
+                <span id="chktrset_type" class="checkform"></span>
               </td>
             </tr>
 
@@ -164,7 +164,6 @@
             </div>
           </div>
 
-          
             <!-- <tr id="composition" align="right">
                 
                 <td class="td-add"><p style="margin:auto; font-size: 20px; padding-top: 4px;">เลือก COMPOSITION</p></td>

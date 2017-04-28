@@ -103,6 +103,23 @@
   }
 
 
+  /************************************* Delete Maintenance **************************************/
+  function dmaint(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkdmaint_choose").style.color = "#006064";
+      document.getElementById("chkdmaint_choose").innerHTML = "&#x2714; เลือกใบเข้าซ่อมที่ต้องการลบเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkdmaint_choose").style.color = "#FF6F00";
+      document.getElementById("chkdmaint_choose").innerHTML = "&#x2716; โปรดเลือกใบเข้าซ่อมที่ต้องการลบก่อน";
+      status = false;
+    }
+    return status;
+  }
+
+
   /************************************* Maintenance Plan **************************************/
   function maintpl(){
     var status;
@@ -181,6 +198,45 @@
           document.getElementById("chktrset_carid").innerHTML = "&#x2714; เลือกรหัสตู้รถไฟครบ";
         }
       }
+    }
+    return status;
+  }
+
+
+  /************************************* Edit Trainset Management **************************************/
+
+  function etrset(){
+    var trsettype = document.chketrset.trtype.value;
+    var status;
+
+
+    if (trsettype == " ") {
+      document.getElementById("chktrset_type").style.color = "#FF6F00";
+      document.getElementById("chktrset_type").innerHTML = "&#x2716; โปรดเลือกประเภทของชุดรถไฟ";
+      status = false;
+    }else{
+      document.getElementById("chktrset_type").style.color = "#006064";
+      document.getElementById("chktrset_type").innerHTML = "&#x2714;";
+      status = true;
+    }  
+
+    return status;
+  }
+
+
+
+  /************************************* Delete Trainset **************************************/
+  function dtrset(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkdtrset_choose").style.color = "#006064";
+      document.getElementById("chkdtrset_choose").innerHTML = "&#x2714; เลือกชุดรถไฟที่ต้องการลบเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkdtrset_choose").style.color = "#FF6F00";
+      document.getElementById("chkdtrset_choose").innerHTML = "&#x2716; โปรดเลือกชุดรถไฟที่ต้องการลบก่อน";
+      status = false;
     }
     return status;
   }
@@ -358,6 +414,22 @@
     return status;
   }
 
+  /************************************* Delete Car **************************************/
+  function dcars(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkdcars_choose").style.color = "#006064";
+      document.getElementById("chkdcars_choose").innerHTML = "&#x2714; เลือกตู้รถไฟที่ต้องการลบเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkdcars_choose").style.color = "#FF6F00";
+      document.getElementById("chkdcars_choose").innerHTML = "&#x2716; โปรดเลือกตู้รถไฟที่ต้องการลบก่อน";
+      status = false;
+    }
+    return status;
+  }
+
 
    /************************************* Add Part Management **************************************/
    function part(){
@@ -445,6 +517,7 @@
       return status;
   }
 
+
   /************************************* Edit Part Management **************************************/
    function epart(){
     var parttype = document.chkepart.part_type.value;
@@ -518,6 +591,23 @@
   }
 
 
+  /************************************* Delete Part **************************************/
+  function dparts(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkdparts_choose").style.color = "#006064";
+      document.getElementById("chkdparts_choose").innerHTML = "&#x2714; เลือกอะไหล่ที่ต้องการลบเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkdparts_choose").style.color = "#FF6F00";
+      document.getElementById("chkdparts_choose").innerHTML = "&#x2716; โปรดเลือกอะไหล่ที่ต้องการลบก่อน";
+      status = false;
+    }
+    return status;
+  }
+
+
   /************************************* Add Depot Management **************************************/
   
   function depot(){
@@ -579,6 +669,21 @@
     return status;
   }
 
+  /************************************* Delete Depot Management **************************************/
+  function ddepot(){
+    var status;
+
+    if ($('[name=choose]:checked').prop('checked')) {
+      document.getElementById("chkddepot_choose").style.color = "#006064";
+      document.getElementById("chkddepot_choose").innerHTML = "&#x2714; เลือกศูนย์ซ่อมที่ต้องการลบเรียบร้อย";
+      status = true;
+    } else {
+      document.getElementById("chkddepot_choose").style.color = "#FF6F00";
+      document.getElementById("chkddepot_choose").innerHTML = "&#x2716; โปรดเลือกศูนย์ซ่อมที่ต้องการลบก่อน";
+      status = false;
+    }
+    return status;
+  }
 
   /****************************************** Check Part In Image **********************************/
   function writeText(txt) {

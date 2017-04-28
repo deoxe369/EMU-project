@@ -172,7 +172,6 @@
             <!-- Location -->
             <tr class="tr-add">
               <td class="td-add"><label for="location">ตำแหน่ง</label></td>
-
               <td class="col-sm-1"><span></span></td>
               <!--Choose Location-->
               <td>
@@ -187,7 +186,8 @@
             </tr>
           </table>
 
-         
+
+            <!-- Javascript Composition -->
             <script type="text/javascript">
               
               /* Start Display Button Add Composition */
