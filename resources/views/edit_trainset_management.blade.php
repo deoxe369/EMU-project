@@ -146,7 +146,7 @@
                     <td class="col-sm-1 bg-7"><span></span></td>
                     <td class="bg-7">
                       <!-- Call from Javascript Composition: Bogie1 -->
-                      <select id="cars_id_bo1" name="cars_id_bo1" class="sel sel-comp">
+                      <select id="cars_id_bo1" name="cars_id_bo" class="sel sel-comp">
                          <option value={{$bogie->id}}>{{$bogie->id}}</option>
                           @foreach($cars_bogie_info as $bogie)
                           <option value={{$bogie->id}}>{{$bogie->id}}</option>

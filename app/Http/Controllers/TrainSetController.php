@@ -72,6 +72,7 @@ class TrainSetController extends Controller
 
      public function edit($id)
     {
+
         $origin_info = DB::table('train_set')->where('train_number',$id)->whereNull('deleted_at')->get();
         $origin_loco = DB::table('cars')->select('id')->where('cars_type','locomotive')->where('train_number',$id)->whereNull('deleted_at')->get();
         // return   $origin_loco ;
@@ -99,27 +100,28 @@ class TrainSetController extends Controller
         $input  = explode('&', $info->server->get('QUERY_STRING'));
         
         $tain_set_type = substr($input[0],7);
-
+        
         $all_cars = array_splice($input,1);
        
         $number = count($all_cars);
+        $all = array();
         
 
          DB::table('train_set')->where('train_number',$id)->update(['type'=>$tain_set_type,'updated_at'=>Carbon::now()]);
 
 
          DB::table('cars')->where('train_number',$id)->update(['status'=>'ว่าง','train_number'=>NULL,'updated_at'=>Carbon::now()]);
-         
-
+       
+        
         for ($i=0; $i <  $number; $i++) { 
              
-           $cars_id = substr($all_cars[$i],8);
-           
+           $cars_id = substr($all_cars[$i],11);
             DB::table('cars')->where('id', $cars_id)->update(['status'=>'ไม่ว่าง','train_number'=>$id,'updated_at'=>Carbon::now()]);
         
-            //    $all_cars = array_splice($all_cars,1);
+              
 
         }
+       
         return Redirect::action('TrainSetController@trainset_info');
         
         
