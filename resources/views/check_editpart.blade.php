@@ -72,7 +72,7 @@
 
         <br>
 
-        <form class="form-horizontal" action="/check_parts/{{$id}}/{{$origin_part_info[0]->part_type}}/save" name="chkedpart" onsubmit="return edpart()">
+        <form class="form-horizontal" action="/check_parts/{{$mid}}/{{$id}}/{{$origin_part_info[0]->part_type}}/save" name="chkedpart" onsubmit="return edpart()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">

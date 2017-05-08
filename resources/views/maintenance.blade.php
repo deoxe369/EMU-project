@@ -129,7 +129,7 @@
       <div class="row col-md-12 margin">
         <!-- Button -->
         <div class="text-right">
-          <a href="../add_maintenance_management"><button class="btn-add" style="vertical-align: middle"><span>เพิ่มใบเข้าซ่อม</span></button></a>
+          <a href="../add_maintenance_management"><button class="btn-del-part" style="vertical-align: middle;"><span>เพิ่มใบเข้าซ่อมฉุกเฉิน   &#10010;</span></button></a>
           <a href="../delete_maintenance"><button class="btn-del" style="vertical-align: middle"><span>ลบใบเข้าซ่อม</span></button></a>
         </div>
 
