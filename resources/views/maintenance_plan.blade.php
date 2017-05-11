@@ -21,23 +21,7 @@
   <script src="{{ URL::asset('/js/bootstrap.min.js') }} "></script>
   <script src="{{ URL::asset('/js/function.js') }}"></script>
 
-  <!-- Javascript Table: Row Color -->
-  <script language="javascript">
-    window.onload = function () {    
-      var a=document.getElementById('mytable');
-      for(i=0;i<a.rows.length;i++){
-        if(i>0){
-          if(i%2==1){
-            a.rows[i].className="bg-8";
-          }else{
-            a.rows[i].className="bg-7";
-          } 
-        }else{
-        // a.rows[i].className="tr_head"; 
-        } 
-      }
-    }
-  </script>
+
 
 </head>
 
@@ -159,7 +143,7 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody id="itemRows">
               @foreach ($trainset_info as $info)
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
@@ -189,10 +173,13 @@
                             var time_result = level_time-train_time;
                             var dis_result = level_dis-train_dis;
                               if(time_result <= 0.08 || dis_result <= 1000){
-                                // document.getElementById("{{$info->train_number}}").style.backgroundColor = "#fccb58";
-                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
+                                
+                                   document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
+
+                
                               
                             }else if(time_result <= 0.20 || dis_result <= 3000){
+                              
                                 document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
                             }
                           }
@@ -234,12 +221,90 @@
       </form>      
       </div>
 
+      @foreach ($trainset_info as $info)
+      <script type="text/javascript">
+       var color1 = String(document.getElementById("{{$info->train_number}}").style.backgroundColor);
+       if(color1 == "rgb(255, 58, 58)"){
+                                document.getElementById("{{$info->train_number}}").hidden = "block";
+                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
+                                jQuery('#{{$trainset_info[0]->train_number}}').before(row);
+                                   // console.log(row);
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
+                                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
+                // console.log(trtype);
+                switch(trtype){
+                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
+                  // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                }
+                var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
+                var year = time-(time%1);
+                      var month =  Math.floor((time%1)*365);
+                       var month1 = (time%1)*365;
+                      var month2 =  Math.floor(month/30);
+                      var day = Math.round(month1-month);
+                      var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
+                document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
+                
+       }
+        
+      </script>
+      @endforeach
+      @foreach ($trainset_info as $info)
+      <script type="text/javascript">
+       var color1 = String(document.getElementById("{{$info->train_number}}").style.backgroundColor);
+       if(color1 == "rgb(255, 235, 59)"){
+                                document.getElementById("{{$info->train_number}}").hidden = "block";
+                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
+                                jQuery('#{{$trainset_info[0]->train_number}}').before(row);
+                                   // console.log(row);
+                                document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
+                                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
+                // console.log(trtype);
+                switch(trtype){
+                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
+                  // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                }
+                var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
+                var year = time-(time%1);
+                      var month =  Math.floor((time%1)*365);
+                       var month1 = (time%1)*365;
+                      var month2 =  Math.floor(month/30);
+                      var day = Math.round(month1-month);
+                      var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
+                document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
+                
+       }
+        
+      </script>
+      @endforeach
+       
+        <script language="javascript">   
+              var a= document.getElementById('itemRows').rows.length
+              var b = 1;
+              for(i=0 ; i<a ; i++){
+                var color = document.getElementById('itemRows').rows[i].style.backgroundColor;
+                if(color == ""){
+                  if(b%2==1){
+                    document.getElementById('itemRows').rows[i].style.backgroundColor = '#ffffff';
+                    b++;
+                  }else{
+                    document.getElementById('itemRows').rows[i].style.backgroundColor = '#F5F5F5';
+                    b++;
+                  }
+                }
+              }
+        </script>
+
+        
+        <!-- Javascript Table: Row Color -->
+
+<!--  -->
       <!-- Pagination -->
       <div class="text-center">{{$trainset_info->links()}}</div>
 
     </div>
   </div>
-
+   
   <!--Footer-->
   <footer class="bg-10">
     <p class="copy-footer">&copy; 2016 - 2017 by EMU Utilization System. All rights reserved.</p>
