@@ -223,6 +223,7 @@ class MaintenanceController extends Controller
             $id1 = substr($id,7);
 
             $trainset_info2 = DB::table('train_set')->select('train_number','total_distance','total_time','location_name')->where('train_number',$id1)->distinct()->get();
+            // return $trainset_info2;
             $trainschedule = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->whereNull('deleted_at')->get();
             $location_name = DB::table('train_schedule')->select('source_station','destination_station')->where('train_number',$id1)->get();
 
@@ -694,7 +695,7 @@ public function show_maintenance_plan(Request $info )
 
              }
              
-            
+                // return $part_alert;
             if($cars_type[0]->cars_type == "locomotive"){
 
                  $part_type_lo = DB::table('part_cars')->where('cars_type',"locomotive")->get();
@@ -720,12 +721,13 @@ public function show_maintenance_plan(Request $info )
             $code_info =  DB::table('part')->select('brand','code')->where('part_type',$part)->where('cars_id',NULL)->where('status','ใช้ได้')->distinct()->get();
             
            // return $origin_part_info;
-           return view('check_editpart')->with('origin_part_info',$origin_part_info)->with('brand_info',$brand_info)->with('code_info',$code_info)->with('id',$id);
+           return view('check_editpart')->with('origin_part_info',$origin_part_info)->with('brand_info',$brand_info)->with('code_info',$code_info)->with('id',$id)->with('mid',$mid);
  
     }
 
-     public function change_part(Request $info,$id,$part)
+     public function change_part(Request $info,$mid,$id,$part)
     {
+            // return $mid;
             DB::table('part')->where('part_type',$part)->where('cars_id',$id)->update(['updated_at'=>Carbon::now(),'cars_id'=>NULL,'status'=>'ใช้ไม่ได้']);//อะไหล่เก่า
             
             $min_expired = DB::table('part')->where('part_type',$part)->where('brand',$info->brand)->where('code',$info->code)->where('status',"ใช้ได้")->min('expired_date');
@@ -734,7 +736,7 @@ public function show_maintenance_plan(Request $info )
 
             DB::table('part')->where('id',$changed_part[0]->id)->update(['updated_at'=>Carbon::now(),'cars_id'=>$id]);//อะไหล่ใหม่
 
-           return Redirect::action('MaintenanceController@check_parts',['id'=>$id]);
+           return Redirect::action('MaintenanceController@check_parts',['mid'=>$mid,'id'=>$id]);
         
  
     }

@@ -63,15 +63,16 @@
     </nav>
 
   <!--Content-->
-  <div class="container-fluid">
-    <!--First Container-->
+  <div class="content">
+    <div class="container-fluid">
+      <!--First Container-->
       <!-- Select Edit -->
       <div class="container">
         <h1 class="margin" style="text-align: center;">เปลี่ยนอะไหล่ของตู้รถไฟ</h1>
 
         <br>
 
-        <form class="form-horizontal" action="/check_parts/{{$id}}/{{$origin_part_info[0]->part_type}}/save" name="chkedpart" onsubmit="return edpart()">
+        <form class="form-horizontal" action="/check_parts/{{$mid}}/{{$id}}/{{$origin_part_info[0]->part_type}}/save" name="chkedpart" onsubmit="return edpart()">
 
           <!-- New Structure: Table -->
           <table class="table-add" align="center">
@@ -187,7 +188,7 @@
           return opt.value;
         }
     </script>
-
+    </div>
   </div>
 
   <!--Footer-->

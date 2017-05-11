@@ -178,8 +178,8 @@ class TrainCirculationController extends Controller
         DB::table('train_set')->where('mark','yes')->update(['status'=>'วิ่ง','mark'=>NULL]);
 
          // $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
-
-          return Redirect::action('TrainCirculationController@train_schedule_info1');
+        // return View::make('index')->with('train_schedule_info',$train_schedule_info);
+        return Redirect::action('TrainCirculationController@train_schedule_info'); 
 
     }
 
@@ -269,8 +269,8 @@ class TrainCirculationController extends Controller
 
         // $train_schedule_info = DB::table('train_schedule')->whereNull('deleted_at')->get();
 
-         return Redirect::action('TrainCirculationController@train_schedule_info');
-
+        // return View::make('index')->with('train_schedule_info',$train_schedule_info);
+        return Redirect::action('TrainCirculationController@train_schedule_info');
     }
 
     public function add_plan_cancel1()

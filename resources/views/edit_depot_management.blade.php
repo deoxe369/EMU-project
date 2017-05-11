@@ -124,15 +124,15 @@
             </tr>
 
             <!-- Position -->
-            <tr class="tr-add">
+            <!-- <tr class="tr-add">
               <td class="td-add"><label for="depotno">ตำแหน่ง</label></td>
-              <td class="col-sm-1"><span></span></td>
+              <td class="col-sm-1"><span></span></td> -->
               <!-- Input Position -->
-              <td>
+              <!-- <td>
                 <input type="text" id="depotno" name="depotno">
                 <span id="chkdepot_position" class="checkform"></span>
               </td>
-            </tr>
+            </tr> -->
 
             <!-- location -->
             <tr class="tr-add">
