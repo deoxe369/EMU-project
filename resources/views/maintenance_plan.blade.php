@@ -140,11 +140,12 @@
                 <th class="text-center">ระยะทางสะสม (km)</th>
                 <th class="text-center">ระยะเวลาสะสม </th>
                 <th class="text-center">สถานะ</th>
+                <th class="text-center">วันซ่อม</th>
               </tr>
             </thead>
 
             <tbody id="itemRows">
-              @foreach ($trainset_info as $info)
+              @foreach ($trainset_info as $key=>$info)
               <tr id="{{$info->train_number}}" value ="{{$info->level}}">  
                 <td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td>
                 <td class="text-center">{{$info->train_number}}</td>
@@ -152,6 +153,7 @@
                 <td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td>
                 <td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td>
                 <td class="text-center">{{$info->status}}</td>
+                <td class="text-center" id='md{{$info->train_number}}'>{{$maintenance_date[$key]}}</td>
                 <a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a>
               </tr>
 
@@ -197,12 +199,13 @@
                 
               <!-- JS change name cartype -->
               <script type="text/javascript">
-                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
-                // console.log(trtype);
-                switch(trtype){
-                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
-                  // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
-                }
+                // var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
+                // // console.log(trtype);
+                // switch(trtype){
+                //   case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
+                //   // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
+                // }
+
                 var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
                 var year = time-(time%1);
                       var month =  Math.floor((time%1)*365);
@@ -211,6 +214,10 @@
                       var day = Math.round(month1-month);
                       var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
                 document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
+
+
+                // console.log(today);
+                // console.log(document.getElementById("md{{$info->train_number}}").innerHTML);
                 
               </script>
               @endforeach
@@ -221,21 +228,16 @@
       </form>      
       </div>
 
-      @foreach ($trainset_info as $info)
+      @foreach ($trainset_info as $key=>$info)
       <script type="text/javascript">
        var color1 = String(document.getElementById("{{$info->train_number}}").style.backgroundColor);
        if(color1 == "rgb(255, 58, 58)"){
                                 document.getElementById("{{$info->train_number}}").hidden = "block";
-                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
+                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><td class="text-center" id="md{{$info->train_number}}">{{$maintenance_date[$key]}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
                                 jQuery('#{{$trainset_info[0]->train_number}}').before(row);
                                    // console.log(row);
                                 document.getElementById("{{$info->train_number}}").style.backgroundColor = "#ff3a3a";
-                                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
-                // console.log(trtype);
-                switch(trtype){
-                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
-                  // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
-                }
+                               
                 var time = document.getElementById("total_time{{$info->train_number}}").innerHTML;
                 var year = time-(time%1);
                       var month =  Math.floor((time%1)*365);
@@ -244,22 +246,23 @@
                       var day = Math.round(month1-month);
                       var total_time = year+" ปี "+month2+" เดือน "+day+" วัน"
                 document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
+
                 
        }
         
       </script>
       @endforeach
-      @foreach ($trainset_info as $info)
+      @foreach ($trainset_info as $key=>$info)
       <script type="text/javascript">
        var color1 = String(document.getElementById("{{$info->train_number}}").style.backgroundColor);
        if(color1 == "rgb(255, 235, 59)"){
                                 document.getElementById("{{$info->train_number}}").hidden = "block";
-                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
+                                var row = '<tr id="{{$info->train_number}}" value ="{{$info->level}}"><td class="text-center"><input type="checkbox" name="choose" value={{$info->train_number}}></td><td class="text-center">{{$info->train_number}}</td><td class="text-center" id="{{$info->train_number}}type">{{$info->type}}</td><td class="text-center" id="total_dist{{$info->train_number}}">{{$info->total_distance}}</td><td class="text-center" id="total_time{{$info->train_number}}">{{$info->total_time}}</td><td class="text-center">{{$info->status}}</td><td class="text-center" id="md{{$info->train_number}}">{{$maintenance_date[$key]}}</td><a class="text-center" id="level{{$info->train_number}}">{{$info->level}}</a></tr>';
                                 jQuery('#{{$trainset_info[0]->train_number}}').before(row);
                                    // console.log(row);
                                 document.getElementById("{{$info->train_number}}").style.backgroundColor = "#FFEB3B";
                                 var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
-                // console.log(trtype);
+               
                 switch(trtype){
                   case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
                   // case "trcar4": document.getElementById("{{$info->train_number}}1").innerHTML= 'ชุดรถไฟโดยสาร 4'; break;
@@ -274,7 +277,31 @@
                 document.getElementById("total_time{{$info->train_number}}").innerHTML = total_time;
                 
        }
-        
+                var trtype = document.getElementById("{{$info->train_number}}type").innerHTML;
+              
+                switch(trtype){
+                  case "passenger": document.getElementById("{{$info->train_number}}type").innerHTML= 'ชุดรถไฟโดยสาร';break;
+                 
+                }
+                var currentDate = new Date()
+                var day = currentDate.getDate()
+                var month = currentDate.getMonth() + 1
+                var year = currentDate.getFullYear()
+                var today;
+                // console.log(month);
+                if(month>9){
+                  today = year + "-" +month + "-" + day ;
+                }else{
+                  today = year + "-" + "0"+month + "-" + day; 
+                }
+                var mdate = document.getElementById("md{{$info->train_number}}").innerHTML;
+                // console.log(today);
+                if(today == mdate){
+                  document.getElementById("md{{$info->train_number}}").innerHTML = "วันนี้";
+                      // console.log(document.getElementById("md{{$info->train_number}}").innerHTML);
+                }
+                // console.log(document.getElementById("md{{$info->train_number}}").innerHTML);
+
       </script>
       @endforeach
        

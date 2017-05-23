@@ -160,6 +160,7 @@ class MaintenanceController extends Controller
         $trainset_level_info = DB::table('train_set')->select('train_number','total_distance','total_time')->where('status','วิ่ง')->orwhere('status','ว่าง')->distinct()->get();
         // return $trainset_level_info;
         $level_info = DB::table('level')->select('level','total_time','total_distance')->orderBy('level', 'asc')->get();
+        $maintan_date = array();
 
             foreach ($trainset_level_info as $x) {
                 // if($x == NULL){
@@ -167,6 +168,29 @@ class MaintenanceController extends Controller
               
                         if($value->total_time >= $x->total_time and $value->total_distance >= $x->total_distance) {
                             $level = $value->level;
+                            $train_schedule = DB::table('train_schedule')->where('train_number',$x->train_number)->get();
+                            $source_station_distance =  DB::table('route')->select('distance')->where('name',$train_schedule[0]->source_station)->get();
+                            $destination_station_distance = DB::table('route')->select('distance')->where('name',$train_schedule[0]->destination_station)->get();
+                            $range = $destination_station_distance[0]->distance - $source_station_distance[0]->distance;
+                            $balance =  $value->total_distance - $x->total_distance;
+                            if($range == 0){
+                             $trainset_time = DB::table('train_set')->select('total_time','level')->where('train_number',$x->train_number)->distinct()->get();
+                             $level_time = DB::table('level')->select('total_time')->where('level',$trainset_time[0]->level)->distinct()->get();
+                             $diff_time = $level_time[0]->total_time - $trainset_time[0]->total_time;
+                             $balance_day = $diff_time/0.00274 ;
+                        }else{
+                            // return 2;
+                            $limit = floor(300/$range);
+                            if($limit<1){
+                            $balance_day = floor($balance/$range)-1;
+                            
+                            }else {
+                            $balance_day = floor($balance/$range)-$limit;;
+                           
+                            }
+                        }
+                        $maintenance_date = Carbon::now()->addDays($balance_day)->format('Y-m-d');
+                         array_push($maintan_date,$maintenance_date);
                             DB::table('train_set')->where('train_number',$x->train_number)->update(['level'=>$level,'updated_at'=>Carbon::now()]);
                             break; 
                             
@@ -176,7 +200,7 @@ class MaintenanceController extends Controller
                
                 
             }
-
+      
         $today = Carbon::now(); 
         $train_number =  DB::table('maintenance')->where('in_date',$today->toDateString())->whereNull('deleted_at')->whereNull('stay')->get();
         
@@ -194,8 +218,8 @@ class MaintenanceController extends Controller
         }
 
         $trainset_info = DB::table('train_set')->where('status','ว่าง')->orwhere('status','วิ่ง')->distinct()->paginate(15);
-
-        return View::make('maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number)->with('level_info',$level_info);
+          // return $maintan_date;
+        return View::make('maintenance_plan')->with('trainset_info', $trainset_info)->with('trainset_maintenance',$trainset_maintenance)->with('number',$number)->with('level_info',$level_info)->with('maintenance_date',$maintan_date);
 
 
         
